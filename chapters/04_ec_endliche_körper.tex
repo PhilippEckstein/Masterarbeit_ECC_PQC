@@ -1,0 +1,246 @@
+\chapter{Elliptische Kurven über endlichen Körpern}
+
+\section{Motivation}
+  Nicht jede Art von elliptischer Kurve macht Sinn im Bereich der Kryptography. Zum Beispiel würden Kurven über reellen Zahlen Gleitpunkt Arithmetik benötigen, welche Probleme wie Ungenauigkeit oder verringerte Rechenleistung mit sich bringen würden. Daher werden elliptische Kurven über endlichen Körpern definiert.
+    Hierbei wird wie bereits eingeführt die kurze Weierstraß-Gleichung verwendet(vgl. \cite{omondi20}, S.230)
+    
+\section{Endliche Körper}
+    \begin{definition}
+    Ein endlicher Körper ist ein Körper mit endlich vielen Elementen. Für jede Primzahlpotenz \(q=p^n\) existiert bis auf Isomorphie genau ein endlicher Körper mit \(q\) Elementen. Dieser wird dann mit \(\mathbb F_q\) oder \(GF(q)\)(Galois Field) bezeichnet.
+    (vgl. \cite{karpf24}, S.391f.)
+    \end{definition}
+    In kryptographischen Anwendungen treten insbesondere die Körper \(\mathbb F_p\) und \(\mathbb F_{2^m}\) auf.
+
+    \begin{lemma}
+        Für einen endlichen Körper K der Charakteristik p gilt.
+        \begin{enumerate}
+            \item Die multiplikative Gruppe $(K^x,\cdot)$ von K ist zyklisch.
+            \item Es gilt a
+        \end{enumerate}
+     
+    \end{lemma}
+
+    \cite{guneysu24},S.279f.)  
+    \begin{definition}[Elliptische Kurve über \(\mathbb F_p\)]
+    Sei \(p>3\) eine Primzahl. Eine elliptische Kurve über \(\mathbb F_p\) ist die Menge von allen Punkten $(x,y)\in \mathbb{F}_p$ mit
+    
+    \[
+    \mathbb F_p = y^2 \equiv x^3+ax+b \pmod p
+    \]
+    und einem Punkt im Unendlichen.
+
+    \[
+    4a^3+27b^2 \not\equiv 0 \pmod p
+    \]
+    
+    gilt. Die Bedingung stellt wie im allgemeinen Fall sicher, dass die Kurve nichtsingulär ist. Die Einschränkung $p>3$ erlaubt die Verwendung der kurzen Weierstraß-Gleichung. Für Körper der Charakteristik \(2\) und \(3\) haben wir bereits in Kapitel 3 gesehen, dass die allgemeine Weierstraß-Gleichung verwendet werrden muss.
+    \end{definition}
+
+\section{Die Punktmenge $E(\mathbb{F}_q)$}
+
+\subsection{Explizite Punktbestimmung}
+    \cite{washington08},S.95, hier noch eigene Beispiele erstellen
+    \begin{enumerate}
+        \item Sei E die Kurve $y^2=x^3+x+1$ über $\mathbb{F}_5$. Um nun die Punkte von E zu erhalten, berchnen wir zuerst $x^3+x+1\mod 5$ und anschließend die quadratwurzel von diesem Polynom über $F_5$.
+        \begin{center}
+            \begin{tabular}{c|c|c|c}
+                 x & $x^3+x+1$ & y & Points \\
+                 \hline
+                 0 & 1 & $\pm$ 1 & (0,1), (0,4) \\
+                 1 & 3 & - & - \\
+                 2 & 1 & $\pm$ 1 &  (2,1),(2,4)\\
+                 3 & 1 & $\pm 1$ & \\
+                 4 & 4 & $\pm 2$ & (4,2),(4,3)  
+            \end{tabular}
+        \end{center}
+    Beachte: $-1\equiv 4 \mod 5$ und $ -2\equiv 3 \mod 5$\\
+    Für $y^2=3$ gibt es keine Wurzel in $F_5$\\
+
+    Also ist nun die Ordnung: 
+    \[
+        \mid E(\mathbb{F}_5)\mid = \# \{(x,y)\in \mathbb{F}_5 \mid y^2=x^3+x+1\}+1 = 9
+    \]
+    Wir berechnen nun einen Punkt  $(3,1)+(2,4)$ auf $E$:
+    \[
+    \frac{4-1}{2-3}=\frac{3}{-1}=\frac{3}{4}=3\cdot4^{-1} =3\cdot 4=12  \equiv 2 \mod 5
+    \]
+    Es ist also $y=2(x-3)+1\equiv 2x$. Wenn wir dass nun in die Gleichung für die Kurve einsetzen erhalten wir
+    \[(2x)^2=x^3+x+1\Leftrightarrow 0 = x^3-4x^2+x+1\]. Wir kennen schon zwei Schnittpunkte der Kurve $x=3$ und $x=2$, da $(3,1)$ und $(2,4)$ auf der Gerade und Kurve liegen. Da das Polynom kubisch ist, muss die Summe der drei Nullstellen 4 sein. Damit gilt, 
+    \[
+    3+2+r \equiv 4 \mod 5 \Leftrightarrow r\equiv 4 \mod 5
+    \]
+    Also ist die dritte Koordinate $x=4$, nun erhalten wir $y=2x\equiv 3$, gespiegelt über die x-Achse erhält man die Summe 
+    \[(3,1)+(2,4)=(4,2)\]
+    
+    \end{enumerate}
+    
+
+
+
+    \begin{theorem}
+    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Dann gilt, 
+    \[
+    E(\mathbb{F}_q) \simeq \mathbb{Z}_n \text {  oder  } \mathbb{Z}_{n_1} \oplus \mathbb{Z}_{n_2}
+    \]
+    für ein $n \geq 1$ und für beliebige $n_1,n_2\geq1$ mit $n_1\mid n_2$.
+    \end{theorem}
+    \begin{proof}
+    Aus der Gruppentheorie wissen wir, dass endliche abelische Gruppen isomorph sind zu einer direkten Summe von zyklischen Gruppen \textbf{Quelle einfügen}, also
+    \[\mathbb{Z}_{n_1}\oplus \mathbb{Z}_{n_2}\oplus \dots\oplus\mathbb{Z}_{n_r}\]
+    mit $n_i\mid n_{i+1}$ für $i\geq 1$. Es gibt nun $n_1$ der Ordnung teilt $n_1$ Elemente für jedes i für die Gruppe $\mathbb{Z}_{n_i}$. Daher hat $E(\mathbb{F}_q)$ hat $n^r_1$ elemente der Ordnung teilt $n_1.$ Mit Theorem 3.2 sind nun $n^2_1$ solcher Punkte. Daher ist $r\leq 2$ und damit gezeigt.
+    
+    \end{proof}
+    
+\subsection{Quadratische Reste und Legendre-Symbol, die Gruppen Ordnung bestimmen(sollte das nicht eher nach Hasse kommen?}
+    Es ist also wichtig zu bestimmen ob es für ein $x$ auch ein $y$ gibt, also ob der berechnete Wert $a=y^2 \mod p$ ein Quadrat ist oder nicht. Hierfür können wir das Legendre-Symbol verwenden
+         
+    \begin{definition}[Legendre-Symbol]
+    Sei \(p\) eine ungerade Primzahl und \(a\in\mathbb Z\). Das Legendre-Symbol ist definiert durch
+    
+    \[
+    \left(\frac{a}{p}\right)
+    =
+    \begin{cases}
+    1, & \text{falls } a \not\equiv 0 \pmod p \text{ ein quadratischer Rest modulo } p \text{ ist},\\
+    -1, & \text{falls } a \text{ ein quadratischer Nichtrest modulo } p \text{ ist},\\
+    0, & \text{falls } a \equiv 0 \pmod p.
+    \end{cases}
+    \]
+    \end{definition}
+
+    Es gibt zwei Methoden um das Legendre-Symbol effizient zu berechnen:
+    \begin{itemize}
+        \item Das Eulersche Kriterium
+        \item Das Quadratische Reziprozitätsgesetz
+    \end{itemize}
+    Auf beide wird nicht genauer eingeganngen, aber sie sind wichtig um Punkte für jede beliebige elliptische Kurve zu bestimmmen, da dadurch überprüft werden kann, ob es sich um einen quadratischen Rest oder nicht handelt.
+    Denn \(y^2=x^3+Ax+B\)
+    In \cite{muller} S.51ff. Kapitel 8 kann mehr zu dem Thema quadratische Reste nachgelesen werden und effiziente Methoden sowie die Beweise dazu gefunden werden.
+    Das Legendre-Symbol kann verallgemeinert werden über alle endlichen Köprer $\mathbb{F}_q$.
+    \begin{definition}
+    (vgl. \cite{washington08},S. 104)
+    Sei \(\mathbb F_q\) ein endlicher Körper mit \(q\) ungerade. Für \(x\in\mathbb F_q\) definieren wir
+    
+    \[
+    \left(\frac{x}{\mathbb F_q}\right)
+    =
+    \begin{cases}
+    1, & \text{falls } t^2=x \text{ eine Lösung } t\in\mathbb F_q^\times \text{ besitzt},\\
+    -1, & \text{falls } t^2=x \text{ keine Lösung } t\in\mathbb F_q \text{ besitzt},\\
+    0, & \text{falls } x=0.
+    \end{cases}
+    \]
+    
+    \end{definition}
+    \begin{theorem}  (vgl. \cite{washington08},S.105)
+        Sei $E$ eine elliptische Kurve definiert mit \(y^2=x^3+Ax+B\) über $\mathbb{F}_q$. Dann gilt 
+        \[
+        |E(\mathbb{F}_q)|=q+1+\sum_{x\in\mathbb{F}_q}\left(\frac{x^3+Ax+B}{\mathbb{F}_q}\right)
+        \]
+    \end{theorem}
+    \begin{proof}
+        
+    \end{proof}
+    
+\section{Gruppenstruktur von \(E(\mathbb{F}_q)\)}
+
+ \begin{theorem}(vgl. \cite{silverman06}, S. 29)
+    Über einem endlichen Körper ist die Gruppe der Punkte $E(\mathbb{F}_p)$ zusammen mit \(\infty\) immer eine zyklische Gruppe oder ein Produkt von zyklischen Untergruppen
+    \end{theorem}
+     Bevor wir das Theorem beweisen betrachten wir die Aussage an einem Beispiel:
+    \begin{beispiel}
+    \cite{guneysu24}, S. 285f.
+        Wir wollen alle Punkte auf der Kurve 
+        \[
+        E:y^2\equiv x^3 +x+5 \pmod {11}
+        \]
+        Wir berechnen nun alle Punkte auf der Kurve, wir nehmen an das die Gruppe aller Punkte auf dieser Kurve zyklisch ist und außerdem ist die Ordnung $\left| E(\mathbb{F}_{11}) \right|=11$, Wir wählen den Punkt \(P=(0,4)\). Dieser liegt auf der Kurve, denn
+        
+        \[
+        4^2 = 16 \equiv 5 \pmod{11}
+        \]
+        
+        und
+        
+        \[
+        0^3+0+5 = 5 \pmod{11}.
+        \]
+        
+        Wir berechnen nun die Vielfachen von \(P\):
+        
+        \[
+        \begin{aligned}
+        2P &= (0,4)+_E(0,4) = (5,5),\\
+        3P &= 2P+_EP = (10,5),\\
+        4P &= (2, 9),\\
+        5P &= (7, 6),\\
+        6P &= (7, 5)\\
+        7P &= (2, 2),\\
+        8P &= (10, 6),\\
+        9P &= (5, 6),\\
+        10P &= (0, 7),\\
+        11P &= \infty,\\
+        12P &= (0,4), \\
+        13P &= (5,5)
+        \end{aligned}
+        \]
+        
+        Wie man sieht beginnt nun die Aufzählung von neuem und es handelt sich daher um eine zyklische Gruppe.
+        
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.5\linewidth]{ell_curve_finite_field.png}
+            \caption{Elliptische Kurve über $\mathbb{F}_5$, eigene Darstellung}
+            \label{fig:placeholder}
+        \end{figure}
+        
+        Die Punkte und das Bild wurden mit einem eigenen Python Skript generiert, siehe Anhang.
+    \end{beispiel}
+
+    Um das diskrete Logarithmus für ein Kryptosystem aufbzubauen, müssen wir die Ordnung von einer Gruppe kennen. Dies ist deutlich herausfordernder als das Berechnen des eben gezeigten Beispiels, bei dem extra eine passende Kurve gewählt wurde. Da zuerst überprüft werden muss ob zu einem x Wert der berechnete Wert auch einen quadratischen Rest hat und damit der Punkt exestiert.
+\section{Punktzählung}
+\subsection{Frobenius-Endomorphismus} 
+    \begin{definition}[Frobenius Abbildung](vgl. \cite{washington08}, S. 98f.)
+        Sei $\mathbb{F}_q$ ein endlicher Körper und $\overline{\mathbb{F}}_q$ sein algebraischer Abschluss (\textbf{eventuell nochmal definieren}). Die Abbildung
+        \[
+        \phi_q:\overline{\mathbb{F}}_q\rightarrow\overline{\mathbb{F}}_q,\]
+        \[
+        x \mapsto x^q
+        \]
+        heißt.
+        Ist $E$ eine elliptische Kurve über $\mathbb{F}_q$, so induziert $\phi_q$ eine Abbildung auf den Punkten von $E(\overline{\mathbb{F}}_q)$:
+        \[
+        \phi_q(x,y)=(x^q,y^q), \quad \phi_q(\infty )= \infty
+        \]
+        
+    \end{definition}
+    \begin{lemma}
+        Sei $E$ eine elliptische Kurve über \(\mathbb{F}_q\). Dann ist $\phi_q$ ein Endomorphismus von $E$ mit dem Grad $q$ und $\phi_q$ ist nicht seperabel.
+    \end{lemma}
+    \begin{proof} (vlg. \cite{washington08}, S.52, eventuell etwas ausführlicher)
+    Die Abbildung $\phi_q(x,y) = (x^q, y^q)$ ist wohldefiniert, da die Gleichung der elliptischen Kurve Koeffizienten in $\mathbb{F}_q$ besitzt und somit unter der Abbildung $x \mapsto x^q$ invariant ist.
+    
+    Da die Gruppenoperation auf $E$ durch rationale Funktionen mit Koeffizienten in $\mathbb{F}_q$ gegeben ist und $\phi_q$ ein Körperhomomorphismus ist, gilt
+    \[
+    \phi_q(P+Q) = \phi_q(P) + \phi_q(Q)
+    \]
+    für alle $P,Q \in E(\overline{\mathbb{F}}_q)$.
+    Damit ist $\phi_q$ ein Endomorphismus von $E$.
+    
+    Der Grad von $\phi_q$ ist $q$.
+    
+    Da in Charakteristik $p$ gilt $q = p^r$ und die Ableitung von $x^q$ gleich null ist, ist $\phi_q$ nicht separabel.
+    \end{proof}
+    
+\subsection{Hasse-Schranke}    
+    \begin{theorem}[Hasse]
+        Sei $E$ eine elliptische Kurve über einem endlichen Kröper $\mathbb{F}_q$. Dann erfüllt die Ordnung von $E(\mathbb{F}_q)$,
+        \[ \vert q+1-\vert E(\mathbb{F}_q)| |\leq 2\sqrt q\]
+    \end{theorem}
+    A natural question is what groups can actually occur as groups E(Fq). The
+    answer is given in the following two results, which are proved in [130] and [93],
+    respectively
+    
+    \begin{proof} (vgl. \cite{silverman09}, S.138)
+    
+    \end{proof}

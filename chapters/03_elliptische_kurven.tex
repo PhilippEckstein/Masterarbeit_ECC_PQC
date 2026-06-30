@@ -1,0 +1,455 @@
+\chapter{Elliptische Kurven}
+    Das Kapitel basiert auf \cite{washington08} S.9ff.
+    
+    Beginnen wir also mit der Definition einer Elliptische Kurve.
+    \begin{definition}
+        Eine elliptische Kurve über einem Körper K wird definiert mit 
+        \[
+        y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6,
+        \]w
+        wobei wir das die Weierstraß-Gleichung nennen.
+        Wenn nun gilt char($K\neq 2,3$), so können wir die kurze
+        Weierstraß-Gleichung nutzen
+        \[
+        y^2=x^3+Ax+B.
+        \]
+    \end{definition}
+    Meistens wird eine \textbf{Elliptische Kurve} definiert mit: \[y^2=x^3+Ax+B,\]
+    mit A und B Konstanten, dies bezeichnen wir als kurze Weierstraß-Gleichung für eine Elliptische Kurve. \(A,B,x\) und $y$ gehören dann zu einem Körper wie den rellen Zahlen \(\mathbb{R} \) oder auch den komplexen Zahlen $\mathbb{C}$. Es muss sich hierbei einfach im allgemeinen um einen Körper K handeln.
+    Wir beschreiben nun die Menge der Punkte auf $L\subset K$ mit
+    \[
+    E(L)=\{\infty \} \cup \{(x,y)\in L\times L\mid y^2=x^3+Ax+B\},
+    \]
+    nach Definition ist der Punkt $\infty$ immer enthalten, warum wir diesen benötigen wird im nächsten Kapitel genauer erklärt. 
+    Nicht über jedem Körper lassen sich Elliptische Kurven sinnvoll optisch darstellen, daher betrachten wir zuerst den Körper der reellen Zahlen. Hierbei gibt es zwei grundlegende Formen.
+\begin{figure}
+    \centering
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{kap2_bs1.png}
+        \caption{Eigene Darstellung mit GeoGebra $y^2=x^3-3x$}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{kap2_bs2.png}
+        \caption{Eigene Darstellung mit GeoGebra $y^2=x^3+3x$}
+    \end{subfigure}
+    \label{fig:vergleich}
+    \end{figure}
+    Über dem Körper \(\mathbb{R}\) kann die Kurve je nach Anzahl der reellen Nullstellen verschiedene Formen annehmemen. Zum Beispiel hat $y^2 = x^3 - 3x$ drei verschiedene reelle Nullstellen, nämlich $x = 0$ und $x = \pm \sqrt{3}$. Im gegensatz dazu hat die Kurve $y^2 = x^3 + 3x$ lediglich eine reelle Nullstelle bei $x = 0$.\\
+
+    Wie wir in der Darstellung sehen können, ändert sich die Form der Kurve über dem Körper $\mathbb{R}$, wenn wir mehrere reelle Nullstellen haben. Das Polynom \(x^3+Ax+B\) darf daher keine mehrfachen Nullstellen besitzen, dies ist äquivalent dazu, dass die Kurve \emph{nicht singulär} ist.
+
+    \begin{definition}[(Einführung in die algebraische Gemoetrie, S.1+6)]
+        Sei $f \in K[x,y]$ und
+        \[
+        E = V(f) = \{(x,y)\in K^2 \mid f(x,y)=0\}
+        \] 
+        eine affine ebene Kurve. Ein Punkt \((a,b)\in E\) heißt \textbf{singulär}, wenn,
+        \[
+        f_x(a,b)=0 \quad \text{und}\quad f_y(a,b)=0.
+        \]
+         Andernfalls heißt der Punkt \textbf{regulär}.
+
+         Die Kurve \(E\) heißt \textbf{singulär}, wenn sie einen singulären Punkt besitzt.
+    \end{definition}
+    
+    Wir schreiben die Gleichung nun um zu
+    \[
+    f(x,y)=y^2-x^3-Ax-B
+    \]
+    dann sind die Ableitung 
+    \[
+    f_x= -3x^2-A \quad \text{ und } \quad f_y=2y
+    \]
+    Es muss nun für beide ungleich 0 gelten,
+    \[
+    f_x= -3x^2-A = 0 \Leftrightarrow 3x^2+A = 0
+    \]
+    und
+    \[
+    f_y=2y = 0 \Leftrightarrow y = 0, \quad \text{char }\neq 2
+    \]
+    daraus folgt ein singulärer Punkt muss die Form $(x,0)$ haben und zusätzlich muss \(x^3+Ax+B = 0\) gelten, sodass der Punkt auf der Kurve liegt. Also x darf nicht eine Nullstelle von \(x^3+Ax+B\) und der Ableitung \(3x^2+A\) sein. Die Diskriminante für ein das kubische Polynom 
+    \[
+    p(x))x^3+Ax+B
+    \]
+    ist hierbei
+    \[
+    \Delta  = -4A^3-27B^2
+    \]
+   
+    \[
+        4A^3+27B^2 \neq 0.
+    \]
+    Für die Nullstellen $r_1, r_2, r_3$ des Polynoms gilt
+    \[
+    ((r_1 - r_2)(r_1 - r_3)(r_2 - r_3))^2 = -(4A^3 + 27B^2).
+    \]
+    Insbesondere folgt daraus, dass die Nullstellen genau dann paarweise verschieden sind, wenn die Diskriminante $\Delta = -(4A^3 + 27B^2)$ ungleich Null ist. Im vorliegenden Fall ist $\Delta < 0$, sodass voneinader verschiedene reelle Nullstellen vorliegen.
+    
+     
+    \textbf{Allgemeine Weierstrass Gleichung}
+    
+    \[y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\]
+
+
+\section{Gruppenstruktur}
+Kapitel basier auf \cite{washington08}, S.12ff.
+Basiert auch auf (An Introduction to the
+Theory of Elliptic Curves, Silverman, S.8-19)
+    Wir betrachten nun die Addition von zwei Punkten auf einer Elliptischen Kurve
+   
+    Wir betrachten dafür zwei Punkte $P=(x_1,y_1)$ und $Q=(x_2,y_2)$ auf einer elliptischen Kurve $E$. Diese ist wie bereits eingeführt gegeben durch die Gleichung \[y^2=x^3+Ax+B.\] Wir wollen nun einen dritten Punkt $P+_EQ=R $ berechnen. Für die graphische Darstellung wurde ein Beispiel über $\mathbb{R}$ verwendet mit der Kurve $y^2=x^3-4x+10$.\\
+
+    Als ersten Schritt zeichnen wir eine Gerade $L$ durch $P$ und $Q$.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\linewidth]{kap2_2_bsp1.png}
+        \caption{Gerade $L$ durch  $P$ und $Q$}
+        \label{fig:placeholder}
+    \end{figure}
+
+    Als zweiten Schritt nehmen wir den Schnittpunkt $R'$ von der Gerade $L$ und $E$. Anschließend spiegeln wir $R'$ an der x-Achse und erhalten dadurch $R$. Wir definieren $R=P+_E Q$. Hierbei ist wichtig hervorzuheben, dass es sich dabei von der Addition der Koordinaten zweier Punkte unterscheidet.
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\linewidth]{kap2_2_bsp2.png}
+        \caption{Schnittpunkt $R'$ von Gerade $L$ und Kurve $E$ und die Spiegelung $R$}
+        \label{fig:placeholder}
+    \end{figure}
+
+    Nun betrachten müssen wir noch den Fall betrachten, wenn wir einen Punkt $P$ auf sich selbst addieren wollen auf der Kurve $E$. Da es keinen zweiten Punkt, sodass durch beide Punkte eine Gerade gezogen werden kann, nehmen wir an der zweite Punkt $Q$ nähert sich P an, sodass die Gerade $L$ zu einer Tangente von $E$ bei $P$ wird.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\linewidth]{kap2_2_bsp3.png}
+        \caption{Tangente am Punkt $P$}
+        \label{fig:placeholder}
+    \end{figure}
+    
+    Anschließend nehmen wir wieder den Schnittpunkt $R'$ von der Kurve $E$ und der Tangente $L$ und spiegeln diesen an der x-Achse. Dadurch erhalten wir wieder den Punkt $P+_EP=R$, denn wir aber nun als $2P$ bezeichnen.
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.6\linewidth]{kap2_2_bsp4.png}
+        \caption{piegelung von $R'$, wodurch $R=2P$ entsteht}
+        \label{fig:placeholder}
+    \end{figure}
+    
+    Als letzten Fall schauen wir uns noch an, wenn die Gerade $L$ keinen Schnittpunkt mit $E$ hat. Hierfür betrachten wir wieder den Punkt $P$ und seinen an der x-Achse gespiegelten Punkt $P'=-P$.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\linewidth]{kap2_2_bsp5.png}
+        \caption{Schnittpunk von L im Punkt $\infty$}
+        \label{fig:placeholder}
+    \end{figure}
+    Dafür brauchen wir einen dritten Punkte um $P+_E(-P)$ definieren zu kennen wir kreieren dafür einen Punkt $\infty$. Dieser Punkt ist dabei auf jeder vertikalen Gerade.\\
+
+    \textbf{Herleitung der Additionsformeln
+    \cite{washington08}(, S. 14 und Kaplan S.179ff.):}\\
+    (Bei diesem Absatz habe ich mich orientiert an 
+Kryptographie, Buell, S.99)
+       
+     Seien nun $P=(x_1,y_1)$ und $Q=(x_2,y_2)$ Punkte auf $E$ mit $P,Q\neq \infty$.
+    Zuerst betrachten wir den Fall $P\neq Q$ und \(x_1\neq x_2\). Dann hat die Gerade \(L\) durch durch \(P\) und \(Q\) die Form
+    \[
+    y=m(x-x_1)+y_1
+    \qquad \text{mit} \qquad
+    m=\frac{y_2-y_1}{x_2-x_1}.
+    \]
+    Zur Bestimmung des dritten Schnittpunkts setzen wir die Geradengleichung in die Kurvengleichung
+    \[
+    E: y^2=x^3+Ax+B
+    \]
+    ein. Es gilt also
+    \[
+    \bigl(m(x-x_1)+y_1\bigr)^2=x^3+Ax+B.
+    \]
+    Nach Ausmultiplizieren und Umstellen erhält man
+    \[
+    0=x^3-m^2x^2+\bigl(2m^2x_1-2my_1+A\bigr)x
+    +\bigl(B-m^2x_1^2+2mx_1y_1-y_1^2\bigr).
+    \]
+    
+   Die Nullstellen des kubischen Polynoms sind die \(x\)-Koordinaten der drei Schnittpunkte von \(L\) mit \(E\), also \(x_1\), \(x_2\) und \(x_3'\). Daher gilt
+    \[
+    0=(x-x_1)(x-x_2)(x-x_3')
+    =x^3-(x_1+x_2+x_3')x^2+(x_1x_2+x_1x_3+x_2x_3)x-x_1x_2x_3
+    \]
+    Mit Kooeffizientenvergleich erhält man
+    \[
+    x_1+x_2+x_3' = m^2 \Leftrightarrow  x_3' = m^2-x_1-x_2
+    \]
+    Da \(R'=(x_3',y_3')\) auf der Geraden \(L\) liegt, gilt
+    \[
+    y_3'=m(x_3'-x_1)+y_1.
+    \]
+    Die Summe \(P+Q\) ist die Spiegelung von \(R'\) an der \(x\)-Achse. Somit ist
+    \[
+    P+Q=(x_3,y_3)
+    \]
+    mit
+    \[
+    x_3=x_3'=m^2-x_1-x_2,
+    \qquad
+    y_3=-y_3'=m(x_1-x_3)-y_1.
+    \]    
+    
+    \textbf{voll restliche Herleitung Einfügen, Rosen S.12-14}
+    
+    Dann definieren wir $P+Q=R=(x_3,y_3)$ wie folgt:
+    \begin{enumerate}
+        \item Wenn $x_1\neq x_2$, dann
+        \[x_3=m^2-x_1-x_2, \quad y_3=m(x_1-x_3)-y_1 \quad \text{ mit  } m=\frac{y_2-y_1}{x_2-x_1}.\]
+        \item Wenn $x_1=x_2$, aber $y_1\neq y_2$, dann ist 
+        \[P+Q=\infty.\]
+        \item Wenn $P=Q$ und $y_1\neq 0$, dann
+        \[x_3=m^2-2x_1, \quad y_3=m(x_1-x_3)-y_1, \quad \text{ mit } m=\frac{3x_1^2+A}{2y_1}.\]
+        \item Wenn $P=Q$ und $y_1=0$ dann, 
+        \[P+Q=\infty.\]
+    \end{enumerate}
+
+    Zusätzlich definieren wir 
+    \[P+\infty=P\]
+    für alle Punkte $P$ auf $E$.Damit ist $E(L)$ geschlossen unter Addition von Punkte auf der Kurve. 
+
+    \begin{theorem}
+        Die Addition auf einer Elliptische Kurve $E$ erfüllt folgende Eigenschaften.
+        \begin{enumerate}
+            \item [Existenz der Identität:] \(P+\infty=\infty+P=P\) für alle \(P\in E\)
+            \item [Kommutativität:] \(P+Q=Q+P\) für alle \(P,Q\in E\)
+            \item [Existenz des Inversen:] Sei $P\in E$ gegeben, dann exestiert ein $-P\in E$ mit \(P+(-P)= \infty\), für alle $P\in E$.
+            \item [Assoziativität:] \((P+Q)+R=P+(Q+R)\) für alle \(P,Q,R\in E\)
+        \end{enumerate}
+    \end{theorem}
+    Damit formen alle Punkte auf $E$ eine additive abelsche Gruppe mit $\infty$ als neutrales Element.
+
+\begin{proof}
+    Die Existenz der Identität ist durch die Definition der Elliptische Kurve gegeben. Die Kommutativität kann einfach nachgerechnet werden indem die oben definieren Regeln für die Addition zweier Punkte anwenden.
+    Für  das Inverse müssen wir von einem Punkt $P$ sein Reflektion an der x-Achse $P'$ nehmen. Dann erhalten wir $P+P'=\infty.$
+    Der Beweis der Assoziativität ist recht langwierig und daher wird auf eine externe Quellen hierfür verwiesen \textbf{Quelle für Assoziativität einfügen, Potenziell (\cite{washington08},S.20ff. Proof of Associativity}
+\end{proof}
+
+
+\textbf{Beispiel 1:}
+    Wir betrachten dafür eine Elliptische Kurve $E$ mit 
+    \[y^2=x^3-4x+4,\]
+    auf dieser Kurve liegen zum Beispiel die Punkte $P=(0,2)$ und $Q=(2,2)$. Nun berechnen wir auf den vorherigen Regeln, da $x_1\neq x_2$ folgt,
+    \[
+        m = \frac{2-2}{2-0}=0
+    \]
+    \[
+        x_3 = (0)^2-0-2=-2, \quad  y_3 = 0\cdot(0-(-2))-2 =-2
+    \]
+    also
+    \[
+    P+_EQ=(0,0)+_E(0,2)= (-2,-2)
+    \]
+    Analog können wir beliebige Punkte auf der Kurve addieren.
+    \[(0,2)+_E(-2,-2)=(6,14)\]
+
+    
+    \textbf{Beispiel 2:}
+    Nun können wir auch Punkte berechnen, wenn wir diese geometrisch nicht sinnvoll darstellen können. Die Kurve \(y^2=x^3-4x+4\pmod 7\) also über dem endlichen Körper $\mathbb{F}_7$. (Als Errinnerung die Kurve muss über dem Körper Singulär sein\(4A^3+27B^2=4\cdot(-4)^3+27\cdot4^2=176\equiv1\pmod 7\neq0\)
+
+    Wir wählen nun die Punkte $P=(0,2)$ und \(Q=(5,5)\)
+    auf $E(\mathbb{F})_7$.
+    Es gilt nun 
+    \[
+    m=\frac{5-2}{5-0}=\frac{3}{5} = 3\cdot 5^{-1}\equiv 3\cdot 3 \pmod 7= 9 = 2 \pmod 7
+    \]
+    und damit
+    \[
+    x_3=2^2-0-5=-1\equiv 6 \pmod 7, \quad y_3=2(0-6)-2=-14 \equiv 0\pmod 7
+    \]
+    also
+    \[P+_EQ=(6,0).\]
+
+    
+    \textbf{Skalar mal Punkt}(The aglebra of Elliptic Curves, S.30f.)
+    Um später Diffie-Hellman über der endlcihen Gruppe $E(\mathbb{F}_p)$ anwenden zu können(wird im Kryptographie Kapitel genauer erklärt), muss man auch für größere $p$ berechnen können, also
+    \[mP=P+P+\dots+P\in E(\mathbb{F}_p)\] für sehr große Werte von m.
+    Lass \(m\in\mathbb{N}_{>0}\).
+
+    Wir schreiben zuerst 
+    \[m=m_0+m_1\cdot2+m_2\cdot 2^2+\dots+m_r\cdot 2^r, \quad m_0,\dots,m_r\in\{0,1\}\]
+    also zerlegen m in seinen einzelnen Zweierpotenzen. Dann kann $mP$ berechnet werden als
+    \[mP=m_0P+m_1\cdot 2P+m_2\cdot2^2P+\dots +m_r\cdot 2^rP,\]
+    wobei \(2^kP=2\cdot 2\cdots 2P\) benötigt nur k Doppelungen und damit können wir $mP$ in $O(\text{log } m)$ berechnen. Die Binärdarstellung von $m$ hat 
+    \[
+    r+1 = \lfloor\log_2m \rfloor+1
+    \].
+    Im Schnitt braucht man also $\log_2(m)$ Verdoppelungen und \(\frac{1}{2}\log_2(m)\) Additionen um $mP$ zu berechnen.
+
+    Man kann die benötigte Zeit nochmal reduzieren, indem man die Non-Adjacent Form verwendet. Die Addition und Subtraktion eines Punktes kosten genau gleich viel Zeit, also schreiben wir
+    \[
+    m=m_0+m_1\cdot 2+m_2\cdot 2^2+\cdots+m_r\cdot 2^r, \quad m_0,\dots,m_r\in\{-1,0,1\}.
+    \]
+    Hierfür können wir im Schnitt  $\frac{2}{3}$ der $m_i=0$ für die Zerlegung nutzen, dass reduziert die Anzahl der durchschnittlichen Additionen auf \(frac{1}{3}\log_2(m)
+    \).
+    Aufgrund dieses Vorgehens ist die Berechnung von $m$ aus $P$ und $mP$ sehr schwierig. Das sogennante \textbf{diskrete Logarithmus Problem} für Elliptische Kurven ist später essenziell für das kryptographische Verfahren, das auf diesen aufbaut.
+   
+
+\section{Projektiver Raum und der Punkt bei Unendlich} (vgl. \cite{washington08}, S. 18ff.)
+(vgl. \cite{clader25}, S.245f.)
+    
+    Die Gruppenstruktur elliptischer Kurven wurde zuvor über die geometrische
+    Punktaddition beschrieben. Dabei spielt der Punkt im Unendlichen eine besondere
+    Rolle, da er als neutrales Element der Gruppe dient. Um diesen Punkt geometrisch
+    präzise zu beschreiben, gehen wir nun von der affinen Ebene zur projektiven Ebene über. 
+
+    \begin{definition}[Projektive Ebene]
+    Sei \(K\) ein Körper. Die projektive Ebene über \(K\) ist definiert als der Quotient
+    \[
+    \mathbb P^2_K
+    =
+    \left(K^3\setminus0\right)/\sim,
+    \]
+    wobei zwei Tripel \((x,y,z),(x',y',z')\in K^3\setminus\{(0,0,0)\}\) genau dann in einer Relation  stehen \(
+    (x,y,z)\sim (x',y',z)\), wenn ein \(\lambda\in K^\times:
+    (x,y,z)=\lambda(x',y',z')\) exestiert.
+    Die Äquivalenzklasse von \((x,y,z)\) wird mit
+    \((x:y:z)\) bezeichnet und heißt Punkt der projektiven Ebene.
+    \end{definition}
+    Die Koordinaten \((x:y:z)\) werden homogene Koordinaten genannt. Dabei bezeichnet \((x:y:z)\) nicht einen einzelnen Punkte, sondern die Äquivalenzklasse aller von Null verschiedenen skalaren Vielfachen von \((x,y,z)\). Für jedes \(\lambda\in K^\times\) gilt also
+    \[
+    (x:y:z)=(\lambda x:\lambda y:\lambda z).
+    \]
+     Die Menge 
+    \[
+    g_\infty=\{(x:y:z)\in \mathbb P^2_K\mid z=0\}.
+    \]
+    heißt die unendlich ferne Gerade der projektiven Ebene (vgl. \cite{forster15}, S.200ff.).
+    Ist $z \neq 0$, so kann z auf 1 normiert werden, denn es gilt \((x:y:z)=(x/z:y/z:1)\). Nun kann man eine Abbildung definieren
+    \[
+    K^2\longrightarrow\mathbb{P}^2_K, \quad
+    (x,y)\mapsto (x:y:1).
+    \]
+    Diese Punkte entsprechen genau den affinen Punkten \((x,y)\in K^2\) die bijektiv auf \(\mathbb{P}^2_K\setminus g_\infty\) abgebildet werden.
+
+
+    \begin{lemma}
+        Die Punkte auf der Geraden im Unendlichen \(L_\infty\) entsprechen den RIchtungen affiner Geraden. Insbesondere schneiden sich parallel affine Geraden in der projektiven Ebene in demselben Punkt auf \(L_\infty\).
+    \end{lemma}
+    Ich weiß nicht ganz wie ich das definieren soll.
+
+    Soll ich auch definieren, dass es sich um eine Äquivalenzklasse handelt?
+\section{Beweis der Assoziativitität}
+    Beweis nach vgl. \cite{zwegers24}, S. 477ff.
+    Es gibt hierbei gibt es 3 Sonderfälle, erstens die Punkte könnten in unendlich liegen, dafür brauchen wir die projektiven Koordinaten. Zweitens die Gerade könnte eine Tangente bei E sein, was bedeutet, dass zwei Punkte gleich sind. Drittens zwei Geraden könnten gleich sein.
+    Wir möchten nun die Assoziativität zeigen. Sei \(E=y^2=x^3+Ax+B\) eine elliptische Kurven über einem Körper \(K\) mit \(\text{char(K)}\neq 2,3\) und \(4A^3+27B^2 \neq 0\).
+    Weiter seien nun die Punkte\[
+    P_1=(x_1,y_1),\quad P_2=(x_2,y_2),\quad P_3=(x_3,y_3)
+    \]
+    Punkte aus \(E\setminus\{O\}\). Ziel ist es zu zeigen, dass
+    \[
+    (P_1+P_2)+P_3=P_1+(P_2+P_3)
+    \]
+    gilt.
+
+   Für zwei Punkte \(P_i=(x_i,y_i)\) und \(P_j=(x_j,y_j)\) mit
+    \(P_j\neq -P_i\) setzen wir
+    \[
+    \alpha(P_i,P_j):=
+    \begin{cases}
+    \dfrac{y_j-y_i}{x_j-x_i}, & \text{falls } x_i\neq x_j,\\[1.2ex]
+    \dfrac{3x_i^2+A}{2y_i}, & \text{falls } P_i=P_j \text{ und } y_i\neq 0.
+    \end{cases}
+    \]
+    Wir suchen nun eine Parabel durch \(P_1,P_2,P_3\). Wir finden dafür einen neuen Punkt \(P_4=(P_1+P_2)+P_3\), definiert mit
+    \[
+    x_4=-x_1+x_2-x_3+\frac{1}{c_2^2}-2\frac{c_1}{c_2}, \quad y_4 = -y_2-(x_4-x_2)(c_1+x_4c_2)
+    \]
+    wobei 
+    \[
+    c_1 := \frac{x_1\alpha(P_2,P_3)-x_3\alpha(P_1P_2)}{x_1-x_3}, \quad c_2:=\frac{\alpha(P_1,P_2)-\alpha(P_2,P_3)}{x_1-x_3}.
+    \]
+
+   
+    
+
+\section{Elliptische Kurven in Charakteristik 2} (nach Rosen, S. 47ff.) \textbf{Muss man hier auch characteristik 3 ergänzen?}
+
+    Computer arbeiten tendenziell besser über Körpern der Charakteristik 2 im Vergleich zu Körpern mit großen prim Charakteristiken.Daher werden häufig Elliptische Kurven über einem Feld $\mathbb{F}_q$ mit $q=2^k$ Elementen verwendet.
+    (vgl. \cite{silverman06}, S.47)
+
+    Aus dieser Notwendigkeit betrachten wir nun genauer Elliptische Kurven in Charakteristik 2, da hier einige unserer vorher definierten Formeln nicht funktionieren.\\
+    \begin{satz}
+         In Charakteristik \(2\) ist die kurze Weierstrass Gleichung \(y^2=x^3+Ax+B\) stets singulär. Daher verwendet man in Charakteristik 2 die allgemeine Weierstraß-Gleichung
+    \end{satz}
+
+    \[
+    y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6.
+    \]
+    \begin{proof}    
+        Betrachte 
+        \[
+        f(x,y) = y^2-x^3-Ax-B.
+        \]
+        Ein Punkt auf der Kurve ist genau dann singulär, wenn beide partiellen Ableitungen verschwinden. Es gilt
+        \[
+        f_y=2y\equiv0,
+        \] da der Körper Charakteristik 2 hat. Außerdem ist 
+        \[
+        f_x=-3x^2-A
+        \]
+        Sei nun $x_0$ eine Nullstelle von $f_x$. Wir wählen ein \(y_0\) mit
+        \[
+        y_0^2=x_0^3+Ax_0+B
+        \]
+        Dann liegt $(x_0,y_0)$ auf der Kurve und es ist
+        \[
+        f_x(x_0,y_0)=f_y(x_0,y_0) = 0
+        \]
+        Damit folgt die Kurve ist singulär.
+    \end{proof}
+    
+    Nun wollen auch für Charakterstik 2 die Gruppengesetze aufstellen.
+    Hierfür beginnen wir mit der allgmeinen Weierstraß-Gleichung für eine elliptische Kurv $E$
+    \[
+    y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6.
+    \]
+    Man schreibt diese in die Form
+    \[
+    f(x,y)=y^2+a_1xy+a_3y-x^3-a_2x^2-a_4x-a_6.
+    \]
+    Dann sind die partiellen Ableitungen gegeben durch
+    \[
+    f_x=a_1y-3x^2-2a_2x-a_4,\qquad f_y=2y+a_1x+a_3.
+    \]
+    In Charakteristik \(2\) vereinfacht sich dies zu
+    \[
+    f_x=a_1y+x^2+a_4,\qquad f_y=a_1x+a_3.
+    \]
+    Ein Punkt \((x,y)\) ist wie bereits früher eingeführt, genau dann singulär, wenn
+    \[
+    f(x,y)=0,\qquad f_x(x,y)=0,\qquad f_y(x,y)=0.
+    \]
+    Fall 1: $a_1\neq 0$
+    Man kann aus \(a_1x+a_3=0\) folgern
+    \[
+    x=\frac{a_3}{a_1}.
+    \]
+    Eingesetzt in \(a_1y+x^2+a_4=0\) liefert es,
+    \[
+    a_1y+\left(\frac{a_3}{a_1}\right)^2+a_4=0
+    \]
+    \[
+    y= \frac{a_3^2}{a_1^3}+ \frac{a_4}{a_1}.
+    \]
+    wenn der Punkt zusätzlich \(f(x,y)=0\) erfüllt handelt es sich um einen singulären Punkt.
+  
+    Fall 2: $a_1=0$
+    Es gilt nun,
+    \[
+    f_x=x^2+a_4,\qquad f_y=a_3.
+    \]
+    also muss \(a_3= 0\) und $f(x,y)=0$ gelten, sodass $(x,y)$ ein singulärer Punkt ist.\\
+
+    Nun können wir die Addition von Punkten definieren. Es gilt wieder für alle Punkte $P\in E$
+    \[
+    P+\infty=P.
+    \]
+    \textbf{washington S.48-49 hier weiter machen}
+

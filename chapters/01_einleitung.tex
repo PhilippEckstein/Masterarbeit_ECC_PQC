@@ -1,0 +1,30 @@
+\chapter{Einführung}
+    (Grundlagen der Kryptographie, vgl. S.2ff.)
+    Der Wunsch auf eine Art und Weise zu kommunizieren, dass private Kommunikation nicht von anderen geselen werden kann reich Jahrtausende zurück.
+    Im ersten Weltkrieg wurden 
+    Die Kryptologie ist daher die Studie der Geheimnisse.
+
+    Anmerkung: Es wird davon ausgegeganngen, dass der Leser grundlegende algebraische Strukturen kennt. Verwendete Strukturen sind: Gruppen, Ringe, Körper, Vektorräume \textbf{(siehe Quelle einfügen)}
+    Elliptische Kurven haben sich in der modernen Kryptographie etabliert, weil sie bei vergleichbarem Sicherheitsniveau deutlich kürzere Schlüssellängen erfordern als klassische Verfahren wie RSA. So bietet ein RSA-Schlüssel mit 4096 Bit ein Sicherheitsniveau, das mit Verfahren auf Basis elliptischer Kurven bereits mit einer Schlüssellänge von etwa 313 Bit erreicht werden kann (vgl. \cite{washington08}, S. 169). Dies führt zu geringerem Speicherbedarf, ermöglicht kompaktere Hardware und reduziert den Energieverbrauch. 
+    \textbf{Kerckhoff's Prinzip} Ein Kryptosystem sollte sicher sein, auch wenn alles über das System bekannt ist, außer dem Schlüssel, der zum Verschlüsseln einer bestimmten Nachricht verwendet wird (Grundlagen der Kryptographie, S.10).
+    
+    
+
+
+    \textbf{Ausgangssituation:}
+    Alice will eine Nachricht, oft als Klartext bezeichnet, an Bob schicken. Um eine dritte Partei daran zu hindern die Nachricht zu lesen, verschlüsselt sie die Nachricht. Um die Nachricht zu verschlüssel benutzt Alice einen kryptographischen Schlüssel. Bei symmetrischen Verfahren sind der Verschlüsslungsschlüssel und der Entschlüsslungsschlüssel der Selbe. 
+    Für diesen Fall muss der Schlüssel von Alice erstmal an Bob übergeben werden, durch zum Beispiel einen Nachricht die einige Tage vorher gesendet wird. Das ist offensichtlich nicht geeignet für moderne und schnelle Kommunikation.
+
+    Bei der asymetrischen Verschlüsslung wird ein \textbf{öffentlicher Schlüssel} generiert, der für jede Person einsehbar ist und daher muss vorher nicht ein Schlüssel zwischen Alice und Bob ausgetautscht werden. Bob besitzt aber auch noch einen privaten Schlüssel, wodurch er einen verschlüsslten Text entschlüsseln kann. Wenn Alice ihm eine Nachricht schicken will nimmt sie Bobs öffentlichen Schlüssel und verschlüsselt damit ihre Nachricht.
+
+    Im allgemeinen sind Verfahren mit öffentlichen Schlüsseln schneller als gute symmetrische Verfahren, daher wird häufig über Verfahren mit öffentlichen Schlüsseln ein symmetrischer Schlüssel ausgetauscht.
+    (vgl. \cite{washington08}, S.170)
+    
+    Forschungsfrage:
+    
+    Welche algebraischen Eigenschaften elliptischer Kurven führen zu Angriffen, die schneller sind als generische Pollard-p-Verfahren?
+    
+    Von den mathematischen Grundlagen elliptischer Kurven zur kryptographischen Anwendung, mit Fokus auf Sicherheitsannahmen und der Frage, wann diese Annahmen versagen können.
+
+
+    Es wird davon ausgegeanngen, dass der Leser grundlegende Mathematische Strukturen kennt und diese werden daher nicht erneut eingeführt, dazu zählen: Gruppen, Ringe und Körper, Homorphismus und Endomorphismus.
