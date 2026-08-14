@@ -1,4 +1,4 @@
-\documentclass{stml-l}
+\documentclass[openany]{stml-l}
 
 \input{settings/packages.tex}
 \input{settings/commands.tex}
@@ -9,30 +9,30 @@
 
 \begin{titlepage}
     \begin{center}
-    \par\huge \textsc{Eliptische Kurven Kryptographie}
+        \par\huge \textsc{Eliptische Kurven Kryptographie}
     \end{center}
-    
+
     \medskip
-    
+
     \begin{center}
-    \textsc{Masterarbeit}
-    
-    \bigskip
-    Autor:\\ %Use different gender if preferred.
-    Philipp Eckstein, 3554663\\
-    \smallskip
-    Betreuer:\\ %Use different gender if preferred.
-    Prof. Dr. Meinolf Geck\\
-    \bigskip
-    Universität Stuttgart\\
-    Institut für Diskrete Strukturen und Symbolisches Rechnen
-    \vfill
-    
-    \begin{figure}[ht]
-    \includegraphics[width=0.5\textwidth]{ElliptischeKurven.png}
-    \captionsetup{labelformat=empty} %surpresses enumeration
-    \caption{Elliptische Kurve $\displaystyle 5y^{2}=x^{3}-3x+5$ über dem Körper der reellen Zahlen Quelle: \url{https://de.wikipedia.org/wiki/Elliptische_Kurve} }
-    \end{figure}
+        \textsc{Masterarbeit}
+
+        \bigskip
+        Autor:\\ %Use different gender if preferred.
+        Philipp Eckstein, 3554663\\
+        \smallskip
+        Betreuer:\\ %Use different gender if preferred.
+        Prof. Dr. Meinolf Geck\\
+        \bigskip
+        Universität Stuttgart\\
+        Institut für Diskrete Strukturen und Symbolisches Rechnen
+        \vfill
+
+        \begin{figure}[ht]
+            \includegraphics[width=0.5\textwidth]{ElliptischeKurven.png}
+            \captionsetup{labelformat=empty} %surpresses enumeration
+            \caption{Elliptische Kurve $\displaystyle 5y^{2}=x^{3}-3x+5$ über dem Körper der reellen Zahlen Quelle: \url{https://de.wikipedia.org/wiki/Elliptische_Kurve} }
+        \end{figure}
     \end{center}
     \vfill
 \end{titlepage}
@@ -40,68 +40,28 @@
 \section{Vorwort}
 
 \section*{Eidesstattliche Erklärung}
-    Hier sollte eine kluge Eidesstattliche Erklärung stehen, dass du alles allein gemacht hast et cetera et cetera.
+Hier sollte eine kluge Eidesstattliche Erklärung stehen, dass du alles allein gemacht hast et cetera et cetera.
 \bigskip\underline{\hspace{0.2\textwidth}}\hspace{0.1\textwidth}\underline{\hspace{0.4\textwidth}}
 \section*{Danksagung}
-    An erster Stelle dankt man meistens dem Betreuer. Je nach Sentimentalität kann dann auch weiteren Personen aus dem akademischen oder dem privaten Umfeld gedankt werden.
+An erster Stelle dankt man meistens dem Betreuer. Je nach Sentimentalität kann dann auch weiteren Personen aus dem akademischen oder dem privaten Umfeld gedankt werden.
 
+\section*{Kurze thematische Einführung in das Thema}
 
 \tableofcontents
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
 
-
-
-
-
-Forschungsfrage:
-
-Welche algebraischen Eigenschaften elliptischer Kurven führen zu Angriffen, die schneller sind als generische Pollard-p-Verfahren?
-
-Von den mathematischen Grundlagen elliptischer Kurven zur kryptographischen Anwendung, mit Fokus auf Sicherheitsannahmen und der Frage, wann diese Annahmen versagen können.
-
-
-Aktuell: Elliptische Kurven und Quantecomputer, sind diese sicher?
-
 \input{chapters/01_einleitung.tex}
 
-\input{chapters/02_mathematische_grundlagen.tex}
+\input{chapters/02_elliptische_kurven.tex}
 
-\input{chapters/03_elliptische_kurven.tex}
-
-\input{chapters/04_ec_endliche_körper.tex}
+\input{chapters/03_ec_endliche_körper.tex}
 
 
-    
-\chapter{Das diskrete Logarithmusproblem auf elliptischen Kurven}
-   
 
+\input{chapters/04_disk_log_problem_auf_ec.tex}
 
-\chapter{Legendre Symbole}
-
-    \cite{washington08}, S.104f.
-    Legendre Symbol nutzen, wenn man allgemien bestimmen will, ob es zu x einen quadratischen Rest mod q gibt, denn nur dann exestiert y und damit kann der Punkte auf der Kurve in einem endlichen Körper liegen.
-    
-\chapter{Elliptische Kurven Kryptographie}
-    Wir betrachten eine möglichkeit einen geheimen Schlüssel zu etablieren nach Diffie und Hellman. (zitiert nach Taylor und Francis 2008, S.170f.)
-    \begin{enumerate}
-        \item Alice und Bob einigen sich auf eine elliptische Kurve $E$ über einem endlichen Körper $\mathbb{F}_q$, sodass das diskrete Logarithmusproblem in $E(\mathbb{F}_q)$ schwer zu lösen ist.
-        \item Alice wählt ein geheimes $a$, das ein Integer sein soll, berechne $P_a=aP$ und schickt $P_a$ zu Bob.
-        \item BoB wählt einen geheimen Integer b, er berechnet $P_b=bP$ und schickt Alice $P_b$.
-        \item Alice berechnet $aP_b=abP$
-        \item Bob berechnet $bP_a=baP$
-        \item Alice und Bob benutzen eine öffentliche Methode um einen Schlüssel von $abP$ zu extrahieren. Zum Beispiel könnten sie die letzten 256 bits der x-Koordinate von $abP$ als Schlüssel verwenden oder sie könnten eine Hash-Funktion auf der x-Koordinate definieren.
-    \end{enumerate}
-    Die einzige Information die ein Außenstehender sieht, wäre die Kurve $E$, den Körper $F_q$ und die Punkte $P, aP,bP$. Daher muss sie das \textbf{Diffie-Hellman Problem} lösen.
-
-\section{Warum eliptische Kurven verwenden?}
-    Der beste Algorithm um ECDLP zu lösen ist exponential, darum werden Elliptische Kurven Gruppen verwendet. (An Introduction to the Theory of Elliptic Curves, S.6)
-    Genauer der beste Algorithmus um ECDLP zu lösen über $\mathbb{F}_p$ braucht $O(\sqrt p)$ Zeit.
-\section{Diffie-Hellman}
-
-    
-\section{Sicherheitbetrachtung}
-    Faktorisierung großer Zahlen (Computeralgebra Kapitel 5, ab S.167)
+\input{chapters/05_kryptographie.tex}
 
 \chapter{Implementierung}
 \section{Design}
@@ -109,15 +69,15 @@ Aktuell: Elliptische Kurven und Quantecomputer, sind diese sicher?
 \section{Skalarmultiplikation}
 \section{Implemeneiterun von ECDH}
 
-    Für Implementierung im Computer sind verschiedene Koordinaten System unterschiedlich schnell, da die Operationen auf diesen von Punkte unterschiedlich schnell sein können. Daher Rosen Kapitel 2.6, S.42 für mehr Infos anschauen.
+Für Implementierung im Computer sind verschiedene Koordinaten System unterschiedlich schnell, da die Operationen auf diesen von Punkte unterschiedlich schnell sein können. Daher Rosen Kapitel 2.6, S.42 für mehr Infos anschauen.
 \chapter{Verlgeich zu klassichem Diffie-Hellman}
 
 \chapter{Quantencomputer}
-    Modern Crypography (S.397)
-    Laufzeit, Schlüsselgrößen, Sicherheit
+Modern Crypography (S.397)
+Laufzeit, Schlüsselgrößen, Sicherheit
 
-    Alles schön Visualisieren
-    
+Alles schön Visualisieren
+
 \printbibliography
 
 \end{document}

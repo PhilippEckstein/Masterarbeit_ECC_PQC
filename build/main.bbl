@@ -239,6 +239,49 @@
       \field{title}{Cryptography Arithmetic: Algorithms and Hardware Architectures}
       \field{year}{2020}
     \endentry
+    \entry{plaumann20}{book}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=6446ef52be0401af5ae60aded1586023}{%
+           family={Plaumann},
+           familyi={P\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{6446ef52be0401af5ae60aded1586023}
+      \strng{fullhash}{6446ef52be0401af5ae60aded1586023}
+      \strng{fullhashraw}{6446ef52be0401af5ae60aded1586023}
+      \strng{bibnamehash}{6446ef52be0401af5ae60aded1586023}
+      \strng{authorbibnamehash}{6446ef52be0401af5ae60aded1586023}
+      \strng{authornamehash}{6446ef52be0401af5ae60aded1586023}
+      \strng{authorfullhash}{6446ef52be0401af5ae60aded1586023}
+      \strng{authorfullhashraw}{6446ef52be0401af5ae60aded1586023}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Die algebraische Geometrie untersucht den Zusammenhang zwischen Polynomgleichungen in mehreren Variablen (Algebra) und ihren Lösungsmengen (Geometrie). In diesem Kapitel erläutern wir einige grundlegende Ideen dieser Theorie am Beispiel ebener Kurven.}
+      \field{isbn}{978-3-662-61779-3}
+      \field{title}{Einführung in die Algebraische Geometrie: Mit zahlreichen Beispielen und Anmerkungen für den optimalen Einstieg}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1007/978-3-662-61779-3_1
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-662-61779-3_1
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-662-61779-3_1
+      \endverb
+    \endentry
     \entry{silverman06}{misc}{}{}
       \name{author}{1}{}{%
         {{un=0,uniquepart=base,hash=9b408ab4d6636cf13a892a83656d6ccb}{%
@@ -347,7 +390,7 @@
            givenun=0}}%
       }
       \list{publisher}{1}{%
-        {Springer Nature Zwitzerland AG}%
+        {Springer Nature Switzerland AG}%
       }
       \strng{namehash}{fab80edc0f05be4c417a1abc2d56ec08}
       \strng{fullhash}{fab80edc0f05be4c417a1abc2d56ec08}

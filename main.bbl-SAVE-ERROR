@@ -19,20 +19,57 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
+    \entry{buell24}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=fd0c71c2707c98223b5dcbe9c7180416}{%
+           family={Buell},
+           familyi={B\bibinitperiod},
+           given={Duncan},
+           giveni={D\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=f82069134dab73bd440138fb0c76175a}{%
+           family={Publishing},
+           familyi={P\bibinitperiod},
+           given={Springer\bibnamedelima International},
+           giveni={S\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Vieweg Cham}%
+      }
+      \strng{namehash}{fd0c71c2707c98223b5dcbe9c7180416}
+      \strng{fullhash}{fd0c71c2707c98223b5dcbe9c7180416}
+      \strng{fullhashraw}{fd0c71c2707c98223b5dcbe9c7180416}
+      \strng{bibnamehash}{fd0c71c2707c98223b5dcbe9c7180416}
+      \strng{authorbibnamehash}{fd0c71c2707c98223b5dcbe9c7180416}
+      \strng{authornamehash}{fd0c71c2707c98223b5dcbe9c7180416}
+      \strng{authorfullhash}{fd0c71c2707c98223b5dcbe9c7180416}
+      \strng{authorfullhashraw}{fd0c71c2707c98223b5dcbe9c7180416}
+      \strng{editorbibnamehash}{f82069134dab73bd440138fb0c76175a}
+      \strng{editornamehash}{f82069134dab73bd440138fb0c76175a}
+      \strng{editorfullhash}{f82069134dab73bd440138fb0c76175a}
+      \strng{editorfullhashraw}{f82069134dab73bd440138fb0c76175a}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-031-50431-0}
+      \field{subtitle}{Einführung in die mathematischen und algorithmischen Grundlagen}
+      \field{title}{Grundlagen der Kryptographie}
+      \field{year}{2024}
+    \endentry
     \entry{clader25}{book}{}{}
       \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=6ec521f2f23794e508408d93233ac4ed}{%
+        {{hash=6ec521f2f23794e508408d93233ac4ed}{%
            family={Clader},
            familyi={C\bibinitperiod},
            given={Emily},
-           giveni={E\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=35ae70f689b0c7603d39fd310cd79139}{%
+           giveni={E\bibinitperiod}}}%
+        {{hash=35ae70f689b0c7603d39fd310cd79139}{%
            family={Ross},
            familyi={R\bibinitperiod},
            given={Dustin},
-           giveni={D\bibinitperiod},
-           givenun=0}}%
+           giveni={D\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {Cham}%
@@ -50,8 +87,6 @@
       \strng{authorfullhashraw}{475d7fec25d36af73f6147b282bafdae}
       \field{sortinit}{C}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Beginning in Algebraic Geometry}
@@ -59,12 +94,11 @@
     \endentry
     \entry{forster15}{book}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=f8e53a8257ed07acdf13331b689a4e08}{%
+        {{hash=f8e53a8257ed07acdf13331b689a4e08}{%
            family={Forster},
            familyi={F\bibinitperiod},
            given={Otto},
-           giveni={O\bibinitperiod},
-           givenun=0}}%
+           giveni={O\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {Wiesbaden}%
@@ -82,8 +116,6 @@
       \strng{authorfullhashraw}{f8e53a8257ed07acdf13331b689a4e08}
       \field{sortinit}{F}
       \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Algorithmische Zahlentheorie}
@@ -91,24 +123,21 @@
     \endentry
     \entry{guneysu24}{book}{}{}
       \name{author}{3}{}{%
-        {{un=0,uniquepart=base,hash=e9e81439eeb31c3904e597d0b967c750}{%
+        {{hash=e9e81439eeb31c3904e597d0b967c750}{%
            family={Güneysu},
            familyi={G\bibinitperiod},
            given={Tim},
-           giveni={T\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=cee721c72e08c7c6c3c6a06458a36b9f}{%
+           giveni={T\bibinitperiod}}}%
+        {{hash=cee721c72e08c7c6c3c6a06458a36b9f}{%
            family={Paar},
            familyi={P\bibinitperiod},
            given={Christof},
-           giveni={C\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=83ffd4ea7299ddcb5c4c5c3d6a4880ae}{%
+           giveni={C\bibinitperiod}}}%
+        {{hash=83ffd4ea7299ddcb5c4c5c3d6a4880ae}{%
            family={Pelzl},
            familyi={P\bibinitperiod},
            given={Jan},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
+           giveni={J\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {Berlin, Heidelberg}%
@@ -126,22 +155,48 @@
       \strng{authorfullhashraw}{64526ea020c9f82b9af41e9b4c5704e6}
       \field{sortinit}{G}
       \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2}
       \field{title}{Understanding Cryptography: From Established Symmetric and Asymmetric Ciphers to Post-Quantum Algorithms}
       \field{year}{2024}
     \endentry
+    \entry{kapl05}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=d156bfaf0f494560bf831b835e2039ed}{%
+           family={Kaplan},
+           familyi={K\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{d156bfaf0f494560bf831b835e2039ed}
+      \strng{fullhash}{d156bfaf0f494560bf831b835e2039ed}
+      \strng{fullhashraw}{d156bfaf0f494560bf831b835e2039ed}
+      \strng{bibnamehash}{d156bfaf0f494560bf831b835e2039ed}
+      \strng{authorbibnamehash}{d156bfaf0f494560bf831b835e2039ed}
+      \strng{authornamehash}{d156bfaf0f494560bf831b835e2039ed}
+      \strng{authorfullhash}{d156bfaf0f494560bf831b835e2039ed}
+      \strng{authorfullhashraw}{d156bfaf0f494560bf831b835e2039ed}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Computeralgebra}
+      \field{year}{2005}
+    \endentry
     \entry{karpf24}{book}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=ceabf072ae17f8b54e64986c0f958b98}{%
+        {{hash=ceabf072ae17f8b54e64986c0f958b98}{%
            family={Karpfinger},
            familyi={K\bibinitperiod},
            given={Christian},
-           giveni={C\bibinitperiod},
-           givenun=0}}%
+           giveni={C\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {Berlin}%
@@ -159,8 +214,6 @@
       \strng{authorfullhashraw}{ceabf072ae17f8b54e64986c0f958b98}
       \field{sortinit}{K}
       \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{6}
@@ -169,18 +222,16 @@
     \endentry
     \entry{muller}{book}{}{}
       \name{author}{2}{}{%
-        {{un=0,uniquepart=base,hash=128b589f814d1445eb57f356c2f9f598}{%
+        {{hash=128b589f814d1445eb57f356c2f9f598}{%
            family={Müller-Stach},
            familyi={M\bibinithyphendelim S\bibinitperiod},
            given={Stefan},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
-        {{un=0,uniquepart=base,hash=c7b66ba9efbf3fab81fe09ab8d8b07df}{%
+           giveni={S\bibinitperiod}}}%
+        {{hash=c7b66ba9efbf3fab81fe09ab8d8b07df}{%
            family={Piontkowski},
            familyi={P\bibinitperiod},
            given={Jens},
-           giveni={J\bibinitperiod},
-           givenun=0}}%
+           giveni={J\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {Wiesbaden}%
@@ -198,8 +249,6 @@
       \strng{authorfullhashraw}{0f02d599b9d06787679c0dde3701e447}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2}
@@ -208,12 +257,11 @@
     \endentry
     \entry{omondi20}{book}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=92e4c6e94cb243d2c6855f6258c800f0}{%
+        {{hash=92e4c6e94cb243d2c6855f6258c800f0}{%
            family={Omondi},
            familyi={O\bibinitperiod},
            given={Amos\bibnamedelima R.},
-           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
-           givenun=0}}%
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {Cham}%
@@ -231,22 +279,59 @@
       \strng{authorfullhashraw}{92e4c6e94cb243d2c6855f6258c800f0}
       \field{sortinit}{O}
       \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-3-030-34142-8}
       \field{title}{Cryptography Arithmetic: Algorithms and Hardware Architectures}
       \field{year}{2020}
     \endentry
+    \entry{plaumann20}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=6446ef52be0401af5ae60aded1586023}{%
+           family={Plaumann},
+           familyi={P\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{6446ef52be0401af5ae60aded1586023}
+      \strng{fullhash}{6446ef52be0401af5ae60aded1586023}
+      \strng{fullhashraw}{6446ef52be0401af5ae60aded1586023}
+      \strng{bibnamehash}{6446ef52be0401af5ae60aded1586023}
+      \strng{authorbibnamehash}{6446ef52be0401af5ae60aded1586023}
+      \strng{authornamehash}{6446ef52be0401af5ae60aded1586023}
+      \strng{authorfullhash}{6446ef52be0401af5ae60aded1586023}
+      \strng{authorfullhashraw}{6446ef52be0401af5ae60aded1586023}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Die algebraische Geometrie untersucht den Zusammenhang zwischen Polynomgleichungen in mehreren Variablen (Algebra) und ihren Lösungsmengen (Geometrie). In diesem Kapitel erläutern wir einige grundlegende Ideen dieser Theorie am Beispiel ebener Kurven.}
+      \field{isbn}{978-3-662-61779-3}
+      \field{title}{Einführung in die Algebraische Geometrie: Mit zahlreichen Beispielen und Anmerkungen für den optimalen Einstieg}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1007/978-3-662-61779-3_1
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-662-61779-3_1
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-662-61779-3_1
+      \endverb
+    \endentry
     \entry{silverman06}{misc}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9b408ab4d6636cf13a892a83656d6ccb}{%
+        {{hash=9b408ab4d6636cf13a892a83656d6ccb}{%
            family={Silverman},
            familyi={S\bibinitperiod},
            given={Joseph\bibnamedelima H.},
-           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-           givenun=0}}%
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
       }
       \strng{namehash}{9b408ab4d6636cf13a892a83656d6ccb}
       \strng{fullhash}{9b408ab4d6636cf13a892a83656d6ccb}
@@ -259,8 +344,6 @@
       \field{extraname}{1}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{Lecture notes for the Summer School on Computational Number Theory and Applications to Cryptography, University of Wyoming}
@@ -271,12 +354,11 @@
     \endentry
     \entry{silverman09}{book}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=9b408ab4d6636cf13a892a83656d6ccb}{%
+        {{hash=9b408ab4d6636cf13a892a83656d6ccb}{%
            family={Silverman},
            familyi={S\bibinitperiod},
            given={Joseph\bibnamedelima H.},
-           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod},
-           givenun=0}}%
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {New York}%
@@ -295,8 +377,6 @@
       \field{extraname}{2}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2}
@@ -305,12 +385,11 @@
     \endentry
     \entry{washington08}{book}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=69835b36275ec8c34f049b5bcea8cf76}{%
+        {{hash=69835b36275ec8c34f049b5bcea8cf76}{%
            family={Washington},
            familyi={W\bibinitperiod},
            given={Lawrence\bibnamedelima C.},
-           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod},
-           givenun=0}}%
+           giveni={L\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
       }
       \list{location}{1}{%
         {Boca Raton}%
@@ -328,8 +407,6 @@
       \strng{authorfullhashraw}{69835b36275ec8c34f049b5bcea8cf76}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2nd ed.}
@@ -339,15 +416,14 @@
     \endentry
     \entry{zwegers24}{article}{}{}
       \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=fab80edc0f05be4c417a1abc2d56ec08}{%
+        {{hash=fab80edc0f05be4c417a1abc2d56ec08}{%
            family={Zwegers},
            familyi={Z\bibinitperiod},
            given={Sander},
-           giveni={S\bibinitperiod},
-           givenun=0}}%
+           giveni={S\bibinitperiod}}}%
       }
       \list{publisher}{1}{%
-        {Springer Nature Zwitzerland AG}%
+        {Springer Nature Switzerland AG}%
       }
       \strng{namehash}{fab80edc0f05be4c417a1abc2d56ec08}
       \strng{fullhash}{fab80edc0f05be4c417a1abc2d56ec08}
@@ -359,8 +435,6 @@
       \strng{authorfullhashraw}{fab80edc0f05be4c417a1abc2d56ec08}
       \field{sortinit}{Z}
       \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Archiv der Mathematik}

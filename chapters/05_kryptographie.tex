@@ -1,0 +1,22 @@
+\chapter{Elliptische Kurven Kryptographie}
+\label{sec:kryptographie}
+Wir betrachten eine möglichkeit einen geheimen Schlüssel zu etablieren nach Diffie und Hellman. (zitiert nach Taylor und Francis 2008, S.170f.)
+\begin{enumerate}
+    \item Alice und Bob einigen sich auf eine elliptische Kurve $E$ über einem endlichen Körper $\mathbb{F}_q$, sodass das diskrete Logarithmusproblem in $E(\mathbb{F}_q)$ schwer zu lösen ist.
+    \item Alice wählt ein geheimes $a$, das ein Integer sein soll, berechne $P_a=aP$ und schickt $P_a$ zu Bob.
+    \item BoB wählt einen geheimen Integer b, er berechnet $P_b=bP$ und schickt Alice $P_b$.
+    \item Alice berechnet $aP_b=abP$
+    \item Bob berechnet $bP_a=baP$
+    \item Alice und Bob benutzen eine öffentliche Methode um einen Schlüssel von $abP$ zu extrahieren. Zum Beispiel könnten sie die letzten 256 bits der x-Koordinate von $abP$ als Schlüssel verwenden oder sie könnten eine Hash-Funktion auf der x-Koordinate definieren.
+\end{enumerate}
+Die einzige Information die ein Außenstehender sieht, wäre die Kurve $E$, den Körper $F_q$ und die Punkte $P, aP,bP$. Daher muss sie das \textbf{Diffie-Hellman Problem} lösen.
+
+\section{Warum eliptische Kurven verwenden?}
+Der beste Algorithm um ECDLP zu lösen ist exponential, darum werden Elliptische Kurven Gruppen verwendet. (An Introduction to the Theory of Elliptic Curves, S.6)
+Genauer der beste Algorithmus um ECDLP zu lösen über $\mathbb{F}_p$ braucht $O(\sqrt p)$ Zeit.
+\section{Diffie-Hellman}
+\label{sec:diffie-hellman}
+
+
+\section{Sicherheitbetrachtung}
+Faktorisierung großer Zahlen (Computeralgebra Kapitel 5, ab S.167)

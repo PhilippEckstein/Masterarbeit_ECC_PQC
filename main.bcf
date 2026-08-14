@@ -71,7 +71,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labeldateparts</bcf:key>
-      <bcf:value>1</bcf:value>
+      <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="multivalued">
       <bcf:key>labeldatespec</bcf:key>
@@ -180,11 +180,11 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniquelist</bcf:key>
-      <bcf:value>true</bcf:value>
+      <bcf:value>false</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniquename</bcf:key>
-      <bcf:value>full</bcf:value>
+      <bcf:value>false</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniqueprimaryauthor</bcf:key>
@@ -314,7 +314,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labeldateparts</bcf:key>
-      <bcf:value>1</bcf:value>
+      <bcf:value>0</bcf:value>
     </bcf:option>
     <bcf:option type="multivalued">
       <bcf:key>labeldatespec</bcf:key>
@@ -395,11 +395,11 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniquelist</bcf:key>
-      <bcf:value>true</bcf:value>
+      <bcf:value>false</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniquename</bcf:key>
-      <bcf:value>full</bcf:value>
+      <bcf:value>false</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>uniqueprimaryauthor</bcf:key>
@@ -560,7 +560,6 @@
     <bcf:option datatype="string">datelabel</bcf:option>
     <bcf:option datatype="string">backrefstyle</bcf:option>
     <bcf:option datatype="string">arxiv</bcf:option>
-    <bcf:option datatype="string">mergedate</bcf:option>
     <bcf:option datatype="boolean">familyinits</bcf:option>
     <bcf:option datatype="boolean">giveninits</bcf:option>
     <bcf:option datatype="boolean">prefixinits</bcf:option>
@@ -644,7 +643,7 @@
     <bcf:option datatype="boolean">doi</bcf:option>
     <bcf:option datatype="boolean">eprint</bcf:option>
     <bcf:option datatype="boolean">related</bcf:option>
-    <bcf:option datatype="boolean">dashed</bcf:option>
+    <bcf:option datatype="boolean">subentry</bcf:option>
     <bcf:option datatype="boolean">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="integer">mincrossrefs</bcf:option>
     <bcf:option datatype="integer">minxrefs</bcf:option>
@@ -675,7 +674,6 @@
     <bcf:option datatype="string">loccittracker</bcf:option>
     <bcf:option datatype="string">uniquelist</bcf:option>
     <bcf:option datatype="string">uniquename</bcf:option>
-    <bcf:option datatype="string">mergedate</bcf:option>
     <bcf:option datatype="boolean">familyinits</bcf:option>
     <bcf:option datatype="boolean">giveninits</bcf:option>
     <bcf:option datatype="boolean">prefixinits</bcf:option>
@@ -727,6 +725,7 @@
     <bcf:option datatype="boolean">doi</bcf:option>
     <bcf:option datatype="boolean">eprint</bcf:option>
     <bcf:option datatype="boolean">related</bcf:option>
+    <bcf:option datatype="boolean">subentry</bcf:option>
     <bcf:option datatype="boolean">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="xml">labelalphatemplate</bcf:option>
     <bcf:option datatype="xml">translit</bcf:option>
@@ -765,7 +764,6 @@
     <bcf:option datatype="string" backendout="1">loccittracker</bcf:option>
     <bcf:option datatype="string">uniquelist</bcf:option>
     <bcf:option datatype="string">uniquename</bcf:option>
-    <bcf:option datatype="string" backendout="1">mergedate</bcf:option>
     <bcf:option datatype="boolean" backendout="1">familyinits</bcf:option>
     <bcf:option datatype="boolean" backendout="1">giveninits</bcf:option>
     <bcf:option datatype="boolean" backendout="1">prefixinits</bcf:option>
@@ -816,6 +814,7 @@
     <bcf:option datatype="boolean" backendout="1">doi</bcf:option>
     <bcf:option datatype="boolean" backendout="1">eprint</bcf:option>
     <bcf:option datatype="boolean" backendout="1">related</bcf:option>
+    <bcf:option datatype="boolean" backendout="1">subentry</bcf:option>
     <bcf:option datatype="boolean" backendout="1">bibtexcaseprotection</bcf:option>
     <bcf:option datatype="integer" backendin="maxcitenames,maxbibnames,maxsortnames">maxnames</bcf:option>
     <bcf:option datatype="integer" backendin="mincitenames,minbibnames,minsortnames">minnames</bcf:option>
@@ -2377,27 +2376,32 @@
     <bcf:citekey order="1" intorder="1">washington08</bcf:citekey>
     <bcf:citekey order="2" intorder="1">washington08</bcf:citekey>
     <bcf:citekey order="3" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">washington08</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">plaumann20</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">karpf24</bcf:citekey>
     <bcf:citekey order="6" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">clader25</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">forster15</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">zwegers24</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">silverman06</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">omondi20</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">karpf24</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">guneysu24</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">muller</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">silverman06</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">guneysu24</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">silverman06</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">zwegers24</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">washington08</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">kapl05</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">buell24</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">washington08</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">clader25</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">forster15</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">zwegers24</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">silverman06</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">omondi20</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">karpf24</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">guneysu24</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">washington08</bcf:citekey>
     <bcf:citekey order="21" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">washington08</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">silverman09</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">muller</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">washington08</bcf:citekey>
     <bcf:citekey order="24" intorder="1">washington08</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">silverman06</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">guneysu24</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">washington08</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">washington08</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">silverman09</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
