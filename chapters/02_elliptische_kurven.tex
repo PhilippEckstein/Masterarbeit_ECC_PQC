@@ -149,7 +149,7 @@ Als letzten Fall schauen wir uns noch an, wenn die Gerade $L$ keinen Schnittpunk
 \end{figure}
 Dafür brauchen wir einen dritten Punkte um $P+_E(-P)$ definieren zu kennen wir kreieren dafür einen Punkt $\mathcal{O}$. Dieser Punkt ist dabei auf jeder vertikalen Gerade
 
-\subsection*{Herleitung der Additionsformeln}
+\subsection{Herleitung der Additionsformeln}
 Die folgende Herleitung orientiert sich an\cite{washington08} Washington 2008, S. 13-15,\cite{kapl05} vgl. Kaplan 2005 S.179ff. und\cite{buell24} Buell 2024, S.99.
 
 Seien nun $P=(x_1,y_1)$ und $Q=(x_2,y_2)$ Punkte auf $E$ mit $P,Q\neq \mathcal{O}$.
@@ -541,25 +541,18 @@ Doch bevor wir die Assoziativitität beweisen können benötigen wir eine Reihe 
     Wir betrachten nun 4 Fälle.
     \begin{enumerate}
         \item Für $P_2\neq P_3$ und $P_1+P_2\neq P_3$
-              \[
-                  c_2(m_{12}+m_{12,3}) = \frac{-y_3+y_1+m_{12}(x_3-x_1)}{(x_1-x_3)(x_3-x_2)} \cdot \frac{y_3+y_1+m_{12}(x_3-x_1)}{x_3-\hat{x}}
-              \]
-              \[
-                  = \frac{(-y_3+y_1+m_{12}(x_3-x_1))(y_3+y_1+m_{12}(x_3-x_1))}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}
-              \]
-              \[
-                  = \frac{-y_3^2+m_{12}^2(x_3-x_1)^2+2\cdot m_{12}(x_3-x_1)y_1+ y_1^2}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}
-              \]
-              \[
-                  = \frac{-y_3^2+(y_1+ m_{12}(x_3-x_1))^2}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}
-              \]
+              \begin{align*}
+                  c_2(m_{12}+m_{12,3}) = & \frac{-y_3+y_1+m_{12}(x_3-x_1)}{(x_1-x_3)(x_3-x_2)} \frac{y_3+y_1+m_{12}(x_3-x_1)}{x_3-\hat{x}} \\
+                  =                      & \frac{(-y_3+y_1+m_{12}(x_3-x_1))(y_3+y_1+m_{12}(x_3-x_1))}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}     \\
+                  =                      & \frac{-y_3^2+m_{12}^2(x_3-x_1)^2+2 m_{12}(x_3-x_1)y_1+ y_1^2}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}  \\
+                  =                      & \frac{-y_3^2+(y_1+ m_{12}(x_3-x_1))^2}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}
+              \end{align*}
               Es gilt $y_3^2=x^3+Ax+B$ mit $x=x_3$, dann $y_3^2=x_3^3+Ax_3+B$. Mit ~\eqref{eq:faktorisierung-wohldefiniertheit} gilt dann
-              \[
-                  \frac{-(f(x_3)-(y_1+m_{12}(x_3-x_1))^2)}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}
-              \]
-              \[
-                  \frac{-(x_3-x_1)(x_3-x_2)(x_3-\hat{x})}{-(x_3-x_)(x_3-x_2)(x_3-\hat{x})}= 1
-              \]
+              \begin{align*}
+                  c_2(m_{12}+m_{12,3})= & \frac{-(f(x_3)-(y_1+m_{12}(x_3-x_1))^2)}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}   \\
+                  =                     & \frac{-(x_3-x_1)(x_3-x_2)(x_3-\hat{x})}{-(x_3-x_)(x_3-x_2)(x_3-\hat{x})}= 1
+              \end{align*}
+
         \item Sei nun $P_2\neq P_3$ und $P_1+P_2=P_3$ es gilt erneut $(\hat{x},\hat{y})=(x_3,y_3)$ mit $y_3=-y_1-m_{12}(x_3-x_1)$
               \[
                   c_2 = \frac{-y_3+y_2+m_{12}(x_3-x_2)}{(x_1-x_3)(x_3-x_2)} = \frac{-2y_3}{(x_1-x_3)(x_3-x_2)}
@@ -606,11 +599,12 @@ Doch bevor wir die Assoziativitität beweisen können benötigen wir eine Reihe 
                   f'(x_3)+2m_{12}y_3 = (x_3-x_1)(x_3-\hat{x})
               \]
               Dass können wir nun umformen wieder zu
-              \[
-                  m(P_2,P_3)-m(P_1,P_2)= \frac{(x_3-x_1)(x_3-\hat{x})}{2y_3} \Leftrightarrow
-                  \frac{m(P_2,P_3)-m(P_1,P_2)}{(x_3-\hat{x})}= \frac{x_3-x_1}{2y_3} \Leftrightarrow
-                  c_2 = \frac{x_3-x_1}{2y_3}
-              \]
+              \begin{align*}
+                    m(P_2,P_3)-m(P_1,P_2)&=\frac{(x_3-x_1)(x_3-\hat{x})}{2y_3}      \\
+                   \Leftrightarrow 
+                  \frac{m(P_2,P_3)-m(P_1,P_2)}{(x_3-\hat{x})}&= \frac{x_3-x_1}{2y_3} \\ \Leftrightarrow 
+                  c_2 &= \frac{x_3-x_1}{2y_3}
+              \end{align*}
               und damit gilt dann für $y_2=y_3\neq 0$ \(c_2(m_{12}+m_{12,3})=1\)
         \item Der Fall $P_2=P_3$ und $P_1+P_2=P_3$ kann nach Lemma 2.1 nicht auftretten
     \end{enumerate}
@@ -618,11 +612,12 @@ Doch bevor wir die Assoziativitität beweisen können benötigen wir eine Reihe 
 
 Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
 \begin{proof}
-    Seien $P_1,P_2,P_3\in E$ und
+    Seien $P_1,P_2,P_3\in E$ wie in
+    Lemma~\ref{lem:dreipunktsumme} vorausgesetzt und sei
     \[
         P_4=(P_1+P_2)+P_3=(x_4,y_4).
     \]
-    Setze $P_1+P_2=(\hat{x},\hat{y})$. Nach der Additionsformel gilt
+    Weiter sei $P_1+P_2=(\hat{x},\hat{y})$. Nach der Additionsformel gilt
     $\hat{x}=-x_1-x_2+m_{12}^2$ und damit
     \[
         x_4=-\hat{x}-x_3+m_{12,3}^2
@@ -638,9 +633,7 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
         \end{aligned}
     \]
     Vergleicht man diesen Ausdruck mit der in
-    Lemma~\ref{lem:dreipunktsumme} behaupteten Formel für $x_4$,
-    so ist es ausreichend, als $m_{12}= c_1+x_1c_2$ darzustellen.
-    Dies folgt direkt aus den Definitionen von $c_1$ und $c_2$, denn
+    Lemma~\ref{lem:dreipunktsumme} behaupteten Formel für $x_4$, so ist es ausreichend, $m_{12}$ in der Form $m_{12}=c_1+x_1c_2$ darzustellen. Dies folgt direkt aus den Definitionen von $c_1$ und $c_2$, denn
     \[
         \begin{aligned}
             c_1+x_1c_2
@@ -664,11 +657,11 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
     \[
         y_4=-y_3-m_{12,3}(x_4-x_3)
     \]
-    verwendet. Da $x_2\neq x_3$ gilt,
+    verwendet. Für die Punkte $P_2$ und $P_3$ gilt
     \[
-        m_{23}=\frac{y_3-y_2}{x_3-x_2},
+        y_3-y_2=m_{23}(x_3-x_2),
     \]
-    also
+    und damit
     \[
         y_3=y_2+m_{23}(x_3-x_2).
     \]
@@ -695,64 +688,57 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
         y_4+y_2+(x_4-x_2)(c_1+x_4c_2)=0.
     \]
     Nun werden die oben erhaltenen Gleichungen eingesetzt
-     \begin{align*}
-         y_4=-y_3-m_{12,3}(x_4-x_3) =& -(y_2+(x_3-x_2)(c_1+x_3c_2))-m_{12,3}(x_4-x_3)\\
-         =& -y_2-(x_3-x_2)(c_1+x_3c_2)-m_{12,3}(x_4-x_3)\\
-     \end{align*}
-
-     Es muss also nun gelten 
-     \begin{align*}
-        -(x_3-x_2)(c_1+x_3c_2)-m_{12,3}(x_4-x_3) =& (x_4-x_2)(c_1+x_4c_2)\\
-        =& (x_4-x_2)(c_1+x_4c_2) + (x_3-x_2)(c_1+x_3c_2)
-     \end{align*}
-
-    Es ist $x_4 = x_1+x_2-x_3+m_{12,3}^2-m_{12}^2$
-
-     \textbf{Ab hier quatsch}
-
-    Weiter gilt nach der Additionsformel
+    \begin{align*}
+        y_4=-y_3-m_{12,3}(x_4-x_3) = & -(y_2+(x_3-x_2)(c_1+x_3c_2))-m_{12,3}(x_4-x_3) \\
+        =                            & -y_2-(x_3-x_2)(c_1+x_3c_2)-m_{12,3}(x_4-x_3)   \\
+    \end{align*}
+    Es bleibt somit zu zeigen, dass
     \[
-        y_4=-y_3-m_{12,3}(x_4-x_3).
+        \begin{aligned}
+             & (x_4-x_2)(c_1+x_4c_2)
+            -(x_3-x_2)(c_1+x_3c_2)                         \\
+             & =(x_4-x_3)c_1
+            +\bigl((x_4-x_2)x_4-(x_3-x_2)x_3\bigr)c_2      \\
+             & =(x_4-x_3)\bigl(c_1+(x_4+x_3-x_2)c_2\bigr).
+        \end{aligned}
     \]
-    Um die behauptete Darstellung von $y_4$ zu zeigen, betrachten wir daher
+    Da aus der Definition von $x_4$
     \[
-        y_4+y_2+(x_4-x_2)(c_1+x_4c_2).
+        x_4+x_3-x_2
+        =x_1+m_{12,3}^2-m_{12}^2
     \]
-
+    und $c_1+x_1c_2=m_{12}$ gilt, folgt
     \[
-        y_4=-y_3-m_{12,3}(x_4-x_3)
+        \begin{aligned}
+             & c_1+(x_4+x_3-x_2)c_2                                               \\
+             & =m_{12}+(m_{12,3}^2-m_{12}^2)c_2                                   \\
+             & =m_{12}
+            +c_2(m_{12,3}-m_{12})(m_{12,3}+m_{12})                                \\
+             & \overset{\ref{hilfs:steigungsidentitaet}}{=}m_{12}+m_{12,3}-m_{12}
+            =m_{12,3},
+        \end{aligned}
     \]
-
-
-
+    wobei im vorletzten Schritt
+    Hilfssatz~\ref{hilfs:steigungsidentitaet} verwendet wurde. Damit gilt
     \[
-    y_3=y_2+(x_3-x_2)(c_1+x_3c_2)
-\]
-
-    Daraus können wir dann mit der Additonsformel schreiben,
-    \[
-        y_4=-\hat{y}-m_{12,3}(x_4-\hat{x}) = -y_2-m_{23}(\hat{x}-x_2)-m_{12,3}(x_4-\hat{x})
-        = -y_2-m_{23}(\hat{x}-x_2)-m_{12,3}(-x_1+x_2-x_3+\frac{1}{c_2^2}
-        -2\frac{c_1}{c_2}-\hat{x})
+        \begin{aligned}
+             & (x_4-x_2)(c_1+x_4c_2)
+            -(x_3-x_2)(c_1+x_3c_2)   \\
+             & =m_{12,3}(x_4-x_3).
+        \end{aligned}
     \]
-    als Notiz:
-    \[
-        \hat{y}= -y_2-m_{23}(\hat{x}-x_2)
-    \]
-    mit $m_{12,3}= \frac{1}{c_2}-m_{12}$
-    \[
-        -y_2-m_{23}(\hat{x}-x_2)-(\frac{1}{c_2}-m_{12})(x_4-\hat{x})
-    \]
-    \[
-        -y_2-m_{23}(-x_1-x_2+m_{12}^2-x_2)-(\frac{1}{c_2}-m_{12})(x_4+x_1+x_2-m_{12}^2)
-    \]
-    weitere Notiz:
-    \[
-        \hat{x}=-x_1-x_2+m_{12}^2
-    \]
-
-
-
+    Daraus lässt sich sich die Additionsformel umformen
+    \begin{align*}
+        y_4
+         & = -y_2-(x_3-x_2)(c_1+x_3c_2)
+        -m_{12,3}(x_4-x_3)               \\
+         & = -y_2-(x_3-x_2)(c_1+x_3c_2)  \\
+         & \quad
+        -\Bigl((x_4-x_2)(c_1+x_4c_2)
+        -(x_3-x_2)(c_1+x_3c_2)\Bigr)     \\
+         & = -y_2-(x_4-x_2)(c_1+x_4c_2).
+    \end{align*}
+    womit auch die behauptete Formel für $y_4$ gezeigt ist.
 \end{proof}
 
 \begin{lemma}

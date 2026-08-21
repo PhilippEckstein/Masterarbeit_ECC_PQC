@@ -10,8 +10,8 @@
 \contentsline {chapter}{\tocchapter {Kapitel}{2}{Elliptische Kurven}}{7}{chapter.2}%
 \contentsline {section}{\tocsection {}{1}{Grundlagen}}{7}{section.2.1}%
 \contentsline {section}{\tocsection {}{2}{Gruppenstruktur}}{9}{section.2.2}%
-\contentsline {subsection}{\tocsubsection {}{}{Herleitung der Additionsformeln}}{12}{section*.11}%
-\contentsline {subsection}{\tocsubsection {}{}{Skalar mal Punkt}}{17}{section*.12}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Herleitung der Additionsformeln}}{12}{subsection.2.2.1}%
+\contentsline {subsection}{\tocsubsection {}{}{Skalar mal Punkt}}{17}{section*.11}%
 \contentsline {section}{\tocsection {}{3}{Projektiver Raum und der Punkt bei Unendlich}}{17}{section.2.3}%
 \contentsline {section}{\tocsection {}{4}{Beweis der Assoziativitität}}{18}{section.2.4}%
 \contentsline {section}{\tocsection {}{5}{Elliptische Kurven in Charakteristik 2}}{25}{section.2.5}%
@@ -37,4 +37,4 @@
 \contentsline {section}{\tocsection {}{4}{Implemeneiterun von ECDH}}{37}{section.6.4}%
 \contentsline {chapter}{\tocchapter {Kapitel}{7}{Verlgeich zu klassichem Diffie-Hellman}}{39}{chapter.7}%
 \contentsline {chapter}{\tocchapter {Kapitel}{8}{Quantencomputer}}{41}{chapter.8}%
-\contentsline {chapter}{\tocchapter {Kapitel}{}{Literatur}}{43}{chapter*.14}%
+\contentsline {chapter}{\tocchapter {Kapitel}{}{Literatur}}{43}{chapter*.13}%
