@@ -140,6 +140,8 @@ INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.d
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.cfg
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.cfg
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.cfg
+INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\enumitem\enumitem.sty
+INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\enumitem\enumitem.sty
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.sty
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.sty
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\logreq\logreq.sty
@@ -206,14 +208,8 @@ INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epstop
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\00miktex\epstopdf-sys.cfg
-INPUT .\main.out
-INPUT .\main.out
-INPUT main.out
-INPUT main.out
-OUTPUT main.pdf
-INPUT .\main.out
-INPUT .\main.out
 OUTPUT main.out
+OUTPUT main.pdf
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\ngerman.lbx
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\ngerman.lbx
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\ngerman.lbx
@@ -260,9 +256,6 @@ INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx1000.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx2074.tfm
-INPUT .\main.toc
-INPUT .\main.toc
-INPUT main.toc
 OUTPUT main.toc
 INPUT .\chapters\01_einleitung.tex
 INPUT .\chapters\01_einleitung.tex
@@ -343,7 +336,6 @@ INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt100
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
-INPUT main.run.xml
 OUTPUT main.run.xml
 INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
 INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
@@ -397,6 +389,8 @@ INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\c
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
+INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
