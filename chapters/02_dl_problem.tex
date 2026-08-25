@@ -1,0 +1,25 @@
+\chapter{Das Diskrete Logarithmus Problem}
+
+Das Ziel dieses Kapitel ist es zu erklären wie moderne Kryptographie auch Public-Key-Kryptographie funktioniert. Das wird am Beispiel von RSA gemacht, anschließend wird auf das Diskrete Logarithmus Problem eingeganngen und damit die Grundlage für Elliptische Kurven Kryptographie gelegt.
+
+\section{Public-Key-Kryptographie}
+Es sollen wie in der Einführung bereits angerissen Daten ausgetauscht und dabei verschlüsselt werden. Wir haben dabei einen Sender Alice und einen Empfänger Bob. Bei dem Caeser-Chiffre handelt es sich um ein sogennanten symmetrisches Verfahren, dass bedeutet Sender und Empfänger müssen beide den gleichen Schlüssel kennen. Ist der Schlüssel geheim und somit nur ihnen beiden bekannt, können sie über einen öffentlichen Kanal kommunzieren. Eine dritte Person,nennen wir sie Eva, kann dann die Nachricht nicht entschlüsseln, da sie den geheimen Schlüssel nicht kennt \cite{fuß25}
+
+\textbf{Kerckhoff's Prinzip} Ein Kryptosystem sollte sicher sein, auch wenn alles über das System bekannt ist, außer dem Schlüssel, der zum Verschlüsseln einer bestimmten Nachricht verwendet wird (Grundlagen der Kryptographie, S.10).
+\textbf{Ausgangssituation:}
+    Alice will eine Nachricht, oft als Klartext bezeichnet, an Bob schicken. Um eine dritte Partei daran zu hindern die Nachricht zu lesen, verschlüsselt sie die Nachricht. Um die Nachricht zu verschlüssel benutzt Alice einen kryptographischen Schlüssel. Bei symmetrischen Verfahren sind der Verschlüsslungsschlüssel und der Entschlüsslungsschlüssel der Selbe. 
+    Für diesen Fall muss der Schlüssel von Alice erstmal an Bob übergeben werden, durch zum Beispiel einen Nachricht die einige Tage vorher gesendet wird. Das ist offensichtlich nicht geeignet für moderne und schnelle Kommunikation.
+
+    Bei der asymetrischen Verschlüsslung wird ein \textbf{öffentlicher Schlüssel} generiert, der für jede Person einsehbar ist und daher muss vorher nicht ein Schlüssel zwischen Alice und Bob ausgetautscht werden. Bob besitzt aber auch noch einen privaten Schlüssel, wodurch er einen verschlüsslten Text entschlüsseln kann. Wenn Alice ihm eine Nachricht schicken will nimmt sie Bobs öffentlichen Schlüssel und verschlüsselt damit ihre Nachricht.
+
+    Im allgemeinen sind Verfahren mit öffentlichen Schlüsseln schneller als gute symmetrische Verfahren, daher wird häufig über Verfahren mit öffentlichen Schlüsseln ein symmetrischer Schlüssel ausgetauscht
+    (vgl. \cite{washington08}, S.170).
+
+\section{Diskreter Logarithmus}
+
+
+
+\textbf{Warum elliptische Kurven}
+Elliptische Kurven haben sich in der modernen Kryptographie etabliert, weil sie bei vergleichbarem Sicherheitsniveau deutlich kürzere Schlüssellängen erfordern als klassische Verfahren wie RSA. 
+    So bietet ein RSA-Schlüssel mit 4096 Bit ein Sicherheitsniveau, das mit Verfahren auf Basis elliptischer Kurven bereits mit einer Schlüssellänge von etwa 313 Bit erreicht werden kann (vgl. \cite{washington08}, S. 169). 
+    Dies führt zu geringerem Speicherbedarf, ermöglicht kompaktere Hardware und reduziert den Energieverbrauch. 

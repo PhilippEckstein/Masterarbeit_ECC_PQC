@@ -1,5 +1,10 @@
 \chapter{Elliptische Kurven Kryptographie}
 \label{sec:kryptographie}
+\section{RSA}
+Beim sogennanten RSA-Verfahren werden 2 Primzahlen $p$ und $q$ gewählt und daraus das Produkt $N=pq$ gebildet. Man kann dann mit Hilfe der Euler Funktion. \cite{buell24} S. 167
+
+
+
 Wir betrachten eine möglichkeit einen geheimen Schlüssel zu etablieren nach Diffie und Hellman. (zitiert nach Taylor und Francis 2008, S.170f.)
 \begin{enumerate}
     \item Alice und Bob einigen sich auf eine elliptische Kurve $E$ über einem endlichen Körper $\mathbb{F}_q$, sodass das diskrete Logarithmusproblem in $E(\mathbb{F}_q)$ schwer zu lösen ist.
@@ -20,3 +25,5 @@ Genauer der beste Algorithmus um ECDLP zu lösen über $\mathbb{F}_p$ braucht $O
 
 \section{Sicherheitbetrachtung}
 Faktorisierung großer Zahlen (Computeralgebra Kapitel 5, ab S.167)
+
+\section{Verlgeich zu klassichem Diffie-Hellman}

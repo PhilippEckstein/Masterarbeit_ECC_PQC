@@ -121,6 +121,61 @@
       \field{title}{Algorithmische Zahlentheorie}
       \field{year}{2015}
     \endentry
+    \entry{fuß25}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=98a3b26c1331909f29be5f7721c9f973}{%
+           family={Fuß},
+           familyi={F\bibinitperiod},
+           given={Jürgen},
+           giveni={J\bibinitperiod}}}%
+        {{hash=effbd970eee85d83e0e82b0ef1f137cb}{%
+           family={Vymazal},
+           familyi={V\bibinitperiod},
+           given={Anna},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=5d168d6186a7d87ba3f081db7fcd80a1}{%
+           family={Vieweg},
+           familyi={V\bibinitperiod},
+           given={Springer},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin}%
+      }
+      \list{publisher}{1}{%
+        {Springer Nature}%
+      }
+      \strng{namehash}{363a437bd559be42e55f63601b9894d1}
+      \strng{fullhash}{363a437bd559be42e55f63601b9894d1}
+      \strng{fullhashraw}{363a437bd559be42e55f63601b9894d1}
+      \strng{bibnamehash}{363a437bd559be42e55f63601b9894d1}
+      \strng{authorbibnamehash}{363a437bd559be42e55f63601b9894d1}
+      \strng{authornamehash}{363a437bd559be42e55f63601b9894d1}
+      \strng{authorfullhash}{363a437bd559be42e55f63601b9894d1}
+      \strng{authorfullhashraw}{363a437bd559be42e55f63601b9894d1}
+      \strng{editorbibnamehash}{5d168d6186a7d87ba3f081db7fcd80a1}
+      \strng{editornamehash}{5d168d6186a7d87ba3f081db7fcd80a1}
+      \strng{editorfullhash}{5d168d6186a7d87ba3f081db7fcd80a1}
+      \strng{editorfullhashraw}{5d168d6186a7d87ba3f081db7fcd80a1}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{78-3-662-70845-3}
+      \field{title}{Kryptographie}
+      \field{year}{2025}
+      \verb{doi}
+      \verb 10.1007/978-3-662-70845-3
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-662-70845-3
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-662-70845-3
+      \endverb
+    \endentry
     \entry{guneysu24}{book}{}{}
       \name{author}{3}{}{%
         {{hash=e9e81439eeb31c3904e597d0b967c750}{%
@@ -219,6 +274,56 @@
       \field{edition}{6}
       \field{title}{Algebra: Gruppen - Ringe - Körper}
       \field{year}{2024}
+    \endentry
+    \entry{liebscher17}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=fd9ef912c47217a946d66bfea217de84}{%
+           family={Liebscher},
+           familyi={L\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=c9e58009ec83c306d5d3abd721281467}{%
+           family={Masterclass},
+           familyi={M\bibinitperiod},
+           given={Springer-Lehrbuch},
+           giveni={S\bibinithyphendelim L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Spektrum}%
+      }
+      \strng{namehash}{fd9ef912c47217a946d66bfea217de84}
+      \strng{fullhash}{fd9ef912c47217a946d66bfea217de84}
+      \strng{fullhashraw}{fd9ef912c47217a946d66bfea217de84}
+      \strng{bibnamehash}{fd9ef912c47217a946d66bfea217de84}
+      \strng{authorbibnamehash}{fd9ef912c47217a946d66bfea217de84}
+      \strng{authornamehash}{fd9ef912c47217a946d66bfea217de84}
+      \strng{authorfullhash}{fd9ef912c47217a946d66bfea217de84}
+      \strng{authorfullhashraw}{fd9ef912c47217a946d66bfea217de84}
+      \strng{editorbibnamehash}{c9e58009ec83c306d5d3abd721281467}
+      \strng{editornamehash}{c9e58009ec83c306d5d3abd721281467}
+      \strng{editorfullhash}{c9e58009ec83c306d5d3abd721281467}
+      \strng{editorfullhashraw}{c9e58009ec83c306d5d3abd721281467}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-662-54080-0}
+      \field{title}{Projektive Geometrie der Ebene: Ein klassischer Zugang mit interaktiver Visualisierung}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1007/978-3-662-54080-0
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-662-54080-0
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-662-54080-0
+      \endverb
     \endentry
     \entry{muller}{book}{}{}
       \name{author}{2}{}{%
@@ -413,6 +518,54 @@
       \field{series}{Discrete Mathematics and Its Applications}
       \field{title}{Elliptic Curves: Number Theory and Cryptography}
       \field{year}{2008}
+    \endentry
+    \entry{werner02}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=d09b4459afa187a20a13919237d8bd25}{%
+           family={Werner},
+           familyi={W\bibinitperiod},
+           given={Annette},
+           giveni={A\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=b2a3080ac80f2d9a662b86472e2c2513}{%
+           family={Springer-Verlag},
+           familyi={S\bibinithyphendelim V\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag}%
+      }
+      \strng{namehash}{d09b4459afa187a20a13919237d8bd25}
+      \strng{fullhash}{d09b4459afa187a20a13919237d8bd25}
+      \strng{fullhashraw}{d09b4459afa187a20a13919237d8bd25}
+      \strng{bibnamehash}{d09b4459afa187a20a13919237d8bd25}
+      \strng{authorbibnamehash}{d09b4459afa187a20a13919237d8bd25}
+      \strng{authornamehash}{d09b4459afa187a20a13919237d8bd25}
+      \strng{authorfullhash}{d09b4459afa187a20a13919237d8bd25}
+      \strng{authorfullhashraw}{d09b4459afa187a20a13919237d8bd25}
+      \strng{editorbibnamehash}{b2a3080ac80f2d9a662b86472e2c2513}
+      \strng{editornamehash}{b2a3080ac80f2d9a662b86472e2c2513}
+      \strng{editorfullhash}{b2a3080ac80f2d9a662b86472e2c2513}
+      \strng{editorfullhashraw}{b2a3080ac80f2d9a662b86472e2c2513}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{2-540-42518-7}
+      \field{title}{Elliptische Kurven in der Kryptographie}
+      \field{year}{2002}
+      \verb{doi}
+      \verb 10.1007/978-3-642-56351-5
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-642-56351-5
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-642-56351-5
+      \endverb
     \endentry
     \entry{zwegers24}{article}{}{}
       \name{author}{1}{}{%

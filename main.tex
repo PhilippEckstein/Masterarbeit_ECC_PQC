@@ -1,12 +1,7 @@
 \documentclass[openany]{stml-l}
-
 \input{settings/packages.tex}
 \input{settings/commands.tex}
-
 \begin{document}
-
-
-
 \begin{titlepage}
     \begin{center}
         \par\huge \textsc{Eliptische Kurven Kryptographie}
@@ -37,47 +32,18 @@
     \vfill
 \end{titlepage}
 
-\section{Vorwort}
-
-\section*{Eidesstattliche Erklärung}
-Hier sollte eine kluge Eidesstattliche Erklärung stehen, dass du alles allein gemacht hast et cetera et cetera.
-\bigskip\underline{\hspace{0.2\textwidth}}\hspace{0.1\textwidth}\underline{\hspace{0.4\textwidth}}
-\section*{Danksagung}
-An erster Stelle dankt man meistens dem Betreuer. Je nach Sentimentalität kann dann auch weiteren Personen aus dem akademischen oder dem privaten Umfeld gedankt werden.
-
-\section*{Kurze thematische Einführung in das Thema}
+\input{chapters/01_einleitung.tex}
 
 \tableofcontents
 
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
 
-\input{chapters/01_einleitung.tex}
-
-\input{chapters/02_elliptische_kurven.tex}
-
-\input{chapters/03_ec_endliche_körper.tex}
-
-
-
-\input{chapters/04_disk_log_problem_auf_ec.tex}
-
-\input{chapters/05_kryptographie.tex}
-
-\chapter{Implementierung}
-\section{Design}
-\section{Punktaddition}
-\section{Skalarmultiplikation}
-\section{Implemeneiterun von ECDH}
-
-Für Implementierung im Computer sind verschiedene Koordinaten System unterschiedlich schnell, da die Operationen auf diesen von Punkte unterschiedlich schnell sein können. Daher Rosen Kapitel 2.6, S.42 für mehr Infos anschauen.
-\chapter{Verlgeich zu klassichem Diffie-Hellman}
-
-\chapter{Quantencomputer}
-Modern Crypography (S.397)
-Laufzeit, Schlüsselgrößen, Sicherheit
-
-Alles schön Visualisieren
-
+\input{chapters/02_dl_problem.tex}
+\input{chapters/03_elliptische_kurven.tex}
+\input{chapters/04_ec_endliche_körper.tex}
+\input{chapters/05_ecc.tex}
+\input{chapters/06_implementierung_ecc.tex}
+\input{chapters/07_quantum_computers.tex}
 \printbibliography
 
 \end{document}

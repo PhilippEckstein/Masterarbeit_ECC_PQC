@@ -135,7 +135,7 @@ Anschließend nehmen wir wieder den Schnittpunkt $R'$ von der Kurve $E$ und der 
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.6\linewidth]{kap2_2_bsp4.png}
+    \includegraphics[width=0.5\linewidth]{kap2_2_bsp4.png}
     \caption{Spiegelung von $R'$, wodurch $R=2P$ entsteht}
     \label{fig:punktverdoppelung-tangente}
 \end{figure}
@@ -147,10 +147,10 @@ Als letzten Fall schauen wir uns noch an, wenn die Gerade $L$ keinen Schnittpunk
     \caption{Schnittpunk von L im Punkt $\mathcal{O}$}
     \label{fig:punktverdopplung-ergebnis}
 \end{figure}
-Dafür brauchen wir einen dritten Punkte um $P+_E(-P)$ definieren zu kennen wir kreieren dafür einen Punkt $\mathcal{O}$. Dieser Punkt ist dabei auf jeder vertikalen Gerade
+Dafür brauchen wir einen dritten Punkte um $P+_E(-P)$ definieren zu kennen wir kreieren dafür einen Punkt $\mathcal{O}$. Dieser Punkt ist dabei auf jeder vertikalen Gerade und wird als Punkt  im unendlichen beschrieben. Im Abschnitt \ref{subsec:punkt-im-unendlichen} wird die projektive eingeführt, um den Punkt genauer zu beschreiben.
 
 \subsection{Herleitung der Additionsformeln}
-Die folgende Herleitung orientiert sich an\cite{washington08} Washington 2008, S. 13-15,\cite{kapl05} vgl. Kaplan 2005 S.179ff. und\cite{buell24} Buell 2024, S.99.
+Die folgende Herleitung orientiert sich an\cite{washington08} Washington 2008, S. 12--15,\cite{kapl05} vgl. Kaplan 2005 S.179ff. und\cite{buell24} Buell 2024, S.99.
 
 Seien nun $P=(x_1,y_1)$ und $Q=(x_2,y_2)$ Punkte auf $E$ mit $P,Q\neq \mathcal{O}$.
 Zuerst betrachten wir den Fall $P\neq Q$ und \(x_1\neq x_2\). Dann hat die Gerade \(L\) durch durch \(P\) und \(Q\) die Form
@@ -176,7 +176,7 @@ Nach Ausmultiplizieren und Umstellen erhält man
 Die Nullstellen des kubischen Polynoms sind die \(x\)-Koordinaten der drei Schnittpunkte von \(L\) mit \(E\), also \(x_1\), \(x_2\) und \(x_3'\). Daher gilt
 \[
     0=(x-x_1)(x-x_2)(x-x_3')
-    =x^3-(x_1+x_2+x_3')x^2+(x_1x_2+x_1x_3+x_2x_3)x-x_1x_2x_3
+    =x^3-(x_1+x_2+x_3')x^2+(x_1x_2+x_1x_3'+x_2x_3')x-x_1x_2x_3'
 \]
 Mit Kooeffizientenvergleich erhält man
 \[
@@ -196,20 +196,50 @@ mit
     \qquad
     y_3=-y_3'=m(x_1-x_3)-y_1.
 \]
-
-\textbf{voll restliche Herleitung Einfügen, Rosen S.12-14}
+Ist $x_1=x_2$ und $y_1\neq y_2$, so gilt wegen
+$y_1^2=y_2^2$ notwendigerweise $y_2=-y_1$. Die Gerade durch
+$P$ und $Q$ ist somit vertikal und schneidet die projektive Kurve
+im Punkt $\mathcal{O}$. Daher wird
+\[
+P+Q=\mathcal{O}
+\]
+definiert. Wenn man nun den Punkt an der x-Achse spiegelt erhält man den gleichen Punkt in $\mathcal{O}$, daher gilt für $P+Q=\mathcal{O}$. Jetzt betrachtet man den Fall $P=Q=(x_1,y_1)$. Wenn zwei Punkte auf einer Kurve sehr nah beinander sind, dann approximiert die Gerade eine Tangente. Daher die Gerade $L$ durch die beiden Punkte als Tangente betrachten. Mit Hilfe der Ableitung erhalten wir die Steigung $m$ von L:
+\[
+2y\frac{dy}{dx}=3x^2+A \Leftrightarrow \quad m=\frac{dy}{dx}=\frac{3x_1^2+A}{2y_1}.
+\]
+Wenn $y_1=0$, dann ist die Gerade vertikal und es gilt wieder $P+Q=\mathcal{O}$. Daher wird der Fall $y_1\neq 0$ betrachtet. Die Gleichung der Gerade ist in diesem Fall
+\[
+y=m(x-x_1)+y_1.
+\]
+Setzt man nun die Gerade in die Kurvengleichung ein, erhält man
+\begin{align}
+    &(m(x-x_1)+y_1)^2=x^3+Ax+B\\
+    &0=x^3-m^2x^2+(2m^2x_1-2my_1+A)x+B-m^2x_1^2+2my_1x_1-y_1^2
+\end{align}
+Man kennt von dieser Gleichung eine Nullstelle $x_1$, da es sich bei $L$ um eine Tangente von $E$ handelt ist $x_1$ eine doppelte Nullstelle. Daher kann man analog zu vorher
+\[
+x_3=m^2-2x_1,\quad y_3=m(x_1-x_3)-y_1.
+\]
+Für den Punkt im Unendlichen wird die Addition durch
+\[
+P+\mathcal{O}=\mathcal{O}+P=P
+\]
+definiert. Dies entspricht geometrisch der Tatsache, dass die vertikale
+Gerade durch $P$ den zweiten affinen Schnittpunkt $-P$ besitzt und
+zusätzlich durch $\mathcal{O}$ verläuft. Nach Spiegelung von $-P$
+an der $x$-Achse wird wieder $P$ erhalten. Diese Aussage kann erweitert werden \(\mathcal{O}+\mathcal{O}=\mathcal{O}\) inkludiert ist.
 \begin{definition}[Punktaddition]
     \label{def:punktaddition}
-    Die Punktaddition für einen Punkt $P+Q=R=(x_3,y_3)$ definieren wir wie folgt:
+    Die Punktaddition für einen Punkt $P_1+P_2=P_3=(x_3,y_3)$ definieren wir wie folgt:
     \begin{enumerate}
         \item Wenn $x_1\neq x_2$, dann
               \[x_3=m^2-x_1-x_2, \quad y_3=m(x_1-x_3)-y_1 \quad \text{ mit  } m=\frac{y_2-y_1}{x_2-x_1}.\]
         \item Wenn $x_1=x_2$, aber $y_1\neq y_2$, dann ist
-              \[P+Q=\mathcal{O}.\]
+              \[P_1+P_2=\mathcal{O}.\]
         \item Wenn $P=Q$ und $y_1\neq 0$, dann
               \[x_3=m^2-2x_1, \quad y_3=m(x_1-x_3)-y_1, \quad \text{ mit } m=\frac{3x_1^2+A}{2y_1}.\]
-        \item Wenn $P=Q$ und $y_1=0$ dann,
-              \[P+Q=\mathcal{O}.\]
+        \item Wenn $P_1=P_2$ und $y_1=0$ dann,
+              \[P_1+P_2=\mathcal{O}.\]
     \end{enumerate}
 
     Zusätzlich definieren wir
@@ -234,8 +264,6 @@ mit
     \]
     Dann gilt $(x_3,y_3)\in E\setminus \{\mathcal{O}\}$
 \end{lemma}
-
-Damit ist die oben definierte Punktaddition abgeschlossen auf \(E\).
 
 \begin{proof}
     Also es gilt zu zeigen, dass gilt $P_1,P_2\in E \Rightarrow P_1 +_E P_2 \in E$. Also wenn $x_1=x_2$, dann gilt \(f(x_1)=y_1^2 \) und \(f(x_2)=y_2^2\), also $y_1^2=y_2^2$, damit gilt \(y_1= y_2 \) oder \(y_1=-y_2\). Da wir bereits definiert haben, dass $(x_2,y_2)\neq (x_1,-y_1)$ gilt im Lemma, folgt daraus $y_1=y_2$ und damit $P_1=P_2$. Wäre $y_1=0$, so wäre wegen $y_1=y_2$ auch $y_2=0=-y_1$. Damit wäre es im Widerspruch zur Voraussetzung des Lemmas. Somit gilt $y_1\neq 0$ und damit $m_{12}\in K$ und $(x_3,y_3)\in K^2$ für diesen Fall wohldefiniert.
@@ -326,6 +354,7 @@ Damit ist die oben definierte Punktaddition abgeschlossen auf \(E\).
         (x_3,y_3)\in E(K).
     \]
 \end{proof}
+Damit ist die oben definierte Punktaddition abgeschlossen auf \(E\).
 \begin{bemerkung}
     \label{bem:sum-ist-identitaet}
     Damit ist der nichttriviale Fall der Punktaddition wohldefiniert.
@@ -354,9 +383,73 @@ Damit ist die oben definierte Punktaddition abgeschlossen auf \(E\).
 \end{theorem}
 
 \begin{proof}
-    Die Existenz der Identität ist durch die Definition der Elliptische Kurve gegeben. Die Kommutativität kann einfach nachgerechnet werden indem die oben definieren Regeln für die Addition zweier Punkte anwenden.
-    Für  das Inverse müssen wir von einem Punkt $P$ sein Reflektion an der x-Achse $P'$ nehmen. Dann erhalten wir $P+P'=\mathcal{O}.$
-    Der Beweis der Assoziativität ist recht langwierig, weshalb er in \ref{sec:assoziativitaet} ausführlich behandelt wird.
+    Die Existenz des neutralen Elements folgt unmittelbar aus
+    Definition~\ref{def:punktaddition}, da für alle $P\in E$
+    \[
+        P+\mathcal{O}=\mathcal{O}+P=P
+    \]
+    gilt. Die Kommutativität folgt aus der Definition der Punktaddition. Es werden die in Definition~\ref{def:punktaddition} auftretenden Fälle betrachtet.
+
+    \begin{enumerate}
+        \item Sei $x_1\neq x_2$. Dann gilt
+              \[
+                  m_{12}
+                  =\frac{y_2-y_1}{x_2-x_1}
+                  =\frac{y_1-y_2}{x_1-x_2}
+                  =m_{21}.
+              \]
+              Damit stimmen die $x$-Koordinaten der Summen überein:
+              \[
+                  m_{12}^2-x_1-x_2
+                  =
+                  m_{21}^2-x_2-x_1.
+              \]
+              Für die $y$-Koordinaten gilt
+              \[
+                  \begin{aligned}
+                      y_3'-y_3
+                       & =
+                      -y_2-m_{21}(x_3-x_2)
+                      +y_1+m_{12}(x_3-x_1)    \\
+                       & =
+                      y_1-y_2+m_{12}(x_2-x_1) \\
+                       & =0.
+                  \end{aligned}
+              \]
+              Somit gilt $P_1+P_2=P_2+P_1$.
+
+        \item Sei $x_1=x_2$ und $y_1\neq y_2$. Dann gilt nach Definition
+              \[
+                  P_1+P_2=\mathcal{O}=P_2+P_1.
+              \]
+
+        \item Sei $P_1=P_2$ und $y_1\neq 0$. Da beide Punkte identisch sind,
+              ergibt die Tangentenformel unabhängig von der Reihenfolge dieselbe
+              Steigung und damit denselben Summenpunkt. Also gilt
+              \[
+                  P_1+P_2=P_2+P_1.
+              \]
+
+        \item Sei $P_1=P_2$ und $y_1=0$. Dann gilt nach Definition
+              \[
+                  P_1+P_2=\mathcal{O}=P_2+P_1.
+              \]
+    \end{enumerate}
+    Für $P=(x_1,y_1)\in E$ sei
+    \[
+        -P=(x_1,-y_1).
+    \]
+    Da
+    \[
+        (-y_1)^2=y_1^2,
+    \]
+    liegt auch $-P$ auf $E$. Nach Definition der Punktaddition gilt
+    \[
+        P+(-P)=\mathcal{O}.
+    \]
+    Für $P=\mathcal{O}$ gilt $-\mathcal{O}=\mathcal{O}$.
+    Damit besitzt jedes Element ein inverses Element. Die Assoziativität wird in Abschnitt~\ref{sec:assoziativitaet}
+    gesondert bewiesen.
 \end{proof}
 
 
@@ -414,52 +507,225 @@ Man kann die benötigte Zeit nochmal reduzieren, indem man die Non-Adjacent Form
 \[
     m=m_0+m_1\cdot 2+m_2\cdot 2^2+\cdots+m_r\cdot 2^r, \quad m_0,\dots,m_r\in\{-1,0,1\}.
 \]
-Hierfür können wir im Schnitt  $\frac{2}{3}$ der $m_i=0$ für die Zerlegung nutzen, dass reduziert die Anzahl der durchschnittlichen Additionen auf \(frac{1}{3}\log_2(m)
-\).
+Hierfür können wir im Schnitt  $\frac{2}{3}$ der $m_i=0$ für die Zerlegung nutzen, dass reduziert die Anzahl der durchschnittlichen Additionen auf \(\frac{1}{3}\log_2(m)\).
 Aufgrund dieses Vorgehens ist die Berechnung von $m$ aus $P$ und $mP$ sehr schwierig. Das sogennante \ref{sec:diffie-hellman} für Elliptische Kurven ist später essenziell für das kryptographische Verfahren, das auf diesen aufbaut.
 
+\section{Projektiver Raum und der Punkt bei Unendlich}
+\label{subsec:punkt-im-unendlichen}
+Der projektive Raum dient dazu, den Punkt im Unendlichen $\mathcal{O}$ genauer zu definieren, da sich dieser in affinen Koordinaten nicht darstellen lässt. Das Kapitel basiert auf \cite{washington08}, S.~18--20, \cite{clader25}, S.~245--246,\cite{forster15}, S.~200--204, sowie auf \cite{werner02}, S.~15--22.
 
-\section{Projektiver Raum und der Punkt bei Unendlich} (vgl. \cite{washington08}, S. 18ff.)
-(vgl. \cite{clader25}, S.245f.)
+Die Gruppenstruktur elliptischer Kurven wurde zuvor über die geometrische Punktaddition beschrieben. Dabei spielt der Punkt im Unendlichen eine besondere Rolle, da er als neutrales Element der Gruppe dient. Um diesen Punkt geometrisch präzise zu beschreiben, wird von der affinen Ebene zur projektiven Ebene übergegangen. Zunächst wird zum Vergleich die affine Ebene definiert.
 
-Die Gruppenstruktur elliptischer Kurven wurde zuvor über die geometrische
-Punktaddition beschrieben. Dabei spielt der Punkt im Unendlichen eine besondere
-Rolle, da er als neutrales Element der Gruppe dient. Um diesen Punkt geometrisch
-präzise zu beschreiben, gehen wir nun von der affinen Ebene zur projektiven Ebene über.
+\begin{definition}[Affine Ebene]
+    Sei $K$ ein Körper. Dann ist die affine Ebene über $K$ definiert durch
+    \[
+        \mathbb{A}^2_K
+        =
+        K \times K
+        =
+        \{(x,y) \mid x,y \in K\}.
+    \]
+\end{definition}
+
+In affinen Koordinaten kann eine elliptische Kurve beispielsweise durch eine Gleichung der Form
+\[
+    y^2 = x^3 + Ax + B
+\]
+beschrieben werden. Der Punkt im Unendlichen $\mathcal{O}$ lässt sich jedoch nicht als Punkt $(x,y)\in \mathbb{A}^2_K$ darstellen. Aus diesem Grund wird die projektive Ebene eingeführt.
 
 \begin{definition}[Projektive Ebene]
-    Sei \(K\) ein Körper. Die projektive Ebene über \(K\) ist definiert als der Quotient
+    Sei $K$ ein Körper. Die projektive Ebene über $K$ ist definiert als
     \[
-        \mathbb P^2_K
+        \mathbb{P}^2_K
         =
-        \left(K^3\setminus0\right)/\sim,
+        \left(K^3 \setminus \{(0,0,0)\}\right)/\sim,
     \]
-    wobei zwei Tripel \((x,y,z),(x',y',z')\in K^3\setminus\{(0,0,0)\}\) genau dann in einer Relation  stehen \(
-    (x,y,z)\sim (x',y',z)\), wenn ein \(\lambda\in K^\times:
-    (x,y,z)=\lambda(x',y',z')\) exestiert.
-    Die Äquivalenzklasse von \((x,y,z)\) wird mit
-    \((x:y:z)\) bezeichnet und heißt Punkt der projektiven Ebene.
+    wobei für
+    \[
+        (x,y,z),(x',y',z') \in K^3 \setminus \{(0,0,0)\}
+    \]
+    die Äquivalenzrelation
+    \[
+        (x,y,z)\sim(x',y',z')
+    \]
+    genau dann gilt, wenn ein $\lambda \in K^\times$ existiert mit
+    \[
+        (x,y,z)
+        =
+        \lambda(x',y',z').
+    \]
+    Die Äquivalenzklasse eines Tripels $(x,y,z)$ wird mit
+    \[
+        [x:y:z]
+    \]
+    bezeichnet und heißt Punkt der projektiven Ebene.
 \end{definition}
-Die Koordinaten \((x:y:z)\) werden homogene Koordinaten genannt. Dabei bezeichnet \((x:y:z)\) nicht einen einzelnen Punkte, sondern die Äquivalenzklasse aller von Null verschiedenen skalaren Vielfachen von \((x,y,z)\). Für jedes \(\lambda\in K^\times\) gilt also
-\[
-    (x:y:z)=(\lambda x:\lambda y:\lambda z).
-\]
-Die Menge
-\[
-    g_\mathcal{O}=\{(x:y:z)\in \mathbb P^2_K\mid z=0\}.
-\]
-heißt die unendlich ferne Gerade der projektiven Ebene (vgl. \cite{forster15}, S.200ff.).
-Ist $z \neq 0$, so kann z auf 1 normiert werden, denn es gilt \((x:y:z)=(x/z:y/z:1)\). Nun kann man eine Abbildung definieren
-\[
-    K^2\longrightarrow\mathbb{P}^2_K, \quad
-    (x,y)\mapsto (x:y:1).
-\]
-Diese Punkte entsprechen genau den affinen Punkten \((x,y)\in K^2\) die bijektiv auf \(\mathbb{P}^2_K\setminus g_\mathcal{O}\) abgebildet werden.
 
+Die Koordinaten $[x:y:z]$ heißen homogene Koordinaten. Dabei bezeichnet $[x:y:z]$ nicht ein einzelnes Tripel, sondern die Äquivalenzklasse aller von Null verschiedenen skalaren Vielfachen von $(x,y,z)$. Für jedes $\lambda\in K^\times$ gilt daher
+\[
+    [x:y:z]
+    =
+    [\lambda x:\lambda y:\lambda z].
+\]
 
-\begin{lemma}
-    Die Punkte auf der Geraden im Unendlichen \(L_\mathcal{O}\) entsprechen den Richtungen affiner Geraden. Insbesondere schneiden sich parallel affine Geraden in der projektiven Ebene in demselben Punkt auf \(L_\mathcal{O}\).
-\end{lemma}
+Jedes Tripel
+\[
+    (x,y,z)\in K^3\setminus\{(0,0,0)\}
+\]
+bestimmt somit einen Punkt in $\mathbb{P}^2_K$. Das Tripel $(0,0,0)$ ist ausgeschlossen und definiert keinen projektiven Punkt.
+
+Die affine Ebene kann als Teil der projektiven Ebene aufgefasst werden. Ist $z\neq 0$, so kann die homogene Koordinate $z$ auf $1$ normiert werden, denn
+\[
+    [x:y:z]
+    =
+    \left[\frac{x}{z}:\frac{y}{z}:1\right].
+\]
+Damit ergibt sich die Abbildung
+\[
+    \mathbb{A}^2_K
+    \longrightarrow
+    \mathbb{P}^2_K,
+    \qquad
+    (x,y)
+    \longmapsto
+    [x:y:1].
+\]
+
+Die Punkte mit $z=0$ bilden die Gerade im Unendlichen
+\[
+    L_\infty
+    =
+    \{[x:y:z]\in\mathbb{P}^2_K \mid z=0\}.
+\]
+Somit entsprechen die Punkte mit $z\neq 0$ genau den affinen Punkten, während die Punkte mit $z=0$ zusätzliche Punkte im Unendlichen darstellen.
+
+Um den Punkt im Unendlichen einer elliptischen Kurve zu bestimmen, wird die affine Weierstraßgleichung
+\[
+    y^2=x^3+Ax+B
+\]
+homogenisiert. Für einen projektiven Punkt $[X:Y:Z]$ mit $Z\neq 0$ gilt
+\[
+    x=\frac{X}{Z},
+    \qquad
+    y=\frac{Y}{Z}.
+\]
+Durch Einsetzen ergibt sich
+\[
+    \left(\frac{Y}{Z}\right)^2
+    =
+    \left(\frac{X}{Z}\right)^3
+    +
+    A\frac{X}{Z}
+    +
+    B.
+\]
+Nach Multiplikation mit $Z^3$ folgt
+\[
+    Y^2Z
+    =
+    X^3+AXZ^2+BZ^3.
+\]
+
+Damit erhält man das homogene Polynom
+\[
+    F(X,Y,Z)
+    =
+    Y^2Z-X^3-AXZ^2-BZ^3.
+\]
+
+Für einen Punkt auf der Geraden im Unendlichen gilt $Z=0$. Einsetzen in die projektive Weierstraßgleichung liefert
+\[
+    X^3=0.
+\]
+Daraus folgt
+\[
+    X=0.
+\]
+Da das Tripel $(0,0,0)$ ausgeschlossen ist, muss $Y\neq 0$ gelten. Wegen der Äquivalenz homogener Koordinaten kann $Y$ auf $1$ normiert werden. Somit ergibt sich
+\[
+    [0:Y:0]
+    =
+    [0:1:0].
+\]
+Die projektive Weierstraßkurve besitzt daher genau einen Punkt auf der Geraden im Unendlichen. Dieser Punkt wird mit
+\[
+    \mathcal{O}
+    =
+    [0:1:0]
+\]
+bezeichnet und dient als neutrales Element der Gruppenstruktur elliptischer Kurven.
+
+Abschließend kann überprüft werden, dass der Punkt $\mathcal{O}$ nicht singulär ist.
+
+\begin{definition}[Singulärer Punkt]
+    Sei $F\in K[X,Y,Z]$ ein homogenes Polynom und
+    \[
+        C
+        =
+        \{[X:Y:Z]\in\mathbb{P}^2_K \mid F(X,Y,Z)=0\}
+    \]
+    die dadurch definierte projektive Kurve. Ein Punkt
+    \[
+        P=[a:b:c]\in C
+    \]
+    heißt singulär, wenn
+    \[
+        \frac{\partial F}{\partial X}(P)
+        =
+        \frac{\partial F}{\partial Y}(P)
+        =
+        \frac{\partial F}{\partial Z}(P)
+        =
+        0
+    \]
+    gilt. Andernfalls heißt der Punkt nicht singulär.
+\end{definition}
+
+Es werden nun für den Punkt $\mathcal{O}=[0:1:0]$ die partiellen Ableitungen berechnet von einer eliptischen Kurve \(F(X,Y,Z)=Y^2Z-X^3-AXZ^2-BZ^3\).
+Es gilt dann
+\[
+    F_X(\mathcal{O})=0, \quad  F_Y(\mathcal{O})=0, \quad F_Z(\mathcal{O})=1
+\]
+Damit verschwindet nicht jede partielle Ableitung im Punkt $\mathcal{O}$. Folglich ist $\mathcal{O}=[0:1:0]$ unabhängig von den gewählten Koeffizienten nicht singulär.
+
+In der projektiven Ebene schneiden sich je zwei verschiedene Geraden in
+genau einem Punkt \cite[vgl.][S.~9]{liebscher17}. Insbesondere schneiden
+sich zwei parallele affine Geraden nach ihrer projektiven Erweiterung in
+einem Punkt auf der Geraden im Unendlichen.
+
+Seien dazu
+\[
+    g_1: ax+by+c_1=0
+\]
+und
+\[
+    g_2: ax+by+c_2=0
+\]
+zwei verschiedene parallele affine Geraden. Ihre projektiven Erweiterungen
+lauten
+\[
+    aX+bY+c_1Z=0
+\]
+und
+\[
+    aX+bY+c_2Z=0.
+\]
+Für einen gemeinsamen Schnittpunkt folgt durch Subtraktion
+\[
+    (c_1-c_2)Z=0.
+\]
+Da $c_1\neq c_2$ gilt, folgt $Z=0$. Der gemeinsame Schnittpunkt liegt somit
+auf der Geraden im Unendlichen.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.35\linewidth]{ell_curve_projective_space.png}
+    \caption[Projektiver Abschluss einer elliptischen Kurve]{
+        Projektiver Abschluss einer elliptischen Kurve.
+        Quelle: übernommen aus \cite[S.~202]{forster15}.
+    }
+    \label{fig:projektiver-abschluss}
+\end{figure}
 
 \section{Beweis der Assoziativitität}
 \label{sec:assoziativitaet}
@@ -600,10 +866,10 @@ Doch bevor wir die Assoziativitität beweisen können benötigen wir eine Reihe 
               \]
               Dass können wir nun umformen wieder zu
               \begin{align*}
-                    m(P_2,P_3)-m(P_1,P_2)&=\frac{(x_3-x_1)(x_3-\hat{x})}{2y_3}      \\
-                   \Leftrightarrow 
-                  \frac{m(P_2,P_3)-m(P_1,P_2)}{(x_3-\hat{x})}&= \frac{x_3-x_1}{2y_3} \\ \Leftrightarrow 
-                  c_2 &= \frac{x_3-x_1}{2y_3}
+                  m(P_2,P_3)-m(P_1,P_2)                       & =\frac{(x_3-x_1)(x_3-\hat{x})}{2y_3} \\
+                  \Leftrightarrow
+                  \frac{m(P_2,P_3)-m(P_1,P_2)}{(x_3-\hat{x})} & = \frac{x_3-x_1}{2y_3}               \\ \Leftrightarrow
+                  c_2                                         & = \frac{x_3-x_1}{2y_3}
               \end{align*}
               und damit gilt dann für $y_2=y_3\neq 0$ \(c_2(m_{12}+m_{12,3})=1\)
         \item Der Fall $P_2=P_3$ und $P_1+P_2=P_3$ kann nach Lemma 2.1 nicht auftretten
@@ -884,12 +1150,43 @@ Nun können wir den Beweis der Assoziativität durchführen.
 \end{proof}
 
 \begin{bemerkung}[Geometrische Interpretation]
-
+    Sei $K=\mathbb{R}$ und $P_1,P_2\in E\setminus\{\mathcal{O}\}$ mit
+    $P_2\neq -P_1$. Die Gerade durch $P_1$ und $P_2$ wird durch
+    \[
+        l:y=y_1+m_{12}(x-x_1)
+    \]
+    beschrieben. Für $P_1\neq P_2$ handelt es sich um eine Sekante der
+    elliptischen Kurve, für $P_1=P_2$ um die Tangente im Punkt $P_1$.
+    In beiden Fällen besitzt die Gerade einen dritten Schnittpunkt mit
+    $E$. Dessen Spiegelung an der $x$-Achse ergibt den Summenpunkt
+    $P_1+P_2$. Für die Betrachtung der Summe dreier Punkte wird diese geometrische
+    Idee erweitert. Anstelle einer Geraden wird eine Parabel
+    \[
+        p(x)=y_2+(x-x_2)(c_1+xc_2).
+    \]
+    betrachtet. Das entspricht den Größen $c_1$ und $c_2$ aus Lemma~\ref{lem:dreipunktsumme} .
+    Aus den bereits gezeigt Beziehungen
+    \[
+        c_1+x_1c_2=m_{12}\qquad\text{und}\qquad
+        c_1+x_3c_2=m_{23}
+    \]
+    folgt
+    \[
+        p(x_1)=y_1, \quad p(x_2)=y_2,\quad
+        p(x_3)=y_3.
+    \]
+    Die Parabel verläuft somit durch die drei Punkte $P_1,P_2$ und $P_3$.
+    Sei $K=\mathbb{R}$ und $P_1,P_2\in E\setminus\{\mathcal{O}\}$ mit $P_2\neq -P_1$.
+    Es wird nun eine Gerade aufgestellt durch die Punkte $P_1$ und $P_2$
+    \[
+        l:y=y_1+m_{12}(x-x_1).
+    \]
+    Nun gibt es verschiedene Fälle. Für $P_2=P_1$ ist die Gerade eine Tangente zur elliptischen Kurve $E$, die sie im Punkt $P_1$ schneidet. Die Tangente hat dann einen dritten Schnittpunkt $(x_3,-y_3)$
 \end{bemerkung}
 
 \section{Elliptische Kurven in Charakteristik 2} (nach Rosen, S. 47ff.) \textbf{Muss man hier auch characteristik 3 ergänzen?}
 
-Computer arbeiten tendenziell besser über Körpern der Charakteristik 2 im Vergleich zu Körpern mit großen prim Charakteristiken.Daher werden häufig Elliptische Kurven über einem Feld $\mathbb{F}_q$ mit $q=2^k$ Elementen verwendet.
+Computer arbeiten tendenziell besser über Körpern der Charakteristik 2 im Vergleich zu Körpern mit großen prim Charakteristiken. Daher werden häufig Elliptische Kurven über einem Feld $\mathbb{F}_q$ mit $q=2^k$ Elementen verwendet.
 (vgl. \cite{silverman06}, S.47)
 
 Aus dieser Notwendigkeit betrachten wir nun genauer Elliptische Kurven in Charakteristik 2, da hier einige unserer vorher definierten Formeln nicht funktionieren.\\

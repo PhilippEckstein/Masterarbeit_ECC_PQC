@@ -1,47 +1,93 @@
-\chapter{Einführung}
+\chapter{Vorwort}
 
-\section{Motivation}
-    (Grundlagen der Kryptographie, vgl. S.2ff.)
-    Der Wunsch auf eine Art und Weise zu kommunizieren, dass private Kommunikation nicht von anderen geselen werden kann reich Jahrtausende zurück.
-    Im ersten Weltkrieg wurden 
-    Die Kryptologie ist daher die Studie der Geheimnisse.
+\section*{Eidesstattliche Erklärung}
+Hier sollte eine kluge Eidesstattliche Erklärung stehen, dass du alles allein gemacht hast et cetera et cetera.
+\bigskip\underline{\hspace{0.2\textwidth}}\hspace{0.1\textwidth}\underline{\hspace{0.4\textwidth}}
+\section*{Danksagung}
+An erster Stelle dankt man meistens dem Betreuer. Je nach Sentimentalität kann dann auch weiteren Personen aus dem akademischen oder dem privaten Umfeld gedankt werden.
+\section{Einführung}
+(Grundlagen der Kryptographie, vgl. S.2ff.)
+Der Wunsch, Informationen vor dem Zugriff unbefugter Personen zu schützen,
+reicht weit in die Geschichte zurück. Bereits Julius Caesar soll ein
+Verschlüsselungsverfahren verwendet haben, um militärische Nachrichten
+vertraulich zu übermitteln. Bei der heute als Caesar-Chiffre bezeichneten
+Methode werden die Buchstaben des Alphabets um eine festgelegte Anzahl von
+Stellen verschoben. Nur wer die verwendete Verschiebung kennt, kann die
+Nachricht unmittelbar entschlüsseln \cite[S.~14--15]{buell24}. Aus heutiger
+Sicht bietet dieses Verfahren keine ausreichende Sicherheit, veranschaulicht
+jedoch bereits ein grundlegendes Prinzip der Kryptographie: Eine Nachricht
+wird mithilfe eines Schlüssels so verändert, dass ihr ursprünglicher Inhalt
+für Unbefugte nicht mehr erkennbar ist.
 
-    Anmerkung: Es wird davon ausgegeganngen, dass der Leser grundlegende algebraische Strukturen kennt. Verwendete Strukturen sind: Gruppen, Ringe, Körper, Vektorräume \textbf{(siehe Quelle einfügen)}
-    Elliptische Kurven haben sich in der modernen Kryptographie etabliert, weil sie bei vergleichbarem Sicherheitsniveau deutlich kürzere Schlüssellängen erfordern als klassische Verfahren wie RSA. 
-    So bietet ein RSA-Schlüssel mit 4096 Bit ein Sicherheitsniveau, das mit Verfahren auf Basis elliptischer Kurven bereits mit einer Schlüssellänge von etwa 313 Bit erreicht werden kann (vgl. \cite{washington08}, S. 169). 
-    Dies führt zu geringerem Speicherbedarf, ermöglicht kompaktere Hardware und reduziert den Energieverbrauch. 
-    
-    \textbf{Kerckhoff's Prinzip} Ein Kryptosystem sollte sicher sein, auch wenn alles über das System bekannt ist, außer dem Schlüssel, der zum Verschlüsseln einer bestimmten Nachricht verwendet wird (Grundlagen der Kryptographie, S.10).
-    
-    
+Mit der zunehmenden Digitalisierung hat die sichere Übertragung von
+Informationen erheblich an Bedeutung gewonnen. Beim Onlinebanking, bei der
+E-Mail-Kommunikation und bei der Nutzung von Nachrichtendiensten werden
+regelmäßig sensible Daten über öffentliche Netzwerke übertragen.
+Kryptographische Verfahren sollen unter anderem gewährleisten, dass diese
+Informationen nicht von unbefugten Dritten gelesen oder unbemerkt verändert
+werden können.
 
+Eine wichtige Rolle spielt dabei die asymmetrische Kryptographie, bei der
+öffentliche und private Schlüssel verwendet werden. Die Sicherheit der
+entsprechenden Verfahren beruht häufig auf mathematischen Problemen, für die
+auf klassischen Computern keine effizienten Lösungsverfahren bekannt sind.
+Zu diesen Problemen gehört das diskrete Logarithmusproblem. Wird es in der
+Punktgruppe einer elliptischen Kurve über einem endlichen Körper betrachtet,
+bildet es eine wesentliche Sicherheitsgrundlage der
+Elliptische-Kurven-Kryptographie.
 
-    \textbf{Ausgangssituation:}
-    Alice will eine Nachricht, oft als Klartext bezeichnet, an Bob schicken. Um eine dritte Partei daran zu hindern die Nachricht zu lesen, verschlüsselt sie die Nachricht. Um die Nachricht zu verschlüssel benutzt Alice einen kryptographischen Schlüssel. Bei symmetrischen Verfahren sind der Verschlüsslungsschlüssel und der Entschlüsslungsschlüssel der Selbe. 
-    Für diesen Fall muss der Schlüssel von Alice erstmal an Bob übergeben werden, durch zum Beispiel einen Nachricht die einige Tage vorher gesendet wird. Das ist offensichtlich nicht geeignet für moderne und schnelle Kommunikation.
+Die Entwicklung von Quantencomputern stellt diese Sicherheitsannahme
+grundsätzlich infrage. Insbesondere ermöglicht der Shor-Algorithmus,
+diskrete Logarithmusprobleme auf einem hinreichend leistungsfähigen
+Quantencomputer effizient zu lösen. Daher ist zu untersuchen, welche
+Konsequenzen sich aus der Entwicklung von Quantencomputern für die Sicherheit
+kryptographischer Verfahren auf elliptischen Kurven ergeben.
 
-    Bei der asymetrischen Verschlüsslung wird ein \textbf{öffentlicher Schlüssel} generiert, der für jede Person einsehbar ist und daher muss vorher nicht ein Schlüssel zwischen Alice und Bob ausgetautscht werden. Bob besitzt aber auch noch einen privaten Schlüssel, wodurch er einen verschlüsslten Text entschlüsseln kann. Wenn Alice ihm eine Nachricht schicken will nimmt sie Bobs öffentlichen Schlüssel und verschlüsselt damit ihre Nachricht.
+\section{Zielsetzung und Forschungsfrage}
 
-    Im allgemeinen sind Verfahren mit öffentlichen Schlüsseln schneller als gute symmetrische Verfahren, daher wird häufig über Verfahren mit öffentlichen Schlüsseln ein symmetrischer Schlüssel ausgetauscht.
-    (vgl. \cite{washington08}, S.170)
-    
-    Forschungsfrage:
-    
-    Welche algebraischen Eigenschaften elliptischer Kurven führen zu Angriffen, die schneller sind als generische Pollard-p-Verfahren?
-    
-    Von den mathematischen Grundlagen elliptischer Kurven zur kryptographischen Anwendung, mit Fokus auf Sicherheitsannahmen und der Frage, wann diese Annahmen versagen können.
+Ziel dieser Arbeit ist es, elliptische Kurven mathematisch einzuführen und
+ihre Verwendung in der Kryptographie darzustellen. Dazu werden elliptische
+Kurven über endlichen Körpern sowie das diskrete Logarithmusproblem in ihren
+Punktgruppen untersucht. Anschließend werden die Grundlagen des
+Quantencomputings und insbesondere der Shor-Algorithmus betrachtet, um dessen
+Auswirkungen auf die Sicherheit der Elliptische-Kurven-Kryptographie zu
+bewerten.
 
+Daraus ergibt sich die folgende Forschungsfrage:
 
-    Es wird davon ausgegeanngen, dass der Leser grundlegende Mathematische Strukturen kennt und diese werden daher nicht erneut eingeführt, dazu zählen: Gruppen, Ringe und Körper, Homorphismus und Endomorphismus.
+\begin{quote}
+    \emph{Wie verändert der Shor-Algorithmus die Komplexität des diskreten
+        Logarithmusproblems auf elliptischen Kurven, und welche Konsequenzen
+        ergeben sich daraus für die Sicherheit der
+        Elliptische-Kurven-Kryptographie?}
+\end{quote}
 
-    
-Forschungsfrage:
+\section{Aufbau der Arbeit}
 
-Welche algebraischen Eigenschaften elliptischer Kurven führen zu Angriffen, die schneller sind als generische Pollard-p-Verfahren?
+Zunächst werden die für die weitere Untersuchung benötigten Grundlagen der
+asymmetrischen Kryptographie eingeführt. Das RSA-Kryptosystem dient dabei als
+Beispiel, um das Zusammenspiel öffentlicher und privater Schlüssel sowie das
+Prinzip der asymmetrischen Verschlüsselung zu erläutern. Anschließend wird das
+diskrete Logarithmusproblem zunächst in einer allgemeinen Gruppe formuliert.
 
-Von den mathematischen Grundlagen elliptischer Kurven zur kryptographischen Anwendung, mit Fokus auf Sicherheitsannahmen und der Frage, wann diese Annahmen versagen können.
+Darauf folgt die mathematische Einführung elliptischer Kurven. Neben ihrer
+Definition werden insbesondere die Gruppenstruktur, die Punktaddition und die
+Skalarmultiplikation behandelt. Anschließend werden elliptische Kurven über
+endlichen Körpern untersucht, da deren endliche Punktgruppen die Grundlage
+kryptographischer Anwendungen bilden.
 
+Auf diesen Grundlagen aufbauend wird das diskrete Logarithmusproblem auf
+elliptischen Kurven betrachtet und seine Bedeutung für die Sicherheit
+kryptographischer Verfahren erläutert. Danach werden ausgewählte
+kryptographische Verfahren auf elliptischen Kurven vorgestellt.
 
-Aktuell: Elliptische Kurven und Quantecomputer, sind diese sicher?
+Im letzten Teil der Arbeit werden zunächst die erforderlichen Grundlagen des
+Quantencomputings eingeführt. Anschließend wird der Shor-Algorithmus und seine
+Anwendung auf das diskrete Logarithmusproblem untersucht. Abschließend werden
+die daraus resultierenden theoretischen und praktischen Konsequenzen für die
+Sicherheit der Elliptische-Kurven-Kryptographie bewertet.
+
 
 \section{Mathematische Grundlagen und Notation}
+
+Anmerkung: Es wird davon ausgegeganngen, dass der Leser grundlegende algebraische Strukturen kennt. Verwendete Strukturen sind: Gruppen, Ringe, Körper, Vektorräume \textbf{(siehe Quelle einfügen)}
