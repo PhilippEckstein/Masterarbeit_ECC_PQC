@@ -7,38 +7,46 @@
 \contentsline {section}{\tocsection {}{3}{Aufbau der Arbeit}}{2}{section.1.3}%
 \contentsline {section}{\tocsection {}{4}{Mathematische Grundlagen und Notation}}{2}{section.1.4}%
 \setcounter {tocdepth}{1}
-\contentsline {chapter}{\tocchapter {Kapitel}{2}{Das Diskrete Logarithmus Problem}}{5}{chapter.2}%
-\contentsline {section}{\tocsection {}{1}{Public-Key-Kryptographie}}{5}{section.2.1}%
-\contentsline {section}{\tocsection {}{2}{Diskreter Logarithmus}}{6}{section.2.2}%
-\contentsline {chapter}{\tocchapter {Kapitel}{3}{Elliptische Kurven}}{7}{chapter.3}%
-\contentsline {section}{\tocsection {}{1}{Grundlagen}}{7}{section.3.1}%
-\contentsline {section}{\tocsection {}{2}{Gruppenstruktur}}{9}{section.3.2}%
-\contentsline {subsection}{\tocsubsection {}{2.1}{Herleitung der Additionsformeln}}{12}{subsection.3.2.1}%
-\contentsline {subsection}{\tocsubsection {}{}{Skalar mal Punkt}}{18}{section*.10}%
-\contentsline {section}{\tocsection {}{3}{Projektiver Raum und der Punkt bei Unendlich}}{18}{section.3.3}%
-\contentsline {section}{\tocsection {}{4}{Beweis der Assoziativitität}}{21}{section.3.4}%
-\contentsline {section}{\tocsection {}{5}{Elliptische Kurven in Charakteristik 2}}{29}{section.3.5}%
-\contentsline {chapter}{\tocchapter {Kapitel}{4}{Elliptische Kurven über endlichen Körpern}}{31}{chapter.4}%
-\contentsline {section}{\tocsection {}{1}{Motivation}}{31}{section.4.1}%
-\contentsline {section}{\tocsection {}{2}{Endliche Körper}}{31}{section.4.2}%
-\contentsline {section}{\tocsection {}{3}{Die Punktmenge $E(\mathbb {F}_q)$}}{32}{section.4.3}%
-\contentsline {subsection}{\tocsubsection {}{3.1}{Explizite Punktbestimmung}}{32}{subsection.4.3.1}%
-\contentsline {subsection}{\tocsubsection {}{3.2}{Quadratische Reste und Legendre-Symbol, die Gruppen Ordnung bestimmensollte das nicht eher nach Hasse kommen?}}{33}{subsection.4.3.2}%
-\contentsline {section}{\tocsection {}{4}{Gruppenstruktur von \(E(\mathbb {F}_q)\)}}{34}{section.4.4}%
-\contentsline {section}{\tocsection {}{5}{Punktzählung}}{35}{section.4.5}%
-\contentsline {subsection}{\tocsubsection {}{5.1}{Frobenius-Endomorphismus}}{35}{subsection.4.5.1}%
-\contentsline {subsection}{\tocsubsection {}{5.2}{Hasse-Schranke}}{36}{subsection.4.5.2}%
-\contentsline {chapter}{\tocchapter {Kapitel}{5}{Elliptische Kurven Kryptographie}}{37}{chapter.5}%
-\contentsline {section}{\tocsection {}{1}{RSA}}{37}{section.5.1}%
-\contentsline {section}{\tocsection {}{2}{Warum eliptische Kurven verwenden?}}{37}{section.5.2}%
-\contentsline {section}{\tocsection {}{3}{Diffie-Hellman}}{37}{section.5.3}%
-\contentsline {section}{\tocsection {}{4}{Sicherheitbetrachtung}}{37}{section.5.4}%
-\contentsline {section}{\tocsection {}{5}{Verlgeich zu klassichem Diffie-Hellman}}{38}{section.5.5}%
-\contentsline {chapter}{\tocchapter {Kapitel}{6}{Implementierung}}{39}{chapter.6}%
-\contentsline {section}{\tocsection {}{1}{Design}}{39}{section.6.1}%
-\contentsline {section}{\tocsection {}{2}{Punktaddition}}{39}{section.6.2}%
-\contentsline {section}{\tocsection {}{3}{Skalarmultiplikation}}{39}{section.6.3}%
-\contentsline {section}{\tocsection {}{4}{Implemeneiterun von ECDH}}{39}{section.6.4}%
-\contentsline {section}{\tocsection {}{5}{Verlgeich zu klassichem Diffie-Hellman}}{39}{section.6.5}%
-\contentsline {chapter}{\tocchapter {Kapitel}{7}{Quantencomputer}}{41}{chapter.7}%
-\contentsline {chapter}{\tocchapter {Kapitel}{}{Literatur}}{43}{chapter*.13}%
+\contentsline {chapter}{\tocchapter {Kapitel}{2}{Das Diskrete Logarithmus Problem}}{7}{chapter.2}%
+\contentsline {section}{\tocsection {}{1}{Public-Key-Kryptographie}}{7}{section.2.1}%
+\contentsline {section}{\tocsection {}{2}{Diskreter Logarithmus}}{9}{section.2.2}%
+\contentsline {chapter}{\tocchapter {Kapitel}{3}{Elliptische Kurven}}{11}{chapter.3}%
+\contentsline {section}{\tocsection {}{1}{Grundlagen}}{11}{section.3.1}%
+\contentsline {section}{\tocsection {}{2}{Gruppenstruktur}}{13}{section.3.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Herleitung der Additionsformeln}}{16}{subsection.3.2.1}%
+\contentsline {subsection}{\tocsubsection {}{}{Skalar mal Punkt}}{22}{section*.10}%
+\contentsline {section}{\tocsection {}{3}{Projektiver Raum und der Punkt bei Unendlich}}{22}{section.3.3}%
+\contentsline {section}{\tocsection {}{4}{Beweis der Assoziativitität}}{25}{section.3.4}%
+\contentsline {section}{\tocsection {}{5}{Elliptische Kurven in Charakteristik 2}}{33}{section.3.5}%
+\contentsline {chapter}{\tocchapter {Kapitel}{4}{Elliptische Kurven über endlichen Körpern}}{35}{chapter.4}%
+\contentsline {section}{\tocsection {}{1}{Motivation}}{35}{section.4.1}%
+\contentsline {section}{\tocsection {}{2}{Endliche Körper}}{35}{section.4.2}%
+\contentsline {section}{\tocsection {}{3}{Die Punktmenge $E(\mathbb {F}_q)$}}{38}{section.4.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{Explizite Punktbestimmung}}{38}{subsection.4.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Quadratische Reste und Legendre-Symbol, die Gruppen Ordnung bestimmensollte das nicht eher nach Hasse kommen?}}{39}{subsection.4.3.2}%
+\contentsline {section}{\tocsection {}{4}{Gruppenstruktur von \(E(\mathbb {F}_q)\)}}{40}{section.4.4}%
+\contentsline {section}{\tocsection {}{5}{Punktzählung}}{41}{section.4.5}%
+\contentsline {subsection}{\tocsubsection {}{5.1}{Isogenien und Endmorphismen}}{42}{subsection.4.5.1}%
+\contentsline {subsection}{\tocsubsection {}{5.2}{Frobenius-Endomorphismus}}{43}{subsection.4.5.2}%
+\contentsline {subsection}{\tocsubsection {}{5.3}{Hasse-Schranke}}{43}{subsection.4.5.3}%
+\contentsline {section}{\tocsection {}{6}{Double-and-Add-Algorithmus}}{45}{section.4.6}%
+\contentsline {chapter}{\tocchapter {Kapitel}{5}{Elliptische Kurven Kryptographie}}{49}{chapter.5}%
+\contentsline {section}{\tocsection {}{1}{Diffie-Hellman}}{49}{section.5.1}%
+\contentsline {section}{\tocsection {}{2}{ECDSA}}{52}{section.5.2}%
+\contentsline {section}{\tocsection {}{3}{Eventuell noch ECIES \blx@tocontentsinit {0}\cite {washington08},S.180ff.}}{52}{section.5.3}%
+\contentsline {section}{\tocsection {}{4}{Warum eliptische Kurven verwenden?}}{52}{section.5.4}%
+\contentsline {section}{\tocsection {}{5}{Sicherheitbetrachtung und Wahl von sinnvollen Bedingugen}}{52}{section.5.5}%
+\contentsline {section}{\tocsection {}{6}{Performancesteigerung und Vergleich von ECC zu anderen Verfahren}}{52}{section.5.6}%
+\contentsline {section}{\tocsection {}{7}{Algorithmen um das DL-Problem zu lösen}}{53}{section.5.7}%
+\contentsline {chapter}{\tocchapter {Kapitel}{6}{Implementierung und Angriffe}}{55}{chapter.6}%
+\contentsline {section}{\tocsection {}{1}{Design}}{55}{section.6.1}%
+\contentsline {section}{\tocsection {}{2}{Punktaddition}}{55}{section.6.2}%
+\contentsline {section}{\tocsection {}{3}{Skalarmultiplikation}}{55}{section.6.3}%
+\contentsline {section}{\tocsection {}{4}{Implemeneiterun von ECDH}}{55}{section.6.4}%
+\contentsline {section}{\tocsection {}{5}{Verlgeich zu klassichem Diffie-Hellman}}{55}{section.6.5}%
+\contentsline {section}{\tocsection {}{6}{Angriffe}}{55}{section.6.6}%
+\contentsline {section}{\tocsection {}{7}{Pohling Helman Verfahren}}{55}{section.6.7}%
+\contentsline {section}{\tocsection {}{8}{MOV Algorithmus}}{55}{section.6.8}%
+\contentsline {chapter}{\tocchapter {Kapitel}{7}{Quantencomputer}}{57}{chapter.7}%
+\contentsline {chapter}{\tocchapter {Kapitel}{}{Literatur}}{59}{chapter*.15}%
+\contentsline {section}{\tocsection {}{1}{Anhang}}{60}{section.7.1}%

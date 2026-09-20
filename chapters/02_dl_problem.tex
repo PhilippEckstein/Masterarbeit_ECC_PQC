@@ -1,25 +1,139 @@
 \chapter{Das Diskrete Logarithmus Problem}
-
-Das Ziel dieses Kapitel ist es zu erklären wie moderne Kryptographie auch Public-Key-Kryptographie funktioniert. Das wird am Beispiel von RSA gemacht, anschließend wird auf das Diskrete Logarithmus Problem eingeganngen und damit die Grundlage für Elliptische Kurven Kryptographie gelegt.
-
+Das Ziel dieses Kapitel ist es zu erklären wie Public-Key-Kryptographie funktioniert. Das wird am Beispiel von RSA gemacht, anschließend wird auf das Diskrete Logarithmus Problem eingeganngen und damit die Grundlage für Elliptische Kurven Kryptographie gelegt. Bei symmetrischen Verschlüsselungsverfahren verwenden Sender und Empfänger denselben geheimen Schlüssel zur Ver- und Entschlüsselung einer Nachricht. Damit eine sichere Kommunikation möglich ist, muss dieser Schlüssel zuvor
+auf einem sicheren Weg zwischen beiden Parteien ausgetauscht werden.
+Gerade bei einer Kommunikation über große Entfernungen, hoher Frequenz oder Anonymität, wie es im Internet standart ist, stellt dieser Schlüsselaustausch ein praktisches Problem dar. Die Public-Key-Kryptographie setzt genau an diesem Problem an und verwendet stattdessen ein Paar aus öffentlichem und privatem Schlüssel.
+(vgl. \cite{fuß25} S.4). 
 \section{Public-Key-Kryptographie}
-Es sollen wie in der Einführung bereits angerissen Daten ausgetauscht und dabei verschlüsselt werden. Wir haben dabei einen Sender Alice und einen Empfänger Bob. Bei dem Caeser-Chiffre handelt es sich um ein sogennanten symmetrisches Verfahren, dass bedeutet Sender und Empfänger müssen beide den gleichen Schlüssel kennen. Ist der Schlüssel geheim und somit nur ihnen beiden bekannt, können sie über einen öffentlichen Kanal kommunzieren. Eine dritte Person,nennen wir sie Eva, kann dann die Nachricht nicht entschlüsseln, da sie den geheimen Schlüssel nicht kennt \cite{fuß25}
+Die grundlegende Idee eines Public-Key-Verfahrens kann durch eine Abbildung
+\[
+    f:\mathcal{M}\longrightarrow\mathcal{C}
+\]
+beschrieben werden. Dabei bezeichnet $\mathcal{M}$ die Menge der möglichen
+Klartexte und $\mathcal{C}$ die Menge der möglichen Chiffretexte. Die
+Abbildung $f$ soll effizient berechenbar sein, während die Umkehrung $f^{-1}$ ohne
+zusätzliche geheime Information praktisch nicht effizient durchgeführt
+werden kann. In einem konkreten Public-Key-Verfahren hängt diese Abbildung vom
+öffentlichen Schlüssel ab. Die Verschlüsselungsfunktion wird daher mit \(E_{k_{\mathrm{pub}}}:\mathcal{M}\longrightarrow\mathcal{C}\)
+bezeichnet. Die zugehörige Entschlüsselungsfunktion \( D_{k_{\mathrm{priv}}}:\mathcal{C}\longrightarrow\mathcal{M}\) hängt vom privaten Schlüssel ab und erfüllt \( D_{k_{\mathrm{priv}}} \bigl(E_{k_{\mathrm{pub}}}(m)\bigr) = m \) für alle $m\in\mathcal{M}$(vgl.\cite{fuß25}, S.109).
+Ein wichtige Eigenschaft eines Publicy-Key-Verfahren oder auch asymmetrischen Verschlüsslungs Verfahren ist daher das \textbf{Kerckhoff's Prinzip}. Ein Kryptosystem sollte sicher sein, auch wenn alles über das System bekannt ist, außer dem Schlüssel, der zum Verschlüsseln einer bestimmten Nachricht verwendet wird (vgl. \cite{buell24}, S.10).
+Als einfaches Einführungsbeispiel wird das RSA-Verfahren betrachtet.
+Die Sicherheit von RSA beruht auf der Schwierigkeit, eine große zusammengesetzte
+Zahl $N=pq$ in ihre Primfaktoren $p$ und $q$ zu zerlegen. Für zwei
+verschiedene Primzahlen $p$ und $q$ gilt für die Eulersche
+$\varphi$-Funktion
+\[
+    \varphi(N)
+    =
+    \varphi(pq)
+    =
+    (p-1)(q-1).
+\]
+\begin{definition}[RSA-Verfahren]
+    Seien $p$ und $q$ zwei verschiedene Primzahlen und \(N=pq\).
+    Zunächst wird \(\varphi(N)=(p-1)(q-1)\) berechnet. Anschließend wird ein \(e\in\mathbb{Z}_{\varphi(N)}^*\) gewählt. Damit gilt insbesondere \(\operatorname{ggT}(e,\varphi(N))=1\). Daher besitzt $e$ ein multiplikatives Inverses modulo $\varphi(N)$. Dieses wird mit $d$ bezeichnet, also
+    \[
+        d=e^{-1}\pmod{\varphi(N)}.
+    \]
+    Damit gilt
+    \[
+        ed\equiv1\pmod{\varphi(N)}.
+    \]
 
-\textbf{Kerckhoff's Prinzip} Ein Kryptosystem sollte sicher sein, auch wenn alles über das System bekannt ist, außer dem Schlüssel, der zum Verschlüsseln einer bestimmten Nachricht verwendet wird (Grundlagen der Kryptographie, S.10).
-\textbf{Ausgangssituation:}
-    Alice will eine Nachricht, oft als Klartext bezeichnet, an Bob schicken. Um eine dritte Partei daran zu hindern die Nachricht zu lesen, verschlüsselt sie die Nachricht. Um die Nachricht zu verschlüssel benutzt Alice einen kryptographischen Schlüssel. Bei symmetrischen Verfahren sind der Verschlüsslungsschlüssel und der Entschlüsslungsschlüssel der Selbe. 
-    Für diesen Fall muss der Schlüssel von Alice erstmal an Bob übergeben werden, durch zum Beispiel einen Nachricht die einige Tage vorher gesendet wird. Das ist offensichtlich nicht geeignet für moderne und schnelle Kommunikation.
+    Der öffentliche Schlüssel ist
+    \[
+        k_{\mathrm{pub}}=(e,N),
+    \]
+    während
+    \[
+        k_{\mathrm{priv}}=(d,N)
+    \]
+    den privaten Schlüssel bildet.
 
-    Bei der asymetrischen Verschlüsslung wird ein \textbf{öffentlicher Schlüssel} generiert, der für jede Person einsehbar ist und daher muss vorher nicht ein Schlüssel zwischen Alice und Bob ausgetautscht werden. Bob besitzt aber auch noch einen privaten Schlüssel, wodurch er einen verschlüsslten Text entschlüsseln kann. Wenn Alice ihm eine Nachricht schicken will nimmt sie Bobs öffentlichen Schlüssel und verschlüsselt damit ihre Nachricht.
+    Eine Nachricht $m$ wird durch
+    \[
+        c\equiv m^e\pmod N
+    \]
+    verschlüsselt. Der Chiffretext $c$ wird anschließend durch
+    \[
+        m\equiv c^d\pmod N
+    \]
+    entschlüsselt.
+\end{definition}
 
-    Im allgemeinen sind Verfahren mit öffentlichen Schlüsseln schneller als gute symmetrische Verfahren, daher wird häufig über Verfahren mit öffentlichen Schlüsseln ein symmetrischer Schlüssel ausgetauscht
-    (vgl. \cite{washington08}, S.170).
+\cite{fuß25}, S.140
+\begin{beispiel}
+    Bob wählt nun $p=5$ und $q=11$ und bildet daraus das Produkt $5\cdot11=55$, anschließend wählt er ein $e$, das teilerfremd zu $\phi(55)=4\cdot 10 = 40$, zum Beispiel $e=7$. Nun berechnet Bob $d=11^{-1}\mod \phi(55)=11^{-1}\mod 40=23$.
+    Er veröffentlicht dann $(e,N)=(7,55)$ und behält seinen privaten Schlüssel geheim mit $(d,N)=(23,55)$. Wenn Alice ihm nun eine Nachricht schicken will nimmt sie seinen öffentlichen Schlüssel $(11,40)$ und verschlüsselt damit ihre Nachricht $m$. Angenommen die Nachricht wäre es gilt dann $c=m^{e}\mod n$
+    anschließend wählt er ein veröffentlicht nun seinen öffentlichen Schlüssel, Alice nimmt diesen und verschlüsselt mit der Verschlüsslungsfunktion ihre Nachricht $m=8$ (Anmerkung die Nachricht macht semantisch keinen Sinn, mann könnte zum Beispiel ein öffentliches Codierungssystem dazu festlegen), also $c=8^{7}\mod 55=2$. Alice sendet Bob dann diese Nachricht, die Nachricht kann dann nur Bob lesen,  denn er nimmt seinen privaten Schlüssel $(23,40)$ und rechnet \(m=2^{23}\mod 55 = 8\). 
+\end{beispiel}
+Für einen Angreifer ist es schwierig, den privaten Exponenten $d$ zu
+bestimmen, da hierfür die Kenntnis von $\varphi(N)$ benötigt wird. Sind die
+beiden Primfaktoren $p$ und $q$ von $N=pq$ bekannt, kann \( \varphi(N)=(p-1)(q-1)\) direkt berechnet werden. Sind $p$ und $q$ dagegen unbekannt, ist die
+Bestimmung von $\varphi(N)$ eng mit der Faktorisierung von $N$ verbunden.
+Für hinreichend große Primzahlen ist diese Faktorisierung mit bekannten
+klassischen Verfahren praktisch sehr aufwendig. Im gewählten Zahlenbeispiel
+ist die Faktorisierung von $N$ dagegen selbstverständlich trivial.
+
+\textbf{Eventuell noch Beweis einfügen}
+
+Neben der Faktorisierung gibt es weitere mathematische Probleme, die in der
+Public-Key-Kryptographie verwendet werden. Für kryptographische Verfahren auf
+elliptischen Kurven ist insbesondere das diskrete Logarithmusproblem von
+Bedeutung. Dieses wird im folgenden Abschnitt zunächst allgemein für zyklische
+Gruppen betrachtet.
 
 \section{Diskreter Logarithmus}
+basiert auf \cite{buell24} S. 200
+Das disrekte Logarithmus basiert auf zyklischen Gruppen. Sei $G=\langle P \rangle $ eine zyklische Gruppe mit Generator $P\in G$ und sei $n$ die Ordnung der Untergruppe $\langle a \rangle$. Dann kann jedes Element $Q\in G$ in der Form 
+\[
+ Q=ka, \quad k\in\mathbb{Z}/n\mathbb{Z}
+\] 
+dargestellt werden. Damit ergibt sich dann die Abbildung
+\[
+f:\mathbb{Z}/n\mathbb{Z}\longrightarrow\langle P\rangle,
+    \qquad
+    k\longmapsto kP.
+\]
+Die Berechnung von $Q=kP$ aus gegebenen Werten $k$ und $P$ ist in
+geeigneten Gruppen effizient möglich. Die umgekehrte Berechnung von $k$
+aus den gegebenen Werten $P$ und $Q$ kann dagegen erheblich schwieriger
+sein. Diese Umkehrung führt zum diskreten Logarithmusproblem.
+
+\begin{definition}[Diskretes Logarithmusproblem]
+    Sei $G=\langle P\rangle$ eine zyklische Gruppe und seien
+    $P,Q\in G$ gegeben. Das diskrete Logarithmusproblem besteht darin,
+    ein $k\in\mathbb{Z}/n\mathbb{Z}$ zu bestimmen, sodass
+    \[
+        Q=kP
+    \]
+    gilt.
+\end{definition}
+
+\begin{beispiel}
+    Das disrkete Logarithmus Problem ist jedoch nicht in jeder zyklischen Gruppe schwierig zu lösen. Wird zum Beispiel die additive Gruppe $G=\mathbb{Z}/n\mathbb{Z}$ mit Generator $a=1$ betrachtet, so gilt für jede Element $Q$
+    \[
+    Q=k\cdot 1 =k.
+    \]
+\end{beispiel}
+
+\begin{beispiel}
+    Sei nun $n=11$, dann ist \(G=(\mathbb{Z}/11\mathbb{Z})^{\times}\) und der Generator $g=2$. Gesucht ist nun ein $k$ mit 
+    \[
+    2^k\equiv 7\pmod 11
+    \]
+    Durch ausprobieren kann man herraus finden, dass \(2^7\equiv 7\pmod 11\) ist.
+\end{beispiel}
+\begin{bemerkung}
+    Der Name Logarithmus ist nicht direkt ersichtlich, da bei der Umkehrabbildung $f^{-1}$ $k\mapsto kP$ gesucht wird, dies kann aber auch in der multiplikativen Schreibweise mit Hilfe der Exponentialfunktion ausgedrückt werden $k \mapsto p^k$. 
+\end{bemerkung}
 
 
+Generally, public key systems are slower than good symmetric systems.
+Therefore, it is common to use a public key system to establish a key that
+is then used in a symmetric system. The improvement in speed is important
+when massive amounts of data are being transmitted \cite{washington08}, S.170
 
-\textbf{Warum elliptische Kurven}
-Elliptische Kurven haben sich in der modernen Kryptographie etabliert, weil sie bei vergleichbarem Sicherheitsniveau deutlich kürzere Schlüssellängen erfordern als klassische Verfahren wie RSA. 
-    So bietet ein RSA-Schlüssel mit 4096 Bit ein Sicherheitsniveau, das mit Verfahren auf Basis elliptischer Kurven bereits mit einer Schlüssellänge von etwa 313 Bit erreicht werden kann (vgl. \cite{washington08}, S. 169). 
-    Dies führt zu geringerem Speicherbedarf, ermöglicht kompaktere Hardware und reduziert den Energieverbrauch. 
+\textbf{Warum elliptische Kurven?}
+Praktisch stellt sich das RSA-Verfahren erst ab einer Schlüsselänge von 3000 Bit als sicher heraus. Entsprechend aufwendig gestaltet sich dort das Ver- und 
+Entschlüsseln. Um das Verschlüsseln effizient zu gestalten, kann ein kleiner Exponent e gewählt werden. Elliptische Kurven haben sich in der modernen Kryptographie etabliert, weil sie bei vergleichbarem Sicherheitsniveau deutlich kürzere Schlüssellängen erfordern als klassische Verfahren wie RSA.     So bietet ein RSA-Schlüssel mit 4096 Bit ein Sicherheitsniveau, das mit Verfahren auf Basis elliptischer Kurven bereits mit einer Schlüssellänge von etwa 313 Bit erreicht werden kann (vgl. \cite{washington08}, S. 169). Dies führt zu geringerem Speicherbedarf, ermöglicht kompaktere Hardware und reduziert den Energieverbrauch. 
+Elliptische Kurven bieten nun eine Möglichkeit um, wie wir in den folgenden Kapiteln sehen werden, ein schwer zu lösendes diskretes Logarithmus Problem zu stellen.

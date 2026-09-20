@@ -1,13 +1,12 @@
 \chapter{Elliptische Kurven Kryptographie}
+Nun wie wird aus abstrakter Mathematik ein kryptographisches Verfahren. In Kapitel 2 wurde schon Public-Key Kryptographie und das DL Problem betrachtet. Das selbe Prinzip soll nun genutzt werden, um ein kryptographisches Verfahren basierenden auf elliptischen Kurven zu implementieren. 
 \label{sec:kryptographie}
-\section{RSA}
-Beim sogennanten RSA-Verfahren werden 2 Primzahlen $p$ und $q$ gewählt und daraus das Produkt $N=pq$ gebildet. Man kann dann mit Hilfe der Euler Funktion. \cite{buell24} S. 167
-
-
-
-Wir betrachten eine möglichkeit einen geheimen Schlüssel zu etablieren nach Diffie und Hellman. (zitiert nach Taylor und Francis 2008, S.170f.)
+\section{Diffie-Hellman}
+\label{sec:diffie-hellman}
+basiert auf \cite{washington08}, S.170-172
+Wir betrachten eine möglichkeit einen geheimen Schlüssel zu etablieren nach Diffie und Hellman. Außerdem verwendet \cite{fuß25}, S. 195
 \begin{enumerate}
-    \item Alice und Bob einigen sich auf eine elliptische Kurve $E$ über einem endlichen Körper $\mathbb{F}_q$, sodass das diskrete Logarithmusproblem in $E(\mathbb{F}_q)$ schwer zu lösen ist.
+    \item Alice und Bob einigen sich auf eine elliptische Kurve $E:y^2=x^3+Ax+B\mod p$ über einem endlichen Körper $\mathbb{F}_p$, sodass das diskrete Logarithmusproblem in $E(\mathbb{F}_p)$ schwer zu lösen ist.
     \item Alice wählt ein geheimes $a$, das ein Integer sein soll, berechne $P_a=aP$ und schickt $P_a$ zu Bob.
     \item BoB wählt einen geheimen Integer b, er berechnet $P_b=bP$ und schickt Alice $P_b$.
     \item Alice berechnet $aP_b=abP$
@@ -16,14 +15,139 @@ Wir betrachten eine möglichkeit einen geheimen Schlüssel zu etablieren nach Di
 \end{enumerate}
 Die einzige Information die ein Außenstehender sieht, wäre die Kurve $E$, den Körper $F_q$ und die Punkte $P, aP,bP$. Daher muss sie das \textbf{Diffie-Hellman Problem} lösen.
 
+\begin{definition}[Diffie-Hellman Problem]
+    Sei $P,aP,bP\in E(\mathbb{F}_q)$ gegeben berechne
+    \[
+        abP.
+    \]
+\end{definition}
+
+
+\begin{beispiel}
+    Wir betrachten die elliptische Kurve
+    \[
+        E\colon y^2 \equiv x^3+2x+2 \pmod{17}
+    \]
+    über dem Primkörper \(\mathbb F_{17}\). Durch explizite Bestimmung der Punkte erhält man
+    \[
+        \#E(\mathbb F_{17})=19.
+    \]
+    Da die Gruppenordnung \(19\) eine Primzahl ist, erzeugt jeder
+    Punkt aus \(E(\mathbb F_{17})\setminus\{\mathcal O\}\) die gesamte
+    Gruppe. Im Folgenden wird der Generator
+    \[
+        P=(0,6)
+    \]
+    gewählt. Die Berechnung der Ordnung, des Generators und alle weiteren Punktberechnungen wurde mit Hilfe des im Anhang~\ref{app:pythonprogramm} angegebene und selbstentickwelten Python-Programm durchgeführt.
+    Alice wählt die geheime Zahl $a=2$ und berechnet den öffentlichen Schlüssel $A=aP=2P=(9,1)$, anschließend schickt Alice Bob $P_a$. Bob wählt $b=5$ und berechnet $B=bP=5P=(10,11)$, anschließend schickt Bob Alice $P_b$. Alice berechnet nun ihren gemeinsamen Schlüssel $S_A=aP_b=2\cdot(10,11)=(16,4)$, genauso wie Bob $S_B=bP_a=5\cdot(9,1)=(16,4)$.  Im Beispiel gilt konkret
+    \[
+        2B=2\cdot5P=10P=5\cdot2P=5A=(16,4).
+    \]
+    Öffentlich bekannt sind die Kurve \(E\), der Körper
+    \(\mathbb F_{17}\), der Basispunkt \(P\) sowie die Punkte
+    \(A=aP\) und \(B=bP\). Die Zahlen \(a\) und \(b\) sowie der
+    gemeinsame Punkt \(S=abP\) werden dagegen nicht übertragen.
+
+    Ein Angreifer müsste dann wie beschrieben, dass Diffie-Hellman-Problem lösen und \(abP\) finden. Eine Möglichkeit wäre \(a\) aus \(aP\) oder \(b\) aus \(bP\) mit dem diskreten Logarithmus Problem zu lösen. Anschließend könnte der Angreifer den gemeinsamen Punkt
+    durch
+    \[
+        aB=a(bP)=abP
+    \].Bei der hier betrachteten Gruppe mit nur \(19\) Elementen kann der
+    diskrete Logarithmus durch einfaches Berechnen der Vielfachen
+    \[
+        P,2P,3P,\ldots
+    \]
+    gefunden werden. Bei kryptographisch verwendeten Kurven arbeitet man
+    dagegen in einer Untergruppe von sehr großer Primzahlordnung. Eine
+    vollständige Aufzählung der Vielfachen von \(P\) ist dort praktisch
+    nicht durchführbar.
+\end{beispiel}
+
+Um eine sichere Konfiguration für Diffie-Hellman zu erhalten muss $p$ relativ groß ($p>2^{160})$ und daher muss man eine große Anzahl von Vielfachen von einem Punkt $P$ berechnen
+\[
+    mP = P +P +P+\dots P\in E(\mathbb{F}_p).
+\]
+Wenn man
+\cite{silverman06}, S. 30
+
+
+Diffie-Hellman in dieser Form führt nur dazu, dass ein gemeinsamer Schlüssel ausgetauscht wird, es gibt noch keine Beschreibung wie genau die Verschlüsslung und Entschlüsslung funktioniert. Dazu kann man zum Beispiel das ElGamal Public Key Verfahren verwenden. 
+Alice möchte Bob eine Nachricht senden. Dafür muss Bob aber seinen öffentlichen Schlüssel etablieren. Dafür wählt er eine elliptische Kurve $E$ über einem endlichen Körper $\mathbb{F}_q$, so dass das DL Problem schwer zu lösen ist auf $E\mathbb{F}_q$ (wie genau diese Bedingungen sein muss wird in Abschnitt \ref{sicherheitsbetrachtung} betrachtet). Außerdem wählt er auch einen Punkt $P$ auf $E$. Er wählt wieder einen geheimes $b\in\mathbb{Z}$ und berechnet $B=bP$. Die elliptische Kurve $E$, der endliche Körper $\mathbb{F}_q$ und die Punkte $P$ und $B$ macht er öffentlicht und dienen ihm als öffentliche Schlüssel. Wenn Alice Bob eine Nachricht schicken möchte geht sie wie folgt vor
+\begin{enumerate}
+    \item Alice lädt Bobs öffentlichen Schlüssel runter
+    \item Sie schreibt ihre Nachricht als ein Punkt $M\in E(\mathbb{F}_q)$
+    \item Nun wählt Alice einen geheimen Schlüssel $k$ und berechnet $M_1=kP$
+    \item Anschließend berechnet Alice $M_2=M+kB$
+    \item Nun sendet Alice $M_1,M_2$ an Bob
+\end{enumerate}
+
+Bob entschlüsselt die Nachricht indem er \(M=M_2-bM_1\) berechnet. Das funktioniert da Bob $b$ kennt und daher 
+\[
+    M_2-bM_1=(M+kB)-s(kP)= M+k(bP)-bkP=M
+\]
+berechnen kann. Eine dritte Person Eve die die Nachrichten $M_1$ und $M_2$ abfängt, kann nur durch Lösen des DL-Problems $b$ aus den öffentlichen Informationen $P$ und $B$ berechnen. Wenn sie $b$ nicht errechnen, kann exestiert kein Weg um die Nachricht $M$ zu entschlüsseln.
+\begin{bemerkung}
+    In der Regel wird mit asymmetrischen Verfahren nur ein symmetrischer Schlüssel ausgetauscht und daher handelt es sich meist bei der Nachricht um einen Punkt auf der Kurve der als Geheimnis dient zum Beispiel wird die x-Koordinate des gemeinsamen Schlüssels verwendet und mit einer Hashfunktion verschlüsselt und dann als symmetrischer Schlüssel verwendet (vgl. \cite{guneysu24}, S.291). Wenn tatsächlich eine richtige Nachricht wie zum Beispiel "Hallo" geschickt werden soll, dann muss diese zuerst in ihre Bitdarstellung überführt werden, zum Beispiel mit Hilfe von ASCII und anschließend dann mit einer Abbildung auf einen Punkt auf der Kurve abgebildet werden.
+\end{bemerkung}
+
+\begin{bemerkung}
+    Wenn Alice das selbe $k$ zweimal verwendet, ist $M_1'=kP=M_1$. Eve kann das Wissen nutzen, um $M$ zu berechnen indem sie $M_2'-M_2= M'-bM_1'-(M-bM_1)=M'-M$ berechnet. Wenn Eve nun Wissen über $M$ erhält, kann sie dadurch auch automatisch $M'$ berechnen und alle weiteren Nachrichten die anschließend mit $k$ verschlüsselt werden.
+\end{bemerkung}
+
+
+\cite{washington08}, S. 174-176
+\begin{definition}[ElGamal Verschlüsslung]
+
+    Es exestiert nun zum erzeugten Schlüssel $(ab)\cdot G$ eine Funktion
+    \[
+    F: E \to E, P\mapsto P+(ab)\cdot G
+    \]
+    Es gibt dann eine Verschlüsslungsfunktion
+    \[
+    P\mapsto (B,Q)= (b\cdot G,P+b\cdot A)
+    \]
+    und eine Entschlüsslungsfunktion
+    \[
+    (B,Q)\mapsto Q-a\cdot B=Q-(ab)\cdot G=Q-b\cdot A=P
+    \]
+\end{definition}
+Exklusives Geheimnis von Alice ist einzig die Zahl a. Bobs Geheimnis ist nur die Zahl b. Beide Zahlen können aus den Punkten $A=a\cdot G$ und $B=b\cdot G$ nicht zurückgerechnet werden.
+\begin{bemerkung}
+    Wie beim klassischen Elgamal-Verfahren muss Bob jedes mal eine neue Zahl $b$ auswählen. Denn ansonsten kann aus dem Geheimtext \(b\cdot G, P+b\cdot A\) mit Klartext $P$, der Kurvenpunkt $b\cdot A$ bestimmt werden. Dadurch können alle andere Punkte die mit $b$ verschlüsselt wurden entschlüsselt werden.
+\end{bemerkung}
+\section{ECDSA}
+
+\section{Eventuell noch ECIES \cite{washington08},S.180ff.}
 \section{Warum eliptische Kurven verwenden?}
 Der beste Algorithm um ECDLP zu lösen ist exponential, darum werden Elliptische Kurven Gruppen verwendet. (An Introduction to the Theory of Elliptic Curves, S.6)
 Genauer der beste Algorithmus um ECDLP zu lösen über $\mathbb{F}_p$ braucht $O(\sqrt p)$ Zeit.
-\section{Diffie-Hellman}
-\label{sec:diffie-hellman}
 
 
-\section{Sicherheitbetrachtung}
+Ephemeral-Diffie-Hellman-Key-Agreement mit elliptischen
+Kurven
+
+ECDSA
+
+
+\section{Sicherheitbetrachtung und Wahl von sinnvollen Bedingugen}
+\label{sicherheitsbetrachtung}
 Faktorisierung großer Zahlen (Computeralgebra Kapitel 5, ab S.167)
+\textbf{Weil-Pairing?}
 
-\section{Verlgeich zu klassichem Diffie-Hellman}
+\section{Performancesteigerung und Vergleich von ECC zu anderen Verfahren}
+
+Performance wäre zu finden bei \cite{fuß25}, S.201
+
+\cite{fuß25}, S.199-200
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{empfehlung_der_nist.png}
+    \caption{Empfehlungen des NIST, entnommen aus \cite[S.~219]{buell24}.}
+    \label{fig:nist-empfehlungen}
+\end{figure}
+
+\section{Algorithmen um das DL-Problem zu lösen}
+
+Pohling-Hellman Verfahren
+Der MOV-Algorithmus

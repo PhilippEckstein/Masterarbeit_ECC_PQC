@@ -267,6 +267,7 @@ INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti1000.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx1000.tfm
+INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0500.tfm
 INPUT .\main.toc
 INPUT .\main.toc
 INPUT main.toc
@@ -292,7 +293,6 @@ INPUT .\images\kap2_bs2.png
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbi1000.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti0700.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti0500.tfm
-INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0500.tfm
 INPUT .\images\kap2_2_bsp1.png
 INPUT .\images\kap2_2_bsp1.png
 INPUT .\images\kap2_2_bsp1.png
@@ -347,6 +347,12 @@ INPUT .\images\ell_curve_finite_field.png
 INPUT .\chapters\05_ecc.tex
 INPUT .\chapters\05_ecc.tex
 INPUT chapters\05_ecc.tex
+INPUT .\images\empfehlung_der_nist.png
+INPUT .\images\empfehlung_der_nist.png
+INPUT .\images\empfehlung_der_nist.png
+INPUT .\images\empfehlung_der_nist.png
+INPUT .\images\empfehlung_der_nist.png
+INPUT .\images\empfehlung_der_nist.png
 INPUT .\chapters\06_implementierung_ecc.tex
 INPUT .\chapters\06_implementierung_ecc.tex
 INPUT chapters\06_implementierung_ecc.tex
@@ -361,6 +367,10 @@ INPUT main.run.xml
 OUTPUT main.run.xml
 INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
 INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
+INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk
+INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0700.pk
+INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0700.pk
+INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecti0700.pk
 INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1000.pk
 INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbi1000.pk
 INPUT C:\Users\phili\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0800.pk
