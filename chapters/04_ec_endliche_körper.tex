@@ -338,7 +338,11 @@ vgl. \cite{washington08} Washington S.77+79
 
 
 \section{Punktzählung}
-Ziel dieses Abschnittes ist es eine Idee für die Punktzählung auf elipitschen Kurven über endlichen Körper zu entwickeln. Hierfür wird vorallem die Hasse Schranke benötigt. Der Beweis dieser benötigt eine Vielzahl von Eigenschaften die weit über die Arbeit hinausreichen, daher werden nur einige von ihnen aufgelistet, sodass zumindest eine Skizze des Beweises möglich ist. In \cite{silverman09} S. 138 findet man den ausführlichen Beweise. Dieser Abschnitt basier auf \cite{silverman09}, S.66f.
+Im vorangenganen Abschnitt wurde gezeigt wie man bei einfachen Gruppen vorgehen kann um die Ordnung von diesen zu bestimmen. Die Punktzählung für endliche Körper großer Primzahlordnung ist aber sehr unpraktikabel, denn es hat Komplexität \(\O(p^{1+\epsilon}, \epsilon>0)\)(vgl. \cite{schoof95},S. 2020). Daher soll in diesem Abschnitt Ideen entwickelt werden, wie man die Anzahl der Punkte einer Untergruppe von \(E(\mathbb{F}_q)\) berechnen kann.  Dies ist wichtig um später wichtig um passende Bedingungen für eine Kurve für ein Krpyotgraphisches Verfahren zu wählen. Hierfür wird vorallem der Algorithmus von Schoof und die Hasse Schranke benötigt. Der Beweis dieser benötigt eine Vielzahl von Eigenschaften die weit über die Arbeit hinausreichen, daher werden nur einige von ihnen aufgelistet, sodass zumindest eine Skizze des Beweises möglich ist. In \cite{silverman09} S. 138 findet man den ausführlichen Beweise. Dieser Abschnitt basier auf \cite{silverman09}, S.66f.
+
+
+
+
 \subsection{Isogenien und Endmorphismen}
 \begin{definition}[Isogenien]
     Seien $E_1$ und $E_2$ elliptische Kurven über
@@ -469,9 +473,10 @@ Aus \cite{silverman09},S.67
 
 \subsection{Hasse-Schranke}
 \cite{werner02}, S.60--61 und \cite{guneysu24} S.287.
-\begin{satz}[Hasse]
+\begin{satz}[Satz von Hasse]
+    \label{def:hasse-schranke}
     Sei $E$ eine elliptische Kurve über einem endlichen Kröper $\mathbb{F}_q$. Dann erfüllt die Ordnung von $E(\mathbb{F}_q)$,
-    \[ \vert q+1-\# E(\mathbb{F}_q) |\leq 2\sqrt q\]
+    \[|\#E(\mathbb{F}_q)-q-1 |\leq 2\sqrt q\]
 \end{satz}
 Es ist nun möglich die Gruppenordnung von $E(\mathbb{F})$ rechteinfach abzuschätzen durch
 \[
@@ -687,4 +692,12 @@ $\mathcal{O}(\log m)$.
     Gruppenoperationen. Die naive Methode würde dagegen
     $46-1=45$ Additionen erfordern.
 \end{beispiel}
+
+
+
+\subsection{Baby steps and giant steps}
+\cite{schoof95}, S.220 Komplexität ist \(\O(p^{1/4+\epsilon}), \epsilon>0\). Praktisch für großere Primzahlen, aber unpraktisch für Zahlen größer 20 Dezimalstellen
+
+Es wird Hasse benötigt.
+\subsection{Schofs Algorithm}
 

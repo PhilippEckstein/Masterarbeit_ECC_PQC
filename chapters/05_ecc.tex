@@ -131,6 +131,10 @@ ECDSA
 
 \section{Sicherheitbetrachtung und Wahl von sinnvollen Bedingugen}
 \label{sicherheitsbetrachtung}
+\textbf{Warum elliptische Kurven?}
+Praktisch stellt sich das RSA-Verfahren erst ab einer Schlüsselänge von 3000 Bit als sicher heraus. Entsprechend aufwendig gestaltet sich dort das Ver- und
+Entschlüsseln. Um das Verschlüsseln effizient zu gestalten, kann ein kleiner Exponent e gewählt werden. Elliptische Kurven haben sich in der modernen Kryptographie etabliert, weil sie bei vergleichbarem Sicherheitsniveau deutlich kürzere Schlüssellängen erfordern als klassische Verfahren wie RSA.     So bietet ein RSA-Schlüssel mit 4096 Bit ein Sicherheitsniveau, das mit Verfahren auf Basis elliptischer Kurven bereits mit einer Schlüssellänge von etwa 313 Bit erreicht werden kann (vgl. \cite{washington08}, S. 169). Dies führt zu geringerem Speicherbedarf, ermöglicht kompaktere Hardware und reduziert den Energieverbrauch.
+Elliptische Kurven bieten nun eine Möglichkeit um, wie wir in den folgenden Kapiteln sehen werden, ein schwer zu lösendes diskretes Logarithmus Problem zu stellen.
 Faktorisierung großer Zahlen (Computeralgebra Kapitel 5, ab S.167)
 \textbf{Weil-Pairing?}
 
@@ -147,7 +151,89 @@ Performance wäre zu finden bei \cite{fuß25}, S.201
     \label{fig:nist-empfehlungen}
 \end{figure}
 
-\section{Algorithmen um das DL-Problem zu lösen}
+\section{Angriffe auf ECC}
+In Kapitel 2 \ref{baby-step-giant-step} wurde der Baby Step Giant Step Algorithmus verwendet nun soll dieser nochmal an einem Beispiel für elliptische Kurven aufgegriffen werden.
+\begin{beispiel}
+    Es wird erneut das Beispiel aus Kapitel 4 aufgegriffen. Sei $G=E(\mathbb{F}_{17})$, wobei $E$ gegeben ist durch $y^2=x^3+2x+2$. Sei $P=(0,6)$ und $Q=(3, 16)=kP$. nach dem Satz von Hasse \ref{def:hasse-schranke} kann eine obere Schranke ausgerechnet werden
+    \[ 
+    |\#E(\mathbb{F}_{17})-17-1 |\leq 2\sqrt 17
+    \],
+    also die Ordnung ist 26. Daher sei $m=\lceil \sqrt{26}\rceil=6$. Die Punkte $iP$ für $1\leq i< 6$ sind
+    \[
+    (0, 6), (9, 1), (6, 3), (7, 6), (10, 11)
+    \]
+    Für die linke Seite wird dann $Q-jmP$ berechnet für $j=0,1,2,3,4$
+    \[
+    (3,16),(13, 10),(0, 6),(10, 6),(5,16),(9,1).
+    \]
+    Es wird bei $j=2$ beendet, da der Punkt mit $1P$ übereinstimmt. Nun kann k einfach nachgerechnet werden, 
+    \[
+    (30,40)=kP=(1+2\cdot6 6)P= 13P
+    \]
+    und damit erhalten wir $k=13$ als das gesuchte Ergebnis.
+    Alles wurde mit Hilfe von \ref{app:pythonprogramm}, die Konsolenausgabe ist in \ref{fig:python-2}.
+\end{beispiel}
+Nun wird das Pohlig Hellmann Verfahren aus Kapitel 2 \ref{pohlig-hellman} ebenefalls für elliptische Kurven aufgegriffen.
+\begin{beispiel}
+    Sei $G=E(\mathbb{F}_{599})$ für die elliptische Kurve
+    $E\colon y^2=x^3+1$. Gegeben seien die Punkte
+    $P=(60,19)$ und $Q=(277,239)$. Das Python-Programm
+    liefert $|G|=\operatorname{ord}(P)=600$. Gesucht ist
+    ein $k\in\{0,\dots,599\}$ mit $Q=kP$.
+    Wegen $600=2^3\cdot3\cdot5^2$ bestimmen wir wie in
+    Kapitel~2 zunächst $k$ modulo $8$, $3$ und $25$.
+    Alle Koordinatenrechnungen erfolgen modulo $599$.
 
-Pohling-Hellman Verfahren
-Der MOV-Algorithmus
+    \smallskip
+    \noindent\textbf{Bestimmung von $k\bmod 8$.}
+    Wir schreiben $k\equiv z_0+2z_1+4z_2\pmod 8$
+    mit $z_i\in\{0,1\}$. Der Punkt
+    $R=\frac{600}{2}P=300P=(598,0)$ hat die Ordnung $2$.
+    Die Berechnung ergibt $300Q=e_G=0R$, also $z_0=0$.
+    Die weiteren Ziffern ergeben sich aus
+    \[
+    \begin{aligned}
+        Q_1&=\frac{600}{2^2}(Q-z_0P)
+             =150Q=(598,0)=R,\\
+        Q_2&=\frac{600}{2^3}(Q-(z_0+2z_1)P)
+             =75(Q-2P)=75(35,243)=e_G.
+    \end{aligned}
+    \]
+    Somit sind $z_1=1$ und $z_2=0$, weshalb
+    $k\equiv 0+2\cdot1+4\cdot0=2\pmod 8$ gilt.
+
+    \smallskip
+    \noindent\textbf{Bestimmung von $k\bmod 3$.}
+    Hier ist $R=\frac{600}{3}P=200P=(0,1)$.
+    Aus $200Q=(0,598)=2R$ folgt unmittelbar
+    $k\equiv2\pmod 3$.
+
+    \smallskip
+    \noindent\textbf{Bestimmung von $k\bmod 25$.}
+    Wir schreiben $k\equiv z_0+5z_1\pmod{25}$
+    mit $z_0,z_1\in\{0,\dots,4\}$ und setzen
+    $R=\frac{600}{5}P=120P=(84,179)$.
+    Aus $120Q=(84,179)=R$ folgt $z_0=1$.
+    Anschließend berechnen wir
+    \[
+        Q_1=\frac{600}{5^2}(Q-P)
+            =24(130,129)=(491,465)=3R.
+    \]
+    Daher ist $z_1=3$ und damit
+    $k\equiv1+5\cdot3=16\pmod{25}$.
+
+    \smallskip
+    \noindent\textbf{Zusammensetzen der Ergebnisse.}
+    Aus $k\equiv2\pmod 8$ und $k\equiv2\pmod 3$
+    folgt $k\equiv2\pmod{24}$.
+    Mit $k=2+24t$ ergibt die verbleibende Kongruenz
+    \[
+        2+24t\equiv16\pmod{25}
+        \quad\Longleftrightarrow\quad
+        t\equiv11\pmod{25}.
+    \]
+    Somit gilt $k\equiv266\pmod{600}$.
+    Der gesuchte diskrete Logarithmus ist also $k=266$.
+\end{beispiel}
+
+\subsection{MOV-Algorithmus}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.24)  20 SEP 2026 19:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.5) (preloaded format=pdflatex 2026.8.24)  22 SEP 2026 12:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -732,13 +732,18 @@ Kapitel 2
 
 
 ]
-Overfull \hbox (25.42012pt too wide) in paragraph at lines 79--84
+Overfull \hbox (25.42012pt too wide) in paragraph at lines 80--81
 []\T1/cmr/m/n/10 Neben der Fak-to-ri-sie-rung gibt es wei-te-re ma-the-ma-ti-sche Pro-ble-me, die in der Public-Key-Kryptographie
  []
 
-[8]) (chapters/03_elliptische_kurven.tex [9] [10]
+[8] [9]
+
+LaTeX Warning: Command \O invalid in math mode on input line 161.
+
+Missing character: There is no ÿ in font cmr10!
+[10] [11]) (chapters/03_elliptische_kurven.tex [12]
 Kapitel 3
-<images/kap2_bs1.png, id=313, 403.5075pt x 473.51906pt>
+<images/kap2_bs1.png, id=343, 403.5075pt x 473.51906pt>
 File: images/kap2_bs1.png Graphic file (type png)
 <use images/kap2_bs1.png>
 Package pdftex.def Info: images/kap2_bs1.png  used on input line 34.
@@ -753,7 +758,7 @@ Package caption Warning: Cannot determine current font size.
 (caption)                Try setting it with `size=' explicitly on input line 35.
 See the caption package documentation for explanation.
 
-<images/kap2_bs2.png, id=314, 338.01282pt x 455.45157pt>
+<images/kap2_bs2.png, id=344, 338.01282pt x 455.45157pt>
 File: images/kap2_bs2.png Graphic file (type png)
 <use images/kap2_bs2.png>
 Package pdftex.def Info: images/kap2_bs2.png  used on input line 40.
@@ -771,11 +776,11 @@ See the caption package documentation for explanation.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11
+[13
 
 
-] [12 <./images/kap2_bs1.png> <./images/kap2_bs2.png>]
-<images/kap2_2_bsp1.png, id=337, 760.34062pt x 675.27281pt>
+] [14 <./images/kap2_bs1.png> <./images/kap2_bs2.png>]
+<images/kap2_2_bsp1.png, id=366, 760.34062pt x 675.27281pt>
 File: images/kap2_2_bsp1.png Graphic file (type png)
 <use images/kap2_2_bsp1.png>
 Package pdftex.def Info: images/kap2_2_bsp1.png  used on input line 112.
@@ -783,18 +788,18 @@ Package pdftex.def Info: images/kap2_2_bsp1.png  used on input line 112.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [13]
-<images/kap2_2_bsp2.png, id=345, 864.22874pt x 675.27281pt>
+ [15]
+<images/kap2_2_bsp2.png, id=373, 864.22874pt x 675.27281pt>
 File: images/kap2_2_bsp2.png Graphic file (type png)
 <use images/kap2_2_bsp2.png>
 Package pdftex.def Info: images/kap2_2_bsp2.png  used on input line 121.
 (pdftex.def)             Requested size: 210.0pt x 164.07803pt.
-<images/kap2_2_bsp3.png, id=346, 806.26219pt x 741.52031pt>
+<images/kap2_2_bsp3.png, id=374, 806.26219pt x 741.52031pt>
 File: images/kap2_2_bsp3.png Graphic file (type png)
 <use images/kap2_2_bsp3.png>
 Package pdftex.def Info: images/kap2_2_bsp3.png  used on input line 129.
 (pdftex.def)             Requested size: 210.0pt x 193.13017pt.
-<images/kap2_2_bsp4.png, id=347, 753.5653pt x 746.79pt>
+<images/kap2_2_bsp4.png, id=375, 753.5653pt x 746.79pt>
 File: images/kap2_2_bsp4.png Graphic file (type png)
 <use images/kap2_2_bsp4.png>
 Package pdftex.def Info: images/kap2_2_bsp4.png  used on input line 138.
@@ -802,34 +807,34 @@ Package pdftex.def Info: images/kap2_2_bsp4.png  used on input line 138.
 
 Underfull \vbox (badness 1082) has occurred while \output is active []
 
- [14 <./images/kap2_2_bsp1.png> <./images/kap2_2_bsp2.png>]
-<images/kap2_2_bsp5.png, id=357, 640.64343pt x 794.2172pt>
+ [16 <./images/kap2_2_bsp1.png> <./images/kap2_2_bsp2.png>]
+<images/kap2_2_bsp5.png, id=385, 640.64343pt x 794.2172pt>
 File: images/kap2_2_bsp5.png Graphic file (type png)
 <use images/kap2_2_bsp5.png>
 Package pdftex.def Info: images/kap2_2_bsp5.png  used on input line 146.
 (pdftex.def)             Requested size: 210.0pt x 260.33527pt.
- [15 <./images/kap2_2_bsp3.png> <./images/kap2_2_bsp4.png>] [16 <./images/kap2_2_bsp5.png>] [17] [18] [19] [20] [21] [22] [23] [24]
-<images/ell_curve_projective_space.png, id=447, 257.46187pt x 256.70906pt>
+ [17 <./images/kap2_2_bsp3.png> <./images/kap2_2_bsp4.png>] [18 <./images/kap2_2_bsp5.png>] [19] [20] [21] [22] [23] [24] [25] [26]
+<images/ell_curve_projective_space.png, id=474, 257.46187pt x 256.70906pt>
 File: images/ell_curve_projective_space.png Graphic file (type png)
 <use images/ell_curve_projective_space.png>
 Package pdftex.def Info: images/ell_curve_projective_space.png  used on input line 726.
 (pdftex.def)             Requested size: 147.00256pt x 146.57637pt.
- [25 <./images/ell_curve_projective_space.png>] [26] [27] [28] [29] [30] [31] [32]
+ [27 <./images/ell_curve_projective_space.png>] [28] [29] [30] [31] [32] [33] [34]
 Underfull \hbox (badness 10000) in paragraph at lines 1196--1197
 
  []
 
-[33]
+[35]
 Underfull \hbox (badness 10000) in paragraph at lines 1266--1268
 
  []
 
-) (chapters/04_ec_endliche_k√∂rper.tex [34]
+) (chapters/04_ec_endliche_k√∂rper.tex [36]
 Kapitel 4
-[35
+[37
 
 
-] [36]
+] [38]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 152.
@@ -842,12 +847,12 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 152.
 
-[37]
+[39]
 Underfull \hbox (badness 10000) in paragraph at lines 169--171
 
  []
 
-[38]
+[40]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 265.
@@ -856,74 +861,87 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `subscript' on input line 265.
 
-[39]
-<images/ell_curve_finite_field.png, id=601, 406.1574pt x 328.8285pt>
+[41]
+<images/ell_curve_finite_field.png, id=626, 406.1574pt x 328.8285pt>
 File: images/ell_curve_finite_field.png Graphic file (type png)
 <use images/ell_curve_finite_field.png>
 Package pdftex.def Info: images/ell_curve_finite_field.png  used on input line 312.
 (pdftex.def)             Requested size: 210.0pt x 170.01338pt.
- [40] [41 <./images/ell_curve_finite_field.png>] [42] [43] [44] [45]
-Overfull \hbox (55.83772pt too wide) in paragraph at lines 645--650
+ [42]
+
+LaTeX Warning: Command \O invalid in math mode on input line 341.
+
+Missing character: There is no ÿ in font cmr10!
+[43 <./images/ell_curve_finite_field.png>] [44] [45] [46] [47]
+Overfull \hbox (55.83772pt too wide) in paragraph at lines 650--655
 \T1/cmr/m/it/10 und $\OML/cmm/m/it/10 n \OMS/cmsy/m/n/10 2 \U/msb/m/n/10 N$\T1/cmr/m/it/10 . Es soll nun das Viel-fa-che $\OML/cmm/m/it/10 Q \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 np$ \T1/cmr/m/it/10 be-rech-net wer-den. Sei $\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 = (\OML/cmm/m/it/10 b[]b[] [] b[]\OT1/cmr/m/n/10 )[] [] \OML/cmm/m/it/10 b[] \OT1/cmr/m/n/10 =
  []
 
+[48]
 
-Underfull \vbox (badness 3965) has occurred while \output is active []
+LaTeX Warning: Command \O invalid in math mode on input line 699.
 
- [46]) (chapters/05_ecc.tex [47] [48
+Missing character: There is no ÿ in font cmr10!
+) (chapters/05_ecc.tex [49] [50
 
 
 ]
 Kapitel 5
-[49] [50]
+[51] [52]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `\cite' on input line 120.
 
-[51]
-<images/empfehlung_der_nist.png, id=733, 298.11375pt x 159.59625pt>
+[53]
+<images/empfehlung_der_nist.png, id=763, 298.11375pt x 159.59625pt>
 File: images/empfehlung_der_nist.png Graphic file (type png)
 <use images/empfehlung_der_nist.png>
-Package pdftex.def Info: images/empfehlung_der_nist.png  used on input line 145.
+Package pdftex.def Info: images/empfehlung_der_nist.png  used on input line 149.
 (pdftex.def)             Requested size: 420.0pt x 224.86269pt.
-) (chapters/06_implementierung_ecc.tex [52 <./images/empfehlung_der_nist.png>] [53] [54
-
-
-]
+ [54] [55 <./images/empfehlung_der_nist.png>]) (chapters/06_implementierung_ecc.tex [56]
 Kapitel 6
-) (chapters/07_quantum_computers.tex [55] [56
+) (chapters/07_quantum_computers.tex [57
+
+
+] [58
 
 
 ]
 Kapitel 7
-) [57] [58
+) [59] [60
 
 
 ]
 Literatur
-[59] [60] (main.aux)
+[61]
+<images/python/giant_step.png, id=828, 201.75375pt x 152.82094pt>
+File: images/python/giant_step.png Graphic file (type png)
+<use images/python/giant_step.png>
+Package pdftex.def Info: images/python/giant_step.png  used on input line 52.
+(pdftex.def)             Requested size: 210.0pt x 159.06758pt.
+ [62 <./images/python/giant_step.png>] (main.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-07-20>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 71C853CBC68FAF95C9B20242BEA61C0F;8564.
+(rerunfilecheck)             Checksum: 325263925ACCA8377DC4A1E4D46A12F8;8521.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22980 strings out of 467501
- 405835 string characters out of 5408550
- 1280279 words of memory out of 5000000
- 51537 multiletter control sequences out of 15000+600000
- 647273 words of font info for 85 fonts, out of 8000000 for 9000
+ 23019 strings out of 467501
+ 406621 string characters out of 5408550
+ 1280555 words of memory out of 5000000
+ 51555 multiletter control sequences out of 15000+600000
+ 648833 words of font info for 87 fonts, out of 8000000 for 9000
  1304 hyphenation exceptions out of 8191
- 84i,12n,93p,835b,3107s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,12n,93p,1166b,3107s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0700.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbi1000.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2074.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt0800.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc1000.pk> <C:\Users\phili\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\eccc2074.pk><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/phili/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (61 pages, 908630 bytes).
+Output written on main.pdf (63 pages, 963725 bytes).
 PDF statistics:
- 1502 PDF objects out of 1728 (max. 8388607)
- 242 named destinations out of 1000 (max. 500000)
- 400 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1570 PDF objects out of 1728 (max. 8388607)
+ 261 named destinations out of 1000 (max. 500000)
+ 405 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -90,18 +90,46 @@ Sicherheit der Elliptische-Kurven-Kryptographie bewertet.
 
 \section{Mathematische Grundlagen und Notation}
 
-Anmerkung: Es wird davon ausgegeganngen, dass der Leser grundlegende algebraische Strukturen kennt. Verwendete Strukturen sind: Gruppen, Ringe, Körper, Vektorräume 
+Anmerkung: Es wird davon ausgegeganngen, dass der Leser grundlegende algebraische Strukturen kennt. Verwendete Strukturen sind: Gruppen, Ringe, Körper, Vektorräume
 \textbf{(siehe Quelle einfügen)}
 Körper
-Zyklische Gruppe und Generator 
+Basics über Gruppen und Untergruppen
 Eulersche Phi Funktion mit Primfaktorzerlegung.
 Homo- und Endomorphismen
 Algebraischer Abschluss
-Vektorraum 
+Vektorraum
 \[
-\begin{aligned}
-\phi(n) &\quad \text{Euler-Funktion},\\
-\mathbb{Z}_{\varphi(n)}^{*} &\quad \text{multiplikative Gruppe modulo } n.\\
-	\simeq
-\end{aligned}
+    \begin{aligned}
+                                               & \quad\textbf{Allgemeine mathematische Notationen}                            \\[0.5em]
+        \varphi(n)                             & \quad \text{Euler'sche Phi-Funktion}                                         \\
+        \simeq                                 & \quad \text{Isomorphie}                                                      \\
+        \#M                                    & \quad \text{Mächtigkeit der Menge } M                                        \\[1em]
+        %
+                                               & \quad \textbf{Notation zu Gruppen}                                           \\[0.5em]
+        G                                      & \quad \text{Endliche abelsche Gruppe}                                        \\
+        e_G                                    & \quad \text{Neutrales Element der Gruppe } G                                 \\
+        |G|                                    & \quad \text{Ordnung der Gruppe } G                                           \\
+        \langle P\rangle                       & \quad \text{Von } P \in G
+        \text{ erzeugte zyklische Untergruppe}                                                                                \\
+        \operatorname{ord}(a)                  & \quad \text{Ordnung des Elements } a \in G                                   \\
+        \mathbb{Z}_n^{*}                       & \quad \text{Multiplikative Gruppe der Einheiten modulo } n                   \\[1em]
+        %
+                                               & \quad \textbf{Notation zu Körpern}                                           \\[0.5em]
+        \mathbb{F}_p                           & \quad \text{Primkörper mit } p
+        \text{ Elementen, wobei } p \text{ prim ist}                                                                          \\
+        \mathbb{F}_q                           & \quad \text{Endlicher Körper mit } q
+        \text{ Elementen, wobei } q \text{ eine Primzahlpotenz ist}                                                           \\
+        \mathbb{F}_q^{\times}                  & \quad
+        \text{Multiplikative Gruppe der von null verschiedenen Elemente von }
+        \mathbb{F}_q                                                                                                          \\
+        \overline{\mathbb{F}}_q,\ \overline{F} & \quad
+        \text{Algebraischer Abschluss von } \mathbb{F}_q
+        \text{ bzw. } F                                                                                                       \\ \operatorname{char}(K) &\quad \text{Charakteristik des Körpers } K \\[1em]
+        %
+                                               & \quad \textbf{Notation zu elliptischen Kurven}                               \\[0.5em]
+        \mathcal{O}                            & \quad \text{Punkt im Unendlichen (neutrales Element)}                        \\
+        E(K),      E(\mathbb{F}_q)             & \quad \text{Elliptische Kurve üver dem Körper } K \text{ bzw. } \mathbb{F}_q \\
+        [n]P                                   & \quad \text{Skalarmultiplikation des Punktes } P
+        \text{ mit } n \in \mathbb{Z}                                                                                         \\
+    \end{aligned}
 \]

@@ -267,7 +267,9 @@ INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sym
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecti1000.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx1000.tfm
+INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx0700.tfm
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0500.tfm
+INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx0500.tfm
 INPUT .\main.toc
 INPUT .\main.toc
 INPUT main.toc
@@ -360,6 +362,12 @@ INPUT .\chapters\07_quantum_computers.tex
 INPUT .\chapters\07_quantum_computers.tex
 INPUT chapters\07_quantum_computers.tex
 INPUT C:\Users\phili\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1000.tfm
+INPUT .\images\python\giant_step.png
+INPUT .\images\python\giant_step.png
+INPUT .\images\python\giant_step.png
+INPUT .\images\python\giant_step.png
+INPUT .\images\python\giant_step.png
+INPUT .\images\python\giant_step.png
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
