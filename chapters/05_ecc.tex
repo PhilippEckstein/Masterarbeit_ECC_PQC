@@ -138,6 +138,13 @@ Elliptische Kurven bieten nun eine Möglichkeit um, wie wir in den folgenden Kap
 Faktorisierung großer Zahlen (Computeralgebra Kapitel 5, ab S.167)
 \textbf{Weil-Pairing?}
 
+
+\begin{itemize}
+    \item Punktzählung
+    \item Baby Step Giant Step
+    \item Pohlig-Hellman zeigt, dass man Untergruppen großer Primzahlordnung braucht
+    \item MOV 
+\end{itemize}
 \section{Performancesteigerung und Vergleich von ECC zu anderen Verfahren}
 
 Performance wäre zu finden bei \cite{fuß25}, S.201
@@ -154,11 +161,11 @@ Performance wäre zu finden bei \cite{fuß25}, S.201
 \section{Angriffe auf ECC}
 In Kapitel 2 \ref{baby-step-giant-step} wurde der Baby Step Giant Step Algorithmus verwendet nun soll dieser nochmal an einem Beispiel für elliptische Kurven aufgegriffen werden.
 \begin{beispiel}
-    Es wird erneut das Beispiel aus Kapitel 4 aufgegriffen. Sei $G=E(\mathbb{F}_{17})$, wobei $E$ gegeben ist durch $y^2=x^3+2x+2$. Sei $P=(0,6)$ und $Q=(3, 16)=kP$. nach dem Satz von Hasse \ref{def:hasse-schranke} kann eine obere Schranke ausgerechnet werden
+    Es wird erneut das Beispiel aus Kapitel 4 aufgegriffen, aber es wird angenommen, dass die Gruppenordnung unbekannt sei. Sei $G=E(\mathbb{F}_{17})$, wobei $E$ gegeben ist durch $y^2=x^3+2x+2$. Sei $P=(0,6)$ und $Q=(3, 16)=kP$. nach dem Satz von Hasse \ref{def:hasse-schranke} kann eine obere Schranke ausgerechnet werden
     \[ 
     |\#E(\mathbb{F}_{17})-17-1 |\leq 2\sqrt 17
     \],
-    also die Ordnung ist 26. Daher sei $m=\lceil \sqrt{26}\rceil=6$. Die Punkte $iP$ für $1\leq i< 6$ sind
+    also die Ordnung maximal 26. Daher sei $m=\lceil \sqrt{26}\rceil=6$. Die Punkte $iP$ für $1\leq i< 6$ sind
     \[
     (0, 6), (9, 1), (6, 3), (7, 6), (10, 11)
     \]
@@ -168,7 +175,7 @@ In Kapitel 2 \ref{baby-step-giant-step} wurde der Baby Step Giant Step Algorithm
     \]
     Es wird bei $j=2$ beendet, da der Punkt mit $1P$ übereinstimmt. Nun kann k einfach nachgerechnet werden, 
     \[
-    (30,40)=kP=(1+2\cdot6 6)P= 13P
+    (30,40)=kP=(1+2\cdot6)P= 13P
     \]
     und damit erhalten wir $k=13$ als das gesuchte Ergebnis.
     Alles wurde mit Hilfe von \ref{app:pythonprogramm}, die Konsolenausgabe ist in \ref{fig:python-2}.
@@ -237,3 +244,22 @@ Nun wird das Pohlig Hellmann Verfahren aus Kapitel 2 \ref{pohlig-hellman} ebenef
 \end{beispiel}
 
 \subsection{MOV-Algorithmus}
+\cite{washington08} S. 156--157
+\begin{lemma}
+    Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ mit
+    \[
+        \operatorname{Spur}(\phi_q)
+        = q+1-\#E(\mathbb{F}_q)=0.
+    \]
+    Sei $n\in\mathbb{Z}_{>0}$. Existiert ein Punkt
+    $P\in E(\mathbb{F}_q)$ der Ordnung $n$, so gilt
+    \[
+        E[n]\subseteq E(\mathbb{F}_{q^2}).
+    \]
+\end{lemma}
+
+Dadurch kann das diskrete Logarithmusproblem auf einer supersingulären elliptischen Kurve mit $\operatorname{Spur}(\phi_q)=0$ auf ein diskretes Logarithmusproblem in der multiplikativen Gruppe $\mathbb{F}_{q^2}^{\times}$ reduziert werden. Da hierfür lediglich eine
+Körpererweiterung vom Grad $2$ benötigt wird, können effizientere Verfahren zur Berechnung diskreter Logarithmen in endlichen Körpern
+angewendet werden.
+
+Auch für supersinguläre Kurven mit $\operatorname{Spur}(\phi_q)\neq 0$ ist eine solche Reduktion möglich. Dabei kann ein rweiterungsgrad $m\in\{3,4,6\}$ erforderlich sein. Diese Erweiterungsgrade sind weiterhin klein und ermöglichen daher eine Beschleunigung der Berechnung des diskreten Logarithmus.
