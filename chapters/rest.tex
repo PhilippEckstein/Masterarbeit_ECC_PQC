@@ -1,0 +1,23 @@
+
+\section{MOV-Algorithmus}
+\begin{lemma}
+    Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ mit
+    \[
+        \operatorname{Spur}(\phi_q)
+        = q+1-\#E(\mathbb{F}_q)=0.
+    \]
+    Sei $n\in\mathbb{Z}_{>0}$. Existiert ein Punkt
+    $P\in E(\mathbb{F}_q)$ der Ordnung $n$, so gilt
+    \[
+        E[n]\subseteq E(\mathbb{F}_{q^2}).
+    \]
+\end{lemma}
+
+Dadurch kann das diskrete Logarithmusproblem auf einer supersingulären elliptischen Kurve mit $\operatorname{Spur}(\phi_q)=0$ auf ein diskretes Logarithmusproblem in der multiplikativen Gruppe $\mathbb{F}_{q^2}^{\times}$ reduziert werden. Da hierfür lediglich eine
+Körpererweiterung vom Grad $2$ benötigt wird, können effizientere Verfahren zur Berechnung diskreter Logarithmen in endlichen Körpern
+angewendet werden.
+
+Auch für supersinguläre Kurven mit $\operatorname{Spur}(\phi_q)\neq 0$ ist eine solche Reduktion möglich. Dabei kann ein rweiterungsgrad $m\in\{3,4,6\}$ erforderlich sein. Diese Erweiterungsgrade sind weiterhin klein und ermöglichen daher eine Beschleunigung der Berechnung des diskreten Logarithmus.
+
+
+\section{warum elliptische Kurven}

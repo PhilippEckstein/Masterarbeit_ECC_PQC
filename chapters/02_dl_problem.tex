@@ -4,6 +4,7 @@ auf einem sicheren Weg zwischen beiden Parteien ausgetauscht werden.
 Gerade bei einer Kommunikation über große Entfernungen, hoher Frequenz oder Anonymität, wie es im Internet standart ist, stellt dieser Schlüsselaustausch ein praktisches Problem dar. Die Public-Key-Kryptographie setzt genau an diesem Problem an und verwendet stattdessen ein Paar aus öffentlichem und privatem Schlüssel.
 (vgl. \cite{fuß25} S.4).
 \section{Public-Key-Kryptographie}
+\label{public-key}
 Die grundlegende Idee eines Public-Key-Verfahrens kann durch eine Abbildung
 \[
     f:\mathcal{M}\longrightarrow\mathcal{C}
@@ -104,6 +105,18 @@ Es wird hier nochmal kurz auf grundlegende Definitionen der Gruppentheorie aufge
     \]
     gilt. Sie wird mit $\operatorname{ord}(P)$ bezeichnet.
 \end{definition}
+\begin{theorem}[Satz von Lagrange]
+    \label{satz:lagrange}
+    Sei $G$ eine endliche Gruppe und $H$ eine Untergruppe
+    von $G$. Dann teilt $|H|$ die Gruppenordnung $|G|$.
+    Insbesondere gilt für jedes $P\in G$:
+    \[
+        \operatorname{ord}(P)\mid |G|.
+    \]
+\end{theorem}
+\begin{proof}
+    \textbf{Todo noch Beweis hinzufügen}
+\end{proof}
 Sei $G=\langle P\rangle$ eine endliche zyklische Gruppe
 der Ordnung $n$ in additiver Schreibweise. Dann ist
 die Abbildung
@@ -114,10 +127,7 @@ die Abbildung
 bijektiv. Insbesondere existiert zu jedem $Q\in G$
 ein eindeutig bestimmtes $k\in\mathbb{Z}/n\mathbb{Z}$
 mit $Q=kP$. Die Berechnung von $kP$ ist durch wiederholtes
-Verdoppeln und Addieren mit $O(\log n)$
-Gruppenoperationen möglich. Die Umkehrung kann
-dagegen, abhängig von der gewählten Gruppe und
-ihrer Darstellung, erheblich schwieriger sein.
+Verdoppeln und Addieren mit $O(\log n)$ Gruppenoperationen möglich. Die Umkehrung kann dagegen, abhängig von der gewählten Gruppe und ihrer Darstellung, erheblich schwieriger sein.
 
 \begin{definition}[Diskretes Logarithmusproblem]
     Sei $G=\langle P\rangle$ eine endliche zyklische

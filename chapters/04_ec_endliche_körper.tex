@@ -748,7 +748,26 @@ Nun sind alle Vorraussetzungen gegeben, um den Beweis des Satz von Hasse durchzu
 \end{proof}
 
 \subsection{Frobenius-Spur und Supersingularität}
-\cite{washington08} 130--139, \cite{werner02} S.66--73
+Die Hasse-Schranke begrenzt die Abweichung der Gruppenordnung
+von $q+1$. Diese Abweichung heißt Frobenius-Spur. Sie wird
+später bei Schoofs Algorithmus zur exakten Punktzählung
+bestimmt. Außerdem lässt sich mit ihr die Supersingularität
+einer elliptischen Kurve charakterisieren. Diese Eigenschaft
+ist für die Wahl kryptographischer Kurven relevant, da der
+MOV-Angriff bei supersingulären Kurven eine Reduktion des
+diskreten Logarithmusproblems auf einen endlichen Körper
+kleinen Erweiterungsgrades ermöglichen kann. Die Darstellung der Frobenius-Spur und der Supersingularität orientiert sich an Werner \cite[S.~66--73]{werner02} und Washington \cite[S.~126--127, 130--139]{washington08}. Für die Einordnung des MOV-Angriffs wird Washington
+\cite[S.~156--157]{washington08} herangezogen.
+
+\begin{definition}[Supersingularität]
+    Eine elliptische Kurve $E$ über $\mathbb F_q$ der
+    Charakteristik $p>0$ heißt supersingulär, wenn
+    \[
+        E[p](\overline{\mathbb{F}}_q)=\{\mathcal{O}\}.
+    \]
+    Dass ist äquivlant zu der Aussage, dass eine elliptische Kurve $E$ supersingulär ist, wenn sie über dem algebraischen Abschluss keine nichttrivialen $p$ Torsionspunkte hat.
+\end{definition}
+Die Bezeichnung supersingulär ist von der Singularität einer algebraischen Kurve zu unterscheiden. Eine elliptische Kurve ist per Definition nichtsingulär. Supersingularität bezeichnet dagegen eine zusätzliche Eigenschaft elliptischer Kurven über Körpern positiver Charakteristik.
 \begin{definition}
     \label{def:frobenius-spur}
     Sei $E$ eine elliptische Kurve über dem endlichen Körper $\mathbb{F}_q$ mit Charakteristik $p$ mit $q=p^r$. Der Wert
@@ -761,19 +780,14 @@ Nun sind alle Vorraussetzungen gegeben, um den Beweis des Satz von Hasse durchzu
     \]
     bezeichnet.
 \end{definition}
-\begin{definition}[Supersingularität]
-    Eine elliptische Kurve $E$ über $\mathbb F_q$ der
-    Charakteristik $p$ heißt supersingulär, wenn
-    \[
-        p\mid t,
-    \]
-    wobei $t=\operatorname{Spur}(\phi_q)$ die Frobenius-Spur ist.
-\end{definition}
-Dass ist äquivlant zu der Aussage, dass eine elliptische Kurve $E$ supersingulär ist, wenn sie über dem algebraischen Abschluss keine nichttrivialen $p$ Torsionspunkte hat.
-\[
-    E[p](\overline{\mathbb{F}}_q)=\{\mathcal{O}\}.
-\]
-Die Bezeichnung supersingulär ist von der Singularität einer algebraischen Kurve zu unterscheiden. Eine elliptische Kurve ist per Definition nichtsingulär. Supersingularität bezeichnet dagegen eine zusätzliche Eigenschaft elliptischer Kurven über Körpern positiver Charakteristik.
+\begin{proposition}[Spurkriterium]
+    \label{prop:spurkriterium}
+    Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ mit $q=p^r$. Und sei $t=q+1-\#E(\mathbb{F}_q)$ erneut die Frobenius Spur. Dann ist $E$ genau dann supersingular, wenn \(t\equiv 0\mod p\). Daraus folgt \(\#E(\mathbb{F}_q)\equiv 1\mod p\).
+\end{proposition}
+Dies ist äquivalent zu der Aussage eine Kurve heißt supersingulär falls ihre Charakteristik $p=\operatorname{char}(\mathbb{F}_q)$ die Spur des Frobenius teilt.
+\begin{proof}
+    Ein Beweis findet sich in \cite[Proposition~4.31, S.~130--131]{washington08}.
+\end{proof}
 \begin{beispiel}
     Sei $E$ die elliptische Kurve über $\mathbb{F}_7$ mit der
     Weierstraßgleichung
@@ -807,8 +821,8 @@ Die Bezeichnung supersingulär ist von der Singularität einer algebraischen Kur
     \]
     Da $7\mid 0$ gilt, ist $E$ nach dem Spurkriterium supersingulär.
 \end{beispiel}
-
-\begin{beispiel} \textbf{Eventuell Charakteristik 2 entfernen}
+Nun wird noch ein Beispiel für den Fall Charakteristik ist 2 des Körpers angeschaut.
+\begin{beispiel}
     Ein weiteres Beispiel betrifft eine elliptische Kurve der Charakterstik 2. Es ist eine Kurve \(E(\mathbb{F}_2)\) gegeben durch die Weierstraßgleichung
     \[
         y^2+y=x^3+x+1.
@@ -816,120 +830,71 @@ Die Bezeichnung supersingulär ist von der Singularität einer algebraischen Kur
     Es ist für $x=0$ $y^2+y=1$ und es gibt somit keine Lösung und für $x=1$ $y^2+y=1$ und somit gibt es keine Lösung über dem Körper, also \(E(\mathbb{F}_2)=\{\mathbb{O}\}\). Es gilt für die Spur   \(\operatorname{Spur}(\phi_q)=2+1-1=2\) und ist damit durch die $\operatorname{char}(\mathbb{F}_2)=2$ teilbar.
 \end{beispiel}
 \begin{lemma}
-    Sei $E(\mathbb{F}_q)$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Falls $E(\mathbb{F}_q)$ supersingulär ist, so ist auch $E(\mathbb{F}_{q^k})$ supersingulär für alle $k\geq 1$.
+    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Falls $E(\mathbb{F}_q)$ supersingulär ist, so ist auch $E(\mathbb{F}_{q^k})$ supersingulär für alle $k\geq 1$.
 \end{lemma}
 Also die Supersingularität bleibt beim Übergang zu einem Erweiterungskörper erhalten.
 \begin{proof}
-    \cite{werner02}, S.66--68
+    Ein Beweis findet sich bei Werner
+    \cite[Lemma~3.4.2, S.~66--68]{werner02}.
 \end{proof}
-\begin{proposition}
-    \label{prop:spurkriterium-supersingular}
-    Sei $E$ eine elliptische Kurve über $\mathbb{F}_q$ mit $q=p^r$ mit $p$ prim. Sei die Spur des Frobenius \(t=q+1-\#E(\mathbb{F}_q)\), dann ist $E$ supersingulär, genau denn wenn \(Spur(\phi_q)\equiv 0\mod p\) ist. Das ist äquivalent zu \(\#E(\mathbb{F}_q)\equiv 1\mod p\).
-\end{proposition}
-\cite{washington08}, S.130
-\begin{proposition}
-    \cite{washington08}, S.130
-\end{proposition}
-
-\begin{lemma}
-    Sei $E$ eine elliptische Kurve über \(\mathbb{F}_q\), wobei $q=p^n$ gilt. Dann ist $E$ supersingulär, genau dann wenn $\operatorname{Spur}(\phi_q)\equiv 0 \mod p$, dass nur möglich ist, wenn $\#E(\mathbb{F}_q)\equiv 1 \mod p$
-\end{lemma}
-\begin{proof}
-    \cite{washington08}, S.130
-\end{proof}
-
 \begin{lemma}
     Sei $p\geq 5$ eine Primzahl. Dann ist die Ellitpische Kurve $y^2=x^3+1$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 2 \mod 3$ und die ellitpische Kurve $y^2=x^3+x$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 3 \mod 4$.
 \end{lemma}
 Das entspricht auch den Bedingungen von dem oben gewählten Beispiel.
 \begin{proof}
-    Proposition Seite 135 Washington
+    Ein Beweis findet sich bei Washington
+    \cite[Proposition~4.37, S.~135]{washington08}.
 \end{proof}
 
-
-\cite{washington08}, S.126--127
-\section{Double-and-Add-Algorithmus}
-\label{sec:double-and-add}
-
-Dieser Abschnitt basiert auf \cite{silverman06}, S.30--31 und \cite{buell24}, S.217--218.
-
-Sei $P$ ein Punkt einer additiv geschriebenen Gruppe und
-$n \in \mathbb{N}$. Ziel ist es, das skalare Vielfache
-\[
-    nP = \underbrace{P + P + \dots + P}_{n\text{-mal}}
-\]
-effizient zu berechnen.
-
-Eine naive Berechnung erfolgt durch sukzessive Addition:
-\begin{align*}
-    2P & = P + P,      \\
-    3P & = 2P + P,     \\
-       & \ \vdots      \\
-    nP & = (n-1)P + P.
-\end{align*}
-Hierfür werden insgesamt $n-1$ Gruppenadditionen benötigt. In
-Abhängigkeit vom Zahlenwert $n$ liegt die Laufzeit dieser Methode daher in $\mathcal{O}(n)$. Für die Betrachtung der tatsächlichen
-Eingabegröße ist jedoch die Anzahl der Bits entscheidend, die zur Darstellung von $n$ benötigt wird. Bezeichnet \(m = \lfloor \log_2(n) \rfloor + 1\) die Bitlänge von $n$, so gilt \( 2^{m-1} \leq n < 2^m \). Der Zahlenwert $n$ wächst somit exponentiell mit seiner Bitlänge
-$m$. Daher kann die Laufzeit der naiven Methode äquivalent als \( \mathcal{O}(2^m)\) angegeben werden. Insbesondere bei kryptographischen Verfahren wie dem Diffie-Hellman-Schlüsselaustausch aus
-Kapitel 5 ~\ref{sec:diffie-hellman} müssen skalare Vielfache für sehr große Skalare berechnet werden. Die naive Methode ist dafür
-nicht praktikabel. Eine wesentlich effizientere Berechnung
-ermöglicht der Double-and-Add-Algorithmus.
-\cite{guneysu24}, S. 288
-\begin{definition}[Double-and-Add-Algorithmus]
-    Sei $P$ ein Punkt auf einer elliptischen Kurve $E$ und $n\in \mathbb{N}$. Es soll nun das Vielfache $Q=np$ berechnet werden. Sei \( n = (b_{m-1}b_{m-2}\dots b_0)_2\qquad\text{mit}\qquad b_{m-1}=1\)
-    die Binärdarstellung von $n$.Der Double-and-Add-Algorithmus
-    verarbeitet die Bits von links nach rechts, beginnend mit dem
-    höchstwertigen Bit $b_{m-1}$.
-    \begin{enumerate}
-        \item Initialisiere $Q = \mathcal{O}$
-        \item Führe für $i=m-1,m-2,\dots,0$ die folgenden Schritte aus:
-              \begin{enumerate}
-                  \item Verdopple den aktuellen Punkt: \( Q = 2Q\)
-                  \item Falls $b_i=1$, dann addiere $P$: \(Q=Q+P\)
-              \end{enumerate}
-    \end{enumerate}
-    Nach der Verarbeitung aller Bits gilt $Q=nP$.
-\end{definition}
-Um die Komplexität zu bestimmen, schreibt man das Skalar $n$ nochmal mit Hilfe der Binärdarstellung
-Aus der Binärdarstellung $n=n_0+n_1\cdot 2\cdot 2+n_2\cdot 2^2+\cdots +n_r\cdot 2^r$ mit $n_0,\dots,n_r\in\{0,1\}.$. Daraus folgt für das skalare Vielfache \(nP=n_0P+n_1\cdot2P\cdot 2+n_2\cdot 2^2P+\cdots +N_r\cdot 2^rP\).Der Punkt $2^kP$ wird durch $k$ aufeinanderfolgende Punktverdopplungen berechnet. Da $r=\lfloor\log_2(m)\rfloor$ gilt, benötigt der Double-and-Add-Algorithmus genau $m-1$ Verdopplungen. Bei annähernd gleichverteilten Bits kommen im Mittel etwa \(\frac{1}{2}\lfloor\log_2(m)\rfloor\) Punktadditionen hinzu. Die Laufzeit liegt somit in
-$\mathcal{O}(\log n)$.
-\begin{beispiel}
-    Es soll das skalare Vielfache $46P$ berechnet werden. Zunächst
-    wird der Skalar in Binärdarstellung überführt \( 46=(101110)_2\).
-    Die Verarbeitung beginnt beim höchstwertigen Bit (\emph{most significant bit}, MSB). Da dieses stets gleich $1$ ist, wird der Startwert $Q=P$ gesetzt. Anschließend werden die
-    verbleibenden Bits von links nach rechts verarbeitet.
-    \begin{table}[htbp]
-        \centering
-        \begin{tabular}{c l l}
-            \hline
-            \textbf{Bit} & \textbf{Operation}       & \textbf{Zwischenergebnis} \\
-            \hline
-            $1$          & Initialisierung          & $Q=P$                     \\
-            $0$          & Verdopplung              & $Q=2P$                    \\
-            $1$          & Verdopplung und Addition & $Q=5P$                    \\
-            $1$          & Verdopplung und Addition & $Q=11P$                   \\
-            $1$          & Verdopplung und Addition & $Q=23P$                   \\
-            $0$          & Verdopplung              & $Q=46P$                   \\
-            \hline
-        \end{tabular}
-        \caption{Berechnung von $46P$ mit dem Double-and-Add-Algorithmus}
-        \label{tab:double-and-add-26}
-    \end{table}
-    Für die Berechnung von $46P$ werden somit fünf Verdopplungen und drei zusätzliche Additionen benötigt. Insgesamt sind dies acht Gruppenoperationen. Die naive Methode würde dagegen $46-1=45$ Additionen erfordern.
-\end{beispiel}
-
 \section{Punktzählung}
-Im vorangenganen Abschnitt wurde gezeigt wie man bei einfachen Gruppen vorgehen kann um die Ordnung von diesen zu bestimmen. Die Punktzählung für endliche Körper großer Primzahlordnung ist aber sehr unpraktikabel, denn es hat Komplexität \(\O(p^{1+\epsilon}, \epsilon>0)\)(vgl. \cite{schoof95},S. 2020). Daher soll in diesem Abschnitt Ideen entwickelt werden, wie man die Anzahl der Punkte einer Untergruppe von \(E(\mathbb{F}_q)\) berechnen kann.  Dies ist wichtig um später wichtig um passende Bedingungen für eine Kurve für ein Krpyotgraphisches Verfahren zu wählen. Hierfür wird vorallem der Algorithmus von Schoof und die Hasse Schranke benötigt. Der Beweis dieser benötigt eine Vielzahl von Eigenschaften die weit über die Arbeit hinausreichen, daher werden nur einige von ihnen aufgelistet, sodass zumindest eine Skizze des Beweises möglich ist. In \cite{silverman09} S. 138 findet man den ausführlichen Beweise. Dieser Abschnitt basier auf \cite{silverman09}, S.66f.
+Bei kleinen endlichen Körpern kann die Anzahl der Punkte einer elliptischen Kurve durch Auswertung aller möglichen $x$-Koordinaten bestimmt werden. Für große Körper ist dieses Vorgehen zu aufwendig. Um eine Kurve für kryptographische Anwendungen auszuwählen, muss ihre Gruppenordnung jedoch bekannt sein: Erst dann lässt sich prüfen, ob sie eine Untergruppe geeigneter Ordnung enthält. Dieser Abschnitt stellt zunächst Baby-Step-Giant-Step und Mestres Verfahren vor. Der Schwerpunkt liegt anschließend auf Schoofs Algorithmus. Er bestimmt die Frobenius-Spur schrittweise modulo kleiner Primzahlen und nutzt die
+Hasse-Schranke, um daraus die Gruppenordnung eindeutig zu ermitteln. Die Verfahren werden hier in ihren Grundzügen dargestellt. Die Darstellung orientiert sich an Schoof \cite[S.~219--228, 233--235]{schoof95} und seiner ursprünglichen Arbeit \cite{schoof85}. Für die Erläuterung von Schoofs Verfahren wird außerdem Werner \cite[S.~63--65]{werner02} und \cite[S.~101, 123--127]{washington08} herangezogen; der verwendete chinesische Restsatz folgt Werner \cite[S.~115--116]{werner02}. Die Einordnung der Laufzeit folgt Silverman \cite[S.~46]{silverman06}.
 
+\subsection{Baby-Step-Giant-Step Verfahren}
+Für größere Primzahlen ist die direkte Bestimmung der Gruppenordnung
+$\#E(\mathbb F_p)$ durch vollständiges Durchlaufen aller $x$-Werte
+ineffizient. Eine effizientere Möglichkeit basiert auf der
+Baby-Step-Giant-Step-Strategie von Shanks. Sei $E$ eine elliptische Kurve über $\mathbb F_p$. Nach dem Satz von Hasse gilt \( p+1-2\sqrt p \leq\#E(\mathbb F_p)\leq p+1+2\sqrt p\). Es wird zunächst ein zufälliger Punkt $P\in E(\mathbb{F}_p)$ gewählt. Anschließend wird mit Hilfe des Baby-Step-Giant-Step-Verfahrens wie in~\ref{baby-step-giant-step} eine ganze Zahl
+\[
+    m\in
+    [p+1-2\sqrt p,\;p+1+2\sqrt p]
+\]
+bestimmt, für die $mP=\mathbb{O}$ gilt. Ist $m$ die einzige Zahl innerhalb des Hasse-Intervalls mit dieser Eigenschaft, so muss $m=\#E(\mathbb{F}_p)$ gelten. Exestieren dagegen zwei verschiedene Zahlen $m$ und $m'$ im Hasse-Intervall mit $mP=m'P=\mathbb{O}$, so kann die Gruppenordnung aus diesem Punkt allein nicht eindeutig bestimmt werden. In diesem Fall kann jedoch  aus $(m-m')P=\mathbb{O}$ die Ordnung von \(P\) ermittelt und das Verfahren mit einem weiteren zufälligen Punkt fortgesetzt werden. Die Ordnung von $P$ ist ein Teiler von $\#E(\mathbb{F}_p)$. Das Verfahren kann anschließend mit einem weiteren zufälligen Punkt wiederholt werden, wobei die bereits gewonnene Information über einen Teiler der Gruppenordnung die weitere Berechnung in der Regel beschleunigt.
 
-\cite{schoof95}, S. 219--230
-\subsection{Baby steps and giant steps}
-\cite{schoof95}, S.220 Komplexität ist \(\O(p^{1/4+\epsilon}), \epsilon>0\). Praktisch für großere Primzahlen, aber unpraktisch für Zahlen größer 20 Dezimalstellen
-Die Gruppen von $E(\mathbb{F}_p)$ sind zyklisch oder das Produkt zweier zyklischer Gruppen \ref{theo:prod-zyklischer-gruppen}, daher können aus maximal zwei Punkte generiert werden. Es wird ein zufälliger Punkt $P\in E(\mathbb{F}_p)$ gewählt und dann ein $m\in\mathbb{Z}$ berechnet im Interval $(p+1-2\sqrt{2},p+1+2\sqrt{p})$, die Schranken werden aus dem Satz von Hasse her geleitet, sodass $mP=\mathbb{O}$ gilt. Wenn $m$ die einzige Zahl in diesem Interval ist, kann man mit Hilfe dem Satz von Hasse herleiten, dass $m=\#E(\mathbb{F}_p)$. Für den Punkt $P=(x,y)\in E(\mathbb{F}_p)$ kann ein beliebiger Punkt gewählt werden der die Weierstraßgleichung von $E$ erfüllt. Eine Möglichkeit hierfür wäre der Baby Step, Giant Step Algorithmus \ref{baby-step-giant-step}. Wenn es zwei $m,m'$ mit $mP=m'P=\mathbb{O}$ gibt im Intervall schlägt der Algorithmus fehl. Auch wenn dass in der Praxis selten passiert, kann daraus die Ordnungvon $P$ berechnet werden $(m-m')P=\mathbb{O}$. Mit Hilfe der Ordnung des Punktes und damit einem Teiler von $\#E(\mathbb{F}_p)$ kann mit einem anderen zufälligen Punkt meist schneller berechnet werden.
+Die Laufzeit dieses Ansatzes beträgt
+\[
+    O\left(p^{1/4+\varepsilon}\right)
+\]
+für jedes $\varepsilon>0$. Nach Schoof ist das Verfahren für
+vergleichsweise größere Primzahlen praktikabel, wird jedoch bei
+Primzahlen mit mehr als ungefähr 20 Dezimalstellen unpraktisch.
 \subsection{Mestre's Algorithm}
-Mit diesem Algorithmus, sollen die Gruppentheoretischen Problem aus der vorherigen Methode verhindert werden. Wir haben dafür wieder eine Kurve $E$ mit der Weierstraßgleichugn $y^2=x^3+Ax+B$, dann wird eine zweite Kurve eingeführt $E'$ mit $gy^2=x^3Ax+B$, für ein $g\in\mathbb{F}_q^*$.
-\subsection{Schoofs Algorithm}
+Mestres Algorithmus dient dazu, die gruppentheoretischen Probleme zu
+umgehen, die beim zuvor beschriebenen Baby-Step-Giant-Step-Verfahren
+auftreten können. Sei dazu eine elliptische Kurve
+\[
+    E:y^2=x^3+Ax+B
+\]
+über $\mathbb F_p$ gegeben. Zusätzlich wird die quadratische Twistkurve
+$E'$ von $E$ betrachtet. Für einen quadratischen Nichtrest
+$g\in\mathbb F_p^\ast$ ist diese gegeben durch
+\[
+    E':gy^2=x^3+Ax+B.
+\]
+Zwischen den Gruppenordnungen der beiden Kurven besteht der Zusammenhang
+\[
+    \#E(\mathbb F_p)+\#E'(\mathbb F_p)=2(p+1).
+\]
+Kann die Gruppenordnung von $E(\mathbb F_p)$ mit dem
+Baby-Step-Giant-Step-Verfahren aufgrund einer ungünstigen Gruppenstruktur
+nicht eindeutig bestimmt werden, wird das Verfahren stattdessen auf die
+Twistkurve $E'$ angewendet. Besitzt $E(\mathbb F_p)$ einen sehr kleinen
+Gruppenexponenten, so ist dies für die Gruppe $E'(\mathbb F_p)$ im
+Allgemeinen nicht gleichzeitig der Fall. Dadurch können die zuvor
+beschriebenen Mehrdeutigkeiten vermieden werden.
 
+\subsection{Schoofs Algorithm}
+Für Schoofs Algorithmus werden die sogennanten Divisionspolynome benötigt, die wichtig sind für die Torsionsstruktur.
 \begin{definition}[Divisionspolynome]
     Für eine elliptische Kurve
     \[
@@ -944,37 +909,70 @@ Mit diesem Algorithmus, sollen die Gruppentheoretischen Problem aus der vorherig
         \psi_n(P)=0.
     \]
 \end{definition}
-Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ mit $q=p^n$ und $p$ prim und $\operatorname{char}(\mathbb{F}_q)\neq 2,3$. Die Spur des Frobenius $t=q+1-\#E(\mathbb{F}_q)$ wird hier modulo der ersten Primzahlen $l=2,3,5,7,\dots$ bestimmt. Es seien nun $l_1=2,l_2=3,l_3=5,\dots,l_r$ die ersten $r$ Primzahlen.
-Nach dem Chinessischen Restsatz (Siehe \cite{werner02}, S.115-116 Satz 6.2.1) ist die Restklassenabbildung
+Außerdem wird noch ein Theorem über den Frobenius benötigt.
+\begin{theorem}
+    Sei $E$ eine elliptische Kurve über $\mathbb{F}_q$ und $t$ die Spur des Frobenius Endomorphismus $\phi_q$. Dann gilt in
+    $\operatorname{End}(E)$
+    \[
+        \phi_q^2-t\phi_q+q=0
+    \]
+\end{theorem}
+
+\begin{proof}
+    Ein Beweis findet sich in
+    \cite[Theorem~4.10, S.~101]{washington08}.
+\end{proof}
+Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ mit $q=p^n$ und $p$ prim und $\operatorname{char}(\mathbb{F}_q)\neq 2,3$.
+Schoofs Algorithmus bestimmt die Frobenius-Spur $t=q+1-\#E(\mathbb{F}_q)$ modulo mehreren kleinen Primzahlen $l\neq p$. Seien hierzu \(l_1=2,\; l_2=3,\; l_3=5,\dots,l_r\) verschiedene kleine Primzahlen. Es seien nun $l_1=2,l_2=3,l_3=5,\dots,l_r$ die ersten $r$ Primzahlen. Nach dem Chinesischen Restsatz ~\cite[S.~115--116, Satz~6.2.1]{werner02} gilt für \(L=l_1\cdots l_r\) der Isomorphismus
 \[
-    \mathbb{Z} \to \mathbb{Z}/l_1\mathbb{Z}\times\dots\times \mathbb{Z}/l_r\mathbb{Z}
+    \mathbb Z/L\mathbb Z
+    \cong
+    \mathbb Z/l_1\mathbb Z
+    \times\cdots\times
+    \mathbb Z/l_r\mathbb Z.
 \]
-eine Bijetion \(\mathbb{Z}/(l_1\cdot\dots\cdot l_r)\mathbb{Z} \to \mathbb{Z}/l_1\mathbb{Z}\times\dots\times \mathbb{Z}/l_r\mathbb{Z}\). Falls nun
+Damit ist $t$ modulo $L$ durch die Restklassen
 \[
-    -\frac{l_1\cdot\dots\cdot l_r}{2}<t<\frac{l_1\cdot\dots\cdot l_r}{2},
+    t\bmod l_1,\dots,t\bmod l_r
 \]
-so ist $t$ durch seine Restklasse in* \(\mathbb{Z}/(l_1\cdot\dots\cdot l_r)\mathbb{Z}\) und damit auch durch die $r$ Restklassenabbildung
+eindeutig bestimmt. Nach dem Satz von Hasse gilt
 \[
-    (t\mod l_1,t\mod l_2,\dots,t\mod l_r)
+    |t|\leq 2\sqrt q
 \]
-eindeutig bestimmt.
-Denn nach dem Satz von Hasse gilt \(p+1-2\sqrt{p}<\#E(\mathbb{F}_q)<p+1+2\sqrt{p}\) und damit ist es ausreichend wenn
+und damit ist $t$ als ganze Zahl eindeutig bestimmt, sobald
 \[
-    l_1\cdot\dots\cdot l_r>4\sqrt{q}
+    L=l_1\cdots l_r>4\sqrt q
 \]
-um die Ordung eindeutig zu bestimmen. Es wir zunächst $t\mod 2$ bestimmt. Es ist \(t\equiv\#E(\mathbb{F})_q\mod 2\), so dass nur gestestet werden muss, ob \(\#E(\mathbb{F}_q)\) gerade oder ungerade ist. Für ein festes $x\in\mathbb{F}_q$ mit $x^3+Ax+B\neq 0$ hat die Gleichung $y^2=x^3+Ax+B$ keine oder zwei Lösungen $y$. Also ist die Anzahler aller Lösungen $(x,y)$ mit $y\neq 0$ gerade. Diese Punkte im affinen Raum können somit vernachlässigt werden. Es bleiben \(\mathcal{O}\) und die affinen Punkte $(x,0)$ übrig. Falls $x^3+Ax+B=0$ eine Lösung $x_0\in\mathbb{F}_q$ hat, so kann man die linke Seite über dem algebraischen Abschluss $\overline{\mathbb{F}_q}$ faktorsieren als
+gilt.
+
+Es wird zunächst $t\mod 2$ bestimmt. Da $q$ ungerade ist, gilt
 \[
-    x^3+Ax+B=(x-x_0)(x-x_1)(x-x_2)
+    t=q+1-\#E(\mathbb F_q)
+    \equiv \#E(\mathbb F_q)\pmod 2.
 \]
-mit $x_1,x_2\in\overline{\mathbb{F}_q}$ man kann nun aus der Eigenschaft, dass die Kurve nichtsingulär ist schließen, dass die Nulslten $x_0,x_1$ und $x_2$ paarweise verschieden sind. Da $x_0+x_1+x_2=0$ ist, sind $x_1$ und $x_2$ entweder beide in $\mathbb{F}_q$ oder beide nicht darin. Im ersten Fall gibt e sdrei Punkte der $(x,0)\in\mathbb{F}_q$, im zweiten Fall nur einen. Die Anzahl der Puntke ist aufjedenfall ungerade. Wenn nun noch das neutrale Element \(\mathcal{O}\) berücksichtigt wird, so gilt $\#E(\mathbb{F}_q)\equiv 1\mod 2$ und damit dann auch $t\equiv 1\mod 2$, genau dann wenn $x^3+Ax+B$ keine Lösung in $\mathbb{F}_q$ hat. Das Polynom $X^3+AX+B$ ist also nicht von einem Faktor der Form $(X-c)$ für $c\in\mathbb{F}_q$ geteilt wird. Da $X^q-X=\prod_{c\in\mathbb{F}_q}(X-c)$ ist dies genau dann der Fall wenn im Polynomring $F[X]$
+Die Gruppenordnung $\#E(\mathbb F_q)$ ist genau dann gerade, wenn
+$E(\mathbb F_q)$ einen Punkt der Ordnung $2$ enthält. Diese Punkte
+haben die Form $(x,0)$. Somit ist $\#E(\mathbb F_q)$ genau dann gerade,
+wenn das Polynom \(X^3+AX+B\) eine Nullstelle in $\mathbb F_q$ besitzt. Da die Nullstellen von $X^q-X$ genau die Elemente von $\mathbb F_q$ sind, besitzt $X^3+AX+B$ genau dann eine Nullstelle in $\mathbb F_q$, wenn
 \[
-    \operatorname{ggT}(X^3+AX+B,X^q-X)=1
+    \operatorname{ggT}
+    (X^3+AX+B,\;X^q-X)\neq 1
 \]
-gilt und das lässt sich effektiv testen.
-Für $l\geq 3$ ist die Bestimmung von $t\mod l$ schwieriger. Daher wird hier nur eine Idee skizziert, genauere Informationen findet man in \cite{schoof95} und \cite{schoof85}. Der Frobenius \(\phi_q:E(\overline{\mathbb{F}_q})\to E(\overline{\mathbb{F}_q})\) mit der Gleichung
+gilt. Damit lässt sich $t\mod 2$ effizient bestimmen.
+Für $l\geq 3$ ist die Bestimmung von $t\mod l$ schwieriger. Daher wird hier nur eine Idee skizziert, genauere Informationen findet man in \cite{schoof95} und \cite{schoof85}.Für ungerades $n$ ist $\psi_n$ ein Polynom in $x$. Für $P=(x,y)\in E(\overline{\mathbb{F}}_q)$ gilt
 \[
-    \phi_q^2(P)-t\phi_q(P)+qP=\mathcal{O}, \quad P\in E(\overline{\mathbb{F}}_q)
-\] genügt. Gesucht ist nun eine Zahl $\tau\in\{0,\dots,l-1\}$ sodass die Gleichung
+    P\in E[n] \Longleftarrow \psi_n(x)=0.
+\]
+Der Frobenius-Endomorphismus erfüllt die Gleichung
+\[
+    \phi_q^2-t\phi_q+q=0 \quad P\in E(\overline{\mathbb{F}}_q)
+\]
+Somit gilt für jeden Punkt
+$P\in E(\overline{\mathbb F}_q)$
+\[
+    \phi_q^2(P)-t\phi_q(P)+qP=\mathcal O.
+\]
+Gesucht ist nun eine Zahl $\tau\in\{0,\dots,l-1\}$ sodass die Gleichung
 \[
     \phi_q^2(P)-\tau\phi_q+qp=\mathcal{O}
 \]
@@ -986,24 +984,24 @@ gilt. Falls ein solches \(\tau\) gefunden wird, so muss jedes $P\neq\mathcal{O}$
 \[
     (t-\tau)\phi_q(P)=\mathcal{O}
 \]
-sein. Nun ist $\phi_q(P)$ ebenfalls ein Punkt ungleich $\mathcal{O}$ in $E[l]$, d.h. \(\phi_q(P)\) hat die Ordnung $l$ in der Gruppe $E(\overline{\mathbb{F}}_q)$. Daher muss $l$ ein Teiler von $(t-\tau)$ sein, sodass
+sein. Für $P\in E[l]\setminus\{\mathcal O\}$ liegt auch
+$\phi_q(P)$ in $E[l]$, dass heißt $\phi_q(P)$ hat die Ordnung $l$ in der Gruppe $E(\overline{\mathbb{F}}_q)$. Daher muss $l\mid(t-\tau)$ gelten und somit
 \[
-    t\equiv \tau \mod l
+    t\equiv \tau \mod l.
 \]
-ist. Wir haben unsere Restklasse $t\mod l$ gefunden.
-Wie findet man aber die Zahl $\tau$. Man kann
-\[
-    \phi_q^2(P)-t\phi_q(P)+qP=\mathcal{O}, \quad P\in E(\overline{\mathbb{F}}_q)
-\]
-in einen Polynomgleichung überstzen, indem man die Gruppengesetze nutzt ??? und die sogennanten Divisionspolynome, mit denen man testen kann ob ein Punkt in $E[l]$ liegt. Für $\tau=0,1,2,\dots,l-1$ probiert man nun der Reihe nach ob diese Polynomgleichung erfüllt ist. Sobald dies der Fall ist hat man das richitge $\tau gefunden$\cite{werner02}, S.63--65
+Es wurde die Restklasse $t\mod l$ gefunden.
+Die Bestimmung von $\tau$ wird mithilfe der Gruppengesetze und der
+Divisionspolynome auf Polynomgleichungen zurückgeführt. Für
+$\tau=0,\dots,l-1$ wird überprüft, für welchen Wert die entsprechende
+Gleichung auf den $l$-Torsionspunkten erfüllt ist. Dieser Wert liefert
+die gesuchte Restklasse $t\bmod l$.
 
-Schoof berechnet es in Polynomial Zeit
-\cite{silverman06} S.46
-
-Elkies und Atiken haben ihn noch effizienter gemacht
-
-Was benötige ich noch: Frobenius-Spur,
+Schoofs Algorithmus ist deterministisch und besitzt eine Laufzeit,
+die polynomial in $\log q$ ist. Damit kann die Gruppenordnung
+$\#E(\mathbb F_q)$ effizient bestimmt werden.
+In der Praxis ist der ursprüngliche Schoof-Algorithmus jedoch aufgrund
+der hohen Grade der Divisionspolynome vergleichsweise aufwendig.
+Atkin und Elkies entwickelten Verbesserungen, die zur sogenannten
+SEA-Methode führen und die Berechnungen deutlich effizienter machen.
 Die Gruppenordnung lässt sich effizient bestimmen, ohne dass damit das diskrete Logarithmusproblem auf der Kurve effizient lösbar wird.
 
-
-basiert auf auch auf \cite{schoof95}, S.233--235

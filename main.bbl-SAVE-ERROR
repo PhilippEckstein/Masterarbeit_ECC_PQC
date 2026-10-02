@@ -430,6 +430,151 @@
       \verb https://doi.org/10.1007/978-3-662-61779-3_1
       \endverb
     \endentry
+    \entry{poeschel14}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=591192eca7dacd36ae7f1e42bce2ba13}{%
+           family={Pöschel},
+           familyi={P\bibinitperiod},
+           given={Jürgen},
+           giveni={J\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=f62c8f3bdc159d359152a9c54d981da9}{%
+           family={Fachmedien},
+           familyi={F\bibinitperiod},
+           given={Springer},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Wiesbaden}%
+      }
+      \list{publisher}{1}{%
+        {Springer Spektrum Wiesbaden}%
+      }
+      \strng{namehash}{591192eca7dacd36ae7f1e42bce2ba13}
+      \strng{fullhash}{591192eca7dacd36ae7f1e42bce2ba13}
+      \strng{fullhashraw}{591192eca7dacd36ae7f1e42bce2ba13}
+      \strng{bibnamehash}{591192eca7dacd36ae7f1e42bce2ba13}
+      \strng{authorbibnamehash}{591192eca7dacd36ae7f1e42bce2ba13}
+      \strng{authornamehash}{591192eca7dacd36ae7f1e42bce2ba13}
+      \strng{authorfullhash}{591192eca7dacd36ae7f1e42bce2ba13}
+      \strng{authorfullhashraw}{591192eca7dacd36ae7f1e42bce2ba13}
+      \strng{editorbibnamehash}{f62c8f3bdc159d359152a9c54d981da9}
+      \strng{editornamehash}{f62c8f3bdc159d359152a9c54d981da9}
+      \strng{editorfullhash}{f62c8f3bdc159d359152a9c54d981da9}
+      \strng{editorfullhashraw}{f62c8f3bdc159d359152a9c54d981da9}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-658-05799-2}
+      \field{subtitle}{Eine Einführung in die eindimensionale Analysis}
+      \field{title}{Etwas Analysis}
+      \field{year}{2014}
+      \verb{doi}
+      \verb 10.1007/978-3-658-05799-2
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-658-05799-2
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-658-05799-2
+      \endverb
+    \endentry
+    \entry{schoof85}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7864b9d3181245787ec9ff77f23cb1f6}{%
+           family={Schoof},
+           familyi={S\bibinitperiod},
+           given={René},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{fullhash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{fullhashraw}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{bibnamehash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{authorbibnamehash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{authornamehash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{authorfullhash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{authorfullhashraw}{7864b9d3181245787ec9ff77f23cb1f6}
+      \field{extraname}{1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematics of Computation}
+      \field{number}{170}
+      \field{title}{Elliptic Curves Over Finite Fields and the Computation of Square Roots mod p}
+      \field{volume}{44}
+      \field{year}{1985}
+      \field{pages}{483\bibrangedash 494}
+      \range{pages}{12}
+    \endentry
+    \entry{schoof95}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7864b9d3181245787ec9ff77f23cb1f6}{%
+           family={Schoof},
+           familyi={S\bibinitperiod},
+           given={René},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{fullhash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{fullhashraw}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{bibnamehash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{authorbibnamehash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{authornamehash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{authorfullhash}{7864b9d3181245787ec9ff77f23cb1f6}
+      \strng{authorfullhashraw}{7864b9d3181245787ec9ff77f23cb1f6}
+      \field{extraname}{2}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal de théorie des nombres de Bordeaux}
+      \field{number}{1}
+      \field{title}{Counting points on elliptic curves over finite fields}
+      \field{volume}{7}
+      \field{year}{1995}
+      \field{pages}{219\bibrangedash 254}
+      \range{pages}{36}
+      \verb{urlraw}
+      \verb https://www.numdam.org/item/JTNB_1995__7_1_219_0/
+      \endverb
+      \verb{url}
+      \verb https://www.numdam.org/item/JTNB_1995__7_1_219_0/
+      \endverb
+    \endentry
+    \entry{bundesamt26}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=efe74daf243f42c1fc627f32068bd59a}{%
+           family={Sicherheit\bibnamedelimb in\bibnamedelimb der\bibnamedelima Informationstechnik},
+           familyi={S\bibinitperiod\bibinitdelim i\bibinitperiod\bibinitdelim d\bibinitperiod\bibinitdelim I\bibinitperiod},
+           given={Bundesamt},
+           giveni={B\bibinitperiod},
+           prefix={für},
+           prefixi={f\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Bundesamt für Sicherheit in der Informationstechnik}%
+      }
+      \strng{namehash}{efe74daf243f42c1fc627f32068bd59a}
+      \strng{fullhash}{efe74daf243f42c1fc627f32068bd59a}
+      \strng{fullhashraw}{efe74daf243f42c1fc627f32068bd59a}
+      \strng{bibnamehash}{efe74daf243f42c1fc627f32068bd59a}
+      \strng{authorbibnamehash}{efe74daf243f42c1fc627f32068bd59a}
+      \strng{authornamehash}{efe74daf243f42c1fc627f32068bd59a}
+      \strng{authorfullhash}{efe74daf243f42c1fc627f32068bd59a}
+      \strng{authorfullhashraw}{efe74daf243f42c1fc627f32068bd59a}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{BSI TR-02102-1}
+      \field{title}{Kryptographische Verfahren: Empfehlungen und Schlüssellängen}
+      \field{type}{Technische Richtlinie}
+      \field{year}{2026}
+    \endentry
     \entry{silverman06}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=9b408ab4d6636cf13a892a83656d6ccb}{%
@@ -487,6 +632,88 @@
       \field{edition}{2}
       \field{title}{The Arithmetic of Elliptic Curves}
       \field{year}{2009}
+    \endentry
+    \entry{smart99}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=92a7e2b77bf3dab483ab23642c8736e8}{%
+           family={Smart},
+           familyi={S\bibinitperiod},
+           given={N.\bibnamedelimi P.},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{92a7e2b77bf3dab483ab23642c8736e8}
+      \strng{fullhash}{92a7e2b77bf3dab483ab23642c8736e8}
+      \strng{fullhashraw}{92a7e2b77bf3dab483ab23642c8736e8}
+      \strng{bibnamehash}{92a7e2b77bf3dab483ab23642c8736e8}
+      \strng{authorbibnamehash}{92a7e2b77bf3dab483ab23642c8736e8}
+      \strng{authornamehash}{92a7e2b77bf3dab483ab23642c8736e8}
+      \strng{authorfullhash}{92a7e2b77bf3dab483ab23642c8736e8}
+      \strng{authorfullhashraw}{92a7e2b77bf3dab483ab23642c8736e8}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Cryptology}
+      \field{title}{The Discrete Logarithm Problem on Elliptic Curves of Trace One}
+      \field{volume}{12}
+      \field{year}{1999}
+      \field{pages}{93\bibrangedash 196}
+      \range{pages}{104}
+      \verb{doi}
+      \verb 10.1007/s001459900052
+      \endverb
+    \endentry
+    \entry{stroth24}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=554636acb154ede7b8d0df2d83b1df9f}{%
+           family={Stroth},
+           familyi={S\bibinitperiod},
+           given={Gernot},
+           giveni={G\bibinitperiod}}}%
+        {{hash=af5cfd04c2e2d4dd498c9c6e8077dd88}{%
+           family={Waldecker},
+           familyi={W\bibinitperiod},
+           given={Rebecca},
+           giveni={R\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=b40fc58af521790cf0f09fc8ea09bd72}{%
+           family={Switzerland},
+           familyi={S\bibinitperiod},
+           given={Springer\bibnamedelima Nature},
+           giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Birkhäuser Cham}%
+      }
+      \strng{namehash}{785b2e56fa6dfc547d0fd83604cf4302}
+      \strng{fullhash}{785b2e56fa6dfc547d0fd83604cf4302}
+      \strng{fullhashraw}{785b2e56fa6dfc547d0fd83604cf4302}
+      \strng{bibnamehash}{785b2e56fa6dfc547d0fd83604cf4302}
+      \strng{authorbibnamehash}{785b2e56fa6dfc547d0fd83604cf4302}
+      \strng{authornamehash}{785b2e56fa6dfc547d0fd83604cf4302}
+      \strng{authorfullhash}{785b2e56fa6dfc547d0fd83604cf4302}
+      \strng{authorfullhashraw}{785b2e56fa6dfc547d0fd83604cf4302}
+      \strng{editorbibnamehash}{b40fc58af521790cf0f09fc8ea09bd72}
+      \strng{editornamehash}{b40fc58af521790cf0f09fc8ea09bd72}
+      \strng{editorfullhash}{b40fc58af521790cf0f09fc8ea09bd72}
+      \strng{editorfullhashraw}{b40fc58af521790cf0f09fc8ea09bd72}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-031-39771-4}
+      \field{title}{Elementare Algebra und Zahlentheorie}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.1007/978-3-031-39771-4
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-031-39771-4
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-031-39771-4
+      \endverb
     \endentry
     \entry{washington08}{book}{}{}
       \name{author}{1}{}{%

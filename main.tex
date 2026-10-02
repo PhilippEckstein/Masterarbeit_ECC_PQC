@@ -1,6 +1,9 @@
 \documentclass[openany]{stml-l}
 \input{settings/packages.tex}
 \input{settings/commands.tex}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\let\cleardoublepage\clearpage
+
 \begin{document}
 \begin{titlepage}
     \begin{center}
@@ -36,14 +39,13 @@
 
 \tableofcontents
 
-\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+
 
 \input{chapters/02_dl_problem.tex}
 \input{chapters/03_elliptische_kurven.tex}
 \input{chapters/04_ec_endliche_körper.tex}
 \input{chapters/05_ecc.tex}
-\input{chapters/06_implementierung_ecc.tex}
-\input{chapters/07_quantum_computers.tex}
+\input{chapters/06_quantum_computers.tex}
 \printbibliography
 
 \section{Anhang}

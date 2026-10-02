@@ -1,8 +1,9 @@
 \chapter{Elliptische Kurven}
-Dieses Kapitel legt die Grundlagen für die Arbeit mit elliptischen Kurven. Neben der allgemeinen Gleichung wird auch die Gruppenstruktur eingeführt. Ein großer Punkt spielt dabei der Beweis der Assoziativitität.
+Dieses Kapitel legt die Grundlagen für die Arbeit mit elliptischen Kurven. Neben der allgemeinen Gleichung wird auch die Gruppenstruktur eingeführt. Ein großer Punkt spielt dabei der Beweis der Assoziativitität. Außerdem wird auch die projektive Ebene eingeführt
 
 \section{Grundlagen}
-Das Kapitel basiert auf\cite{washington08} Washington 2008 S.9ff.
+In diesem Abschnitt werden die Grundlagen für elliptische Kurven eingeführt, auf denen anschließend die Beschreibung
+der Gruppenstruktur aufbaut. Die Darstellung in diesem Abschnitt orientiert sich an \cite[S.~9~ff.]{washington08}, \cite[S.~1, 6]{plaumann20} und \cite[S.~470~f.]{karpf24}.
 
 Beginnen wir also mit der Definition einer Elliptische Kurve.
 \begin{definition}
@@ -11,39 +12,38 @@ Beginnen wir also mit der Definition einer Elliptische Kurve.
         y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6,
     \]
     wobei wir das die Weierstraß-Gleichung nennen.
-    Wenn nun gilt char($K\neq 2,3$), so können wir die kurze
+    Wenn nun gilt $\operatorname{char}(K)\neq 2,3$, so können wir die kurze
     Weierstraß-Gleichung nutzen
     \[
         y^2=x^3+Ax+B.
     \]
     Wobei A und B konstante Werte sind.
+    Dabei sind $A,B\in K$ und es gilt
+\[
+    4A^3+27B^2\neq 0.
+\]
 \end{definition}
-Wir schreiben für den Punkt im Unendlichen \(\infty =\mathcal{O}\). Die Punkte $L\subset K $ einer elliptische Kurve können dann mit
+Wir schreiben für den Punkt im Unendlichen \(\infty =\mathcal{O}\). Für einen Erweiterungskörper Die Punkte $L\subseteq K $ bezeichnet
 \[
     E(L)=\{\mathcal{O} \} \cup \{(x,y)\in L\times L\mid y^2=x^3+Ax+B\}
 \]
-dargestellt werden. Nach Definition ist der Punkt $\mathcal{O}$ immer enthalten, warum wir diesen benötigen wird im nächsten Kapitel genauer erklärt.
+Nach Definition ist der Punkt $\mathcal{O}$ immer enthalten, warum wir diesen benötigen wird im nächsten Kapitel genauer erklärt.
 Nicht über jedem Körper lassen sich Elliptische Kurven sinnvoll optisch darstellen, daher betrachten wir zuerst den Körper der reellen Zahlen.
 Hierbei gibt es zwei grundlegende Formen.
 
-Über dem Körper \(\mathbb{R}\) kann die Kurve je nach Anzahl der reellen Nullstellen verschiedene Formen annehmemen. Zum Beispiel hat $y^2 = x^3 - 3x$ drei verschiedene reelle Nullstellen, nämlich $x = 0$ und $x = \pm \sqrt{3}$. Im Gegensatz dazu hat die Kurve $y^2 = x^3 + 3x$ lediglich eine reelle Nullstelle bei $x = 0$.\\
-\begin{figure}[h]
+Über dem Körper \(\mathbb{R}\) kann die Kurve je nach Anzahl der reellen Nullstellen verschiedene Formen annehmemen. Zum Beispiel hat $y^2 = x^3 - 3x$ drei verschiedene reelle Nullstellen, nämlich $x = 0$ und $x = \pm \sqrt{3}$. Im Gegensatz dazu hat die Kurve $y^2 = x^3 + 3x$ lediglich eine reelle Nullstelle bei $x = 0$.
+\begin{figure}[H]
     \centering
-    \begin{subfigure}{0.35\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{kap2_bs1.png}
-        \caption{Eigene Darstellung mit GeoGebra $y^2=x^3-3x$}
-    \end{subfigure}
+    \includegraphics[width=0.35\linewidth]{kap2_bs1.png}
     \hfill
-    \begin{subfigure}{0.45\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{kap2_bs2.png}
-        \caption{Eigene Darstellung mit GeoGebra $y^2=x^3+3x$}
-    \end{subfigure}
+    \includegraphics[width=0.35\linewidth]{kap2_bs2.png}
+    \caption{Elliptische Kurven über $\mathbb{R}$:
+        links $y^2=x^3-3x$, rechts $y^2=x^3+3x$.
+        Eigene Darstellung mit GeoGebra.}
     \label{fig:vergleich}
 \end{figure}
-
 Wie wir in der Darstellung sehen können, ändert sich die Form der Kurve über dem Körper $\mathbb{R}$, wenn wir mehrere reelle Nullstellen haben. Das Polynom \(x^3+Ax+B\) darf daher keine mehrfachen Nullstellen besitzen, dies ist äquivalent dazu, dass die Kurve \emph{nicht singulär} ist.
+
 
 \begin{definition}
     Sei $f \in K[x,y]$ und
@@ -57,11 +57,9 @@ Wie wir in der Darstellung sehen können, ändert sich die Form der Kurve über 
     Andernfalls heißt der Punkt \textbf{regulär}.
 
     Die Kurve \(E\) heißt \textbf{singulär}, wenn sie einen singulären Punkt besitzt.
-    vgl. \cite{plaumann20} S.1,6
 \end{definition}
 
-Wir wollen nun, dass unsere elliptische Kurve auch diese Bedingung erfüllt.
-Wir schreiben die Gleichung nun um zu
+Wir wollen nun, dass unsere elliptische Kurve auch diese Bedingung erfüllt. Wir schreiben die Gleichung nun um zu
 \[
     f(x,y)=y^2-x^3-Ax-B
 \]
@@ -69,17 +67,15 @@ dann sind die Ableitung
 \[
     f_x= -3x^2-A \quad \text{ und } \quad f_y=2y
 \]
-Es muss nun für beide ungleich 0 gelten,
+Es muss nun für eine der beiden pratiellen Ableitungen ungleich 0 gelten,
 \[
     f_x= -3x^2-A = 0 \Leftrightarrow 3x^2+A = 0
 \]
 und
 \[
-    f_y=2y = 0 \Leftrightarrow y = 0, \quad \text{char }\neq 2
+    f_y=2y = 0 \Leftrightarrow y = 0, \quad \operatorname{char}(K)\neq 2
 \]
-daraus folgt ein singulärer Punkt muss die Form $(x,0)$ haben und zusätzlich muss \(x^3+Ax+B = 0\) gelten, sodass der Punkt auf der Kurve liegt.
-Also x darf nicht eine Nullstelle von \(x^3+Ax+B\) und der Ableitung \(3x^2+A\) sein.
-Die Diskriminante für ein kubisches Polynom
+daraus folgt ein singulärer Punkt muss die Form $(x,0)$ haben und zusätzlich muss \(x^3+Ax+B = 0\) gelten, sodass der Punkt auf der Kurve liegt. Also x darf nicht eine Nullstelle von \(x^3+Ax+B\) und der Ableitung \(3x^2+A\) sein. Die Diskriminante für ein kubisches Polynom
 \[
     p(x)=x^3+Ax+B
 \]
@@ -96,15 +92,13 @@ Für die Nullstellen $r_1, r_2, r_3$ des Polynoms gilt
 \[
     ((r_1 - r_2)(r_1 - r_3)(r_2 - r_3))^2 = -(4A^3 + 27B^2).
 \]
-Insbesondere folgt daraus, dass die Nullstellen genau dann paarweise verschieden sind, wenn die Diskriminante $\Delta = -(4A^3 + 27B^2)$ ungleich Null ist.
-Im vorliegenden Fall ist $\Delta < 0$, sodass voneinader verschiedene reelle Nullstellen vorliegen.
-
+Insbesondere folgt daraus, dass die Nullstellen genau dann paarweise verschieden sind, wenn die Diskriminante $\Delta = -(4A^3 + 27B^2)$ ungleich Null ist. Im vorliegenden Fall ist $\Delta=108 > 0$, sodass drei voneinader verschiedene reelle Nullstellen vorliegen. Das Polynom $x^3+3x$ besitzt dagegen wegen $\Delta=-108<0$ genau eine reelle Nullstelle. In beiden Fällen ist die Diskriminante ungleich null, sodass die zugehörigen Weierstraßkurven nicht singulär sind.
 
 \section{Gruppenstruktur}
 
 Die Darstellung der Gruppenstruktur elliptischer Kurven orientiert sich in diesem Abschnitt an \cite{washington08} vgl. Washington 2008 S.12ff. und \cite{silverman06} Silverman 2006 S.8-19. Wobei der Beweis der Wohldefiniertheit der Addition auf \cite{zwegers24} vgl. Zwegers 2024 S. 477-481 basiert, dieser wird jedoch auf die bereits kurze Weierstraßform abgewandelt.
 
-Wir beginnen mit der Addition von zwei Punkten auf einer elliptischen Kurve. Dazu seien $P=(x_1,y_1)$ und $Q=(x_2,y_2)$ zwei Punkte auf einer elliptischen Kurve $E\colon y^2=x^3+Ax+B$. Gesucht ist der Punkte $R= P+_EQ$. Für die graphische Darstellung wählen wir ein Beispiel über $\mathbb{R}$ mit der Kurve $y^2=x^3-4x+10$.
+Wir beginnen mit der Addition von zwei Punkten auf einer elliptischen Kurve. Dazu seien $P=(x_1,y_1)$ und $Q=(x_2,y_2)$ zwei Punkte auf einer elliptischen Kurve $E\colon y^2=x^3+Ax+B$. Gesucht ist der Punkte $R=P+_EQ$. Für die graphische Darstellung wählen wir ein Beispiel über $\mathbb{R}$ mit der Kurve $y^2=x^3-4x+10$.
 
 Im ersten Schritt wird die Gerade $L$ durch $P$ und $Q$ gezeichnet.
 \begin{figure}[htbp]
@@ -721,7 +715,7 @@ Für einen gemeinsamen Schnittpunkt folgt durch Subtraktion
 Da $c_1\neq c_2$ gilt, folgt $Z=0$. Der gemeinsame Schnittpunkt liegt somit
 auf der Geraden im Unendlichen.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.35\linewidth]{ell_curve_projective_space.png}
     \caption[Projektiver Abschluss einer elliptischen Kurve]{
