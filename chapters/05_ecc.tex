@@ -48,19 +48,16 @@ $m$. Daher kann die Laufzeit der naiven Methode äquivalent als \(\mathrm{O}(2^m
 nicht praktikabel. Eine wesentlich effizientere Berechnung
 ermöglicht der Double-and-Add-Algorithmus.
 \begin{definition}[Double-and-Add-Algorithmus]
-    Sei $P$ ein Punkt auf einer elliptischen Kurve $E$ und $n\in \mathbb{N}$. Es soll nun das Vielfache $Q=np$ berechnet werden. Sei \( n = (b_{m-1}b_{m-2}\dots b_0)_2\) mit \(b_{m-1}=1\)
-    die Binärdarstellung von $n$.Der Double-and-Add-Algorithmus
-    verarbeitet die Bits von links nach rechts, beginnend mit dem
-    höchstwertigen Bit $b_{m-1}$.
+    Sei $P$ ein Punkt auf einer elliptischen Kurve $E$ und $n\in \mathbb{N}$. Es soll nun das Vielfache $Q=np$ berechnet werden. Sei \( n = (b_{m-1}b_{m-2}\dots b_0)_2\) mit \(b_{m-1}=1\) die Binärdarstellung von $n$. Der Double-and-Add-Algorithmus verarbeitet die Bits von links nach rechts, beginnend mit dem höchstwertigen Bit $b_{m-1}$.
     \begin{enumerate}
-        \item Initialisiere $Q = \mathcal{O}$
+        \item Initialisiere $Q\gets P$
         \item Führe für $i=m-1,m-2,\dots,0$ die folgenden Schritte aus:
               \begin{enumerate}
-                  \item Verdopple den aktuellen Punkt: \( Q = 2Q\)
-                  \item Falls $b_i=1$, dann addiere $P$: \(Q=Q+P\)
+                  \item Verdopple den aktuellen Punkt: $Q\gets 2Q$
+                  \item Falls $b_i=1$, setze $Q\gets Q+P$
               \end{enumerate}
     \end{enumerate}
-    Nach der Verarbeitung aller Bits gilt $Q=nP$.
+    Nach der Verarbeitung aller Bits gilt $Q=nP$. Für $n=0$ wird unmittelbar $\mathcal{O}$ zurückgegeben.
 \end{definition}
 Sei \(n=(b_{m-1}\dots b_1b_0)_2\) die Binärdarstellung von $n$ mit \(m=\lfloor\log_2 n\rfloor+1\). Der Algorithmus verarbeitet somit $m$ Bits. Dabei werden höchstens $m$ Punktverdopplungen und $m$  Punktadditionen benötigt. Damit liegt die Anzahl der Gruppenoperationen in
 \[

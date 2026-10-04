@@ -58,6 +58,54 @@
       \field{title}{Grundlagen der Kryptographie}
       \field{year}{2024}
     \endentry
+    \entry{nist23}{report}{}{}
+      \name{author}{5}{}{%
+        {{hash=16d5d89c1ab5e7394cdd2e157e2bd3dd}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Lily},
+           giveni={L\bibinitperiod}}}%
+        {{hash=0e1eeb81de980f2a551bcbe23852e709}{%
+           family={Moody},
+           familyi={M\bibinitperiod},
+           given={Dustin},
+           giveni={D\bibinitperiod}}}%
+        {{hash=f2183cf20217123895cad870af951fc5}{%
+           family={Randall},
+           familyi={R\bibinitperiod},
+           given={Karen},
+           giveni={K\bibinitperiod}}}%
+        {{hash=fc1c79990dad532ac20cbeca8479e546}{%
+           family={Regenscheid},
+           familyi={R\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c5b8437c576f13b7017c1baec87b7fd1}{%
+           family={Robinson},
+           familyi={R\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NIST}%
+      }
+      \strng{namehash}{26c312e2629bd185163244ccf26f2abc}
+      \strng{fullhash}{86284bb8f84ed32f3362e0c9dc318532}
+      \strng{fullhashraw}{86284bb8f84ed32f3362e0c9dc318532}
+      \strng{bibnamehash}{26c312e2629bd185163244ccf26f2abc}
+      \strng{authorbibnamehash}{26c312e2629bd185163244ccf26f2abc}
+      \strng{authornamehash}{26c312e2629bd185163244ccf26f2abc}
+      \strng{authorfullhash}{86284bb8f84ed32f3362e0c9dc318532}
+      \strng{authorfullhashraw}{86284bb8f84ed32f3362e0c9dc318532}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{NIST SP 800-186}
+      \field{title}{Recommendations for discrete logarithm-based cryptography}
+      \field{type}{Technische Richtlinie}
+      \field{year}{2023}
+    \endentry
     \entry{clader25}{book}{}{}
       \name{author}{2}{}{%
         {{hash=6ec521f2f23794e508408d93233ac4ed}{%
@@ -825,6 +873,7 @@
       \range{pages}{10}
     \endentry
   \enddatalist
+  \missing{nist}
 \endrefsection
 \endinput
 
