@@ -3,7 +3,7 @@ Dieses Kapitel legt die Grundlagen für die Arbeit mit elliptischen Kurven. Nebe
 
 \section{Grundlagen}
 In diesem Abschnitt werden die Grundlagen für elliptische Kurven eingeführt, auf denen anschließend die Beschreibung
-der Gruppenstruktur aufbaut. Die Darstellung in diesem Abschnitt orientiert sich an \cite[S.~9~ff.]{washington08}, \cite[S.~1, 6]{plaumann20} und für die Diskriminante an \cite[S.~470~f.]{karpf24}.
+der Gruppenstruktur aufbaut. Die Darstellung in diesem Abschnitt orientiert sich an~\cite[S.~9~ff.]{washington08},~\cite[S.~1, 6]{plaumann20} und für die Diskriminante an~\cite[S.~470~f.]{karpf24}.
 
 Beginnen wir also mit der Definition einer Elliptische Kurve.
 \begin{definition}
@@ -30,7 +30,7 @@ Der Punkt im Unendlichen wird mit \(\infty =\mathcal{O}\) bezeichnet. Für einen
 die Menge aller rationalen Punkte der elliptischen Kurve $E$ und den Punkt im Unendlichen. Nach Definition ist der Punkt $\mathcal{O}$ immer enthalten, warum dieser benötigt wird, wird im nächsten Abschnitt ausgeführt. Nicht über jedem Körper lassen sich Elliptische Kurven sinnvoll optisch darstellen, daher wird zuerst der Körper der reellen Zahlen betrachtet. Hierbei gibt es zwei grundlegende Formen.
 
 Über dem Körper \(\mathbb{R}\) kann die Kurve je nach Anzahl der reellen Nullstellen verschiedene Formen annehmemen. Zum Beispiel hat $y^2 = x^3 - 3x$ drei verschiedene reelle Nullstellen, nämlich $x = 0$ und $x = \pm \sqrt{3}$. Im Gegensatz dazu hat die Kurve $y^2 = x^3 + 3x$ lediglich eine reelle Nullstelle bei $x = 0$.
-\begin{figure}[H]
+\begin{figure}[H]~\label{fig:vergleich}
     \centering
     \includegraphics[width=0.35\linewidth]{kap2_bs1.png}
     \hfill
@@ -38,7 +38,6 @@ die Menge aller rationalen Punkte der elliptischen Kurve $E$ und den Punkt im Un
     \caption{Elliptische Kurven über $\mathbb{R}$:
         links $y^2=x^3-3x$, rechts $y^2=x^3+3x$.
         Eigene Darstellung mit GeoGebra.}
-    \label{fig:vergleich}
 \end{figure}
 Wie man in der Darstellung sehen kann, ändert sich die Form der Kurve über dem Körper $\mathbb{R}$, wenn mehrere reelle Nullstellen exestieren. Das Polynom \(x^3+Ax+B\) darf daher keine mehrfachen Nullstellen besitzen, dies ist äquivalent dazu, dass die Kurve \emph{nicht singulär} ist.
 
@@ -89,7 +88,7 @@ Diese Bedingung ist äquivalent mit der Zusatzbedingung für $A,B\in K$ bei der 
 
 Für die Nullstellen $r_1, r_2, r_3$ des Polynoms gilt
 \[
-    ((r_1 - r_2)(r_1 - r_3)(r_2 - r_3))^2 = -(4A^3 + 27B^2).
+    {((r_1 - r_2)(r_1 - r_3)(r_2 - r_3))}^2 = -(4A^3 + 27B^2).
 \]
 Insbesondere folgt daraus, dass die Nullstellen genau dann paarweise verschieden sind, wenn die Diskriminante $\Delta = -(4A^3 + 27B^2)$ ungleich Null ist. Im vorliegenden Fall ist $\Delta=108 > 0$, sodass drei voneinader verschiedene reelle Nullstellen vorliegen. Das Polynom $x^3+3x$ besitzt dagegen wegen $\Delta=-108<0$ genau eine reelle Nullstelle. In beiden Fällen ist die Diskriminante ungleich null, sodass die zugehörigen Weierstraßkurven nicht singulär sind.
 
@@ -280,7 +279,7 @@ an der $x$-Achse wird wieder $P$ erhalten. Diese Aussage kann erweitert werden, 
     \[
         y_1^2=f(x_1)=f(x_2)=y_2^2.
     \]
-    Daraus folgt \(y_2=y_1\text{ oder } y_2=-y_1\). Es kann aufgrund der Vorraussetzung des Lemmas nicht \(y_2=-y_1\) gelten, daher muss $y_2=y_1$ gelten und damit auch \(P_1=P_2\). Angenommen, es gilt\(y_1=0\), dann gilt $y_2=y_1=0=-y_1$ und somit im Widerspruch zur Vorraussetzung. Daher muss \(y_1\neq 0\) gelten. Wegen \(\operatorname{char}(K)\neq2\) ist daher \(2y_1\neq0\), sodass auch
+    Daraus folgt \(y_2=y_1\text{ oder } y_2=-y_1\). Es kann aufgrund der Voraussetzung des Lemmas nicht \(y_2=-y_1\) gelten, daher muss $y_2=y_1$ gelten und damit auch \(P_1=P_2\). Angenommen, es gilt\(y_1=0\), dann gilt $y_2=y_1=0=-y_1$ und somit im Widerspruch zur Voraussetzung. Daher muss \(y_1\neq 0\) gelten. Wegen \(\operatorname{char}(K)\neq2\) ist daher \(2y_1\neq0\), sodass auch
     \[
         m_{12}=\frac{3x_1^2+A}{2y_1}\in K
     \]
@@ -743,7 +742,7 @@ Doch bevor die Assoziativität bewiesen werden kann, müssen zuerst noch eine Re
 
 \begin{lemma}
     \label{lem:dreipunktsumme}
-    Seien $P_1,P_2,P_3\in E\setminus{\{\mathcal{O}\}}$ mit $P_3\neq \pm P_1, P_2\neq -P_1, P_2\neq -P_3$ und $P_1+P_2\neq -P_3$. Dann besitzt der Punktes $P_4=(P_1+P_2)+P_3$ die Koordinaten
+    Seien $P_1,P_2,P_3\in E\setminus{\{\mathcal{O}\}}$ mit $P_3\neq \pm P_1, P_2\neq -P_1, P_2\neq -P_3$ und $P_1+P_2\neq -P_3$. Dann besitzt der Punkt $P_4=(P_1+P_2)+P_3$ die Koordinaten
     \[
         x_4=-x_1+x_2-x_3+\frac{1}{c_2^2}-2\frac{c_1}{c_2} \quad \text{und}\quad y_4 = -y_2-(x_4-x_2)(c_1+x_4c_2)
     \]
@@ -755,13 +754,13 @@ Doch bevor die Assoziativität bewiesen werden kann, müssen zuerst noch eine Re
 
 \begin{hilfssatz}
     \label{hilfs:fixpunkt-addition}
-    Sei $P_1,P_2\in E$ mit $P_1+P_2=P_1$. Dann gilt $P_2 =\mathcal{O}$.
+    Seien $P_1,P_2\in E$ mit $P_1+P_2=P_1$. Dann gilt $P_2 =\mathcal{O}$.
 \end{hilfssatz}
 
 \begin{proof}
     Zunächst sei $P_1=\mathcal{O}$. Dann folgt unmittelbar \(P_2=\mathcal{O}+P_2=P_1+P_2=P_1=\mathcal{O}\).
 
-    Sei nun $P_2=-P_1$. Nach Definition der Punktaddition gilt dann \(P_1+P_2=\mathcal{O}\). Aus der Vorraussetzung $P_1+P_2=P_1$ folgt somit $   P_1=\mathcal{O}$ und daher ebenfall $P_2=-P_1=\mathcal{O}$.
+    Sei nun $P_2=-P_1$. Nach Definition der Punktaddition gilt dann \(P_1+P_2=\mathcal{O}\). Aus der Voraussetzung $P_1+P_2=P_1$ folgt somit $   P_1=\mathcal{O}$ und daher ebenfalls $P_2=-P_1=\mathcal{O}$.
 
     Es bleibt der Fall \(P_1,P_2\in E\setminus\{\mathcal{O}\}\) mit \(P_2\neq-P_1\). Angenommen es gilt dennoch $P_1+P_2=P_1$. Dann gilt für die Summe $P_1+P_2=(x_3,y_3)$ und damit $(x_1,y_1)=(x_3,y_3)$.
     Nach der Additionsformel folgt somit
@@ -787,120 +786,161 @@ Doch bevor die Assoziativität bewiesen werden kann, müssen zuerst noch eine Re
     \]
     Folglich ist $x_1$ eine doppelte Nullstelle von $f$. Da zugleich $y_1=0$ gilt, wäre der Punkt $(x_1,0)$ ein singulärer Punkt der Kurve $E$. Dies widerspricht der Voraussetzung, dass $E$ eine elliptische und damit nichtsinguläre Kurve ist. Folglich kann dieser Fall nicht auftreten.
 \end{proof}
-
-\textbf{TODO: Hier weiter machen}
-
+Unter den Voraussetzungen von Lemma~\ref{lem:dreipunktsumme} seien
+\[
+    P_1+P_2=(\hat{x},\hat{y}),\qquad
+    m_{12}=m(P_1,P_2),\qquad
+    m_{23}=m(P_2,P_3)\qquad \text{und} \qquad m_{12,3}=m(P_1+P_2,P_3).
+\]
 \begin{hilfssatz}
     \label{hilfs:steigungsidentitaet}
-    Sei $P_1,P_2,P_3\in E\setminus\{\mathcal{O}\}$ mit $P_3 \neq \pm P_1,P_2\neq -P_1,P_2\neq -P_3$ und $P_1+P_2\neq -P_3$. Außerdem ist $c_2$ definiert wie in Lemma~\ref{lem:dreipunktsumme}. Dann gilt
+    Seien $P_1,P_2,P_3\in E\setminus\{\mathcal{O}\}$ mit $P_3 \neq \pm P_1,P_2\neq -P_1,P_2\neq -P_3$ und $P_1+P_2\neq -P_3$. Außerdem ist $c_2$ definiert wie in Lemma~\ref{lem:dreipunktsumme}. Dann gilt
     \[
         c_2(m_{12}+m_{12,3})=1.
     \]
 \end{hilfssatz}
 
 \begin{proof}
-    Es gilt wie beim Beweis der Wohldefiniertheit der Addition~\ref{lem:wohldefiniertheit}
-    ist nach Gleichung~\eqref{eq:faktorisierung-wohldefiniertheit} bekannt, dass
+    Wie bereits im Beweis der Wohldefiniertheit der Addition~\ref{lem:wohldefiniertheit} gezeigt wurde, gilt nach Gleichung~\eqref{eq:faktorisierung-wohldefiniertheit}
     \[
         f(x)-\left(y_1+m_{12}(x-x_1)\right)^2
         =(x-x_1)(x-x_2)(x-\hat{x}).
     \]
     Wenn $P_2\neq P_3$, dann gilt
+    \begin{align*}
+        c_2 & =\frac{m(P_1,P_2)-m(P_2,P_3)}{x_1-x_3} =\frac{m_{12}-\frac{y_3-y_2}{x_3-x_2}}{x_1-x_3}                                         \\
+            & =\frac{\frac{m_{12}(x_3-x_2)}{x_3-x_2}-\frac{y_3-y_2}{x_3-x_2}}{x_1-x_3}= \frac{-y_3+y_2+m_{12}(x_3-x_2)}{(x_1-x_3)(x_3-x_2)}.
+    \end{align*}
+    Da $P_1$ und $P_2$ auf derselben Geraden mit Steigung $m_{12}$
+    liegen, gilt $y_2-y_1=m_{12}(x_2-x_1)$, umgeformt gilt $y_2=y_1+m_{12}(x_2-x_1)$. Einsetzen in die vorherige Darstellung von $c_2$ ergibt
     \[
-        c_2=\frac{m(P_1,P_2)-m(P_2,P_3)}{x_1-x_3}=\frac{m_{12}-\frac{y_3-y_2}{x_3-x_2}}{x_1-x_3}=\frac{\frac{m_{12}(x_3-x_2)}{x_3-x_2}-\frac{y_3-y_2}{x_3-x_2}}{x_1-x_3}
-        = \frac{-y_3+y_2+m_{12}(x_3-x_2)}{(x_1-x_3)(x_3-x_2)}.
-    \]
-    Wir nutzen dafür, dass $y_2-y_1=m_{12}(x_2-x_1)$ gilt für die Gerade durch die Punkte $P_1$ und $P_2$. Dies formen wir um zu $y_2=y_1+m_{12}(x_2-x_1)$ und setzen es in die Gleichung ein
-    \[
-        \frac{-y_3+(y_1+m_{12}(x_2-x_1))+m_{12}(x_3-x_2)}{(x_1-x_3)(x_3-x_2)}
+        c_2=\frac{-y_3+(y_1+m_{12}(x_2-x_1))+m_{12}(x_3-x_2)}{(x_1-x_3)(x_3-x_2)}
         = \frac{-y_3+y_1+m_{12}(x_3-x_1)}{(x_1-x_3)(x_3-x_2)}
     \]
-    Wenn nun $P_1+P_2\neq P_3$ gilt. Wir definieren $(x_1,y_1) + (x_2,y_2) = (\hat{x},\hat{y})$ und rechnen
-    \[
-        m_{12}+m_{12,3}=m_{12}+\frac{y_3-\hat{x}}{x_3-\hat{x}}=m_{12}+\frac{y_3+y_1+m_{12}(\hat{x}-x_1)}{x_3-\hat{x}}
-    \]
-    \[
-        =\frac{m_{12}(x_3-\hat{x})}{x_3-\hat{x}}+\frac{y_3+y_1+m_{12}(\hat{x}-x_1)}{x_3-\hat{x}}
-    \]
-    \[
-        =\frac{y_3+y_1+m_{12}(x_3-x_1)}{x_3-\hat{x}}
-    \]
-    Wir betrachten nun 4 Fälle.
+    Sei nun zusätzlich $P_1+P_2\neq P_3$ mit $P_1+P_2= (x_1,y_1) + (x_2,y_2) = (\hat{x},\hat{y})$ gilt nach der Additionsformel \(\hat{y} =-y_1-m_{12}(\hat{x}-x_1)\). Daher folgt
+    \begin{align*}
+        m_{12}+m_{12,3}
+         & =
+        m_{12}
+        +
+        \frac{y_3-\hat{y}}{x_3-\hat{x}} =
+        m_{12}
+        +
+        \frac{
+            y_3+y_1+m_{12}(\hat{x}-x_1)
+        }{
+            x_3-\hat{x}
+        }  \\ &=
+        \frac{
+            m_{12}(x_3-\hat{x})
+            +y_3+y_1+m_{12}(\hat{x}-x_1)
+        }{
+            x_3-\hat{x}
+        } \\ &=
+        \frac{
+            y_3+y_1+m_{12}(x_3-x_1)
+        }{
+            x_3-\hat{x}
+        }.
+    \end{align*}
+    Es werden nun vier verschiedene Fälle betrachtet.
     \begin{enumerate}
-        \item Für $P_2\neq P_3$ und $P_1+P_2\neq P_3$
+        \item Sei $P_2\neq P_3$ und $P_1+P_2\neq P_3$, dann gilt
               \begin{align*}
-                  c_2(m_{12}+m_{12,3}) = & \frac{-y_3+y_1+m_{12}(x_3-x_1)}{(x_1-x_3)(x_3-x_2)} \frac{y_3+y_1+m_{12}(x_3-x_1)}{x_3-\hat{x}} \\
-                  =                      & \frac{(-y_3+y_1+m_{12}(x_3-x_1))(y_3+y_1+m_{12}(x_3-x_1))}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}     \\
-                  =                      & \frac{-y_3^2+m_{12}^2(x_3-x_1)^2+2 m_{12}(x_3-x_1)y_1+ y_1^2}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}  \\
-                  =                      & \frac{-y_3^2+(y_1+ m_{12}(x_3-x_1))^2}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}
+                  c_2(m_{12}+m_{12,3}) & =  \frac{-y_3+y_1+m_{12}(x_3-x_1)}{(x_1-x_3)(x_3-x_2)} \cdot \frac{y_3+y_1+m_{12}(x_3-x_1)}{x_3-\hat{x}}               \\
+                                       & =                       \frac{-y_3^2+m_{12}^2(x_3-x_1)^2+2 m_{12}(x_3-x_1)y_1+ y_1^2}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})} \\
+                                       & =                       \frac{-y_3^2+(y_1+ m_{12}(x_3-x_1))^2}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}
               \end{align*}
-              Es gilt $y_3^2=x^3+Ax+B$ mit $x=x_3$, dann $y_3^2=x_3^3+Ax_3+B$. Mit ~\eqref{eq:faktorisierung-wohldefiniertheit} gilt dann
+              Da $P_3\in E$ gilt $y_3^2=x_3^3+Ax_3+B$. Mit Gleichung~\eqref{eq:faktorisierung-wohldefiniertheit} folgt daher
               \begin{align*}
-                  c_2(m_{12}+m_{12,3})= & \frac{-(f(x_3)-(y_1+m_{12}(x_3-x_1))^2)}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}   \\
-                  =                     & \frac{-(x_3-x_1)(x_3-x_2)(x_3-\hat{x})}{-(x_3-x_)(x_3-x_2)(x_3-\hat{x})}= 1
+                  c_2(m_{12}+m_{12,3}) & = \frac{-\left(f(x_3)-(y_1+m_{12}(x_3-x_1))^2\right)}{(x_1-x_3)(x_3-x_2)(x_3-\hat{x})}          \\
+                                       & =                     \frac{-(x_3-x_1)(x_3-x_2)(x_3-\hat{x})}{-(x_3-x_1)(x_3-x_2)(x_3-\hat{x})} \\
+                                       & = 1
               \end{align*}
 
-        \item Sei nun $P_2\neq P_3$ und $P_1+P_2=P_3$ es gilt erneut $(\hat{x},\hat{y})=(x_3,y_3)$ mit $y_3=-y_1-m_{12}(x_3-x_1)$
+        \item Sei nun $P_2\neq P_3$ und $P_1+P_2=P_3$. Dann gilt erneut $(\hat{x},\hat{y})=(x_3,y_3)$ mit der Additionsformel folgt $y_3=-y_1-m_{12}(x_3-x_1)$. Damit ergibt sich
               \[
                   c_2 = \frac{-y_3+y_2+m_{12}(x_3-x_2)}{(x_1-x_3)(x_3-x_2)} = \frac{-2y_3}{(x_1-x_3)(x_3-x_2)}
               \]
-              Wir leiten nun die Annahme von ~\eqref{eq:faktorisierung-wohldefiniertheit} ab und setzen dann $x=x_3=\hat{x}$
+              Durch Ableiten der Gleichung~\eqref{eq:faktorisierung-wohldefiniertheit} erhält man
               \[
-                  f'(x)-2m_{12}(y_1+m_{12}(x-x_1))=f'(x_3)-2m_{12}(y_1+m_{12}(x_3-x_1))
+                  f'(x)-2m_{12}\left(y_1+m_{12}(x-x_1)\right)
+                  =
+                  (x-x_2)(x-\hat{x})
+                  +(x-x_1)(x-\hat{x})
+                  +(x-x_1)(x-x_2).
               \]
-              Es gilt dann $\hat{y}=-y_1-m_{12}(\hat{x}-x_1)$ und $\hat{y}=y_3$ und damit $y_1+m_{12}(x_3-x_1)=-y_3$
+              Da \(y_1+m_{12}(x_3-x_1)=-y_3 \) gilt, folgt mit $x=x_3=\hat{x}$ für die linke Seite
               \[
-                  f'(x_3)+2m_{12}y_3
+                  f'(x_3)+2m_{12}y_3.
               \]
-              Recht Seite abgeleitet ergibt
-              \[
-                  (x-x_2)(x-\hat{x})+(x-x_1)(x-\hat{x})+(x-x_1)(x-x_2)
-              \]
-              wieder $x=\hat{x}=x_3$ einsetzen
+              Setzt man in die Rechte Seite auch $x=\hat{x}=x_3$ ein, erhält man
               \[
                   (x_3-x_2)(\hat{x}-\hat{x})+(x_3-x_1)(\hat{x}-\hat{x})+(x_3-x_1)(\hat{x}-x_2)
-                  = (x_3-x_1)(\hat{x}-x_2)
+                  = (x_3-x_1)(\hat{x}-x_2).
               \]
-              Also Gesamt ergibt sich
+              Für die gesamte Gleichung ergibt das
               \[
-                  f'(x_3)+2m_{12}y_3 = (x_3-x_1)(\hat{x}-x_2)
+                  f'(x_3)+2m_{12}y_3 = (x_3-x_1)(\hat{x}-x_2).
               \]
-              umformen für $y_3\neq 0$ gilt aus der Bedingung von Wohldefiniertheit
+              Aus $P_1+P_2=P_3$ und der Voraussetzung $P_1+P_2\neq -P_3$ folgt $P_3\neq -P_3$. Somit ist $y_3\neq 0$, sodass die Tangengleichung angewendet werden kann \( m_{12,3}     =\frac{f'(x_3)}{2y_3}\). Damit gilt
               \[
-                  \frac{f'(x_3)}{2y_3}+m_{12} = \frac{(x_3-x_1)(\hat{x}-x_2)}{2y_3}
+                  m_{12}+m_{12,3}
+                  =
+                  \frac{(x_3-x_1)(x_3-x_2)}{2y_3}.
               \]
-              Es ist $m_{12,3}=\frac{f'(x_3)}{2y_3}$ und daraus folgt
+              Da außerdem $ c_2= \frac{2y_3}{(x_3-x_1)(x_3-x_2)}$ gilt, folgt
               \[
-                  m_{12}+m_{12,3}= \frac{(x_3-x_1)(\hat{x}-x_2)}{2y_3}
+                  c_2(m_{12}+m_{12,3})= \frac{2y_3}{(x_3-x_1)(x_3-x_2)}\cdot \frac{(x_3-x_1)(x_3-x_2)}{2y_3} = 1
               \]
-              Damit gilt dann offensichtlich mit der Vertauschung des Vorzeichens
+        \item Sei $P_2=P_3$ und $P_1+P_2\neq P_3$, dann gilt $(x_2,y_2)=(x_3,y_3)$. Da $P_3=P_2$ auf der Geraden durch $P_1$ und $P_2$ liegt, gilt
               \[
-                  c_2(m_{12}+m_{12,3})= \frac{2y_3}{(x_3-x_1)(x_3-x_2)}\frac{(x_3-x_1)(x_3-x_2)}{2y_3}= 1
+                  y_3=y_1+m_{12}(x_3-x_1).
               \]
-        \item Für den Fall $P_2=P_3$ und $P_1+P_2\neq P_3$ haben wir $(x_2,y_2)=(x_3,y_3)$ und dadurch $y_3=y_1+m_{12}(x_3-x_1)$ und
+              Damit folgt
               \[
                   m_{12}+m_{12,3}=\frac{y_3+y_1+m_{12}(x_3-x_1)}{x_3-\hat{x}}= \frac{2y_3}{x_3-\hat{x}}
               \]
-              Wir nehmen wieder die Ableitung von der Gleichung von oben und setzen jetzt $x=x_2=x_3$
+              Durch Ableiten der Faktorisierung und Einsetzen von $x=x_2=x_3$ ergibt sich
               \[
-                  f'(x_3)+2m_{12}y_3 = (x_3-x_1)(x_3-\hat{x})
+                  f'(x_3)-2m_{12}y_3 = (x_3-x_1)(x_3-\hat{x}).
               \]
-              Dass können wir nun umformen wieder zu
+              Da
+              \[
+                  m(P_2,P_3)=\frac{f'(x_3)}{2y_3}
+                  \qquad\text{und}\qquad
+                  m(P_1,P_2)=m_{12},
+              \]
+              folgt
+              \[
+                  m(P_2,P_3)-m(P_1,P_2)
+                  =
+                  \frac{(x_3-x_1)(x_3-\hat{x})}{2y_3}.
+              \]
+              Die Gleichung kann mit der Definition \(c_2 = \frac{m(P_1,P_2)-m(P_2,P_3)}{x_1-x_3}\) umgeformt werden zu
               \begin{align*}
-                  m(P_2,P_3)-m(P_1,P_2)                       & =\frac{(x_3-x_1)(x_3-\hat{x})}{2y_3} \\
-                  \Leftrightarrow
-                  \frac{m(P_2,P_3)-m(P_1,P_2)}{(x_3-\hat{x})} & = \frac{x_3-x_1}{2y_3}               \\ \Leftrightarrow
-                  c_2                                         & = \frac{x_3-x_1}{2y_3}
+                  c_2
+                   & = \frac{m(P_1,P_2)-m(P_2,P_3)}{x_1-x_3}       \\
+                   & = \frac{m(P_2,P_3)-m(P_1,P_2)}{x_3-x_1}       \\
+                   & =\frac{(x_3-x_1)(x_3-\hat{x})}{2y_3(x_3-x_1)} \\
+                   & =\frac{x_3-\hat{x}}{2y_3}.
               \end{align*}
-              und damit gilt dann für $y_2=y_3\neq 0$ \(c_2(m_{12}+m_{12,3})=1\)
-        \item Der Fall $P_2=P_3$ und $P_1+P_2=P_3$ kann nach Lemma 2.1 nicht auftretten
+              Damit folgt
+              \[
+                  c_2(m_{12}+m_{12,3})
+                  =
+                  \frac{x_3-\hat{x}}{2y_3}
+                  \cdot
+                  \frac{2y_3}{x_3-\hat{x}}
+                  =
+                  1.
+              \]
+        \item Sei $P_2=P_3$ und $P_1+P_2=P_3$. Dann gilt \(P_1+P_2=P_2\). Mit der Kommutativität und Hilfssatz~\ref{hilfs:fixpunkt-addition} müsste dann $P_1=\mathcal{O}$ gelten. Dies widerspricht der Voraussetzung $P_1\in E\setminus\{\mathcal{O}\}$. Der Fall kann somit nicht auftreten.
     \end{enumerate}
 \end{proof}
-
-Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
+Es exestieren nun die erforderlichen Voraussetzung, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
 \begin{proof}
-    Seien $P_1,P_2,P_3\in E$ wie in
-    Lemma~\ref{lem:dreipunktsumme} vorausgesetzt und sei
+    Seien $P_1,P_2,P_3\in E$ wie in Lemma~\ref{lem:dreipunktsumme} vorausgesetzt und sei
     \[
         P_4=(P_1+P_2)+P_3=(x_4,y_4).
     \]
@@ -919,28 +959,23 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
              & =x_1+x_2-x_3+\frac{1}{c_2^2}-2\frac{m_{12}}{c_2}.
         \end{aligned}
     \]
-    Vergleicht man diesen Ausdruck mit der in
-    Lemma~\ref{lem:dreipunktsumme} behaupteten Formel für $x_4$, so ist es ausreichend, $m_{12}$ in der Form $m_{12}=c_1+x_1c_2$ darzustellen. Dies folgt direkt aus den Definitionen von $c_1$ und $c_2$, denn
-    \[
-        \begin{aligned}
-            c_1+x_1c_2
-             & =\frac{x_1m_{23}-x_3m_{12}}{x_1-x_3}
-            +x_1\frac{m_{12}-m_{23}}{x_1-x_3}       \\
-             & =\frac{x_1m_{12}-x_3m_{12}}{x_1-x_3}
-            =m_{12}.
-        \end{aligned}
-    \]
-    Damit folgt
-    \[
-        \begin{aligned}
-            x_4
-             & =x_1+x_2-x_3+\frac{1}{c_2^2}
-            -2\frac{c_1+x_1c_2}{c_2}         \\
-             & =-x_1+x_2-x_3+\frac{1}{c_2^2}
-            -2\frac{c_1}{c_2}.
-        \end{aligned}
-    \]
-    Um den Ausdruck für $y_4$ zu zeigen, wird zunächst die Additionsformel
+    Vergleicht man diesen Ausdruck mit der in Lemma~\ref{lem:dreipunktsumme} angegebenen Darstellung von $x_4$, so ist es ausreichend, $m_{12}$ zunächst durch $c_1$ und $c_2$  auszudrücken. Aus deren Definition folgt
+    \begin{align*}
+        c_1+x_1c_2
+         & =\frac{x_1m_{23}-x_3m_{12}}{x_1-x_3}
+        +x_1\frac{m_{12}-m_{23}}{x_1-x_3}       \\
+         & =\frac{x_1m_{12}-x_3m_{12}}{x_1-x_3} \\
+         & =m_{12}.
+    \end{align*}
+    Durch Einsetzen folgt
+    \begin{align*}
+        x_4
+         & =x_1+x_2-x_3+\frac{1}{c_2^2}
+        -2\frac{c_1+x_1c_2}{c_2}         \\
+         & =-x_1+x_2-x_3+\frac{1}{c_2^2}
+        -2\frac{c_1}{c_2}.
+    \end{align*}
+    Damit ist die behauptete Formel für $x_4$ gezeigt. Zur Bestimmung von $y_4$ wird zunächst die Additionsformel
     \[
         y_4=-y_3-m_{12,3}(x_4-x_3)
     \]
@@ -952,7 +987,7 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
     \[
         y_3=y_2+m_{23}(x_3-x_2).
     \]
-    Weiter gilt
+    Aus den Definitionen von $c_1$ und $c_2$ folgt außerdem
     \begin{align*}
         m_{23}
          & =\frac{m_{23}(x_1-x_3)}{x_1-x_3}                        \\
@@ -961,40 +996,44 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
         +x_3\frac{m_{12}-m_{23}}{x_1-x_3}                          \\
          & =c_1+x_3c_2.
     \end{align*}
-    Damit folgt
+    Folglich gilt
     \[
         y_3=y_2+(x_3-x_2)(c_1+x_3c_2).
     \]
-
-    Die zu zeigende Gleichung
+    Die zu zeigende Gleichung kann umgeformt werden zu
     \[
-        y_4=-y_2-(x_4-x_2)(c_1+x_4c_2)
+        y_4=-y_2-(x_4-x_2)(c_1+x_4c_2) \Longleftrightarrow y_4+y_2+(x_4-x_2)(c_1+x_4c_2)=0.
     \]
-    ist äquivalent zu
-    \[
-        y_4+y_2+(x_4-x_2)(c_1+x_4c_2)=0.
-    \]
-    Nun werden die oben erhaltenen Gleichungen eingesetzt
+    Nach Einsetzen der zuvor erhaltenen Darstellung von $y_3$ ergibt sich
     \begin{align*}
-        y_4=-y_3-m_{12,3}(x_4-x_3) = & -(y_2+(x_3-x_2)(c_1+x_3c_2))-m_{12,3}(x_4-x_3) \\
-        =                            & -y_2-(x_3-x_2)(c_1+x_3c_2)-m_{12,3}(x_4-x_3)   \\
+        y_4 & =-y_3-m_{12,3}(x_4-x_3)                                                    \\
+            & =  -(y_2+(x_3-x_2)(c_1+x_3c_2))-m_{12,3}(x_4-x_3)                          \\
+            & =                             -y_2-(x_3-x_2)(c_1+x_3c_2)-m_{12,3}(x_4-x_3) \\
     \end{align*}
     Es bleibt somit zu zeigen, dass
     \[
-        \begin{aligned}
-             & (x_4-x_2)(c_1+x_4c_2)
-            -(x_3-x_2)(c_1+x_3c_2)                         \\
-             & =(x_4-x_3)c_1
-            +\bigl((x_4-x_2)x_4-(x_3-x_2)x_3\bigr)c_2      \\
-             & =(x_4-x_3)\bigl(c_1+(x_4+x_3-x_2)c_2\bigr).
-        \end{aligned}
+        (x_4-x_2)(c_1+x_4c_2)
+        -(x_3-x_2)(c_1+x_3c_2)
+        =
+        m_{12,3}(x_4-x_3).
     \]
-    Da aus der Definition von $x_4$
+    Für die linke Seite gilt
+    \begin{align*}
+         & (x_4-x_2)(c_1+x_4c_2)
+        -(x_3-x_2)(c_1+x_3c_2)                   \\
+         & =
+        (x_4-x_3)c_1
+        +
+        \bigl((x_4-x_2)x_4-(x_3-x_2)x_3\bigr)c_2 \\
+         & =
+        (x_4-x_3)
+        \bigl(c_1+(x_4+x_3-x_2)c_2\bigr).
+    \end{align*}
+    Aus der bereits bestimmten Formel für $x_4$ folgt
     \[
-        x_4+x_3-x_2
-        =x_1+m_{12,3}^2-m_{12}^2
+        x_4+x_3-x_2 = x_1+m_{12,3}^2-m_{12}^2 \qquad \text{und}\qquad  c_1+x_1c_2=m_{12}.
     \]
-    und $c_1+x_1c_2=m_{12}$ gilt, folgt
+    Damit ergibt sich
     \[
         \begin{aligned}
              & c_1+(x_4+x_3-x_2)c_2                                               \\
@@ -1005,16 +1044,11 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
             =m_{12,3},
         \end{aligned}
     \]
-    wobei im vorletzten Schritt
-    Hilfssatz~\ref{hilfs:steigungsidentitaet} verwendet wurde. Damit gilt
+    Damit folgt
     \[
-        \begin{aligned}
-             & (x_4-x_2)(c_1+x_4c_2)
-            -(x_3-x_2)(c_1+x_3c_2)   \\
-             & =m_{12,3}(x_4-x_3).
-        \end{aligned}
+        (x_4-x_2)(c_1+x_4c_2)-(x_3-x_2)(c_1+x_3c_2)=m_{12,3}(x_4-x_3).
     \]
-    Daraus lässt sich sich die Additionsformel umformen
+    Einsetzen in die Additionsformel für $y_4$ liefert schließlich
     \begin{align*}
         y_4
          & = -y_2-(x_3-x_2)(c_1+x_3c_2)
@@ -1025,7 +1059,7 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
         -(x_3-x_2)(c_1+x_3c_2)\Bigr)     \\
          & = -y_2-(x_4-x_2)(c_1+x_4c_2).
     \end{align*}
-    womit auch die behauptete Formel für $y_4$ gezeigt ist.
+    Damit ist auch die behauptete Formel für $y_4$ gezeigt.
 \end{proof}
 
 \begin{lemma}
@@ -1041,32 +1075,53 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
 
 \begin{proof}
     \begin{enumerate}[label=(\alph*)]
-        \item Sei $P=(x,y)\in E\setminus\{\mathcal{O}\}$, dann ist $-P=(x,-y)\in E\setminus\{\mathcal{O}\}$, also gilt $-(-P)=-(x,-y)=(x,y)=P$. Es gilt nach Definition der Identität $-\mathcal{O}=\mathcal{O}$, damit dann auch \(-(-\mathcal{O})=\mathcal{O}\)
-        \item Wenn $P_1 =\mathcal{O}\lor P_2 =\mathcal{O}$ folgt direkt,
+        \item Sei $P=(x,y)\in E\setminus\{\mathcal{O}\}$, dann ist $-P=(x,-y)\in E\setminus\{\mathcal{O}\}$ und somit $-(-P)=-(x,-y)=(x,y)=P$. Für $P=\mathcal{O}$ gilt nach der Definition des neutralen Elementes $-\mathcal{O}=\mathcal{O}$, sodass ebenfalls \(-(-\mathcal{O})=\mathcal{O}\) gilt.
+        \item Zunächst werden die Fälle betrachtet, in denen einer der beiden
+              Punkte gleich $\mathcal{O}$ ist. Für $P_1=\mathcal{O}$ gilt
               \begin{align*}
                   P_1 =\mathcal{O}: \quad -(P_1+P_2) & =-(\mathcal{O}+P_2)=-P_2=\mathcal{O}+(-P_2) \\
                                                      & = (-\mathcal{O})+(-P_2)=(-P_1)+(-P_2)
               \end{align*}
+              Analog folgt für $P_2=\mathcal{O}$
               \begin{align*}
                   P_2 =\mathcal{O}: \quad -(P_1+P_2) & =-(P_1+\mathcal{O})=-P_1= (-P_1)+\mathcal{O} \\
                                                      & = (-P_1)+(-\mathcal{O})=(-P_1)+(-P_2)
               \end{align*}
-              Nun sollen $P_1,P_2\in E \setminus\{\mathcal{O}\}$
-              Wir unterscheiden 2 Fälle:
-              Erster Fall $P_2=-P_1$, dann gilt $-P_2=-(-P_1)=P_1$ und damit auch
+              Sei nun $P_1,P_2\in E \setminus\{\mathcal{O}\}$, es gibt darausfolgend zwei Fälle.
+              Falls $P_2=-P_1$ gilt, dann folgt mit Teil (a) $-P_2=-(-P_1)=P_1$. Damit ist
               \[
-                  -(P_1+P_2)=-(P_1+(-P_1))=-\mathcal{O}=-\mathcal{O}= (-P_1)+P_1=(-P_1)+(-P_2).
+                  -(P_1+P_2)=-(P_1+(-P_1))=-\mathcal{O}=-\mathcal{O}=(-P_1)+P_1=(-P_1)+(-P_2).
               \]
-              Für den anderen Fall gilt \(P_2\neq -P_1\), dann gilt per Definition der Wohldefiniertheit~\ref{lem:wohldefiniertheit}
+              Es bleibt der Fall \(P_2\neq -P_1\). Dann gilt nach Lemma~\ref{lem:wohldefiniertheit} $P_1+P_2=(x_3,y_3)$ mit
               \[
-                  P_1+P_2=(-x_1-x_2+m_{12}^2,-y_1-m_{12}(x_3-x_1)).
+                  x_3=-x_1-x_2+m_{12}^2 \qquad \text{und}\qquad  y_3=-y_1-m_{12}(x_3-x_1)
               \]
-              Weiter gilt dann auch \(-P_2\neq-(-P_1)\) und \(-P_1=(x_1,-y_1),-P_2=(x_2,-y_2)\), dadurch gilt dann \(m(-P_1,-P_2)=-m(P_1,P_2)\)
-              \begin{align*}
-                  (-P_1)+(-P_2)= & (-x_1-x_2+m(P_1,P_2)^2,y_1-m(P_1,P_2)(x_3-x_1))
-                  =              & -(P_1+P_2).
-              \end{align*}
-        \item Für $P_1=\mathcal{O}$ oder $P_2=\mathcal{O}$ folgt die Behauptung unmittelbar. Sei also $P_1,P_2\in E\setminus\{\mathcal{O}\}$. Für $P_2=-P_1$ gilt $(P_1+P_2)+(-P_1)=\mathcal{O}+P_2=P_2$. Der Fall $P_1+P_2=P_1$ kann nach Hilfssatz~\ref{hilfs:fixpunkt-addition} nicht auftreten. Sei daher $P_2\neq -P_1$ und $P_1+P_2\neq P_1$ und setze $P_3=-P_1$. Dann gilt $x_3=x_1$ und $y_3=-y_1$.
+              Weiter gilt dann \(-P_1=(x_1,-y_1)\) und \(-P_2=(x_2,-y_2)\). Damit ist dann
+              \[
+                  m(-P_1,-P_2)
+                  =
+                  \frac{-y_2+y_1}{x_2-x_1}
+                  =
+                  -m_{12}.
+              \]
+              Daher hat die Summe $(-P_1)+(-P_2)$ dieselbe $x$-Koordinate $x_3$ und für die $y$-Koordinate gilt
+              \[
+                  -(-y_1)-(-m_{12})(x_3-x_1)
+                  =
+                  y_1+m_{12}(x_3-x_1)
+                  =
+                  -y_3.
+              \]
+              Somit folgt
+              \[
+                  (-P_1)+(-P_2)
+                  =
+                  (x_3,-y_3)
+                  =
+                  -(P_1+P_2).
+              \]
+
+        \item Für $P_1=\mathcal{O}$ oder $P_2=\mathcal{O}$ folgt die Behauptung unmittelbar. Sei also $P_1,P_2\in E\setminus\{\mathcal{O}\}$. Falls $P_2=-P_1$ gilt, folgt $(P_1+P_2)+(-P_1)=\mathcal{O}+P_2=P_2$. Der Fall $P_1+P_2=P_1$ kann nach Hilfssatz~\ref{hilfs:fixpunkt-addition} nicht auftreten. Sei daher $P_2\neq -P_1$ und $P_1+P_2\neq P_1$. Wegen der Additionsfomel und der Faktorisierung aus Gleichung~\eqref{eq:faktorisierung-wohldefiniertheit} wird $P_3=-P_1$ gesetzt, dann ist $x_3=x_1$ und $y_3=-y_1$.
 
               Falls $P_1+P_2\neq P_3$, folgt wie in Hilfssatz~\ref{hilfs:steigungsidentitaet}
               \[
@@ -1075,14 +1130,14 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
                   \frac{y_3+y_1+m_{12}(x_3-x_1)}{x_3-\hat{x}}
                   =0.
               \]
-              Falls $P_1+P_2=P_3$, gilt entsprechend
+              Falls dagegen $P_1+P_2=P_3$ gilt, folgt entsprechend
               \[
                   m_{12}+m_{12,3}
                   =
                   \frac{(x_3-x_1)(x_3-x_2)}{2y_3}
                   =0,
               \]
-              da $x_3=x_1$. Somit gilt stets $m_{12,3}=-m_{12}$.
+              da $x_3=x_1$. Somit gilt in beiden Fällen $m_{12,3}=-m_{12}$.
 
               Mit $P_1+P_2=(\hat{x},\hat{y})$ und $\hat{x}=m_{12}^2-x_1-x_2$ folgt
               \[
@@ -1094,7 +1149,9 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
                   y_4=-y_3-m_{12,3}(x_4-x_3)
                   =y_1+m_{12}(x_2-x_1)=y_2.
               \]
-              Damit ist $P_4=P_2$ und somit $(P_1+P_2)+(-P_1)=P_2$. Ersetzen wir $P_1$ durch $-P_1$, folgt mit Teil (a) und der Kommutativität
+              Damit ist $P_4=P_2$ und somit $(P_1+P_2)+(-P_1)=P_2$.
+
+              Ersetzen man $P_1$ durch $-P_1$, folgt mit Teil (a) und der Kommutativität
               \[
                   P_2=((-P_1)+P_2)+(-(-P_1))
                   =P_1+(P_2+(-P_1)).
@@ -1103,16 +1160,16 @@ Wir haben nun die Hilfsmittel, um Lemma~\ref{lem:dreipunktsumme} zu beweisen.
               \[
                   (P_1+P_2)+(-P_1)=P_1+(P_2+(-P_1))=P_2.
               \]
-        \item Wenn $P_1+P_2=\mathcal{O}$, dann nutzen wir (c)
+        \item Wenn $P_1+P_2=\mathcal{O}$, dann kann man (c) nutzen und schreiben
               \[
                   P_2=(P_1+P_2)+(-P_1)=\mathcal{O}+(-P_1)=-P_1.
               \]
     \end{enumerate}
 \end{proof}
 
-Nun können wir den Beweis der Assoziativität durchführen.
+Nun sind alle Hilfsmittel gegeben, um die Assoziativität zu beweisen.
 \begin{proof}[Beweis der Assoziativität]
-    Wenn $P_1,P_2$ oder $P_3$ gleich $\mathcal{O}$ gilt, dann folgt direkt
+    Falls $P_1,P_2$ oder $P_3$ gleich $\mathcal{O}$ gilt, dann folgt direkt
     \[
         P_1=\mathcal{O}: \quad (P_1+P_2)+P_3=(\mathcal{O}+P_2)+P_3=P_2+P_3 = \mathcal{O}+(P_2+P_3)=P_1+(P_2+P_3)
     \]
@@ -1122,43 +1179,39 @@ Nun können wir den Beweis der Assoziativität durchführen.
     \[
         P_3=\mathcal{O}: \quad (P_1+P_2)+P_3=(P_1+P_2)+\mathcal{O} =P_1+P_2 = P_1+(P_2+\mathcal{O})=P_1+(P_2+P_3)
     \]
-    Wenn nun $P_3=P_1$, dann gilt aufgrund der Kommutativität der Addition
+    Sei zunächst $P_3=P_1$, dann gilt aufgrund der Kommutativität der Punktaddition
     \[
-        (P_1+P_2)+P_3=(P_1+P_2)+P_1=P_1+P_1+(P_1+P_2)=P_1+(P_2+P_3).
+        (P_1+P_2)+P_3=(P_1+P_2)+P_1=P_1+(P_1+P_2)=P_1+(P_2+P_1)=P_1+(P_2+P_3).
     \]
-    Wenn nun $P_3=-P_1$, dann gilt mit der Theorem \ref{lem:ass-hilfseigenschaften} (c)
+    Sei nun $P_3=-P_1$, dann gilt nach Lemma~\ref{lem:ass-hilfseigenschaften}\,(c)
     \[
         (P_1+P_2)+P_3 = (P_1+P_2)+(-P_1)=P_1+(P_2+(-P_1))=P_1+(P_2+P_3)
     \]
-    Für den Fall, dass $P_2=-P_1$ oder $P_2=-P_3$ könenn wir auch \ref{lem:ass-hilfseigenschaften} (c) nutzen
+    Sei nun $P_2=-P_1$ oder $P_2=-P_3$. Dann gilt mit Lemma~\ref{lem:ass-hilfseigenschaften}\,(c) und der Kommutativität
     \begin{align*}
-        P_2=-P_3:\quad
         P_2=-P_1:\quad & (P_1+P_2)+P_3
-        = (P_1+(-P_1))+P_3=\mathcal{O}+P_3=P_3                                       \\
-                       & = P_1+(P_3+(-P_1))=P_1+((-P_1)+P_3)=P_1+(P_2+P_3)           \\
+        = (P_1+(-P_1))+P_3=\mathcal{O}+P_3=P_3                                   \\
+                       & = P_1+(P_3+(-P_1))=P_1+((-P_1)+P_3)=P_1+(P_2+P_3)       \\
         P_2=-P_3:\quad & (P_1+P_2)+P_3
-        = (P_1+(-P_3))+P_3=P_3+(P_1+(-P_3))                                          \\
-                       & = P_1 = P_1+\mathcal{O}=P_3=P_1+((-P_3)+P_3)=P_1+(P_2+P_3).
+        = (P_1+(-P_3))+P_3=P_3+(P_1+(-P_3))                                      \\
+                       & = P_1 = P_1+\mathcal{O}=P_1+((-P_3)+P_3)=P_1+(P_2+P_3).
     \end{align*}
     Als nächsten Fall wird $P_1+P_2=-P_3$ betrachtet, durch Anwenden von den Hilfseigenschaften~\ref{lem:ass-hilfseigenschaften} kann man herausfinden, dass
     \[
-        P_2+P_3\overset{(a)}{=}P_2+(-(-P_3))=P_2+(-(P_1+P_2))\overset{(b)}{=}P_2+((-P_1)+(-P_2))=-P_1
+        P_2+P_3\overset{(a)}{=}P_2+(-(-P_3))=P_2+(-(P_1+P_2))\overset{(b)}{=}P_2+((-P_1)+(-P_2))\overset{(c)}{=}-P_1
     \]
-    und kann gefolgert werden
+    gilt. Damit folgt dann
     \[
         (P_1+P_2)+P_3=(-P_3)+P_3=\mathcal{O}=P_1+(-P_1)=P_1+(P_2+P_3).
     \]
-    Für den letzten Fall wird angenommen, dass $P_1,P_2,P_3\in E\setminus{\mathcal{O}}$ mit $P_3\neq\pm P_1$, $P_2\neq -P_1$, $P_2\neq-P_3$ und $P_1+P_2\neq-P_3$. Das stimmt genau mit den Bedingungen für Lemma~\ref{lem:dreipunktsumme} überein. Zuvor wurde gezeigt, dass
+    Für den letzten Fall seien $P_1,P_2,P_3\in E\setminus\{\mathcal{O}\}$ mit $P_3\neq\pm P_1$, $P_2\neq -P_1$, $P_2\neq-P_3$ und $P_1+P_2\neq-P_3$. Das stimmt genau mit den Bedingungen für Lemma~\ref{lem:dreipunktsumme} überein. Zuvor wurde gezeigt, dass
     \[
         P_1+P_2=-P_3
         \quad\Longleftrightarrow\quad
         P_2+P_3=-P_1.
     \]
-    Somit folgt aus $P_1+P_2\neq-P_3$ auch
-    $P_2+P_3\neq-P_1$, sodass die Voraussetzungen von
-    Lemma~\ref{lem:dreipunktsumme} auch nach Vertauschen von
-    $P_1$ und $P_3$ erfüllt sind.  Da die dort erhaltenen Koordinaten
-    von $P_4$ unter dieser Vertauschung unverändert bleiben, gilt
+    Somit folgt aus $P_1+P_2\neq-P_3$ auch $P_2+P_3\neq-P_1$, sodass die Voraussetzungen von
+    Lemma~\ref{lem:dreipunktsumme} auch nach Vertauschen von $P_1$ und $P_3$ erfüllt sind. Denn unter der Vertauschung von $P_1$ und $P_3$ bleiben die Größen $c_1$ und $c_2$ unverändert. Da die in Lemma~\ref{lem:dreipunktsumme} erhaltenen Formeln $P_4=(x_4,y_4)$ damit unter der Vertauschung von $P_1$ und $P_3$ unverändert bleiben, folgt
     \[
         (P_1+P_2)+P_3=(P_3+P_2)+P_1.
     \]
@@ -1171,7 +1224,7 @@ Nun können wir den Beweis der Assoziativität durchführen.
 \end{proof}
 
 \begin{bemerkung}[Geometrische Interpretation]
-    Sei $K=\mathbb{R}$ und $P_1,P_2\in E\setminus\{\mathcal{O}\}$ mit
+    Sei $K=\mathbb{R}$ und $P_1,P_2,P_3\in E\setminus\{\mathcal{O}\}$ mit
     $P_2\neq -P_1$. Die Gerade durch $P_1$ und $P_2$ wird durch
     \[
         l:y=y_1+m_{12}(x-x_1)
@@ -1185,8 +1238,7 @@ Nun können wir den Beweis der Assoziativität durchführen.
     \[
         p(x)=y_2+(x-x_2)(c_1+xc_2).
     \]
-    betrachtet. Das entspricht den Größen $c_1$ und $c_2$ aus Lemma~\ref{lem:dreipunktsumme} .
-    Aus den bereits gezeigt Beziehungen
+    betrachtet. ie Koeffizienten dieser Parabel werden dabei durch die Größen $c_1$ und $c_2$ aus Lemma~\ref{lem:dreipunktsumme} bestimmt. Aus den bereits gezeigten Beziehungen
     \[
         c_1+x_1c_2=m_{12}\qquad\text{und}\qquad
         c_1+x_3c_2=m_{23}
@@ -1196,30 +1248,24 @@ Nun können wir den Beweis der Assoziativität durchführen.
         p(x_1)=y_1, \quad p(x_2)=y_2,\quad
         p(x_3)=y_3.
     \]
-    Die Parabel verläuft somit durch die drei Punkte $P_1,P_2$ und $P_3$.
-    Sei $K=\mathbb{R}$ und $P_1,P_2\in E\setminus\{\mathcal{O}\}$ mit $P_2\neq -P_1$.
-    Es wird nun eine Gerade aufgestellt durch die Punkte $P_1$ und $P_2$
-    \[
-        l:y=y_1+m_{12}(x-x_1).
-    \]
-    Nun gibt es verschiedene Fälle. Für $P_2=P_1$ ist die Gerade eine Tangente zur elliptischen Kurve $E$, die sie im Punkt $P_1$ schneidet. Die Tangente hat dann einen dritten Schnittpunkt $(x_3,-y_3)$
+    Die Parabel verläuft somit durch die drei Punkte $P_1,P_2$ und $P_3$. Für $P_4=(x_4,y_4)=(P_1+P_2)+P_3$ gilt nach demselben Lemma $p(x_4)=-y_4$. Somit liegt auch $-P_4$ auf der Parabel.
 \end{bemerkung}
 
-\section{Elliptische Kurven in Charakteristik 2} (nach Rosen, S. 47ff.)
+\section{Elliptische Kurven in Charakteristik 2}
 \label{charakteristik-2}
-\textbf{Muss man hier auch characteristik 3 ergänzen?}
+Elliptische Kurven können grundsätzlich auch über Körpern der Charakteristik $2$ oder $3$ definiert werden. Die in den vorherigen Abschnitten verwendete kurze Weierstraßform
+\[
+    y^2=x^3+Ax+B
+\]
+stellt jedoch nur für $\operatorname{char}(K)\neq2,3$ eine allgemeine Normalform dar. Da insbesondere Körper der Charakteristik $2$ für kryptographische Implementierungen von Bedeutung sind, wird dieser Fall im Folgenden kurz betrachtet. Insbesondere Binäre Körper $\mathbb F_{2^k}$ sind für Implementierungen kryptographischer Verfahren von besonderem Interesse, da ihre Arithmetik gut an die binäre Arbeitsweise digitaler Rechner angepasst ist. Auf Charakteristik $3$ wird nicht weiter eingegangen. Der Abschnitt basiert auf \cite[~S.47--49]{washington08} und vgl. \cite[~S.47]{silverman06}.
 
-Computer arbeiten tendenziell besser über Körpern der Charakteristik 2 im Vergleich zu Körpern mit großen prim Charakteristiken. Daher werden häufig Elliptische Kurven über einem Feld $\mathbb{F}_q$ mit $q=2^k$ Elementen verwendet.
-(vgl. \cite{silverman06}, S.47)
-
-Aus dieser Notwendigkeit betrachten wir nun genauer Elliptische Kurven in Charakteristik 2, da hier einige unserer vorher definierten Formeln nicht funktionieren.\\
 \begin{satz}
-    In Charakteristik \(2\) ist die kurze Weierstrass Gleichung \(y^2=x^3+Ax+B\) stets singulär. Daher verwendet man in Charakteristik 2 die allgemeine Weierstraß-Gleichung
+    Eine elliptische Kurve $E$ über einem Körper $K$ mit $\operatorname{char}(K)=2$ mit kurzen Weierstraßgleichung \(y^2=x^3+Ax+B\) ist stets singulär. Daher muss für elliptische Kurven in Charakteristik $2$ die allgemein Weierstraßgleichung verwendet werden
+    \[
+        y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6.
+    \]
 \end{satz}
 
-\[
-    y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6.
-\]
 \begin{proof}
     Betrachte
     \[
@@ -1228,11 +1274,12 @@ Aus dieser Notwendigkeit betrachten wir nun genauer Elliptische Kurven in Charak
     Ein Punkt auf der Kurve ist genau dann singulär, wenn beide partiellen Ableitungen verschwinden. Es gilt
     \[
         f_y=2y\equiv0,
-    \] da der Körper Charakteristik 2 hat. Außerdem ist
+    \]
+    da der Körper Charakteristik 2 hat. Außerdem ist
     \[
         f_x=-3x^2-A
     \]
-    Sei nun $x_0$ eine Nullstelle von $f_x$. Wir wählen ein \(y_0\) mit
+    Sei nun $x_0$ eine Nullstelle von $f_x$. Wählen ein \(y_0\) mit
     \[
         y_0^2=x_0^3+Ax_0+B
     \]
@@ -1243,51 +1290,56 @@ Aus dieser Notwendigkeit betrachten wir nun genauer Elliptische Kurven in Charak
     Damit folgt die Kurve ist singulär.
 \end{proof}
 
-Nun wollen auch für Charakterstik 2 die Gruppengesetze aufstellen.
-Hierfür beginnen wir mit der allgmeinen Weierstraß-Gleichung für eine elliptische Kurv $E$
+Die geometrische Definition der Punktaddition bleibt erhalten. Die geometrische Definition der Punktaddition bleibt erhalten. Für zwei Punkte \(P_1,P_2\in E\) wird die Gerade durch \(P_1\) und \(P_2\) beziehungsweise für \(P_1=P_2\) die Tangente betrachtet. Ihr dritter Schnittpunkt mit \(E\) sei \(P_3'\). Dann wird
 \[
-    y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6.
+    P_1+P_2=-P_3'
 \]
-Man schreibt diese in die Form
+definiert. Für die allgemeine Weierstraßgleichung ist das inverse
+Element gegeben durch
 \[
-    f(x,y)=y^2+a_1xy+a_3y-x^3-a_2x^2-a_4x-a_6.
+    -(x,y)=(x,-a_1x-a_3-y).
 \]
-Dann sind die partiellen Ableitungen gegeben durch
+Da in Charakteristik $2$ für jedes $a\in K$ die Gleichheit $-a=a$
+gilt, vereinfacht sich dies zu
 \[
-    f_x=a_1y-3x^2-2a_2x-a_4,\qquad f_y=2y+a_1x+a_3.
+    -(x,y)=(x,y+a_1x+a_3).
 \]
-In Charakteristik \(2\) vereinfacht sich dies zu
-\[
-    f_x=a_1y+x^2+a_4,\qquad f_y=a_1x+a_3.
-\]
-Ein Punkt \((x,y)\) ist wie bereits früher eingeführt, genau dann singulär, wenn
-\[
-    f(x,y)=0,\qquad f_x(x,y)=0,\qquad f_y(x,y)=0.
-\]
-Fall 1: $a_1\neq 0$
-Man kann aus \(a_1x+a_3=0\) folgern
-\[
-    x=\frac{a_3}{a_1}.
-\]
-Eingesetzt in \(a_1y+x^2+a_4=0\) liefert es,
-\[
-    a_1y+\left(\frac{a_3}{a_1}\right)^2+a_4=0
-\]
-\[
-    y= \frac{a_3^2}{a_1^3}+ \frac{a_4}{a_1}.
-\]
-wenn der Punkt zusätzlich \(f(x,y)=0\) erfüllt handelt es sich um einen singulären Punkt.
+Zusammen mit dem Punkt $\mathcal O$ bilden die Punkte der Kurve auch in Charakteristik $2$ eine abelsche Gruppe. Der Beweis der Assoziativität verläuft analog zum Beweis im vorangegangenen Kapitel.
 
-Fall 2: $a_1=0$
-Es gilt nun,
-\[
-    f_x=x^2+a_4,\qquad f_y=a_3.
-\]
-also muss \(a_3= 0\) und $f(x,y)=0$ gelten, sodass $(x,y)$ ein singulärer Punkt ist.\\
+\subsection{Punktverdopplung in Charakteristik 2}
+Die Skalarmultiplikation $nP$ ist eine zentrale Operation in kryptographischen Verfahren auf elliptischen Kurven und soll daher auch in Charakteristik 2 möglich sein. Es gibt hierbei zwei Fälle zu unterscheiden.
 
-Nun können wir die Addition von Punkten definieren. Es gilt wieder für alle Punkte $P\in E$
-\[
-    P+\mathcal{O}=P.
-\]
-\textbf{washington S.48-49 hier weiter machen}
-
+\begin{enumerate}
+    \item Sei \(E:y_2+xy=x^3+a_2x^2+a_6\) in Charakteristik $2$ kann die Gleichung auch in der Form \(y_2+xy+x^3+a_2x^2+a_6=0\) geschrieben werden. Durch implizites Differenzieren folgt
+          \[
+              xy'+(y+x^2)=0.
+          \]
+          Für $P=(x_0,y_0)$ mit $x_0\neq0$ besitzt die Tangente die Steigung $m=\frac{(y_0+x=^2)}{x_0}$. Der Schnittpunkte der Gerade \(y=m(x-x_0)+y_0=mx+b\) und $E$ ist $(x_1,y_1)$. Es gilt
+          \[
+              0=(mx+b)^2+x(mx+b)+x^3+a_2x^2+a_6=x^3+(m^2+m+a_2)x^2+\cdots.
+          \]
+          Die Summe $x_0+x_0+x_1$ der Wurzeln ist $m^2+m+a_2$, dadurch erhält man mit $y_0^2=x_0y_0+x_0^3+a_2x_0^2+a_6$
+          \[
+              x_1 = m^2+m+a_2=\frac{y_0^2+x_0^4+x_0y_0+x_0^3+a_2x_0^2}{x_0^2} =\frac{x_0^4+a_6}{x_0^2}
+          \]
+          Da gilt $-(x,y)=(x,x+y)$, folgt für $2P=(x_2,y_2)$ mit
+          \[
+              X_2=\frac{x_0^4+a_6}{x_0^2} \quad \text{und}\quad y_2=-x_1-y_1=x_1+y_1.
+          \]
+    \item Sei $E:y^2 +a_3y = x^3 +a_4x+a_6$ in Charakteristik $2$ kann die Gleichung geschrieben werden als $y^2 +a_3y + x^3 +a_4x+a_6=0$. Durch implizites Differenzieren folgt
+          \[
+              a_3y'+(x^2+a_4)=0.
+          \]
+          Daher ist die Gerade $L$
+          \[
+              y=m(x-x_0)+y_0 \quad \text{mit}\quad m=\frac{x_0^2+a_4}{a_3}.
+          \]
+          Geht man analog wie im vorherigen Fall vor, findet man den Schnittpunkt $(x_1,y_1)$ von $L$ und $E$ mit
+          \[
+              x_1=m^2=\frac{x_0^4+a_4^2}{a_3^2} \quad\text{und}\quad y_1=m(x_1-x_0)+y_0.
+          \]
+          Damit gilt für $2P=(x_2,y_2)$
+          \[
+              x_2=\frac{(x_0^4+a_4^2)}{a_3^2}\quad\text{und}\quad y_2=a_3+y_1.
+          \]
+\end{enumerate}

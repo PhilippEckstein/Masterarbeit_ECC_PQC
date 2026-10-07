@@ -20,4 +20,41 @@ angewendet werden.
 Auch für supersinguläre Kurven mit $\operatorname{Spur}(\phi_q)\neq 0$ ist eine solche Reduktion möglich. Dabei kann ein rweiterungsgrad $m\in\{3,4,6\}$ erforderlich sein. Diese Erweiterungsgrade sind weiterhin klein und ermöglichen daher eine Beschleunigung der Berechnung des diskreten Logarithmus.
 
 
-\section{warum elliptische Kurven}
+\section{Quantencomputer}
+
+Modern Crypography (S.397)
+Laufzeit, Schlüsselgrößen, Sicherheit
+
+Es findet sich eine einfache erklärung zu Quantencomputing in \cite{buell24}, S.227ff.
+
+Kurze Erklärung klassische Computer 
+
+PC hat elektromagnetisch betätigte Schalter. Der physikalische Zustand eines solchen Schalters heitß offen oder geschlossen, wird mathematisch durch 0 oder 1 repräsentiert
+
+
+
+
+Alles schön Visualisieren
+5.3.4. Quantensichere SignaturverfahrenWegen der Bedrohung der klassischen Signaturverfahren durch die fortschreitende Entwicklung
+hinreichend großer Quantencomputer sollte eine Migration zu quantensicheren Verfahren erfolgen. Dies betrifft insbesondere sensitive Anwendungen mit langen Migrationszeiten, beispielsweise
+im Zusammenhang mit Public-Key-Infrastrukturen.
+Diese Technische Richtlinie empfiehlt den Einsatz eines quantensicheren Signaturverfahrens
+grundsätzlich nur in Kombination mit einem klassischen Signaturverfahren. Die Hybridisierung
+sollte so erfolgen, dass das hybride Signaturverfahren sicher ist, solange mindestens eines der
+Verfahren sicher ist. Eine natürliche und robuste Hybridisierung ist die Konkatenation von einer
+quantensicheren mit einer klassischen Signatur, so dass die konkatenierte Signatur genau dann
+als gültig anerkannt wird, wenn sämtliche einzelnen Signaturen gültig sind. Hierbei sollte darauf
+geachtet werden, Schlüsselmaterial für hybride Signaturen dediziert nur für diesen Zweck zu
+erzeugen und nicht etwa auch für nicht-hybride Signaturen zu verwenden.
+Der Sicherheit von hashbasierten Signaturverfahren liegen nur komplexitätstheoretische Annahmen über kryptografische Hashfunktionen zugrunde. Daher können hashbasierte Signaturen
+unter der Voraussetzung, dass die Implementierungssicherheit von zustandsbehafteten und zustandslosen hashbasierten Verfahren sorgfältig berücksichtigt wird, grundsätzlich auch alleine (das
+heißt nicht hybrid) zum Einsatz kommen und als eine gute Methode für die Erstellung langfristig
+sicherer Signaturen dienen. \cite{bundesamt26}, S.59
+
+
+Insbesondere die Crypto-Szene setzt darauf, etwa die ECDSA-Signaturen bei Bitcoin und Ethereum.
+Der Einfluss geht aber auch weit darüber hinaus: Die Reisepässe einger europäischer Staaten (darunter auch Deutschland) nutzen ECC etwa für den Zugriff auf den integrierten Chip.
+
+Dabei müssen wir uns hauptsächlich die asymmetrische Kommunikation, zum Beispiel verschlüsselte E-Mails oder verschlüsselten Dateiaustausch, anschauen. Symmetrische Verschlüsselung, also das einfache Abspeichern von Daten auf einem Server, kann bereits heute mit dem klassischen Algorithmus AES-256 erfolgen. Dieser Algorithmus gilt als quantensicher, da bisher noch kein Quanten-Algorithmus entdeckt wurde, der diesen brechen kann. 
+
+Kyber als Quantensicherer Algorithmus

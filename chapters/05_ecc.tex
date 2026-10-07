@@ -1,5 +1,4 @@
-\chapter{Elliptische Kurven Kryptographie}
-\label{sec:kryptographie}
+\chapter{Elliptische Kurven Kryptographie}~\label{sec:kryptographie}
 Dieses Kapitel zeigt, wie die zuvor eingeführten mathematischen
 Grundlagen elliptischer Kurven für kryptographische Verfahren genutzt
 werden können. In Kapitel~\ref{public-key} wurden bereits die Grundlagen der Public-Key-Kryptographie sowie das diskrete Logarithmusproblem eingeführt. Im Folgenden wird dieses Prinzip auf die Gruppe der Punkte einer elliptischen Kurve über einem endlichen Körper übertragen. Zunächst werden grundlegende kryptographische Verfahren auf
@@ -18,19 +17,13 @@ zu vereinbaren. In dem nun folgenden Fall wird hierzu die additive Gruppe der Pu
 verwendet.
 
 Die Darstellung des Double-and-Add-Algorithmus orientiert sich
-an Silverman \cite[S.~30--31]{silverman06}, Buell
-\cite[S.~217--218]{buell24} sowie Güneysu, Paar und Pelzl
-\cite[S.~288]{guneysu24}. Der elliptische Diffie-Hellman-Schlüsselaustausch folgt Washington
-\cite[S.~170--172]{washington08} und Fuß und Vymazal
-\cite[S.~195]{fuß25}. Für die anschließende
-ElGamal-Verschlüsselung und ECDSA wird Washington \cite[S.~174--176, 179--180]{washington08} und \cite[104--109]{werner02} herangezogen. Die kryptographischen Einordnungen basieren auf Güneysu, Paar und Pelzl \cite[S.~291]{guneysu24}.
+an Silverman~cite[S.~30--31]{silverman06}, Buell~\cite[S.~217--218]{buell24} sowie Güneysu, Paar und Pelzl~\cite[S.~288]{guneysu24}. Der elliptische Diffie-Hellman-Schlüsselaustausch folgt Washington~\cite[S.~170--172]{washington08} und Fuß und Vymazal~\cite[S.~195]{fuß25}. Für die anschließende ElGamal-Verschlüsselung und ECDSA wird Washington~\cite[S.~174--176, 179--180]{washington08} und~\cite[104--109]{werner02} herangezogen. Die kryptographischen Einordnungen basieren auf Güneysu, Paar und Pelzl~\cite[S.~291]{guneysu24}.
 
-\subsection{Double-and-Add-Algorithmus}
-\label{sec:double-and-add}
+\subsection{Double-and-Add-Algorithmus}~\label{sec:double-and-add}
 Sei $P$ ein Punkt einer additiv geschriebenen Gruppe und
 $n \in \mathbb{N}$. Ziel ist es, das skalare Vielfache
 \[
-    nP = \underbrace{P + P + \dots + P}_{n\text{-mal}}
+    nP = \underbrace{P + P + \cdots + P}_{n\text{-mal}}
 \]
 effizient zu berechnen.
 Eine naive Berechnung erfolgt durch sukzessive Addition:
@@ -48,7 +41,7 @@ $m$. Daher kann die Laufzeit der naiven Methode äquivalent als \(\mathrm{O}(2^m
 nicht praktikabel. Eine wesentlich effizientere Berechnung
 ermöglicht der Double-and-Add-Algorithmus.
 \begin{definition}[Double-and-Add-Algorithmus]
-    Sei $P$ ein Punkt auf einer elliptischen Kurve $E$ und $n\in \mathbb{N}$. Es soll nun das Vielfache $Q=np$ berechnet werden. Sei \( n = (b_{m-1}b_{m-2}\dots b_0)_2\) mit \(b_{m-1}=1\) die Binärdarstellung von $n$. Der Double-and-Add-Algorithmus verarbeitet die Bits von links nach rechts, beginnend mit dem höchstwertigen Bit $b_{m-1}$.
+    Sei $P$ ein Punkt auf einer elliptischen Kurve $E$ und $n\in \mathbb{N}$. Es soll nun das Vielfache $Q=np$ berechnet werden. Sei \( n = {(b_{m-1}b_{m-2}\dots b_0)}_2\) mit \(b_{m-1}=1\) die Binärdarstellung von $n$. Der Double-and-Add-Algorithmus verarbeitet die Bits von links nach rechts, beginnend mit dem höchstwertigen Bit $b_{m-1}$.
     \begin{enumerate}
         \item Initialisiere $Q\gets P$
         \item Führe für $i=m-1,m-2,\dots,0$ die folgenden Schritte aus:
@@ -59,7 +52,7 @@ ermöglicht der Double-and-Add-Algorithmus.
     \end{enumerate}
     Nach der Verarbeitung aller Bits gilt $Q=nP$. Für $n=0$ wird unmittelbar $\mathcal{O}$ zurückgegeben.
 \end{definition}
-Sei \(n=(b_{m-1}\dots b_1b_0)_2\) die Binärdarstellung von $n$ mit \(m=\lfloor\log_2 n\rfloor+1\). Der Algorithmus verarbeitet somit $m$ Bits. Dabei werden höchstens $m$ Punktverdopplungen und $m$  Punktadditionen benötigt. Damit liegt die Anzahl der Gruppenoperationen in
+Sei \(n={(b_{m-1}\dots b_1b_0)}_2\) die Binärdarstellung von $n$ mit \(m=\lfloor\log_2 n\rfloor+1\). Der Algorithmus verarbeitet somit $m$ Bits. Dabei werden höchstens $m$ Punktverdopplungen und $m$  Punktadditionen benötigt. Damit liegt die Anzahl der Gruppenoperationen in
 \[
     \mathrm{O}(m)=\mathrm{O}(\log n).
 \]
@@ -355,7 +348,7 @@ Eine praktische Folge der kleineren Parameter ist ein geringerer Speicher- und R
 \end{figure}
 
 
-\subsection{Geeignete ellitpische Kurven}
+\subsection{Geeignete elliptische Kurven}
 Nicht jede elliptische Kurve ist für kryptographische Anwendungen geeignet. Es sollen eine elliptische Kurve $E(\mathbb{F}_q)$ und ein Punkt $P\in E(\mathbb{F}_q)$ so gewählt werden, dass das zugehörige diskrete Logarithmusproblem praktisch nicht lösbar ist. Sei $P\in E(\mathbb{F}_q)$ ein Punkt der Ordnung $n= \operatorname{ord}(P)$. Generische Angriffe auf das ECDLP besitzen einen Aufwand von ungefähr $\mathrm{O}(\sqrt{n})$. Da $n\leq \#E(\mathbb{F}_q)$ gilt, folgt aus dem Satz von Hasse
 \[
     n\leq q+1+2\sqrt{q}=(\sqrt{q}+1)^2.
@@ -390,7 +383,7 @@ In diesem Fall gilt für die Frobenius-Spur
 \[
     t=p+1-\#E(\mathbb F_p)=1.
 \]
-Für solche Kurven existieren spezielle Angriffe von Satoh, Araki, Smart und Semaev die das ECDLP in $\mathrm{O}(\log p)$ lösen. Aus Platzgründen wird der zugrundeliegende Angriff in dieser Arbeit nicht behandelt Eine Darstellung findet sich in \cite[S.~89--95]{werner02} und \cite{smart99}.Für die betrachteten kryptographischen Anwendungen werden solche Kurven ausgeschlossen. Über einem Primkörper wird daher gefordert, dass
+Für solche Kurven existieren spezielle Angriffe von Satoh, Araki, Smart und Semaev die das ECDLP in $\mathrm{O}(\log p)$ lösen. Aus Platzgründen wird der zugrundeliegende Angriff in dieser Arbeit nicht behandelt, eine Darstellung findet sich in \cite[S.~89--95]{werner02} und \cite{smart99}.Für die betrachteten kryptographischen Anwendungen werden solche Kurven ausgeschlossen. Über einem Primkörper wird daher gefordert, dass
 \[
     \#E(\mathbb{F}_p)\neq p.
 \]
@@ -439,7 +432,7 @@ Zusammen mit den Empfehlungen von NIST und BSI ergeben sich folgende Anforderung
           Der Einbettungsgrad $k$ muss ausreichend groß sein, damit der
           MOV-Angriff das ECDLP nicht auf ein leichteres diskretes
           Logarithmusproblem in einem kleinen Erweiterungskörper übertragen
-          kann. NIST fordert für die empfohlenen Kurven $k\geq 2^{10}$ (vgl. \cite[~S.35]{nist}).
+          kann. NIST fordert für die empfohlenen Kurven $k\geq 2^{10}$ (vgl. \cite[~S.35]{nist23}).
 
     \item \textbf{Bekannte und geprüfte Gruppenordnung:}
           Die Gruppenordnung $\#E(\mathbb F_q)$ muss bekannt sein, damit die
@@ -491,7 +484,7 @@ Zusammen mit den Empfehlungen von NIST und BSI ergeben sich folgende Anforderung
     Da $n$ eine Primzahl ist, bietet die Zerlegung der  Untergruppenordnung durch das Pohlig-Hellman-Verfahren
     keinen Vorteil. Außerdem gilt $n\neq p$, sodass die Kurve nicht anomal ist. P-256 erfüllt auch die Anforderung an den Einbettungsgrad gemäß der NIST.
 
-    Die Ordnung $n$ besitzt eine Bitlänge von $256$ Bit.
+0     Die Ordnung $n$ besitzt eine Bitlänge von $256$ Bit.
     Generische Angriffe auf das ECDLP erfordern daher ungefähr $\sqrt{n}\approx 2^{128}$ Gruppenoperationen.
     Dies entspricht einem klassischen Sicherheitsniveau von ungefähr $128$ Bit.
 \end{beispiel}

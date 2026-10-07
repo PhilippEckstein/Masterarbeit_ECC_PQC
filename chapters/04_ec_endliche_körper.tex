@@ -1,11 +1,7 @@
 \chapter{Elliptische Kurven über endlichen Körpern}
-Für kryptographische Verfahren betrachtet man elliptische Kurven über endlichen Körpern. Dort lassen sich die Körperoperationen exakt ausführen, und die Kurvenpunkte bilden eine endliche Gruppe (vgl. \cite{omondi20}, S.~230). In diesem Kapitel werden zunächst endliche Körper und die Punktgruppe elliptischer Kurven untersucht. Anschließend werden Eigenschaften und Verfahren behandelt, die für die Auswahl geeigneter Kurven wichtig sind. Wo die Charakteristik des Körpers weder $2$ noch $3$ ist, wird die bereits eingeführte kurze Weierstraß-Gleichung verwendet.
+Für kryptographische Verfahren betrachtet man elliptische Kurven über endlichen Körpern. Dort lassen sich die Körperoperationen exakt ausführen, und die Kurvenpunkte bilden eine endliche Gruppe. In diesem Kapitel werden zunächst endliche Körper und die Punktgruppe elliptischer Kurven untersucht. Anschließend werden Eigenschaften und Verfahren behandelt, die für die Auswahl geeigneter Kurven wichtig sind. Wo die Charakteristik des Körpers weder $2$ noch $3$ ist, wird die bereits eingeführte kurze Weierstraß-Gleichung verwendet.
 \section{Endliche Körper}
-In diesem Abschnitt werden die Grundlagen zu endlichen Körpern gelegt.
-Die Darstellung orientiert sich an Stroth und Waldecker
-\cite[S.~66--67, 163--164]{stroth24}, Karpfinger
-\cite[S.~46, 317--318, 391--392]{karpf24} sowie Güneysu,
-Paar und Pelzl \cite[S.~279~f.]{guneysu24}.
+In diesem Abschnitt werden die Grundlagen zu endlichen Körpern gelegt. Die Darstellung orientiert sich an Stroth und Waldecker~\cite[S.~66--67, 163--164]{stroth24}, Karpfinger~\cite[S.~46, 317--318, 391--392]{karpf24},~\cite[S.~230]{omondi20},sowie Güneysu, Paar und Pelzl~\cite[S.~279~f.]{guneysu24}.
 \begin{definition}
     Ein endlicher Körper ist ein Körper mit endlich vielen Elementen. Für jede Primzahlpotenz \(q=p^n\) existiert bis auf Isomorphie genau ein endlicher Körper mit \(q\) Elementen. Dieser wird dann mit \(\mathbb F_q\) oder \(GF(q)\)(Galois Field) bezeichnet.
 \end{definition}
@@ -13,16 +9,14 @@ In kryptographischen Anwendungen treten insbesondere die Körper \(\mathbb F_p\)
 \[
     P=\cap \{U|U \text{ist ein Teilkörper von }K\}.
 \]
-\begin{satz}
-
-    \label{hilfs:primkörper}
+\begin{satz}~\label{hilfs:primkörper}
     Seien $K$ ein Körper und $K_0$ der Primkörper von $K$.
     \begin{enumerate}
-        \item Ist char($K)=0$, so ist $K_0$ zu $\mathbb{Q}$ isomorph.
-        \item Ist char($K)=p\neq 0$, so ist $K_0$ zu $\mathbb{Z}/p\cdot \mathbb{Z}$ isomorph.
+        \item Ist \(\operatorname{char}(K)=0\), so ist $K_0$ zu $\mathbb{Q}$ isomorph.
+        \item Ist \(\operatorname{char}(K)=p\neq 0\), so ist $K_0$ zu $\mathbb{Z}/p\cdot \mathbb{Z}$ isomorph.
     \end{enumerate}
 \end{satz}
-Mit Worten heißt dies: Hat $K$ die Charakteristik 0, so ist der Primkörper von $K$ zu $\mathbb{Q}$ isomorph. Ist die Charakteristik $p \neq 0$, so ist er zu $\mathbb{Z}/p$ isomorph.
+Hat $K$ die Charakteristik 0, so ist der Primkörper von $K$ zu $\mathbb{Q}$ isomorph. Ist die Charakteristik $p \neq 0$, so ist er zu $\mathbb{Z}/p$ isomorph.
 \begin{proof}
     \begin{enumerate}
         \item Sei \(\Phi:\mathbb{N}\leftarrow K_0\) eine Abbildung für alle $n\in\mathbb{N}$. Sei
@@ -33,12 +27,12 @@ Mit Worten heißt dies: Hat $K$ die Charakteristik 0, so ist der Primkörper von
               \[
                   0_K=n^\psi-m^\psi=(1_K+\cdots+1_K). \quad \text{(n-m)-mal}.
               \]
-              Da char($K)=0$. ist ist, dann $n=m$. Also ist $\psi$ eine injektive Abbildung. Somit besitzt jede $K_0$ eine Teilmenge, die sich bezüglich der Addition wie $\mathbb{N}$ verhält. Da $K_0$ ein Körper ist, gibt es also in $K_0$ einen zu $\mathbb{Z}$ isomorphen Teilring und dann auch einen zu $\mathbb{Q}$ isomorphen Teilkörper. Da $\mathbb{Q}$ keine echten Teilkörper hat, ist $K_0$ selbst isomorph zu $\mathbb{Q}$.
-        \item Seien nun $p$ eine Primzahl und char($K)= p$. Sei weiter
+              Da \(\operatorname{char}(K)=0\) ist, dann $n=m$. Also ist $\psi$ eine injektive Abbildung. Somit besitzt jede $K_0$ eine Teilmenge, die sich bezüglich der Addition wie $\mathbb{N}$ verhält. Da $K_0$ ein Körper ist, gibt es also in $K_0$ einen zu $\mathbb{Z}$ isomorphen Teilring und dann auch einen zu $\mathbb{Q}$ isomorphen Teilkörper. Da $\mathbb{Q}$ keine echten Teilkörper hat, ist $K_0$ selbst isomorph zu $\mathbb{Q}$.
+        \item Seien nun $p$ eine Primzahl und \(\operatorname{char}(K) = p\). Sei weiter
               \[
                   L = {0_K,1_K,\dots,1_k+\cdots+1_K}\quad \text{(p-1)-mal}
               \]
-              Da char($K)=p$ ist, sind die Elemente in $L$ paarweise verschieden und daher ist $|L|=p$, außerdem ist $L$ unter Addition abgeschlossen.
+              Da \(\operatorname{char}(K)=p\) ist, sind die Elemente in $L$ paarweise verschieden und daher ist $|L|=p$, außerdem ist $L$ unter Addition abgeschlossen.
 
     \end{enumerate}
 \end{proof}
@@ -76,7 +70,7 @@ Mit Worten heißt dies: Hat $K$ die Charakteristik 0, so ist der Primkörper von
     Bezüglich einer Basis besitzt jedes Element von \(K\) eine
     eindeutige Darstellung
     \[
-        a_1v_1+\dots+a_nv_n
+        a_1v_1+\cdots+a_n v_n
         \qquad\text{mit }a_i\in\mathbb{F}_p.
     \]
     Für jeden der \(n\) Koeffizienten gibt es \(p\) Möglichkeiten.
@@ -87,8 +81,7 @@ Mit Worten heißt dies: Hat $K$ die Charakteristik 0, so ist der Primkörper von
 \end{proof}
 
 
-\begin{lemma}
-    \label{lem:a^q=a}
+\begin{lemma}~\label{lem:a^q=a}
     Für einen endlichen Körper K der Charakteristik p mit $q=p^n$ gilt
     \[
         a^q=a
@@ -97,7 +90,16 @@ Mit Worten heißt dies: Hat $K$ die Charakteristik 0, so ist der Primkörper von
 
 \begin{proof}
     Für \(a=0\) ist die Aussage unmittelbar erfüllt, da $0^{p^n}=0$. Sei daher \(a\in K^\times =K\setminus\{0\}\).
-    Wegen $|K^\times|=p^n-1$ gilt nach dem kleinen Satz von Fermat vgl. \cite{karpf24} S.46 gilt  in einer endlichen Gruppe $G$, \(a^{|G|} = e\) für alle \(a\in G\). Dann \(a^{p^n-1}=1\) für jedes $a\in K^\times$. Daraus folgt dann $a^{p^n}=a$ für alle $a\in K $.
+    Wegen $|K^\times|=p^n-1$ gilt nach dem Satz von Lagrange~\ref{satz:lagrange} \(\operatorname{ord}(a)\mid |K^\times|=p^n-1\). Also exestiert ein $r\in\mathbb{N}$ mit 
+    \(p^n-1=r \operatorname{ord}(a)\). Da \(a^{\operatorname{ord}(a)} = 1\) gilt, folgt 
+    \[
+    a^{p^n-1}=a^{r\operatorname{ord}(a)}={\left(a^{\operatorname{ord}(a)}\right)}^r=1.
+    \]
+    Damit folgt dann \(a^{p^n}=a\).
+    \textbf{Todo}
+
+    
+    nach dem kleinen Satz von Fermat~\cite[S~.46]{karpf24} gilt in einer endlichen Gruppe $G$, \(a^{|G|} = e\) für alle \(a\in G\). Dann \(a^{p^n-1}=1\) für jedes $a\in K^\times$. Daraus folgt dann $a^{p^n}=a$ für alle $a\in K $.
 \end{proof}
 Diese Aussage kann nun auch noch in beide Richtungen formuliert werden, da wir sie später bei einem Beweis benötigen.
 \begin{lemma}
@@ -838,7 +840,7 @@ Also die Supersingularität bleibt beim Übergang zu einem Erweiterungskörper e
     \cite[Lemma~3.4.2, S.~66--68]{werner02}.
 \end{proof}
 \begin{lemma}
-    Sei $p\geq 5$ eine Primzahl. Dann ist die Ellitpische Kurve $y^2=x^3+1$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 2 \mod 3$ und die ellitpische Kurve $y^2=x^3+x$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 3 \mod 4$.
+    Sei $p\geq 5$ eine Primzahl. Dann ist die Elliptische Kurve $y^2=x^3+1$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 2 \mod 3$ und die elliptische Kurve $y^2=x^3+x$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 3 \mod 4$.
 \end{lemma}
 Das entspricht auch den Bedingungen von dem oben gewählten Beispiel.
 \begin{proof}
@@ -848,7 +850,7 @@ Das entspricht auch den Bedingungen von dem oben gewählten Beispiel.
 
 \section{Punktzählung}
 Bei kleinen endlichen Körpern kann die Anzahl der Punkte einer elliptischen Kurve durch Auswertung aller möglichen $x$-Koordinaten bestimmt werden. Für große Körper ist dieses Vorgehen zu aufwendig. Um eine Kurve für kryptographische Anwendungen auszuwählen, muss ihre Gruppenordnung jedoch bekannt sein: Erst dann lässt sich prüfen, ob sie eine Untergruppe geeigneter Ordnung enthält. Dieser Abschnitt stellt zunächst Baby-Step-Giant-Step und Mestres Verfahren vor. Der Schwerpunkt liegt anschließend auf Schoofs Algorithmus. Er bestimmt die Frobenius-Spur schrittweise modulo kleiner Primzahlen und nutzt die
-Hasse-Schranke, um daraus die Gruppenordnung eindeutig zu ermitteln. Die Verfahren werden hier in ihren Grundzügen dargestellt. Die Darstellung orientiert sich an Schoof \cite[S.~219--228, 233--235]{schoof95} und seiner ursprünglichen Arbeit \cite{schoof85}. Für die Erläuterung von Schoofs Verfahren wird außerdem Werner \cite[S.~63--65]{werner02} und \cite[S.~101, 123--127]{washington08} herangezogen; der verwendete chinesische Restsatz folgt Werner \cite[S.~115--116]{werner02}. Die Einordnung der Laufzeit folgt Silverman \cite[S.~46]{silverman06}.
+Hasse-Schranke, um daraus die Gruppenordnung eindeutig zu ermitteln. Die Verfahren werden hier in ihren Grundzügen dargestellt. Die Darstellung orientiert sich an Schoof~\cite[S.~219--228, 233--235]{schoof95} und seiner ursprünglichen Arbeit~\cite{schoof85}. Für die Erläuterung von Schoofs Verfahren wird außerdem Werner~\cite[S.~63--65]{werner02} und~\cite[S.~101, 123--127]{washington08} herangezogen. Der verwendete chinesische Restsatz folgt Werner~\cite[S.~115--116]{werner02}. Die Einordnung der Laufzeit folgt Silverman~\cite[S.~46]{silverman06}.
 
 \subsection{Baby-Step-Giant-Step Verfahren}
 Für größere Primzahlen ist die direkte Bestimmung der Gruppenordnung

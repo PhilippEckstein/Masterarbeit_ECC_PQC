@@ -6,30 +6,35 @@
 
 \begin{document}
 \begin{titlepage}
+    \begin{figure}[ht]
+            \includegraphics[width=0.5\textwidth]{unistuttgart_logo_deutsch.jpg}
+        \end{figure}
+    \bigskip
     \begin{center}
-        \par\huge \textsc{Eliptische Kurven Kryptographie}
+        \par\huge \textsc{Elliptische Kurven Kryptographie}
     \end{center}
 
     \medskip
 
     \begin{center}
-        \textsc{Masterarbeit}
+        \textsc{\textbf{Masterarbeit}}
 
         \bigskip
         Autor:\\ %Use different gender if preferred.
-        Philipp Eckstein, 3554663\\
+        Philipp Eckstein\\
+        MatrikelNummer: \\
+         3554663\\
         \smallskip
         Betreuer:\\ %Use different gender if preferred.
-        Prof. Dr. Meinolf Geck\\
+        Prof.Dr.Meinolf Geck\\
         \bigskip
         Universität Stuttgart\\
         Institut für Diskrete Strukturen und Symbolisches Rechnen
         \vfill
-
         \begin{figure}[ht]
-            \includegraphics[width=0.5\textwidth]{ElliptischeKurven.png}
+            \includegraphics[width=0.7\textwidth]{ElliptischeKurven.png}
             \captionsetup{labelformat=empty} %surpresses enumeration
-            \caption{Elliptische Kurve $\displaystyle 5y^{2}=x^{3}-3x+5$ über dem Körper der reellen Zahlen Quelle: \url{https://de.wikipedia.org/wiki/Elliptische_Kurve} }
+            \caption{Elliptische Kurve $\displaystyle y^{2}=x^{3}-2x+3$ über dem Körper der reellen Zahlen Quelle: Eigene Darstellung mit GeoGebra}
         \end{figure}
     \end{center}
     \vfill
@@ -47,13 +52,14 @@
 \input{chapters/05_ecc.tex}
 \input{chapters/06_quantum_computers.tex}
 \printbibliography
+\appendix
+\chapter{Python-Code}~\label{anhang:python}
 
-\section{Anhang}
-\label{app:pythonprogramm}
-\begin{figure}
-     \includegraphics[width=0.5\linewidth]{python/giant_step.png}
-        \caption{Konsolen Ausgabe des des Giant Steps}
-        \label{fig:python-2}
-\end{figure}
+Der Punkt im Unendlichen wird durch \texttt{None} dargestellt.
 
+\lstinputlisting[
+    style=pythoncode,
+    caption={Punktarithmetik auf elliptischen Kurven über Primkörpern},
+    label={lst:punktarithmetik}
+]{code/main.py}~\label{app:pythonprogramm}
 \end{document}

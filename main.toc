@@ -1,53 +1,55 @@
 \babel@toc {ngerman}{}\relax 
 \contentsline {chapter}{\tocchapter {Kapitel}{1}{Vorwort}}{1}{chapter.1}%
-\contentsline {section}{\tocsection {}{}{Eidesstattliche Erklärung}}{1}{section*.2}%
-\contentsline {section}{\tocsection {}{}{Danksagung}}{1}{section*.3}%
+\contentsline {section}{\tocsection {}{}{Eidesstattliche Erklärung}}{1}{section*.3}%
+\contentsline {section}{\tocsection {}{}{Danksagung}}{1}{section*.4}%
 \contentsline {section}{\tocsection {}{1.1}{Einführung}}{1}{section.1.1}%
 \contentsline {section}{\tocsection {}{1.2}{Zielsetzung und Forschungsfrage}}{2}{section.1.2}%
 \contentsline {section}{\tocsection {}{1.3}{Aufbau der Arbeit}}{2}{section.1.3}%
-\contentsline {chapter}{\tocchapter {Kapitel}{2}{Das Diskrete Logarithmus Problem}}{6}{chapter.2}%
-\contentsline {section}{\tocsection {}{2.1}{Public-Key-Kryptographie}}{6}{section.2.1}%
-\contentsline {section}{\tocsection {}{2.2}{Das Diskrete Logarithmus Problem}}{8}{section.2.2}%
-\contentsline {section}{\tocsection {}{2.3}{Angriffe auf das DL-Problem}}{9}{section.2.3}%
-\contentsline {subsection}{\tocsubsection {}{2.3.1}{Baby Step, Giant Step}}{9}{subsection.2.3.1}%
-\contentsline {subsection}{\tocsubsection {}{2.3.2}{Pollard-\(\rho \)-Methode}}{10}{subsection.2.3.2}%
-\contentsline {subsection}{\tocsubsection {}{2.3.3}{Das Pohlig Hellman-Verfahren}}{10}{subsection.2.3.3}%
-\contentsline {chapter}{\tocchapter {Kapitel}{3}{Elliptische Kurven}}{12}{chapter.3}%
-\contentsline {section}{\tocsection {}{3.1}{Grundlagen}}{12}{section.3.1}%
-\contentsline {section}{\tocsection {}{3.2}{Gruppenstruktur}}{14}{section.3.2}%
-\contentsline {subsection}{\tocsubsection {}{3.2.1}{Geometrische Konstruktion der Punktaddition}}{14}{subsection.3.2.1}%
-\contentsline {subsection}{\tocsubsection {}{3.2.2}{Herleitung der Additionsformeln}}{17}{subsection.3.2.2}%
-\contentsline {subsection}{\tocsubsection {}{3.2.3}{Skalar mal Punkt}}{23}{subsection.3.2.3}%
-\contentsline {section}{\tocsection {}{3.3}{Projektive Ebene und der Punkt bei Unendlich}}{23}{section.3.3}%
-\contentsline {section}{\tocsection {}{3.4}{Beweis der Assoziativität}}{26}{section.3.4}%
-\contentsline {section}{\tocsection {}{3.5}{Elliptische Kurven in Charakteristik 2}}{34}{section.3.5}%
-\contentsline {chapter}{\tocchapter {Kapitel}{4}{Elliptische Kurven über endlichen Körpern}}{36}{chapter.4}%
-\contentsline {section}{\tocsection {}{4.1}{Endliche Körper}}{36}{section.4.1}%
-\contentsline {section}{\tocsection {}{4.2}{Die Punktmenge $E(\mathbb {F}_q)$}}{39}{section.4.2}%
-\contentsline {subsection}{\tocsubsection {}{4.2.1}{Explizite Punktbestimmung}}{39}{subsection.4.2.1}%
-\contentsline {subsection}{\tocsubsection {}{4.2.2}{Quadratische Reste und Legendre-Symbol}}{39}{subsection.4.2.2}%
-\contentsline {subsection}{\tocsubsection {}{4.2.3}{Struktur der Punktgruppe und Torsionspunkte}}{41}{subsection.4.2.3}%
-\contentsline {section}{\tocsection {}{4.3}{Frobenius-Endomorphismen und die Hasse-Schranke}}{43}{section.4.3}%
-\contentsline {subsection}{\tocsubsection {}{4.3.1}{Isogenien}}{43}{subsection.4.3.1}%
-\contentsline {subsection}{\tocsubsection {}{4.3.2}{Frobenius-Endomorphismus}}{44}{subsection.4.3.2}%
-\contentsline {subsection}{\tocsubsection {}{4.3.3}{Hasse-Schranke}}{47}{subsection.4.3.3}%
-\contentsline {subsection}{\tocsubsection {}{4.3.4}{Frobenius-Spur und Supersingularität}}{49}{subsection.4.3.4}%
-\contentsline {section}{\tocsection {}{4.4}{Punktzählung}}{51}{section.4.4}%
-\contentsline {subsection}{\tocsubsection {}{4.4.1}{Baby-Step-Giant-Step Verfahren}}{51}{subsection.4.4.1}%
-\contentsline {subsection}{\tocsubsection {}{4.4.2}{Mestre's Algorithm}}{51}{subsection.4.4.2}%
-\contentsline {subsection}{\tocsubsection {}{4.4.3}{Schoofs Algorithm}}{52}{subsection.4.4.3}%
-\contentsline {chapter}{\tocchapter {Kapitel}{5}{Elliptische Kurven Kryptographie}}{54}{chapter.5}%
-\contentsline {section}{\tocsection {}{5.1}{Diffie-Hellman-Schlüsselaustausch}}{54}{section.5.1}%
-\contentsline {subsection}{\tocsubsection {}{5.1.1}{Double-and-Add-Algorithmus}}{54}{subsection.5.1.1}%
-\contentsline {subsection}{\tocsubsection {}{5.1.2}{Diffie-Hellman-Schlüsselaustausch}}{56}{subsection.5.1.2}%
-\contentsline {subsection}{\tocsubsection {}{5.1.3}{ElGamal-Verschlüsslung}}{57}{subsection.5.1.3}%
-\contentsline {subsection}{\tocsubsection {}{5.1.4}{Digitaler Signatur Algorithmus}}{58}{subsection.5.1.4}%
-\contentsline {section}{\tocsection {}{5.2}{Angriffe auf ECC}}{59}{section.5.2}%
-\contentsline {subsection}{\tocsubsection {}{5.2.1}{Allgemeine Methoden}}{59}{subsection.5.2.1}%
-\contentsline {subsection}{\tocsubsection {}{5.2.2}{MOV-Algorithmus}}{60}{subsection.5.2.2}%
-\contentsline {section}{\tocsection {}{5.3}{Sicherheitsbetrachtung und praktische Konsequenzen}}{60}{section.5.3}%
-\contentsline {subsection}{\tocsubsection {}{5.3.1}{Warum elliptische Kurven verwenden?}}{61}{subsection.5.3.1}%
-\contentsline {subsection}{\tocsubsection {}{5.3.2}{Geeignete ellitpische Kurven}}{61}{subsection.5.3.2}%
-\contentsline {chapter}{\tocchapter {Kapitel}{6}{Quantencomputer}}{65}{chapter.6}%
-\contentsline {chapter}{\tocchapter {Kapitel}{}{Literatur}}{67}{chapter*.15}%
-\contentsline {section}{\tocsection {}{6.1}{Anhang}}{68}{section.6.1}%
+\contentsline {section}{\tocsection {}{1.4}{Mathematische Grundlagen und Notation}}{3}{section.1.4}%
+\contentsline {chapter}{\tocchapter {Kapitel}{2}{Das Diskrete Logarithmusproblem}}{7}{chapter.2}%
+\contentsline {section}{\tocsection {}{2.1}{Public-Key-Kryptographie}}{7}{section.2.1}%
+\contentsline {section}{\tocsection {}{2.2}{Das Diskrete Logarithmus Problem}}{9}{section.2.2}%
+\contentsline {section}{\tocsection {}{2.3}{Angriffe auf das DL-Problem}}{10}{section.2.3}%
+\contentsline {subsection}{\tocsubsection {}{2.3.1}{Baby Step, Giant Step}}{11}{subsection.2.3.1}%
+\contentsline {subsection}{\tocsubsection {}{2.3.2}{Das Pohlig Hellman-Verfahren}}{12}{subsection.2.3.2}%
+\contentsline {chapter}{\tocchapter {Kapitel}{3}{Elliptische Kurven}}{14}{chapter.3}%
+\contentsline {section}{\tocsection {}{3.1}{Grundlagen}}{14}{section.3.1}%
+\contentsline {section}{\tocsection {}{3.2}{Gruppenstruktur}}{16}{section.3.2}%
+\contentsline {subsection}{\tocsubsection {}{3.2.1}{Geometrische Konstruktion der Punktaddition}}{16}{subsection.3.2.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2.2}{Herleitung der Additionsformeln}}{19}{subsection.3.2.2}%
+\contentsline {subsection}{\tocsubsection {}{3.2.3}{Skalar mal Punkt}}{25}{subsection.3.2.3}%
+\contentsline {section}{\tocsection {}{3.3}{Projektive Ebene und der Punkt bei Unendlich}}{25}{section.3.3}%
+\contentsline {section}{\tocsection {}{3.4}{Beweis der Assoziativität}}{28}{section.3.4}%
+\contentsline {section}{\tocsection {}{3.5}{Elliptische Kurven in Charakteristik 2}}{36}{section.3.5}%
+\contentsline {subsection}{\tocsubsection {}{3.5.1}{Punktverdopplung in Charakteristik 2}}{37}{subsection.3.5.1}%
+\contentsline {chapter}{\tocchapter {Kapitel}{4}{Elliptische Kurven über endlichen Körpern}}{39}{chapter.4}%
+\contentsline {section}{\tocsection {}{4.1}{Endliche Körper}}{39}{section.4.1}%
+\contentsline {section}{\tocsection {}{4.2}{Die Punktmenge $E(\mathbb {F}_q)$}}{42}{section.4.2}%
+\contentsline {subsection}{\tocsubsection {}{4.2.1}{Explizite Punktbestimmung}}{42}{subsection.4.2.1}%
+\contentsline {subsection}{\tocsubsection {}{4.2.2}{Quadratische Reste und Legendre-Symbol}}{43}{subsection.4.2.2}%
+\contentsline {subsection}{\tocsubsection {}{4.2.3}{Struktur der Punktgruppe und Torsionspunkte}}{45}{subsection.4.2.3}%
+\contentsline {section}{\tocsection {}{4.3}{Frobenius-Endomorphismen und die Hasse-Schranke}}{46}{section.4.3}%
+\contentsline {subsection}{\tocsubsection {}{4.3.1}{Isogenien}}{46}{subsection.4.3.1}%
+\contentsline {subsection}{\tocsubsection {}{4.3.2}{Frobenius-Endomorphismus}}{47}{subsection.4.3.2}%
+\contentsline {subsection}{\tocsubsection {}{4.3.3}{Hasse-Schranke}}{50}{subsection.4.3.3}%
+\contentsline {subsection}{\tocsubsection {}{4.3.4}{Frobenius-Spur und Supersingularität}}{52}{subsection.4.3.4}%
+\contentsline {section}{\tocsection {}{4.4}{Punktzählung}}{54}{section.4.4}%
+\contentsline {subsection}{\tocsubsection {}{4.4.1}{Baby-Step-Giant-Step Verfahren}}{54}{subsection.4.4.1}%
+\contentsline {subsection}{\tocsubsection {}{4.4.2}{Mestre's Algorithm}}{54}{subsection.4.4.2}%
+\contentsline {subsection}{\tocsubsection {}{4.4.3}{Schoofs Algorithm}}{55}{subsection.4.4.3}%
+\contentsline {chapter}{\tocchapter {Kapitel}{5}{Elliptische Kurven Kryptographie}}{57}{chapter.5}%
+\contentsline {section}{\tocsection {}{5.1}{Diffie-Hellman-Schlüsselaustausch}}{57}{section.5.1}%
+\contentsline {subsection}{\tocsubsection {}{5.1.1}{Double-and-Add-Algorithmus}}{57}{subsection.5.1.1}%
+\contentsline {subsection}{\tocsubsection {}{5.1.2}{Diffie-Hellman-Schlüsselaustausch}}{59}{subsection.5.1.2}%
+\contentsline {subsection}{\tocsubsection {}{5.1.3}{ElGamal-Verschlüsslung}}{60}{subsection.5.1.3}%
+\contentsline {subsection}{\tocsubsection {}{5.1.4}{Digitaler Signatur Algorithmus}}{61}{subsection.5.1.4}%
+\contentsline {section}{\tocsection {}{5.2}{Angriffe auf ECC}}{62}{section.5.2}%
+\contentsline {subsection}{\tocsubsection {}{5.2.1}{Allgemeine Methoden}}{62}{subsection.5.2.1}%
+\contentsline {subsection}{\tocsubsection {}{5.2.2}{MOV-Algorithmus}}{63}{subsection.5.2.2}%
+\contentsline {section}{\tocsection {}{5.3}{Sicherheitsbetrachtung und praktische Konsequenzen}}{63}{section.5.3}%
+\contentsline {subsection}{\tocsubsection {}{5.3.1}{Warum elliptische Kurven verwenden?}}{64}{subsection.5.3.1}%
+\contentsline {subsection}{\tocsubsection {}{5.3.2}{Geeignete elliptische Kurven}}{64}{subsection.5.3.2}%
+\contentsline {chapter}{\tocchapter {Kapitel}{6}{Quantencomputer}}{68}{chapter.6}%
+\contentsline {section}{\tocsection {}{6.1}{Shors Algorithmus}}{70}{section.6.1}%
+\contentsline {chapter}{\tocchapter {Kapitel}{}{Literatur}}{71}{chapter*.16}%
+\contentsline {chapter}{\tocappendix {Anhang}{A}{Python-Code}}{73}{appendix.A}%

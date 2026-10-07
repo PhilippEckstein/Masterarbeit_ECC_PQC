@@ -1,40 +1,36 @@
 \chapter{Vorwort}
 
 \section*{Eidesstattliche Erklärung}
-Hier sollte eine kluge Eidesstattliche Erklärung stehen, dass du alles allein gemacht hast et cetera et cetera.
+Hier sollte eine kluge eidesstattliche Erkl"arung stehen, dass du alles allein gemacht hast et cetera et cetera.
 \bigskip\underline{\hspace{0.2\textwidth}}\hspace{0.1\textwidth}\underline{\hspace{0.4\textwidth}}
 \section*{Danksagung}
-An erster Stelle dankt man meistens dem Betreuer. Je nach Sentimentalität kann dann auch weiteren Personen aus dem akademischen oder dem privaten Umfeld gedankt werden.
+An erster Stelle dankt man meistens dem Betreuer. Je nach Sentimentalit"at kann dann auch weiteren Personen aus dem akademischen oder dem privaten Umfeld gedankt werden.
 \section{Einführung}
-(Grundlagen der Kryptographie, vgl. S.2ff.)
-Der Wunsch, Informationen vor dem Zugriff unbefugter Personen zu schützen,
-reicht weit in die Geschichte zurück. Bereits Julius Caesar soll ein
-Verschlüsselungsverfahren verwendet haben, um militärische Nachrichten
-vertraulich zu übermitteln. Bei der heute als Caesar-Chiffre bezeichneten
-Methode werden die Buchstaben des Alphabets um eine festgelegte Anzahl von
-Stellen verschoben. Nur wer die verwendete Verschiebung kennt, kann die
-Nachricht unmittelbar entschlüsseln \cite[S.~14--15]{buell24}. Aus heutiger
-Sicht bietet dieses Verfahren keine ausreichende Sicherheit, veranschaulicht
-jedoch bereits ein grundlegendes Prinzip der Kryptographie: Eine Nachricht
-wird mithilfe eines Schlüssels so verändert, dass ihr ursprünglicher Inhalt
-für Unbefugte nicht mehr erkennbar ist.
+Der Wunsch, Informationen vor dem Zugriff unbefugter Personen zu schützen, reicht weit in die Geschichte zurück. Bereits Julius Caesar soll ein Verschlüsselungsverfahren verwendet haben, um militärische Nachrichten vertraulich zu übermitteln. Bei der heute als Caesar-Chiffre bezeichneten Methode werden die Buchstaben des Alphabets um eine festgelegte Anzahl von Stellen verschoben. Nur wer die verwendete Verschiebung kennt, kann die
+Nachricht unmittelbar entschlüsseln \cite[S.~14--15]{buell24}. Aus heutiger Sicht bietet dieses Verfahren keine ausreichende Sicherheit, veranschaulicht jedoch bereits ein grundlegendes Prinzip der Kryptographie. Eine Nachricht  wird mithilfe eines Schlüssels so verändert, dass ihr ursprünglicher Inhalt für Unbefugte nicht mehr erkennbar ist.
 
-Mit der zunehmenden Digitalisierung hat die sichere Übertragung von
-Informationen erheblich an Bedeutung gewonnen. Beim Onlinebanking, bei der
-E-Mail-Kommunikation und bei der Nutzung von Nachrichtendiensten werden
-regelmäßig sensible Daten über öffentliche Netzwerke übertragen.
-Kryptographische Verfahren sollen unter anderem gewährleisten, dass diese
-Informationen nicht von unbefugten Dritten gelesen oder unbemerkt verändert
-werden können.
+Mit der zunehmenden Digitalisierung hat die sichere Übertragung von Informationen erheblich an Bedeutung gewonnen. Beim Onlinebanking, bei der E-Mail-Kommunikation oder bei der Nutzung von Nachrichtendiensten werden regelmäßig sensible Daten über öffentliche Netzwerke übertragen. Kryptographische Verfahren sollen unter anderem gewährleisten, dass diese Informationen nicht von unbefugten Dritten gelesen oder unbemerkt verändert werden können.
 
 Eine wichtige Rolle spielt dabei die asymmetrische Kryptographie, bei der
-öffentliche und private Schlüssel verwendet werden. Die Sicherheit der
-entsprechenden Verfahren beruht häufig auf mathematischen Problemen, für die
+öffentliche und private Schlüssel verwendet werden. Die Sicherheit
+entsprechender Verfahren beruht häufig auf mathematischen Problemen, für die
 auf klassischen Computern keine effizienten Lösungsverfahren bekannt sind.
-Zu diesen Problemen gehört das diskrete Logarithmusproblem. Wird es in der
-Punktgruppe einer elliptischen Kurve über einem endlichen Körper betrachtet,
-bildet es eine wesentliche Sicherheitsgrundlage der
-Elliptische-Kurven-Kryptographie.
+Zu diesen Problemen gehört insbesondere das diskrete Logarithmusproblem.
+
+Elliptische Kurven haben sich in der modernen Public-Key-Kryptographie
+etabliert, da sie bei vergleichbarem Sicherheitsniveau deutlich kleinere
+Schlüssel und Parameter als klassische Verfahren wie RSA ermöglichen.
+Dadurch können kryptographische Operationen mit geringerem Speicherbedarf
+und häufig auch mit geringerem Rechenaufwand durchgeführt werden. Ihre
+Sicherheit beruht dabei wesentlich auf der Schwierigkeit des diskreten
+Logarithmusproblems in geeigneten Punktgruppen elliptischer Kurven.
+
+Die praktische Sicherheit hängt jedoch nicht allein von der Größe der
+verwendeten Parameter ab. Bestimmte algebraische Eigenschaften einer Kurve
+können spezielle Angriffe ermöglichen und die Schwierigkeit des diskreten
+Logarithmusproblems erheblich reduzieren. Die Auswahl geeigneter Kurven und
+Untergruppen stellt daher einen zentralen Bestandteil der Sicherheit
+elliptischer Kryptosysteme dar.
 
 Die Entwicklung von Quantencomputern stellt diese Sicherheitsannahme
 grundsätzlich infrage. Insbesondere ermöglicht der Shor-Algorithmus,
@@ -46,98 +42,191 @@ kryptographischer Verfahren auf elliptischen Kurven ergeben.
 \section{Zielsetzung und Forschungsfrage}
 
 Ziel dieser Arbeit ist es, elliptische Kurven mathematisch einzuführen und
-ihre Verwendung in der Kryptographie darzustellen. Dazu werden elliptische
-Kurven über endlichen Körpern sowie das diskrete Logarithmusproblem in ihren
-Punktgruppen untersucht. Anschließend werden die Grundlagen des
-Quantencomputings und insbesondere der Shor-Algorithmus betrachtet, um dessen
-Auswirkungen auf die Sicherheit der Elliptische-Kurven-Kryptographie zu
-bewerten.
+ihre Verwendung in der Public-Key-Kryptographie darzustellen. Im Mittelpunkt stehen dabei das diskrete Logarithmusproblem auf elliptischen Kurven, ausgewählte kryptographische Verfahren sowie die Analyse klassischer Angriffe und der daraus resultierenden
+Sicherheitsanforderungen an geeignete Kurvenparameter. Abschließend wird in einem Ausblick betrachtet, welche zusätzlichen Auswirkungen Quantencomputer und insbesondere der Shor-Algorithmus auf die langfristige Sicherheit elliptischer Kurven haben.
 
-Daraus ergibt sich die folgende Forschungsfrage:
+Daraus ergibt sich die folgende Forschungsfrage.
 
 \begin{quote}
-    \emph{Wie verändert der Shor-Algorithmus die Komplexität des diskreten
-        Logarithmusproblems auf elliptischen Kurven, und welche Konsequenzen
-        ergeben sich daraus für die Sicherheit der
-        Elliptische-Kurven-Kryptographie?}
+    \emph{Welche mathematischen Eigenschaften elliptischer Kurven
+        ermöglichen ihren Einsatz in der Public-Key-Kryptographie und
+        welche Anforderungen ergeben sich aus bekannten Angriffen an die
+        Auswahl sicherer Kurvenparameter?}
 \end{quote}
 
 \section{Aufbau der Arbeit}
 
-Zunächst werden die für die weitere Untersuchung benötigten Grundlagen der
-asymmetrischen Kryptographie eingeführt. Das RSA-Kryptosystem dient dabei als
-Beispiel, um das Zusammenspiel öffentlicher und privater Schlüssel sowie das
-Prinzip der asymmetrischen Verschlüsselung zu erläutern. Anschließend wird das
-diskrete Logarithmusproblem zunächst in einer allgemeinen Gruppe formuliert.
+Zunächst werden die Grundlagen der Public-Key-Kryptographie eingeführt. Das RSA-Verfahren dient dabei als einführendes Beispiel für das Zusammenspiel öffentlicher und privater Schlüssel. Anschließend wird das diskrete Logarithmusproblem zunächst allgemein in endlichen zyklischen Gruppen betrachtet. Dabei werden auch ausgewählte Verfahren zur Lösung des diskreten Logarithmusproblems vorgestellt.
 
-Darauf folgt die mathematische Einführung elliptischer Kurven. Neben ihrer
-Definition werden insbesondere die Gruppenstruktur, die Punktaddition und die
-Skalarmultiplikation behandelt. Anschließend werden elliptische Kurven über
-endlichen Körpern untersucht, da deren endliche Punktgruppen die Grundlage
-kryptographischer Anwendungen bilden.
+Darauf folgt die mathematische Einführung elliptischer Kurven. Neben ihrer Definition werden insbesondere die Gruppenstruktur, die Punktaddition und die Skalarmultiplikation behandelt. Anschließend werden elliptische Kurven über endlichen Körpern untersucht. Dabei werden unter anderem die Gruppenordnung,
+Punktzählverfahren und weitere für kryptographische Anwendungen
+relevante Eigenschaften betrachtet.
 
-Auf diesen Grundlagen aufbauend wird das diskrete Logarithmusproblem auf
-elliptischen Kurven betrachtet und seine Bedeutung für die Sicherheit
-kryptographischer Verfahren erläutert. Danach werden ausgewählte
-kryptographische Verfahren auf elliptischen Kurven vorgestellt.
+Auf diesen Grundlagen aufbauend wird das diskrete Logarithmusproblem auf elliptischen Kurven untersucht. Anschließend werden ausgewählte kryptographische Verfahren auf elliptischen Kurven vorgestellt und deren Sicherheit betrachtet. Einen weiteren Schwerpunkt bilden spezielle Angriffe auf elliptische Kurven sowie die daraus resultierenden Anforderungen an die Auswahl geeigneter Kurvenparameter.
 
-Im letzten Teil der Arbeit werden zunächst die erforderlichen Grundlagen des
-Quantencomputings eingeführt. Anschließend wird der Shor-Algorithmus und seine
-Anwendung auf das diskrete Logarithmusproblem untersucht. Abschließend werden
-die daraus resultierenden theoretischen und praktischen Konsequenzen für die
-Sicherheit der Elliptische-Kurven-Kryptographie bewertet.
+Abschließend wird in einem kurzen Ausblick betrachtet, welche grundsätzlichen Auswirkungen Quantencomputer auf die Sicherheit der Elliptische-Kurven-Kryptographie haben. Dabei wird insbesondere die Bedeutung des Shor-Algorithmus für das diskrete Logarithmusproblem eingeordnet. Die Arbeit schließt mit einer Zusammenfassung der wesentlichen Ergebnisse und einem Ausblick.
+
+\section{Mathematische Grundlagen und Notation}
+
+In dieser Arbeit werden grundlegende Kenntnisse der linearen Algebra,
+Algebra und elementaren Zahlentheorie vorausgesetzt. Insbesondere werden
+die Begriffe Gruppe, Untergruppe, Ring, Körper, Vektorraum, Homomorphismus
+und Endomorphismus sowie grundlegende Eigenschaften endlicher Körper als
+bekannt vorausgesetzt. Begriffe, die für die weitere Untersuchung
+elliptischer Kurven von besonderer Bedeutung sind, werden an den
+entsprechenden Stellen erneut eingeführt.
+
+\begin{longtable}{
+        >{\raggedright\arraybackslash}p{0.25\textwidth}
+        >{\raggedright\arraybackslash}p{0.67\textwidth}
+    }
 
 
-\textbf{Mathematische Notation}
+    \multicolumn{2}{l}{\textbf{Allgemeine mathematische Notation}}                                 \\[0.3em]
 
-Anmerkung: Es wird davon ausgegeganngen, dass der Leser grundlegende algebraische Strukturen kennt. Verwendete Strukturen sind: Gruppen, Ringe, Körper, Vektorräume
-\textbf{(siehe Quelle einfügen)}
-Körper
-Basics über Gruppen und Untergruppen
-Eulersche Phi Funktion mit Primfaktorzerlegung.
-Homo- und Endomorphismen
-Algebraischer Abschluss
-Vektorraum
-Hauptsatz über endliche abelsche Gruppen?
-seperabel
-$\O$ als Komplexitätsklasse
-\[
-    \begin{aligned}
-                                               & \quad\textbf{Allgemeine mathematische Notationen}                            \\[0.5em]
-        \varphi(n)                             & \quad \text{Euler'sche Phi-Funktion}                                         \\
-        \simeq                                 & \quad \text{Isomorphie}                                                      \\
-        \#M                                    & \quad \text{Mächtigkeit der Menge} M                                        \\[1em]
-        %
-                                               & \quad \textbf{Notation zu Gruppen}                                           \\[0.5em]
-        G                                      & \quad \text{Endliche abelsche Gruppe}                                        \\
-        e_G                                    & \quad \text{Neutrales Element der Gruppe } G                                 \\
-        |G|                                    & \quad \text{Ordnung der Gruppe } G                                           \\
-        \langle P\rangle                       & \quad \text{Von } P \in G
-        \text{ erzeugte zyklische Untergruppe}                                                                                \\
-        \operatorname{ord}(a)                  & \quad \text{Ordnung des Elements } a \in G                                   \\
-        \mathbb{Z}_n^{*}                       & \quad \text{Multiplikative Gruppe der Einheiten modulo } n                   \\[1em]
-        %
-                                               & \quad \textbf{Notation zu Körpern}                                           \\[0.5em]
-        \mathbb{F}_p                           & \quad \text{Primkörper mit } p
-        \text{ Elementen, wobei } p \text{ prim ist}                                                                          \\
-        \mathbb{F}_q                           & \quad \text{Endlicher Körper mit } q
-        \text{ Elementen, wobei } q \text{ eine Primzahlpotenz ist}                                                           \\
-        \mathbb{F}_q^{\times}                  & \quad
-        \text{Multiplikative Gruppe der von null verschiedenen Elemente von }
-        \mathbb{F}_q                                                                                                          \\
-        \overline{\mathbb{F}}_q,\ \overline{F} & \quad
-        \text{Algebraischer Abschluss von } \mathbb{F}_q
-        \text{ bzw. } F                                                                                                       \\ \operatorname{char}(K) &\quad \text{Charakteristik des Körpers } K \\[1em]
-        %
-                                               & \quad \textbf{Notation zu elliptischen Kurven}                               \\[0.5em]
-        \mathcal{O}                            & \quad \text{Punkt im Unendlichen (neutrales Element)}                        \\
-        E(K),      E(\mathbb{F}_q)             & \quad \text{Elliptische Kurve üver dem Körper } K \text{ bzw. } \mathbb{F}_q \\
-        [n]P                                   & \quad \text{Skalarmultiplikation des Punktes } P
-        \text{ mit } n \in \mathbb{Z}                                                                                         \\
-    \end{aligned}
-\]
+    $\varphi(n)$
+                  &
+    Eulersche Phi-Funktion
+    \\
 
-Noch ergänzen Frobenius Endomorphismus
-Spur 
-Grad
-Diskriminante einer elliptischen Kurve \(\Delta\)
+    $\#M$
+                  &
+    Mächtigkeit einer endlichen Menge $M$
+    \\
+
+    $\simeq$
+                  &
+    Isomorphie
+    \\
+
+    $\mathrm O(f(n))$
+                  &
+    Asymptotische obere Schranke für den Aufwand eines Verfahrens
+    \\[0.8em]
+
+    \multicolumn{2}{l}{\textbf{Gruppen}}                                                           \\[0.3em]
+
+    $G$
+                  &
+    Eine endliche abelsche Gruppe.
+    \\
+
+    $0_G$
+                  &
+    Das neutrale Element einer additiv geschriebenen Gruppe $G$.
+    \\
+
+    $|G|$
+                  &
+    die Ordnung der endlichen Gruppe $G$.
+    \\
+
+    $\langle P\rangle$
+                  &
+    Eine von $P\in G$ erzeugte zyklische Untergruppe.
+    \\
+
+    $\operatorname{ord}(P)$
+                  &
+    Die Ordnung des Gruppenelements $P\in G$.
+    \\
+
+    $\mathbb Z_n^\times$
+                  &
+    Die multiplikative Gruppe der Einheiten modulo $n$
+    \\[0.8em]
+
+    \multicolumn{2}{l}{\textbf{Körper und endliche Körper}}                                        \\[0.3em]
+    $K[x]$
+                  &
+    Polynomring in der Variablen $x$ über $K$
+    \\
+    $\operatorname{char}(K)$
+                  &
+    Charakteristik des Körpers $K$                                                                 \\
+    $\mathbb F_p$ & Primkörper zur Primzahl $p$.                                                   \\
+    $\mathbb F_q$ & Körper $\mathbb{Z}/q\mathbb{Z}$ mit Primzahlpotenz $q=p^l$ für ein primes $p$. \\
+    $\mathbb F_q^\times$ oder $K^\times$
+                  &
+    Multiplikative Gruppe zum Körper $\mathbb F_q$ oder $K$
+    \\
+     $\overline{\mathbb F}_q$ oder $\overline{K}$
+                  &
+    Der algebraischer Abschluss von $\mathbb F_q$ oder $K$.
+    \\
+
+    $\mathbb F_{q^k}$
+                  &
+    Der Erweiterungskörper von $\mathbb F_q$ mit $q^k$ Elementen.
+
+    \\[0.8em]
+
+    \multicolumn{2}{l}{\textbf{Elliptische Kurven}}                                                \\[0.3em]
+
+    $E(K)$
+                  &
+    Die Gruppe der $K$-rationalen Punkte der elliptischen Kurve $E$ einschließlich des Punktes $\mathcal O$.
+    \\
+
+    $E(\mathbb F_q)$
+                  &
+    Elliptische Kurve über dem Körper $\mathbb F_q$.
+    \\
+
+    $\#E(\mathbb F_q)$
+                  &
+    Die Anzahl der Punkte von $E(\mathbb F_q)$.
+    \\
+
+    $\mathcal O$
+                  &
+    Der Punkt im Unendlichen und neutrales Element der Punktgruppe.
+    \\
+
+    $\Delta$
+                  &
+    Diskriminante einer elliptischen Kurve
+    \\
+
+    $\operatorname{End}(E)$
+                  &
+    Endomorphismenring der elliptischen Kurve $E$
+    \\
+
+    $\deg(\alpha)$
+                  &
+    Grad eines Endomorphismus $\alpha$
+    \\[0.8em]
+
+    \multicolumn{2}{l}{\textbf{Frobenius-Endomorphismus und Punktzählung}}                         \\[0.3em]
+
+    $\varphi_q$
+                  &
+    Frobenius-Endomorphismus,
+    $\varphi_q(x,y)=(x^q,y^q)$
+    \\
+
+    $t$
+                  &
+    Frobenius-Spur,
+    $t=q+1-\#E(\mathbb F_q)$
+    \\
+
+    $|t|\leq2\sqrt q$
+                  &
+    Hasse-Schranke für die Frobenius-Spur
+    \\[0.8em]
+
+    \multicolumn{2}{l}{\textbf{Projektive Geometrie}}                                              \\[0.3em]
+
+    $\mathbb A_K^2$
+                  &
+    Die affine Ebene über dem Körper $K$.
+    \\
+
+    $\mathbb P_K^2$
+                  &
+    Die projektive Ebene über dem Körper $K$.
+    \\[0.8em]
+
+\end{longtable}

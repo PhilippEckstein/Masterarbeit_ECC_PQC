@@ -1,13 +1,38 @@
 \chapter{Quantencomputer}
+
+Insbesondere die Crypto-Szene setzt darauf, etwa die ECDSA-Signaturen bei Bitcoin und Ethereum.
+Der Einfluss geht aber auch weit darüber hinaus: Die Reisepässe einger europäischer Staaten (darunter auch Deutschland) nutzen ECC etwa für den Zugriff auf den integrierten Chip.
+
 Modern Crypography (S.397)
 Laufzeit, Schlüsselgrößen, Sicherheit
 
 Es findet sich eine einfache erklärung zu Quantencomputing in \cite{buell24}, S.227ff.
 
+
 Kurze Erklärung klassische Computer 
+PC hat elektromagnetisch betätigte Schalter. Der physikalische Zustand eines solchen Schalters heitßt offen oder geschlossen, wird mathematisch durch 0 oder 1 repräsentiert. Der Schalter kann nur einen von den beiden Werten annehmen. Entsprechend kann ein Bit wahr oder falsch sein und ist damit die kleinste logische Einheit. Der gesamte Computer besteht aus $n$ Bits, die dann insgesamt $2^n$ Zustände annehmen können. Bei der Berechnung eines Computers verläuft jeder Schritt deterministisch von einem Anfangszustand, der durch ein Programm hin zu einem Endzustand transformiert wird. Jeder einzelne Schritt entspricht einer logischen Funktion die schaltungstechnisch durch Gatter realisiert werden kann. Dafür reichen drei Gatterarten AND, OR und NOT.
+\cite{bewer26} S.107
+Quantencomputer funktionieren fundamental verschieden zu klassischen Computern. Diese basieren auf der Mitte der 1920er Jahre entdeckten Gesetzmäßigkeit der Quantenmechanik. Subatomare Prozess erscheinen kontraintuitiv, da sie sich nicht mit den Alltagserfahrungen vereinbaren lassen. Quantencomputer können bei geeigneten Berechnungen unterschiedliche Ausgangsdaten parallel berücksichtigen und den sogennanten Quanteparallelismus realisieren. Ein Quantencomputer ist dabei auch ein physikalischeS System, dass einen Zustand besitzt. Anders als in der klassischen Physik wo man Zustände direkt messen kann. Sind die Größen, die den Zustand eines Quantencomputers charakterisieren oft nicht bekannt und können auch nicht nachträglich gemessen werden, weil eine Messung den Zustand verändert. Die kleinste logische Einheit eines Quantencomputers ist ein Quantenbit, kurz Qubit genannt. Ein Qubit handelt es sich um ein quantenmechanisches System und einem zugehörigen Messvorgang, der nur zwei Ergebnisse vorbringen kann, in Analogie zu einem Bit die Werte 0 und 1. Man schreibt üblicherweise den Quantenzustand als 
+\[
+    \mid \psi \rangle
+\]
+und wird Kettenvektor gennant. Die Bra-Ket-Notation \(\langle \phi \mid \rangle\) beschreibt beide Zustände. Die Messergebnisse 0 und 1 werden als Basiszustände bezeichnet und in der Form \(\mid 0\rangle \) und \(\mid 1\rangle\) notiert. Ein Qubit kann aber noch unendlich viele weitere Zustände annehmen. Bei diesen Zustände handelt es sich um ein Superposition oder Überlagerung der beiden Basiszustände \(\mid 0\rangle \) und \(\mid 1\rangle\). Das Ergebnis steht meistens nicht vor der Messung fest. Qubit-Zustand nicht nur durch die Wahrscheinlichkeiten festgelegt, sondern hat auch weitere Freiheitsgrade. Gesamtzustand eines Quantencomputers kann nicht aus den Zuständen kombiert werden, die einzelne Qubits annehmen können. Jeder Qubit Zustand \( \mid\psi \mid \rangle\) entspricht einer gewichteten Summe der beiden reinen Zustände \(\mid 0\rangle \) und \(\mid 1\rangle \)
+\[
+ \psi \mid \rangle=\sqrt{p_0}\mid 0\rangle +\sqrt{p_1}\omega\cdot \mid 1\rangle,
+\]
+wobei $p_0$ und $p_1$ die Wahrscheinlichkeiten sind, dass eine Messung den Wert $\mid 0\rangle$ beziehungsweise $\mid 1\rangle$ ergibt. Es ist damit \(p_0+p_1=1\). $\omega$ komplexe Zahl mit Betrag 1, sie liegt also auf dem Einheitskreis. Bloch-Kugel? Mathematisch sinnvoller kann es auch mit 
+\[
+    \mid \psi \rangle = a_0 \cdot \mid 0 \rangle + a_1 \mid 1 \rangle,
+\]
+wobei für $a_0,a_1\in\mathbb{Z}$ gilt \(\mid a_o\mid ^2+ \mid a_1\mid ^2=1\). Dabei beschreiben verschiedene als Koordinatenvektoren aufgeefasste Amplitudenpaare \((a_0,a_1)\) den gleichen physikalischen Zustand, wenn sie sich nur um einen komplexen Faktor mit Betrag 1 unterscheiden. Die Werte $\mid a_o \mid^2$ und $\mid a_1 \mid^2$ gleich den Wahrscheinlichkeiten, bei einer Messung die Zustände \(\mid 0\rangle \) oder \(\mid 1\rangle \) zu erhalten. Der Zustandsraums ist damit eine Menge aller Zustände in einem zweidimensionale Vektorraum mit komplexwertigen Koordinaten. (Anmerkung: Normierungsbedingung \(\mid a_o\mid ^2+ \mid a_1\mid ^2=1\) entspricht geometrisch einer Einheitssphäre im vierdimensionalen Vektorraum \(\mathbb{C}^2=\mathbb{R}^4\).)
+(ganzer Abschnitt aktuell nach \cite{bewer26}, S.108--111)
 
-PC hat elektromagnetisch betätigte Schalter. Der physikalische Zustand eines solchen Schalters heitß offen oder geschlossen, wird mathematisch durch 0 oder 1 repräsentiert
-
+Ein Register oder ganzer Quantencomputer besteht aus einer Anzahl von $n$ nach außen isolierten miteinander wechselwirkenden Qubits. Jeder der Zustände kann dann auch als ein normierter Vektor 
+\[
+    \mid \psi \rangle = a_0 \mid 0 \rangle + a_1 \mid 1 \rangle + \dots +a_{2^n-1} \mid 2^n-1 \rangle
+\]
+beschrieben werden.
+\cite{bewer26}, S.115
 
 
 
@@ -29,9 +54,35 @@ heißt nicht hybrid) zum Einsatz kommen und als eine gute Methode für die Erste
 sicherer Signaturen dienen. \cite{bundesamt26}, S.59
 
 
-Insbesondere die Crypto-Szene setzt darauf, etwa die ECDSA-Signaturen bei Bitcoin und Ethereum.
-Der Einfluss geht aber auch weit darüber hinaus: Die Reisepässe einger europäischer Staaten (darunter auch Deutschland) nutzen ECC etwa für den Zugriff auf den integrierten Chip.
 
 Dabei müssen wir uns hauptsächlich die asymmetrische Kommunikation, zum Beispiel verschlüsselte E-Mails oder verschlüsselten Dateiaustausch, anschauen. Symmetrische Verschlüsselung, also das einfache Abspeichern von Daten auf einem Server, kann bereits heute mit dem klassischen Algorithmus AES-256 erfolgen. Dieser Algorithmus gilt als quantensicher, da bisher noch kein Quanten-Algorithmus entdeckt wurde, der diesen brechen kann. 
 
 Kyber als Quantensicherer Algorithmus
+
+\textbf{Probleme von Quantencomputern}
+\begin{itemize}
+    \item Nur bestimmte Transformationen können mit einem Quantencomputer berechnet werden.
+    \item Da ergebnis auch quantenmechanischer Zustand, zeigt die Messung in der Regel ein zufälliges Verhalten, also muss Berechnung mehrfach durchgeführt und statistisch ausgewertet werden.
+    \item Technologische Herausforderungen, quantenmechanische Transformation mit niedriger Fehleranfälligkeit und sicherer Quantenfehlerkorrektur realisieren.
+\end{itemize}
+\cite{bewer26}, S.114
+Why aren’t quantum computers more widely used if they’re so much faster than con
+ventional machines? Even while engineering has evolved substantially, developing 
+a quantum computer remains a daunting undertaking. The circuit was hardwired to 
+only factor the number 15, not any other input, as the approach is intended to do. 
+For example, the maximum number factored by a quantum computer using Shor’s 
+technique is 15. To put this in context, Shor’s approach would need to be applied 
+to a 1024-bit integer in order to crack 1024-bit RSA keys, which are currently rec
+ommended for corporate use. This would necessitate a quantum computer orders of 
+magnitude more powerful than that needed to divide 15 by 5 and 3.
+(Applied Quantum Computing and Crypography, S. 75f.)
+
+
+
+\section{Shors Algorithmus}
+
+\begin{enumerate}
+    \item Rate eine Zahl $g$
+    \item Aus $g$ mit Quantenberechnung ein $p$ berechnen
+    \item $g^{p/2}+1$ ist näher an der Wahrheit als $g$
+\end{enumerate}
