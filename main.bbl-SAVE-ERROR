@@ -19,6 +19,56 @@
 
 \refsection{0}
   \datalist[entry]{nyt/global//global/global/global}
+    \entry{bewer26}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=79977a759c7e06bd1c11087c55527be8}{%
+           family={Bewersdorf},
+           familyi={B\bibinitperiod},
+           given={Jörg},
+           giveni={J\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=b3c50df75dbfaa91fd885a4f56c75709}{%
+           family={Nature},
+           familyi={N\bibinitperiod},
+           given={Springer},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin}%
+      }
+      \list{publisher}{1}{%
+        {Springer-Verlag GmbH}%
+      }
+      \strng{namehash}{79977a759c7e06bd1c11087c55527be8}
+      \strng{fullhash}{79977a759c7e06bd1c11087c55527be8}
+      \strng{fullhashraw}{79977a759c7e06bd1c11087c55527be8}
+      \strng{bibnamehash}{79977a759c7e06bd1c11087c55527be8}
+      \strng{authorbibnamehash}{79977a759c7e06bd1c11087c55527be8}
+      \strng{authornamehash}{79977a759c7e06bd1c11087c55527be8}
+      \strng{authorfullhash}{79977a759c7e06bd1c11087c55527be8}
+      \strng{authorfullhashraw}{79977a759c7e06bd1c11087c55527be8}
+      \strng{editorbibnamehash}{b3c50df75dbfaa91fd885a4f56c75709}
+      \strng{editornamehash}{b3c50df75dbfaa91fd885a4f56c75709}
+      \strng{editorfullhash}{b3c50df75dbfaa91fd885a4f56c75709}
+      \strng{editorfullhashraw}{b3c50df75dbfaa91fd885a4f56c75709}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{subtitle}{Von den mathematischen und algorithmischen Grundlagen bis zur Kryptoanalyse mit Quanten computern}
+      \field{title}{RSA- und Elliptic-Curve Kryptographie}
+      \field{year}{2026}
+      \verb{doi}
+      \verb 10.1007/978-3-662-73468-1
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-3-662-73468-1
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-3-662-73468-1
+      \endverb
+    \endentry
     \entry{buell24}{book}{}{}
       \name{author}{1}{}{%
         {{hash=fd0c71c2707c98223b5dcbe9c7180416}{%
@@ -593,6 +643,48 @@
       \verb https://www.numdam.org/item/JTNB_1995__7_1_219_0/
       \endverb
     \endentry
+    \entry{shor97}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=7082a9c99d5d51479d4cfba6bbac2d30}{%
+           family={Shor},
+           familyi={S\bibinitperiod},
+           given={Peter\bibnamedelima W.},
+           giveni={P\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Society for Industrial & Applied Mathematics (SIAM)}%
+      }
+      \strng{namehash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{fullhash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{fullhashraw}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{bibnamehash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{authorbibnamehash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{authornamehash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{authorfullhash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{authorfullhashraw}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1095-7111}
+      \field{journaltitle}{SIAM Journal on Computing}
+      \field{month}{10}
+      \field{number}{5}
+      \field{title}{Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer}
+      \field{volume}{26}
+      \field{year}{1997}
+      \field{pages}{1484\bibrangedash 1509}
+      \range{pages}{26}
+      \verb{doi}
+      \verb 10.1137/s0097539795293172
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1137/S0097539795293172
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1137/S0097539795293172
+      \endverb
+    \endentry
     \entry{bundesamt26}{report}{}{}
       \name{author}{1}{}{%
         {{hash=efe74daf243f42c1fc627f32068bd59a}{%
@@ -873,7 +965,6 @@
       \range{pages}{10}
     \endentry
   \enddatalist
-  \missing{nist}
 \endrefsection
 \endinput
 

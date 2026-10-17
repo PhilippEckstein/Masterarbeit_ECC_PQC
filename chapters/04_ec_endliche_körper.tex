@@ -605,7 +605,7 @@ die $m$-fache Iteration des Frobenius-Endomorphismus. Dabei gilt
                                            & \iff \phi^m_q(P)-P=\mathcal{O}            \\
                                            & \iff P\in\ker(\phi^m_q-\operatorname{id})
               \end{align*}
-              Daraus folgt dann \(\ker(\phi_q^m-\operatorname{id})=E(\mathbb{F}_{q^M})\).
+              Daraus folgt dann \(\ker(\phi_q^m-\operatorname{id})=E(\mathbb{F}_{q^m})\).
 
         \item Da $\phi_q^m$ und $\operatorname{id}$ Endomorphismen von $E$ sind, ist auch \(\phi_q^m-\operatorname{id}\) ein Endomorphismus. Nach Korollar~\ref{korr:abbildung-seperabel} ist dieser separabel. Insbesondere ist er von Null verschieden und somit eine Isogenie. Für eine separable Isogenie gilt mit Lemma~\ref{lem:deg-isogenien}
               \[
@@ -831,13 +831,12 @@ Nun wird noch ein Beispiel für den Fall Charakteristik ist 2 des Körpers anges
     \]
     Es ist für $x=0$ $y^2+y=1$ und es gibt somit keine Lösung und für $x=1$ $y^2+y=1$ und somit gibt es keine Lösung über dem Körper, also \(E(\mathbb{F}_2)=\{\mathbb{O}\}\). Es gilt für die Spur   \(\operatorname{Spur}(\phi_q)=2+1-1=2\) und ist damit durch die $\operatorname{char}(\mathbb{F}_2)=2$ teilbar.
 \end{beispiel}
-\begin{lemma}
-    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Falls $E(\mathbb{F}_q)$ supersingulär ist, so ist auch $E(\mathbb{F}_{q^k})$ supersingulär für alle $k\geq 1$.
+\begin{lemma}\label{lem:supersingulär-erweiterungskörper}
+    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Falls $E(\mathbb{F}_q)$ supersingulär ist, so ist auch $E(\mathbb{F}_{q^m})$ supersingulär für alle $m\geq 1$.
 \end{lemma}
 Also die Supersingularität bleibt beim Übergang zu einem Erweiterungskörper erhalten.
 \begin{proof}
-    Ein Beweis findet sich bei Werner
-    \cite[Lemma~3.4.2, S.~66--68]{werner02}.
+    Ein Beweis findet sich bei Werner~\cite[Lemma~3.4.2, S.~66--68]{werner02}.
 \end{proof}
 \begin{lemma}
     Sei $p\geq 5$ eine Primzahl. Dann ist die Elliptische Kurve $y^2=x^3+1$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 2 \mod 3$ und die elliptische Kurve $y^2=x^3+x$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 3 \mod 4$.

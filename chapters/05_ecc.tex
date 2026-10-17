@@ -34,12 +34,7 @@ Eine naive Berechnung erfolgt durch sukzessive Addition:
     nP & = (n-1)P + P.
 \end{align*}
 
-Hierfür werden insgesamt $n-1$ Gruppenadditionen benötigt. In
-Abhängigkeit vom Zahlenwert $n$ liegt die Laufzeit dieser Methode daher in $\mathrm{O}(n)$. Für die Betrachtung der tatsächlichen
-Eingabegröße ist jedoch die Anzahl der Bits entscheidend, die zur Darstellung von $n$ benötigt wird. Bezeichnet \(m = \lfloor \log_2(n) \rfloor + 1\) die Bitlänge von $n$, so gilt \( 2^{m-1} \leq n < 2^m \). Der Zahlenwert $n$ wächst somit exponentiell mit seiner Bitlänge
-$m$. Daher kann die Laufzeit der naiven Methode äquivalent als \(\mathrm{O}(2^m)\) angegeben werden. Insbesondere bei kryptographischen Verfahren wie dem Diffie-Hellman-Schlüsselaustausch müssen skalare Vielfache für sehr große Skalare berechnet werden. Die naive Methode ist dafür
-nicht praktikabel. Eine wesentlich effizientere Berechnung
-ermöglicht der Double-and-Add-Algorithmus.
+Hierfür werden insgesamt $n-1$ Gruppenadditionen benötigt. In Abhängigkeit vom Zahlenwert $n$ liegt die Laufzeit dieser Methode daher in $\mathrm{O}(n)$. Für die Betrachtung der tatsächlichen Eingabegröße ist jedoch die Anzahl der Bits entscheidend, die zur Darstellung von $n$ benötigt wird. Bezeichnet \(b = \lfloor \log_2(n) \rfloor + 1\) die Bitlänge von $n$, so gilt \( 2^{b-1} \leq n < 2^b \). Der Zahlenwert $n$ wächst somit exponentiell mit seiner Bitlänge $b$. Daher kann die Laufzeit der naiven Methode äquivalent als \(\mathrm{O}(2^b)\) angegeben werden. Insbesondere bei kryptographischen Verfahren wie dem Diffie-Hellman-Schlüsselaustausch müssen skalare Vielfache für sehr große Skalare berechnet werden. Die naive Methode ist dafür nicht praktikabel. Eine wesentlich effizientere Berechnung ermöglicht der Double-and-Add-Algorithmus.
 \begin{definition}[Double-and-Add-Algorithmus]
     Sei $P$ ein Punkt auf einer elliptischen Kurve $E$ und $n\in \mathbb{N}$. Es soll nun das Vielfache $Q=np$ berechnet werden. Sei \( n = {(b_{m-1}b_{m-2}\dots b_0)}_2\) mit \(b_{m-1}=1\) die Binärdarstellung von $n$. Der Double-and-Add-Algorithmus verarbeitet die Bits von links nach rechts, beginnend mit dem höchstwertigen Bit $b_{m-1}$.
     \begin{enumerate}
@@ -322,12 +317,155 @@ Nun wird das Pohlig Hellmann Verfahren aus Kapitel 2 \ref{pohlig-hellman} ebenfa
 \end{beispiel}
 
 \subsection{MOV-Algorithmus}
-Bei dem MOV-Algorithmus handelt es sich um eine spezielle Methode die das DL-Problem ausschließelich für eine Klasse elliptischer Kurven löst. Die wesentliche Idee besteht darin, das DL-Problem für eine elliptische Kurve $E(\mathbb{F}_q)$ auf das Dl-Problem in der Gruppe $\mathbb{F}_{q^l}^\times$ für ein gewisses $l\in\mathbb{N}$ zzu reduzieren. Wenn das $l$ klein gewählt werden kann, so ist die Gruppe $E(\mathbb{F}_q)$ für kryptographische Zwecke ungeeignet. Daher wird auch durch den Algorithmus ersichtlich, warum supersinguläre Kurven in der Kryptographie nicht eingesetzt werden.
+Beim MOV-Algorithmus handelt es sich um eine spezielle Methode, die das diskrete Logarithmusproblem auf elliptischen Kurven in  $E(\mathbb{F}_q)$  mithilfe der Weil-Paarung auf das DL-Problem in der Gruppe $\mathbb{F}_{q^m}^\times$ für ein gewisses $m\in\mathbb{N}$ reduziert. Ist der Erweiterungsgrad $m$ hinreichend klein, kann diese Reduktion effizienteren Angriff auf das ursprüngliche DL-Problem ermöglichen. Insbesondere supersinguläre elliptische Kurven sind aufgrund ihrer kleinen Einbettungsgrade für diesen Angriff anfällig.
 
-\textbf{Hier noch MOV-Algorithmus voll ausführen.}
+Es wird für doe Reduktion die sogennante Weil-Paarung verwendet. Sei hierzu $p=\operatorname{char}(\mathbb{F}_q)$ und $n\in\mathbb{N}$ mit $\gcd(n,p)=1$. Die Weil-Paarung ist eine bilineare, nicht ausgeartete Abbildung
+\[
+e_n:E[n]\times E[n]\rightarrow \mu_n(\overline{\mathbb{F}}_q),
+\]
+wobei $\mu_n(\overline{\mathbb{F}}_q)$ die Gruppe der $n$-ten Einheitswurzeln bezeichnet. Für ausführlichere Informationen über die Eigenschaften siehe~\cite[S.~83]{werner02}. 
 
-\section{Sicherheitsbetrachtung und praktische Konsequenzen}
-\label{sicherheitsbetrachtung}
+Nach Theorem~\ref{theo:torsionsstruktur} gilt $E[n]\cong\mathbb{Z}_n \oplus \mathbb{Z}_n$. Somit exestiert es einen Punkt $P\in E[n]$ der Ordnung $n$. Aufgrund von der Bilinearität von $e_n$ ist Menge
+\[
+\{e_n(P,Q)| Q\in E[n]\}
+\]
+eine Untergruppe von $\mu_n(\overline{\mathbb{F}}_q)$. Sei nun $d=\#\{e_n(P,Q)| Q\in E[n]\}$, dann gilt nach dem Satz von Lagrange~\ref{satz:lagrange} $d\mid n$. Somit folgt für jedes $Q\in E[n]$ 
+\[
+    1=e_n(P,Q)^d=e_n(dP,Q).
+\]
+Aufgrund der Nichtausgeartetheit der Weil-Paarung folgt $dP=\mathcal{O}$. Da $P$ die Ordnung $n$ besitzt, folgt daraus $n\mid d$. Zusammen mit $d\mid n$ ergibt sich $d=n$.
+Damit ist die Abbildung $e_n(P,-)$ surjektiv.
+
+Sei nun $P\in E(\mathcal{F}_q)$ ein Punkt der Ordnung $n$ mit $\gcd(n,p)=1$ und $Q=kP\in\langle P \rangle$ gegeben, wobei $p=\operatorname{char}(\mathbb{F}_q)$ ist. Gesucht ist der diskrete Logarithmus $k$ von $Q$ zur Basis $P$.
+
+Der Algorithmus läuft nun wie folgt ab
+\begin{enumerate}
+    \item Wähle ein $m$, sodass \(E[n]\subseteq E(\mathbb{F}_{q^m})\).
+    \item Berechne einen Punkt $R\in E{n}$, sodass $a=e_n(P,R)$ eine primitive $n$-te Einheitswurzel ist. Insbesondere hat $a$ die Ordnung $n$ in $\mu_n(\overline{\mathbb{F}}_q)$.
+    \item Berechne $b=e_n(Q,R)$.
+    \item Löse das DL-Problem $b=a^k $ in $\mathbb{F}_{q^m}^\times$.
+\end{enumerate}
+\begin{proposition}
+    Der MOV-Algorithmus bestimmt unter den genannten Voraussetzungen den diskreten Logarithmus $k$ von $Q$ zur Basis $P$ modulo $n$, sofern das reduzierte diskrete Logarithmusproblem gelöst wird.
+\end{proposition}
+\begin{proof}
+    Nach Definition hat der Punkt $P$ die Ordnung $n$ und damit ist die zuvor betrachtete Weil-Paarung 
+    \[
+    e_n(P,-): E[n]\rightarrow \mu_n(\overline{\mathbb{F}}_q)
+    \]
+    surjektiv. Daraus folgt, dass ein Punkt $R\in E[n]$ exestiert, dessen Bild unter $e_n(P,-)$ eine primitive $n$-te Einheitswurzel ist. Wegen der Galois-Äquivarenz und da $E[n]\subseteq E(\mathbb{F}_{q^m})$, gilt 
+    \[
+        a=e_n(P,R)\in\mathbb{F}_{q^m}^{\times}
+        \quad\text{und}\quad
+        b=e_n(Q,R)\in\mathbb{F}_{q^m}^{\times}.
+    \]
+    Wegen der Bilinearität der Weil-Paarung und $Q=kP$ folgt
+    \[
+    b=e_n(Q,R)=e_n(kP,R)=e_n(P,R)^k=a^k
+    \]
+    Da $a$ eine primitive $n$-te Einheitswurzel ist, besitzt die Untergruppe
+    $\langle a\rangle\subseteq\mathbb{F}_{q^m}^{\times}$
+    die Ordnung $n$. Durch das Lösen des DL-Problems  $b=a^k$ erhält man die Restklasse von $k$ modulo $n$. Da auch $P$ die Ordnung $n$ besitzt, ist der diskrete Logarithmus von $Q$ zur Basis $P$ damit eindeutig modulo $n$ bestimmt.
+\end{proof}
+
+Nun wird noch der alternative Fall betrachtet, dass $n$ und $p$ nicht teilerfremd sind. In diesem Fall lässt sich $n$ als
+\[
+    n=n'p^a
+\]
+mit $a\geq 1$ und $\gcd(n',p)=1$ darstellen. Setzt man nun $P_1=n'P$ und $P_2=p^a P$, so besitzt $P_1$ die Ordnung $p^a$ und $P_2$ die Ordnung $n'$. Analog zum Pohlig-Hellman-Verfahren genügt es, die beiden DL-Probleme
+\[
+n'Q=kn'P=kP_1 \quad\text{und}\quad p^a Q=kp^a P=kP_2 
+\]
+zu lösen. Dadurch erhält man die Restklassen von $k$ modulo $p^a$ und modulo $n'$. Da $\gcd(p^a,n')=1$ gilt, folgt mit dem Chinesischen Restsatz, dass auch die Restklasse von $k$ modulo $n$ bekannt ist. Falls $p$ klein genug ist, könnte das erste DL-Problem mit dem Verfahren von Pohlig-Hellman gelöst werden. Auf das zweite könnte dann wieder der MOV-Algorithmus anwendet werden, da die Ordnung $n'$ teilerfremd zur Charakteristik $p$ ist.
+
+Es soll nun untersucht werden, warum supersinguläre Kurven anfällig für den MOV-Algorithmus sind. Nach dem Satz von Hasse gilt für die Frobenius-Spur
+\[
+t=q+1-\#E(\mathbb{F}_q) \in [-2\sqrt{q},2\sqrt{q}].
+\]
+Nach Proposition~\ref{prop:spurkriterium} ist eine elliptische Kurve $E$ über $\mathbb{F}_q$ genau dann supersingulär, wenn $p\mid t$ gilt, wobei $p=\operatorname{char}(\mathbb{F}_q)$ ist. Der folgende Satz beschreibt die möglichen Werte der Frobenius-Spur genauer.
+\begin{satz}
+    Sei $q=p^r$ mit $p$ prim. Dann gelten die folgenden Aussagen
+\begin{enumerate}
+    \item Für jedes $t\in [-2\sqrt{q},2\sqrt{q}]$, das nicht durch $p$ teilbar ist, exestiert eine elliptische Kurve $E$ über $\mathbb{F}_q$ mit $t=q+1-\#E(\mathbb{F}_q)$
+    \item Ist umgekehrt $E(\mathbb{F}_q)$ supersinguläre, so nimmt $t=q+1-\#E(\mathbb{F}_q)$ einen der Werte 
+    \[
+    0,\pm\sqrt{q},\pm\sqrt{2q},\pm\sqrt{3q},\pm2\sqrt{q}
+    \]
+    an.
+\end{enumerate}
+\end{satz}
+\begin{proof}
+    Ein Beweis findet sich in~\cite[Theorem 4.1, S.~536]{waterhouse69}.
+\end{proof}
+
+Nach Lemma~\ref{lem:supersingulär-erweiterungskörper} bleibt die Supersingularität einer elliptischen Kurve bei Erweiterung des Grundkörpers erhalten. Für supersinguläre elliptische Kurven lassen sich darüber hinaus kleine Erweiterungsgrade $m$ bestimmen, für die sämtliche $n$-Torsionspunkte über $\mathbb{F}_{q^m}$ definiert sind.
+
+Die folgende Proposition gibt für $m\in\{1,\dots,6\}$ Erweiterungsgrade und ihre Gruppenstruktur von $E(\mathbb{F}_{q^m})$ an.
+
+\begin{proposition}
+    Sei $E$ eine supersinguläre elliptische Kurve über $\mathbb{F}_q$ und $t=q+1-\#E(\mathbb{F}_q)$. Sei außerdem $P\in E(\mathbb{F}_q)$ ein Punkt der Ordnung $n$. Dann lassen sich $m$ und $d$ entsprechend der folgenden Tabelle wählen, sodass $E[n]\subseteq E(\mathbb{F}_{q^m})$ gilt. Die Zahl $d$ gibt für jedes $m$ den Exponenten der Gruppe $E(\mathbb{F}_{q^m})$ an, also die kleinste Zahl, sodass $dR=\mathcal{O}$ für alle $R\in E(\mathbb{F}_{q^m})$ gilt.
+   \begin{table}[htbp]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $t$ & $0$ & $\pm\sqrt{q}$ & $\pm\sqrt{2q}$ 
+            & $\pm\sqrt{3q}$ & $\pm 2\sqrt{q}$ \\
+        \hline
+        $m$ & $2$ & $3$ & $4$ & $6$ & $1$ \\
+        \hline
+        $d$ & $q+1$ & $\sqrt{q^3}\pm1$ & $q^2+1$ 
+            & $q^3+1$ & $\sqrt{q}\mp 1$ \\
+        \hline
+    \end{tabular}\label{tab:t-l-d}
+\end{table}
+\end{proposition}
+\begin{proof}
+    Ein Beweis findet sich in~\cite[Table I, S.~85]{mov91}.
+\end{proof}
+
+Mithilfe der Proposition lässt sich der MOV-Algorithmus für supersinguläre elliptische Kurven erneut formulieren.
+Seien $P\in E(\mathbb{F}_q)$ ein Punkt der Ordnung $n$ mit $\gcd(n,p)=1$ und $Q=kP\in\langle P\rangle$ gegeben. Gesucht ist der diskrete Logarithmus $k$ von $Q$ zur Basis $P$.
+\begin{enumerate}
+    \item Berechne $t=q+1-\#E(\mathbb{F}_q)$ und bestimme mit der obigen Tabelle ein $m$ mit $E[n]\Subset E(\mathbb{F}_{q^m})$ und den Exponenten $d$ der Gruppe $E(\mathbb{F}_{q^m})$.
+    \item Wähle einen beliebigen Punkt $R'\in E(\mathbb{F}_{q^m})$ und setze $R=\frac{d}{n}R'$.
+    \item Berechne $a=e_n(P,R)$ und $b=e_n(Q,R)$.
+    \item Löse das DL-Problem $b=a^{k'}$ in $\mathbb{F}_{q^m}^\times$.
+    \item Falls $k'P=Q$, so ist $k'=k$ der gesuchte diskrete Logarithmus. Andernfalls wiederhole den Algorithmus
+    ab Schritt 2.
+\end{enumerate}
+\begin{proposition}
+    Unter den genannten Voraussetzungen liefert der Algorithmus bei erfolgreichem Ablauf den diskreten Logarithmus von $Q$ zur Basis $P$ modulo $n$.
+\end{proposition}
+\begin{proof}
+     Da $P\in E(\mathbb{F}_{q^m})$ die Ordnung $n$ besitzt und $d$ der Exponent der Gruppe $E(\mathbb{F}_{q^m})$ ist, gilt $n\mid d$. Somit ist der Punkt $R=\frac{d}{n}R'$ in Schritt zwei wohldefiniert ist. Wegen
+    \[
+    nR=dR'=\mathcal{O}
+    \]
+    folgt $R\in E[n]$. Daher lässt sich die Weil-Paarung berechnen. Wenn $a=e_n(P,R)$ eine primitive Einheitswurzel ist, so ist die Relation $k'\equiv k\bmod n$ erfüllt, womit das DL-Problem gelöst ist. Anderfalls gilt $b=a^k$ in $\mathbb{F}_{q^m}^\times$ für den diskreten Logarithmus $k$. Sei nun $\alpha$ die Ordnung von $a$. Durch das Lösen des DL-Problems $b=a^{k'}$ erhält man \(k'\equiv k\pmod{\alpha}\). Ist $a$ eine primitive $n$-te Einheitswurzel, so gilt $\alpha=n$ und somit
+    \[
+        k'\equiv k\pmod n.
+    \]
+    Da $P$ ebenfalls die Ordnung $n$ besitzt, folgt daraus $k'P=Q$. Besitzt $a$ dagegen eine kleinere Ordnung,
+    so wird lediglich die Restklasse von $k$modulo $\alpha$ bestimmt. Wenn nun ein Vertrer $k'$ diser Restklasse gewhält wird, kann der Fall $k'P\neq Q$ auftreten. In diesem Fall muss der Algorithmus mit einem neuen $R'$ wiederholt werden.
+\end{proof}
+
+Es bleibt zu untersuchen, mit welcher Wahrscheinlichkeit der Algorithmus terminiert. Nach der vorherigen Proposition gilt
+\[
+    E(\mathbb{F}_{q^m})
+    \cong \mathbb{Z}_d\oplus\mathbb{Z}_d.
+\]
+Da $n\mid d$ ist, bildet die Abbildung
+\[
+    R'\longmapsto \frac{d}{n}R'
+\]
+
+Die Wahrscheinlichkeit, dass $a$ eine primitivte $n$-te Einheitswurzel ist und damit der Algorithmus teminiert, beträgt $\frac{\varphi(n)}{n}$, für die Eulersche $\varphi$-Funktion. Im Durschnitt werden $\frac{n}{\varphi(n)}$ Durchläufe benötigt. Für große $n$ gilt daher die Abschätzung
+\[
+\frac{n}{\varphi(n)}\leq \log \log n, \quad n\geq 5
+\]
+was für sehr große $n$ schnell klein wird. Zusammenfassend lässt sich sagen, dass in der multiplikativen Gruppe $\mathbb{F}_q^\times$ Algorithmen exestieren, die das DL-Problem schneller lösen als allgemeine Verfahren wie zum Beispiel das Pohlig-Hellman-Verfahren. Der MOV-Algorithmus löst also das DL-Problem in subexponentieller Zeit, weswegen diese Kurven für kryptographische Zwecke ungeeignet sind.
+
+\section{Sicherheitsbetrachtung und praktische Konsequenzen}\label{sicherheitsbetrachtung}
 Die folgende Sicherheitsbetrachtung und die daraus abgeleiteten
 praktischen Konsequenzen stützen sich auf \cite[S.~32--34, 57, 78, 82--83]{bundesamt26}, \cite[S.~225]{buell24}, \cite[S.~199--202]{fuß25}, \cite[S.~89--95, 97--98, 104--109]{werner02}, \cite[S.~169]{washington08}, \cite[S.~6]{silverman06}, \cite{smart99} sowie \cite[S.~35--36]{nist23}.
 \subsection{Warum elliptische Kurven verwenden?}
@@ -353,9 +491,9 @@ Nicht jede elliptische Kurve ist für kryptographische Anwendungen geeignet. Es 
 \[
     n\leq q+1+2\sqrt{q}=(\sqrt{q}+1)^2.
 \]
-Für kryptographische Anwendungen wird die Ordnung $n$ so gewählt, dass sie von derselben Größenordnung wie $q$ ist. Setzt man $m=\log_2 q$, so gilt $q=2^m$ und damit
+Für kryptographische Anwendungen wird die Ordnung $n$ so gewählt, dass sie von derselben Größenordnung wie $q$ ist. Setzt man $b=\log_2 q$, so gilt $q=2^b$ und damit
 \[
-    \sqrt{q}=2^{m/2}.
+    \sqrt{q}=2^{b/2}.
 \]
 Der Aufwand wächst somit exponentiell mit der Bitlänge von $q$.
 
@@ -363,14 +501,14 @@ Daraus folgt zunächst, dass die verwendete Untergruppe eine ausreichend große 
 
 Das Pohlig-Hellman-Verfahren zeigt darüber hinaus, dass nicht nur die Größe, sondern auch die Primfaktorzerlegung von $n$ für die Sicherheit relevant ist. Besitzt $n$ ausschließlich kleine Primfaktoren, kann das ECDLP auf entsprechend kleinere diskrete Logarithmusprobleme reduziert werden. Daher wird für kryptographische Anwendungen typischerweise ein Basispunkt $P$ gewählt, dessen Ordnung $n$ eine große Primzahl ist.
 
-Der MOV-Angriff zeigt, dass neben der Größe der Untergruppe auch die algebraische Struktur der Kurve berücksichtigt werden muss. Besitzt die verwendete Untergruppe einen kleinen Einbettungsgrad $k$, kann das ECDLP mithilfe einer Paarung auf ein diskretes Logarithmusproblem in
+Der MOV-Angriff zeigt, dass neben der Größe der Untergruppe auch die algebraische Struktur der Kurve berücksichtigt werden muss. Besitzt die verwendete Untergruppe einen kleinen Einbettungsgrad $m$, kann das ECDLP mithilfe einer Paarung auf ein diskretes Logarithmusproblem in
 \[
-    \mathbb F_{q^k}^{\times}
+    \mathbb F_{q^m}^{\times}
 \]
-übertragen werden. Die NIST empfiehlt daher einen ausreichend großen Einbettungsgrad. Dabei ist der Einbettungsgrad $k$ die kleinste positive
+übertragen werden. Die NIST empfiehlt daher einen ausreichend großen Einbettungsgrad. Dabei ist der Einbettungsgrad $m$ die kleinste positive
 ganze Zahl, für die
 \[
-    q^k\equiv 1\pmod n
+    q^m\equiv 1\pmod n
 \]
 gilt. Er muss ausreichend groß sein, damit das übertragene
 diskrete Logarithmusproblem nicht effizient gelöst werden kann.
@@ -425,14 +563,14 @@ Zusammen mit den Empfehlungen von NIST und BSI ergeben sich folgende Anforderung
           das ECDLP existieren.
 
     \item \textbf{Großer Einbettungsgrad:}
-          Sei $k$ die kleinste positive ganze Zahl mit
+          Sei $m$ die kleinste positive ganze Zahl mit
           \[
-              q^k\equiv 1\pmod n.
+              q^m\equiv 1\pmod n.
           \]
-          Der Einbettungsgrad $k$ muss ausreichend groß sein, damit der
+          Der Einbettungsgrad $m$ muss ausreichend groß sein, damit der
           MOV-Angriff das ECDLP nicht auf ein leichteres diskretes
           Logarithmusproblem in einem kleinen Erweiterungskörper übertragen
-          kann. NIST fordert für die empfohlenen Kurven $k\geq 2^{10}$ (vgl. \cite[~S.35]{nist23}).
+          kann. NIST fordert für die empfohlenen Kurven $m\geq 2^{10}$ (vgl. \cite[~S.35]{nist23}).
 
     \item \textbf{Bekannte und geprüfte Gruppenordnung:}
           Die Gruppenordnung $\#E(\mathbb F_q)$ muss bekannt sein, damit die

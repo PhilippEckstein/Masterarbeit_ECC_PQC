@@ -46,10 +46,12 @@
 \contentsline {section}{\tocsection {}{5.2}{Angriffe auf ECC}}{62}{section.5.2}%
 \contentsline {subsection}{\tocsubsection {}{5.2.1}{Allgemeine Methoden}}{62}{subsection.5.2.1}%
 \contentsline {subsection}{\tocsubsection {}{5.2.2}{MOV-Algorithmus}}{63}{subsection.5.2.2}%
-\contentsline {section}{\tocsection {}{5.3}{Sicherheitsbetrachtung und praktische Konsequenzen}}{63}{section.5.3}%
-\contentsline {subsection}{\tocsubsection {}{5.3.1}{Warum elliptische Kurven verwenden?}}{64}{subsection.5.3.1}%
-\contentsline {subsection}{\tocsubsection {}{5.3.2}{Geeignete elliptische Kurven}}{64}{subsection.5.3.2}%
-\contentsline {chapter}{\tocchapter {Kapitel}{6}{Quantencomputer}}{68}{chapter.6}%
-\contentsline {section}{\tocsection {}{6.1}{Shors Algorithmus}}{70}{section.6.1}%
-\contentsline {chapter}{\tocchapter {Kapitel}{}{Literatur}}{71}{chapter*.16}%
-\contentsline {chapter}{\tocappendix {Anhang}{A}{Python-Code}}{73}{appendix.A}%
+\contentsline {section}{\tocsection {}{5.3}{Sicherheitsbetrachtung und praktische Konsequenzen}}{67}{section.5.3}%
+\contentsline {subsection}{\tocsubsection {}{5.3.1}{Warum elliptische Kurven verwenden?}}{67}{subsection.5.3.1}%
+\contentsline {subsection}{\tocsubsection {}{5.3.2}{Geeignete elliptische Kurven}}{68}{subsection.5.3.2}%
+\contentsline {chapter}{\tocchapter {Kapitel}{6}{Quantencomputer und ihre Auswirkung auf die Krytographie}}{71}{chapter.6}%
+\contentsline {section}{\tocsection {}{6.1}{Grundlagen des Quantencomputings}}{71}{section.6.1}%
+\contentsline {section}{\tocsection {}{6.2}{Shors Algorithmus und das diskrete Logarithmusproblem}}{74}{section.6.2}%
+\contentsline {section}{\tocsection {}{6.3}{Shors Algorithmus für ECC}}{77}{section.6.3}%
+\contentsline {chapter}{\tocchapter {Kapitel}{}{Literatur}}{85}{chapter*.18}%
+\contentsline {chapter}{\tocappendix {Anhang}{A}{Python-Code}}{88}{appendix.A}%
