@@ -1,8 +1,7 @@
 \chapter{Quantencomputer und ihre Auswirkung auf die Krytographie}
-
 Kryptographische Verfahren bilden eine wesentliche Grundlage für die Sicherheit moderner digitaler Kommunikation. Insbesondere Verfahren auf Basis elliptischer Kurven finden aufgrund ihrer vergleichsweise geringen Schlüssellängen und hohen Sicherheit breite Anwendung. Ihre Sicherheit beruht wesentlich auf der angenommenen Schwierigkeit des diskreten Logarithmusproblems auf elliptischen Kurven. Die Entwicklung leistungsfähiger Quantencomputer stellt diese Sicherheitsannahme jedoch infrage. So weist auch das Bundesamt für Sicherheit in der Informationstechnik auf die Bedrohung klassischer Signaturverfahren durch hinreichend große Quantencomputer hin und empfiehlt:"wegen der Bedrohung der klassischen Signaturverfahren durch die fortschreitende Entwicklung hinreichend großer Quantencomputer sollte eine Migration zu quantensicheren Verfahren erfolgen" (vgl. BIS ~[S.59]\cite{bundesamt26}). Im Folgenden werden zunächst die mathematischen Grundlagen des Quantencomputings erläutert. Anschließend wird Shors Algorithmus vorgestellt und dessen Bedeutung für die Sicherheit elliptischer Kurven untersucht.
 \section{Grundlagen des Quantencomputings}
-Der erste Abschnitt befasst sich erstmal damit was ein Quantencomputer ist und wie dieser funktioniert. Hierbei werden Grundbegriffe wie Quibts und Superposition erklärt. Es handelt sich hier nur um eine oberflächliche Betrachtung, welche bewusst nicht auf physikalische Details eingeht. Das Grundlagen Kapitel basiert dabei auf~\cite[S.227--229]{buell24},~\cite[S.107--111,115]{bewer26} und~\cite[S.7]{shor97}.
+In diesem Abschnitt werden die grundlegenden Prinzipien eins Quantencomputers vorgestellt. Hierbei werden Grundbegriffe wie Quibts, Superposition, Quantenregister, Quantengatter und Quanteninterferenz erläutert. Es wird auf eine ausführliche Betrachtung physiklischer Grundlagen verzichtet, da nur die erforderlichen Grundlagen für Shors Algorithmus gelegt werden sollen. Das Grundlagen Kapitel basiert dabei auf~\cite[S.227--229]{buell24},~\cite[S.107--111,115]{bewer26} und~\cite[S.7]{shor97}.
 
 Ein klassischer Computer verarbeitet Information mithilfe elektronischer Schaltelemente, die jeweils zwei unterscheidbare Zustände annehmen können. Jeder Schalter kann physikalisch offen (0) oder geschlossen (1) sein. Die kleinste Informationseinheit eines Computers wird als Bit bezeichnet und kann respektive die Werte 0 und 1 annehmen. Ein Register besteht aus $n$ Bits und besitzt  somit $2^n$ mögliche Zustände, wobei es sich zu jedem Zeitpunkt in genau einem dieser Zustände befindet. Berechnungen laufen durch die schrittweise Transformation eines Anfangszustand in einen Endzustand, es stellt also einen deterministischen Prozess dar. Dabei werden logische Operationen ausgeführt, die schaltungstechnisch durch sogenannte Gatter realisiert werden.
 
@@ -20,19 +19,19 @@ Im Gegensatz zu einem klassischen Bit ist ein Qubit nicht auf die beiden Basiszu
 \]
 mit komplexen Koordinaten $a_0,a_1\in\mathbb{C}$ darstellen. Die Koeffizienten werden Wahrcheinlichkeitsamplitude genannt und erfüllen die Normierungsbedingung
 \[
-    \lvert a_o\lvert ^2+ \lvert a_1\lvert ^2=1.
+    \lvert a_0\lvert ^2+ \lvert a_1\lvert ^2=1.
 \]
 Dabei geben die Koeffizienten im Quadrat $|a_0|^2$ und $|a_1|^2$ die Wahrscheinlichkeit an, bei einer Messung das Ergebnis $0$ beziehungsweise $1$ zu erhalten. Der Zustand eines Qubits wird jedoch nicht allein durch diese Wahrscheinlichkeiten bestimmt.
 Auch die relativen Phasen der komplexen Amplituden sind von Bedeutung, insbesondere für das Auftreten von Interferenzeffekten bei Quantenberechnungen. Dabei beschreiben verschiedene als Koordinatenvektoren aufgeefasste Amplitudenpaare \((a_0,a_1)\) den gleichen physikalischen Zustand, wenn sie sich nur um einen komplexen Faktor mit Betrag 1 unterscheiden. Der Zustandsraums eines einzelnen Qubits wird somit durch den zweidimensionalen komplexen Vektorraum \(\mathbb C^2\) beschrieben, wobei physikalische Zustände durch normierte Vektoren repräsentiert werden.
-
-Ein Quantenregister besteht aus einer Anzahl von $n$ nach außen isolierten miteinander wechselwirkenden Qubits. Der Zustand eines solchen Registers wird durch einen normierten Vektor im $2^n$-dimensionalen komplexen Vektorraum $\mathbb{C}^{2^n}$ beschrieben. Die \(2^n\) Basiszustände werden durch \(\lvert 0\rangle,\ldots,\lvert 2^n-1\rangle\) bezeichnet. Ein allgemeiner Zustand des Quantenregisters lässt sich als Linearkombination dieser Basiszustände darstellen
+\begin{definition}[Quantenregister]
+    Ein Quantenregister besteht aus einer Anzahl von $n$ nach außen isolierten miteinander wechselwirkenden Qubits. Der Zustand eines solchen Registers wird durch einen normierten Vektor im $2^n$-dimensionalen komplexen Vektorraum $\mathbb{C}^{2^n}$ beschrieben. Die \(2^n\) Basiszustände werden durch \(\lvert 0\rangle,\ldots,\lvert 2^n-1\rangle\) bezeichnet. Ein allgemeiner Zustand des Quantenregisters lässt sich als Linearkombination dieser Basiszustände darstellen
 \[
     \lvert \psi \rangle = a_0 \lvert 0 \rangle + a_1 \lvert 1 \rangle + \ldots +a_{2^n-1} \lvert 2^n-1 \rangle
 \]
 bezeichnet. Es handelt sich bei $a_0,a_1,\dots, a_{2^n-1}$ um komplexwertige Koordinaten, die die Bedingunng \( \lvert a_0\lvert^2+\cdots+\lvert a_{2^n-1}\lvert ^2=1\) erfüllen.
 Bei einer Messung in der Rechenbasis wird der Wert $i$ mit Wahrscheinlichkeit $|a_i|^2$
 erhalten.
-
+\end{definition}
 Der Zustandsraum eines Quantenregisters ergibt sich aus dem Tensorprodukt der Zustandsräume
 seiner einzelnen Qubits. Für ein Register aus zwei Qubits ergeben sich beispielsweise die
 vier Basiszustände.
@@ -42,33 +41,25 @@ vier Basiszustände.
     \lvert 10\rangle = \lvert 1 \rangle  \otimes \lvert 0 \rangle \\
     \lvert 11\rangle = \lvert 1 \rangle  \otimes \lvert 1 \rangle \\
 \end{align*}
-
-Hat man nun mehrere Quantenreigster wie zum Beispiel bei Shors Algorithmus, kann mit der Schreibweise auch der Zustand verschiedener Register angegeben werden. Sind $|a\rangle$ und $|b\rangle$ Basiszustände
-zweier Register und ist ein drittes Register mit dem Wert $0$
-initialisiert, so kann für für den gemeinsamen Zustand
+Hat man nun mehrere Quantenreigsterkann auch
 \[
     |a,b,0\rangle
-    := |a\rangle \otimes |b\rangle \otimes |0\rangle
+    = |a\rangle \otimes |b\rangle \otimes |0\rangle
 \]
 geschrieben werden. Dabei können die einzelnen Register jeweils mehrere Qubits umfassen.
 
-Die Zustände eines Quantenregisters können durch sogennante Quantengatter verändert werden.
-Mathematisch werden diese durch unitäre lineare Abbildungen auf dem Zustandsraum beschrieben. Eine solche Abbildung $U$ erfüllt
+Die Zustände eines Quantenregisters können durch sogennante Quantengatter verändert werden. Nach den Gesetzen der Quantenmechanik sind nur solche Zustandsänderungen möglich,welche durch unitäre Abilldungen auf dem Hilbert-Raum $\mathcal{H}=\mathbb{C}^N$ dargestellt werden können. Eine lineare Abbildung ist unitär, wenn die zugehörige Matrix $U$
 \[
     \overline{U}^T U=I,
 \]
-wobei $\overline{U}^T$ die adjungierte Abbildungbezeichnet. Dadurch bleibt die Normierung
-der Zustandsvektoren erhalten.
+erfüllt,wobei $\overline{U}^T$ die adjungierte Abbildung bezeichnet. Es müssen also die Spaltenvektoren Länge 1 besitzen und orthogonal aufeinander stehen. 
 
 \begin{beispiel}
-    Betrachtet wird ein Quantenregister mit zwei Qubits. Ein Quantengatter $U$ sei durch folgende Transformationen der Basiszustände definiert
-    \begin{align*}
-        \lvert 00\rangle \quad & \rightarrow \quad \lvert 00\rangle                                      \\
-        \lvert 01\rangle \quad & \rightarrow \quad \lvert 01\rangle                                      \\
-        \lvert 10\rangle \quad & \rightarrow \quad \frac{1}{\sqrt{2}}(\lvert 10\rangle+\lvert 11\rangle) \\
-        \lvert 11\rangle \quad & \rightarrow \quad \frac{1}{\sqrt{2}}(\lvert 10\rangle-\lvert 11\rangle)
-    \end{align*}
-    Für den Anfangszustand
+    Ein Beispiel für ein Quantengatter, dass nur auf ein Qubit wirkt ist das Hadamard-Gatter $H$ mit der Transformation
+    \[
+    H: a_0\lvert 0\rangle+a_1\lvert 1\rangle \in \mathcal{H}\mapsto \frac{1}{\sqrt{2}}((a_0+a_1)\lvert 0\rangle +(a_0-a_1)\lvert 1\rangle).
+    \]
+    Betrachtet wird nun ein Quantenregister aus zwei Qubits. Das Hadamard-Gatter wird auf den zweiten Bit angewendet. Für den Anfangszustand
     \[
         \lvert\psi\rangle
         =\frac{1}{\sqrt{2}}
@@ -81,26 +72,37 @@ der Zustandsvektoren erhalten.
     Die Wahrscheinlichkeitsamplituden des Zustandes $\lvert 10\rangle$ heben sich gegenseitig auf, während sich die Amplituden des Zustandes $\lvert 11\rangle$ addieren. Daher wird bei einer anschließenden Messung mit Wahrscheinlichkeit $1$ das Ergebnis $11$ erhalten. Das eben beschriebene Phänomen wird als Quanteninterferenz bezeichnet.
 \end{beispiel}
 Nicht jede mathematische Transformation lässt sich durch ein Quantengatter realisieren, da die Zustandsänderungen eines abgeschlossenen Quantensystems durch unitäre Abbildungen beschrieben werden.
-Darüber hinaus bieten Quantencomputer nicht bei jeder Berechnung einen Geschwindigkeitsvorteil gegenüber klassischen Computern. Entscheidend ist vielmehr, ob sich die Eigenschaften der Quantenmechanik, insbesondere Superposition und Interferenz, zur effizienten Lösung eines bestimmten Problems nutzen lassen.
-
-Ein Beispiel hierfür ist Shors Algorithmus, der auf einem hinreichend leistungsfähigen Quantencomputer unter anderem die effiziente Lösung des diskreten Logarithmusproblems ermöglicht. Damit stellt er eine potenzielle Bedrohung für kryptographische Verfahren dar, deren Sicherheit auf der Schwierigkeit dieses Problems beruht.
+Ein Beispiel für ein Quantengatter auf zwei Qubits ist das Controlled-NOT-Gatter (CNOT). Die zugehörige Transformation der Basiszustände lässt sich durch das folgende Schaltbild darstellen.
+    \begin{figure}[htbp]~\label{fig:zwei-qubit-gatter}
+        \centering
+        \begin{quantikz}
+            \lstick{$|x\rangle$} & \ctrl{1} & \rstick{$|x\rangle$} \\
+            \lstick{$|y\rangle$} & \targ{}  &
+            \rstick{$|y\oplus x\rangle$}
+        \end{quantikz}
+        \caption{Schaltbild eines CNOT-Gatter}
+    \end{figure}
+\begin{definition}[Tofolli-Gatter]
+    Das Toffoli-Gatter ist ein Quantengatter mit drei Qubits.Damit kann jede Funktionalität eines klassischen Logikgatters realisiert werden. Es führt auf den Basiszuständen die Transformation
+    \[
+    |x,y,z\rangle\longmapsto|x,y,z\oplus(x\land y)\rangle
+    \] 
+    aus. Hierbei werden Teilzustände vor der Transformation initalisiert. Es kann also jede klassische Berechnung eines klassischen Computers nur mit Toffoli-Gattern realisiert werden.
+    \begin{figure}[htbp]
+        \centering
+        \begin{quantikz}
+            \lstick{$|x\rangle$} & \ctrl{1} & \rstick{$|x\rangle$} \\
+            \lstick{$|y\rangle$} & \ctrl{1} & \rstick{$|y\rangle$} \\
+            \lstick{$|z\rangle$} & \targ{}  &
+            \rstick{$|(x\land y)\oplus z\rangle$}
+        \end{quantikz}
+        \caption{Schaltbild eines Toffoli-Gatters}\label{fig:toffoli}
+    \end{figure}
+\end{definition}
+Darüber hinaus bieten Quantencomputer nicht bei jeder Berechnung einen Geschwindigkeitsvorteil gegenüber klassischen Computern. Entscheidend ist vielmehr, ob sich die Eigenschaften der Quantenmechanik, insbesondere Superposition und Interferenz, zur effizienten Lösung eines bestimmten Problems nutzen lassen. Ein Beispiel hierfür ist Shors Algorithmus, der auf einem hinreichend leistungsfähigen Quantencomputer unter anderem die effiziente Lösung des diskreten Logarithmusproblems ermöglicht. Damit stellt er eine potenzielle Bedrohung für kryptographische Verfahren dar, deren Sicherheit auf der Schwierigkeit dieses Problems beruht.
 
 \section{Shors Algorithmus und das diskrete Logarithmusproblem}
-Shors Algorithmus in seiner ursprünglichen Form ermöglicht es mithilfe eines Quantencomputers nichttriviale Teiler großer natürlicher Zahlen in Polynomialzeit zu bestimmen. Damit könnten hinreichend leistungsfähige Quantencomputer die Sicherheit der RSA-Verschlüsslung gefährden. Shor entwickelte außerdem eine alternative Form seines Algorithmus zum Lösen des diskreten Logarithmusproblems mithilfe von Quantencomputern. Im Folgenden wird dessen grundlegende Funktionsweise betrachtet, wobei bewusst auf eine vollständige mathematische Herleitung verzichtet wird.
-
-( \cite{yan15} Quantum Computational THeory, S. 155--161),
-\cite[S.~155--161]{yan15}
-
-\cite[S.~1--3]{mosca03}
-
-\cite[S.~19--21]{shor97} angeblich Seite 1484–1509
-
-\cite[S.~75~f., 100--102]{mihal25}
-
-\cite[S.~114]{bewer26}
-
-% Noch ohne BibTeX-Eintrag:
-% „Shors discrete log for ECC“, S. 3--10 und S. 10 ff
+Shors Algorithmus in seiner ursprünglichen Form ermöglicht es mithilfe eines Quantencomputers nichttriviale Teiler großer natürlicher Zahlen in Polynomialzeit zu bestimmen. Damit könnten hinreichend leistungsfähige Quantencomputer die Sicherheit der RSA-Verschlüsslung gefährden. Shor entwickelte außerdem eine alternative Form seines Algorithmus zum Lösen des diskreten Logarithmusproblems mithilfe von Quantencomputern. Im Folgenden wird dessen grundlegende Funktionsweise betrachtet, wobei bewusst auf eine vollständige mathematische Herleitung verzichtet wird. Im Folgenden wird dessen grundlegende Funktionsweise erläutert; auf eine vollständige mathematische Herleitung wird dabei verzichtet. Die Darstellung orientiert sich an Shors Orginalarbeit~\cite[19--21]{shor97},\cite[S.~155--161]{yan15} und \cite[S.~114]{bewer26}. Für die Darstellung der Quanten-Fouriertransformation wurde~\cite[S.~1--3]{mosca03} verwendet.
 
 Zur Veranschaulichung der zugrunde liegenden Idee wird zunächst die Periodizität der modularen Exponentiation anhand eines einfachen Beispiels betrachtet. Periodiztät bedeutet, dass in einem gewissen Abstand eine Funktion immer die gleiche Struktur wieder aufweist, es gilt also für eine Funktion $f(x)=f(x+h)$ für eine Periode $h$. Sei $p$ eine Primzahl, $g\in\mathbb{F}_p^\times$ und $h\in\langle g\rangle$. Gesucht ist ein Exponent $r$ mit
 \[
@@ -126,23 +128,23 @@ Durch das Wissen über die Periode wird die Anzahl möglicher Exponenten auf $\{
 
 Shors Algorithmus führt daher eine Funktion mit zwei Variablen, um die Periodiztät im Zusammenhang mit dem diskreten Logarithmus zu berechnen. Für das aktuelle Beispiel gilt
 \[
-f(a,b)=g^a h^b=2^a8^b\bmod 17.
+f(a,b)=g^a x^{-b}=2^a8^{-b}\bmod 17.
 \]
 
 Nun können verschiedene Paare ausprobiert werden
 \begin{align*}
     f(0,0)&=1,\\
-    f(5,1)&=2^5\cdot8\equiv1\pmod{17},\\
-    f(2,2)&=2^2\cdot8^2\equiv1\pmod{17}.
+    f(3,1)&=2^3\cdot8^{-1}\equiv1\pmod{17},\\
+    f(6,2)&=2^6\cdot8^{-2}\equiv1\pmod{17}.
 \end{align*}
 
 Man erkennt, dass für unterschiedliche Eingabewerte die Funktionswerte übereinstimmen. Da $8=2^r$ für den gesuchten Exponenten $r$ gilt, lässt sich die Funktion schreiben als
 \[
-    f(a,b)=2^{a+rb}\bmod17.
+    f(a,b)=2^{a-rb}\bmod17.
 \]
 Somit gilt insbesondere
 \[
-    f(a-r,b+1)=f(a,b),
+    f(a+r,b+1)=f(a,b),
 \]
 wobei die Exponenten modulo $8$ betrachtet werden. Die Periodizität hängt daher vom unbekannten Exponenten $r$ ab. Shors Algorithmus nutzt die Eigenschaften der Quanten-Fourier-Transformation um Informationen über die Struktur der Funktion zu erfahren, ohne jeden Möglichkeit einzelnd zu überprüfen.
 
@@ -156,7 +158,7 @@ Es wird für den Algorithmus die Quanten-Fouriertransformation benötigt
 \begin{definition}[Quanten-Fouriertransformation]\label{def:QFT}
     Sei $N\in\mathbb{N}$ und $\lvert x\rangle$ ein Basiszustand mit $x\in\{0,\ldots,N-1\}$. Dann ist die Qanten-Fouriertransformation (QFT) der Dimension $N$ definiert durch
     \[
-    \operatorname{QFT}_N: \lvert x\rangle \rightarrow
+    \operatorname{QFT}_N: \lvert x\rangle
     =
     \frac{1}{\sqrt{N}}
     \sum_{c=0}^{N-1}
@@ -246,133 +248,154 @@ Zunächst wird eine geeignete Zahl $q$ mit $p\leq q\leq 2p$ gewählt, sodass $q$
     Ist $c'$ modulo $p-1$ invertierbar,
     kann der gesuchte Exponent mithilfe
     des erweiterten euklidischen Algorithmus
-    bestimmt werden:
+    bestimmt werden
     \[
-    \boxed{
     r\equiv-m(c')^{-1}\pmod{p-1}.
-    }
     \]
-
-    Andernfalls können weitere Messungen
-    und klassische Berechnungen notwendig sein.
+    Andernfalls können weitere Messungen und klassische Berechnungen notwendig sein.
 \end{enumerate}
 
 Mit Shors Algorithmus können Infomrationen über die Periodizitätsstruktur der Funktion \(f(a,b)=g^a x^{-b}\) gewonnen werden, ohne sämtliche möglichen Exponenten systematisch überprüfen zu müssen. Die Quanten- Fouriertransformation nutzt dabei die Interferenz der Wahrscheinlichkeitsamplituden, sodass geeignete Messergebnisse Rückschlüsse auf den unbekannten diskreten Logarithmus ermöglichen. Da die Messergebnisse probabilistisch sind, können mehrere Durchläufe erforderlich sein. Dennoch lässt sich das diskrete Logarithmusproblem mithilfe eines Quantencomputers in Polynomialzeit bezüglich der Eingabelänge lösen. Dies stellt einen wesentlichen Unterschied zu den zuvor betrachteten klassischen Verfahren dar, genauer gesagt \(\mathrm{\log n}^3\).
 
 
 \section{Shors Algorithmus für ECC}
-Eicher-Opokus Quantum Algorithmus ist eine Abwandlung von Shors Algorithmus um das DL-Problem zu lösen. \cite{yan15}, S.216--219
+Der zuvor dargestellte Algorithmus von Shor lässt sich auch auf elliptische Kurven übertragen. Hierbei wird lediglich die zugrunde Gruppenoperation geändert von der modularen Exponentation zur Punktaddition und Skalarmultiplikation, die bei elliptichschen Kurven verwendet wird. Eicher und Opoku beschreiben entsprechende Anpassungen von Shors Algorithmus zur Lösung des elliptischen diskreten
+Logarithmusproblems~\cite[S.~216--219]{yan15} und \cite[S.~21--27]{eicher97}. Proos und Zalka liefern einen anderen Ansatz~\cite[5--12]{proos2004}.
 
-Sei $E$ eine elliptische Kurve über $\mathbb{F}_q$. Es ist $P\mathbb{F}_q$ ein Punkt mit Ordnung $n$. Außerdem sei der Punkt $Q=kP$ gegeben mit einem unbekannten $k$ so wie bisher gegeben. Es soll nun das Problem
+Sei $E$ eine elliptische Kurve über $\mathbb{F}_p$. Es ist $P\in E(\mathbb{F}_p)$ ein Punkt mit bekannter Ordnung $n$. Außerdem sei der Punkt $Q=rP$ gegeben mit einem unbekannten $r\in\{0,\cdots ,n-1\}$. Gesucht ist somit der diskrete Logarithmus $r$
+mit
 \[
-r\equiv \log_P Q\mod p
+    Q=rP.
 \]
-gelöst werden.
+Analog zum gewöhnlichen diskreten Logarithmusproblem betrachtet man die Funktion
+\[
+    f(a,b)=aP-bQ.
+\]
+Wegen $Q=rP$ folgt
+\[
+    f(a,b)=(a-br)P.
+\]
+Da $P$ die Ordnung $n$ besitzt, hängt der Funktionswert ausschließlich von $a-br$ modulo $n$ ab. Die Periodizitätsstruktur soll mithilfe der Quanten-Fouriertransformation offengelegt werden, um den diskreten Logarithmus zu lösen.
 \begin{enumerate}
-    \item Zuerst werden die drei benötigten Quantenregister initalisiert
+    \item Zuerst werden die drei benötigten Quantenregister initalisiert. Die ersten beiden Register speichern die Exponenten $a$ und $b$, während das dritte Register das neutralen Element $\mathcal O$ der elliptischen Kurvengruppe enthält. Der Anfangszustand lautet
     \[
-    \lvert\psi_1\rangle=\lvert\mathcal{O},\mathcal{O},\mathcal{O}\rangle
+    \lvert\psi_0\rangle=\lvert0,0,\mathcal{O}\rangle.
     \]
-    \item Wählre ein $q$ mit $p\leq q\leq 2p$.
-    \item Füge wieder in die ersten beiden Register die gleichmäßige Superposition hinzu von allen $\lvert a\rangle$ und $\lvert b\rangle\pmod p$. Im dritten Register wird dann $aP+bQ\bmod p$ berechnet und dadurch befindet sich der Quantencomputer in dem Zustand
+    Anschließend werden die ersten beiden Register in gleichmäßige Superposition über $\lvert a\rangle$ und $\lvert b\rangle\pmod n$ gebracht. Dadurch ergibt sich der Zustand
     \[
-    \psi_2=\frac{1}{q}\sum_{a=0}^{q-1}\sum{b=0}q{q-1}\lvert a,b,aP+bQ\bmod p\rangle.
+    \lvert\psi_1\rangle=\frac{1}{n}\sum_{a=0}^{n-1}\sum_{b=0}^{n-1}\lvert a,b,\mathcal{O}\rangle.
     \]
-    $aP+bQ\pmod p$ kann effizient mit dem Double-And-Add Algorithmus\ref{sec:double-and-add} bestimmt werden.
-    \item Benutze die Fourier Transformation \(\operatorname{QFT}_N\) um wieder $\lvert a,b\rangle $ auf $\lvert c,d\rangle$ abzubilden. Der Zustand $\lvert a,b\rangle $ a wird dann zu
+    \item Es wird nun eine Zweierpotenz $q=2^t$ mit \(n\leq q<2n\) gewählt. Die Zahl $q$ bestimmt die Dimension der Quanten-Fouriertransformation.
+    \item Im dritten Register wird dann die Funktion $f(a,b)=aP-bQ$ berechnet und dadurch befindet sich der Quantencomputer in dem Zustand
+    \[
+    \lvert\psi_2\rangle=\frac{1}{n}\sum_{a=0}^{n-1}\sum_{b=0}^{n-1}\lvert a,b,aP-bQ\rangle.
+    \]
+    Die Berechnung von $aP-bQ$ kann effizient mit dem bereits vorgestellten Double-And-Add-Verfahren Algorithmus~\ref{sec:double-and-add} durchgeführt werden.
+    \item Nun wird die Quanten-Fouriertransformation \(\operatorname{QFT}_q\) auf die ersten beiden register angewendet. Der Zustand $|a,b\rangle$ wird dabei transformiert zu
     \[
     \frac{1}{q}
-    \sum_{c=0}^{q-1}\sum_{d=0}^{q-1}
-    \exp\left(\frac{2\pi i}{q}(ac+bd)\right)|c,d\rangle.
-    \]
-    transformiert. Dabei haben die Zustände die Wahrscheinlichkeitamplitude 
-    \[
-    \frac{1}{\sqrt{q}}\exp(\frac{2\pi i ac}{q}).
-    \]
-    respektive $bd$ anstatt $ac$. Dadurch wechselt die Maschine in den Zustand
-    \[
-    \lvert\psi_3\rangle=\frac{1}{(p-1)q}\sum_{a,b=0}^{p-2}\sum_{c,d=0}^{q-2}\exp\left(\frac{2\pi i}{q}(ac+bd)\right)\lvert c,d,aP+bQ\bmod p\rangle.
-    \]
-    \item Es wird der Zustand des Quantencomputers gemesen, um den Zustand $\lvert c,d,kP\bmod p\rangle $ zu erhalten
-    \[
-    \operatorname{Prob}(c,d,g^k)=
-    \left|
-    \frac{1}{(p-1)q}
-    \sum_{\substack{a,b\\
-    a-rb\equiv k\;(\mathrm{mod}\;p-1)}}
+    \sum_{c,d=0}^{q-1}
     \exp\left(
     \frac{2\pi i}{q}(ac+bd)
-    \right)
-    \right|^2.
-    \] 
-    Da \(aP+Bq\equiv kP\bmod p\) ist.
-    \item Nutze die Relation \(a=rb+k-(p-1)\left\lfloor\frac{br+k}{p-1}\right\rfloor\) und setze sie in die Wahrscheinlichkeit von oben ein um die Amplitude \(\lvert c,d,kP\bmod p\rangle\) zu erhalten
-    \[
-    \frac{1}{q}\sum_{b=0}^{p-1}\exp\left(\frac{2\pi i}{q}\left(brc+kc+bd-c(p-1)\left\lfloor\frac{br+k}{p-1}\right\rfloor\right)\right).
+    \right)|c,d\rangle.
     \]
-    Dadurch ist die Maschine in dem Zustand
+    Der Quantencomputer befindet sich damit im Zustand 
     \[
-    \lvert\psi_3\rangle = \frac{1}{q}\sum_{b=0}^{p-1}\exp\left(\frac{2\pi i}{q}\left(brc+kc+bd-c(p-1)\left\lfloor\frac{br+k}{p-1}\right\rfloor\right)\right)\lvert c,d,kP\bmod P\rangle.
+    \lvert\psi_3\rangle=\frac{1}{nq}\sum_{a,b=0}^{n-1}\sum_{c,d=0}^{q-1}\exp\left(\frac{2\pi i}{q}(ac+bd)\right)\lvert c,d,aP-bQ\rangle.
     \]
-    Die wahrscheinlichkeit den Zustand \(\lvert c,d,kP\bmod p\rangle\) zu messen ist daher 
+    \item Anschließend wird der Zustand des Quantencomputers gemesen. Angenommen, das Messergebnis ist\(\lvert c,d,kP\rangle\). Da $Q=rP$ gilt, folgt aus \(aP-bQ=kP\) die Kongruenz \(a-br\equiv k\pmod n\).
+    Die Wahrscheinlichkeit diesen Zustand zu beobachten, beträgt
     \[
-    \left|\frac{1}{q}\sum_{b=0}^{N-1}\exp\left(\frac{2\pi i}{q}\left(brc+kc+bd-c(p-1)\left\lfloor\frac{br+k}{p-1}\right\rfloor\right)\right)\right|^2.
+    \operatorname{Prob}(c,d,kP)=
+    \left|\frac{1}{nq}
+    \sum_{\substack{
+    0\leq a,b<n\\
+    a-br\equiv k\;(\mathrm{mod}\;n)
+    }}
+    \exp\left(
+    \frac{2\pi i}{q}(ac+bd)\right)\right|^2.
     \]
-    Da $\exp(2\pi ikc/q)$ die Wahrscheinlichkeit nicht ändern kann es umgeschrieben werden zu 
+    Aus der Kongurenz folgt
     \[
+    a=k+br-n\left\lfloor
+    \frac{k+br}{n}
+    \right\rfloor.
+    \]
+    Einsetzen in die Wahrscheinlichkeitsamplitude liefert
+    \[
+    \frac{1}{nq}\sum_{b=0}^{n-1}
+    \exp\Bigg(
+    \frac{2\pi i}{q}\Bigg[
+    kc+brc+bd
+    -cn\left\lfloor
+    \frac{k+br}{n}
+    \right\rfloor
+    \Bigg]\Bigg).
+    \]
+    \item Um geeignete Messergebnisse $(c,d)$ zu bestimmen, wird die Wahrscheinlichkeitsamplitude weiter untersucht. Hierzu sei $\{cn\}_q=cn\bmod q$ mit \(-\frac{q}{2}<\{cn\}_q\leq\frac{q}{2}\). Dann gilt 
+    \[
+    T = rc+d-\frac{r}{n}\{cn\}_q
+    \]
+    und 
+    \[
+    V=\left(\frac{br}{n}-\left\lfloor\frac{br+k}{n}\right\rfloor\right)\{cn\}_q.
+    \]
+    Da der Faktor $\exp(2\pi ikc/q)$ den Betrag $1$ besitzt, kann die Messwahrscheinlichkeit beschrieben werden also
+    \[
+    \operatorname{Prob}(c,d,kP)=
     \left|
-    \frac{1}{q}
-    \sum_{b=0}^{p-1}
-    \exp\left(\frac{2\pi i}{q}bT\right)
-    \exp\left(\frac{2\pi i}{q}V\right)
+    \frac{1}{nq}
+    \sum_{b=0}^{n-1}
+    \exp\left(\frac{2\pi ibT}{q}\right)
+    \exp\left(\frac{2\pi iV_b}{q}\right)
     \right|^2.
     \]
+    Für ein geeignetes Messergebnis gilt dann
     \[
-    T=rc+d-\frac{r}{p-1}\{cp\}_q \quad \text{und}\quad V=\left(\frac{br}{p}-\left\lfloor\frac{br+k}{p}\right\lfloor\right)\{cp\}_q.
+    \mid\{T\}_q\mid=|rc+d-\frac{r}{n}\{cn\}_q-q\left\lfloor\frac{T}{q}\right\rfloor\leq \frac{1}{2} 
     \]
-    wobei $\{\alpha\}_q$ für $\alpha \bmod q$ mit $-q/2<\{\alpha\}_q<q/2$.
-    \item Nun kann man $r$ aus $(c,d)$. Sei $j$ die nächste Ganzzahl zu $T/q$ und $b\in[0,p-2]$, dann ist
     \[
-    |\{T\}_q|=|rc+d-\frac{r}{p-1}\{cp\}_q-jq|\leq\frac{1}{2}.
+    |\{cn\}_q\leq\frac{q}{12}
     \]
-    Daher ist 
+    gelten.
+    \item Abschließend wird der gesuchte diskrete Logarithmus $r$ aus den Messergebnissen $(c,d)$ rekonstruiert. Es gilt dann
+    \begin{align*}
+        |T-q\left\lfloor\frac{T}{q}\right\rfloor|&\leq\frac{1}{2}\\
+        \left| rc+d-\frac{r}{n}\{cn\}_q-q\left\lfloor\frac{T}{q}\right\rfloor\right|&\leq\frac{1}{2}\\
+         \left|\frac{d}{q}+r\left(\frac{cn-\{cn\}_q}{qn}\right)-\left\lfloor\frac{T}{q}\right\rfloor\right|&\leq\frac{1}{2q} \quad(\text{Division mit }q)
+    \end{align*}
+    Da $cn-\{cn\}_q$ durch $q$ teilbar ist wird $c'$ definiert als
     \[
-    |\{cp\}_q\leq\frac{q}{12}
+    c'=\frac{cn-\{cn\}_q}{q}
     \]
-    und damit 
+    und somit ergibt sich wie zum gewöhnlichen DL-Problem
     \[
-    |V|\leq \frac{q}{12}
+    -\frac{1}{2q}
+    \leq
+    \frac{d}{q}
+    +r\left(
+    \frac{cn-\{cn\}_q}{qn}
+    \right)
+    \leq
+    \frac{1}{2q}
+    \pmod 1.
     \]
-    Daher kann $(c,d),r$ mit hoher Wahrscheinlichkeit berechnet werden.
+    Sei nun \(m=\operatorname{round}\left(\frac{nd}{q}\right)\). Da $q\geq n$ nach Vorraussetzung gilt, kann die Kongruenz 
+    \[
+    m+rc'\equiv0\pmod n
+    \]
+    hergeleitet werden. Daraus kann dann der diskrete Logarithmus berechnet werden, wenn$\gcd(c',n)=1$ gilt 
+    \[
+    r\equiv-m(c')^{-1}\pmod n.
+    \]
+    Nachdem man einen Kandidaten für $r$ gefunden hat, setzt man $(r,c,d)$ in $\mid\{T\}_q\mid$ und $\{cn\}_q$ ein. Wenn beide Bedingungen erfüllt sind, dann ist das Ergebnis mit einer hohen Wahrscheinlichkeit korrekt. Wenn die Bedingungen nicht erfüllt sind, werden die Berechnungen erneut ausgeführt bis ein guter Zustand erreicht wird
 \end{enumerate}
+In~\cite[S.23--27]{eicher97} findet sich ein Beispiel wie das eben beschriebene Verfahren genutzt werden kann, um ein Kryptosystem zu brechen.
 
-
-Bei DLP multiplikative Gruppe $\mathbb{Z}_p^*$ und ECDLP in $E(\mathbb{Z}_p)$, wobei ECDLP schwieriger ist als DLP. Diese zusätzliche Sicherheit ist aber ein Problem gegen Quatenangriffe, da ECC einfacher zu brechen ist als RSA.
-
-Quantum Computing, Qantum Kryptographie und Quanten Key Distribution. QKD does not encrypt data directly. Instead, it establishes a shared secret key between two parties in such a way that any attempt by an eavesdropper to intercept the key leaves detectable traces. Once the key is established and verified as secure, the parties use it with a classical encryption algorithm like AES to encrypt their communication.
-Limitations of QKD
-Despite its theoretical security, QKD faces practical limitations:
-
-Distance constraints: Photons traveling through optical fiber are absorbed or scattered, limiting QKD range to roughly 100 kilometers without trusted repeater nodes. Quantum repeaters could extend range but remain in early development.
-Infrastructure requirements: QKD requires dedicated quantum channels, single-photon sources, and detectors. This infrastructure is expensive and not compatible with existing classical networks.
-Key distribution only: QKD only establishes keys. It does not encrypt data, authenticate parties, or provide digital signatures.
-Trusted nodes: Long-distance QKD networks currently rely on trusted nodes that break the quantum link into segments, reintroducing some vulnerabilities.
-Point-to-point only: QKD links are inherently point-to-point, limiting scalability for multi-party communications.
-
-Großes Problem Harvest Now Decrypt later
-
-
-
-
-Aufwand für die Berechnugn des privaten ECC-Schlüssel aus öffentlichen Daten mit Hilfe ines Quantencomputers
-Es ist nicht eindeutig bestimmtbar wie viele Ressourcen benötigt werden, denn dafür ist auch Wissen über die Struktur des zugrundeliegenden Primkörpers und der Variablen $A$ und $B$ nötig. Es wird ausgeganngen von kurzen weierstraßform. Es ist ein Primkörper $\mathbb{F}_q$ mit $p^r$ und $n=\rceil\log_2(p)\rceil$
-
-Noch erklären was Toffoli-Gatter sind
+Das diskrete Logarithmusproblem auf elliptischen Kurven gilt für geeignete Kurven als schwieriger zu lösen als das diskrete Logarithmusproblem in der multiplikativen Gruppe $\mathbb{Z}_p^*$. Wie zuvor gezeigt, kann es jedoch mithilfe von Shors Algorithmus auf einem hinreichend leistungsfähigen Quantencomputer effizient gelöst werden.
+Das Bundesamt für Sicherheit in der Informationstechnik gibt hierzu Ressourcenschätzungen an.
 \begin{table}[htbp]
     \centering
-    \caption{Quantenressourcen in Abhängigkeit von der
-    Bitlänge $N$ des Moduls.}
-    \label{tab:quantenressourcen}
     \begin{tabular}{r r r r}
         \hline
         $N$ & Anzahl der Qubits & Anzahl der Toffoli-Gatter
@@ -390,220 +413,6 @@ Noch erklären was Toffoli-Gatter sind
                    & $5{,}25 \cdot 10^{11}$ \\
         \hline
     \end{tabular}
+    \caption{Quantenressourcen in Abhängigkeit von der Bitlänge $N$ nach dem~\cite[S.~60]{wilhelm24}}\label{tab:quantenressourcen}
 \end{table}
-\cite[S.60]{wilhelm24}
-
-
-Gefahr auch für Blockchains, Ethereum, Bitcoin alle Nutzen ECC
-
-Als Quantenrestente Verfahren Moduk-Lattice-Based oder Hash-based (https://csrc.nist.gov/projects/post-quantum-cryptography). Was ist mit hyperelliptischen Kurven?
-Sei $G=\langle g \rangle$ eine zyklische Gruppe bekannter Ordnung $n$ und $h\in G$ und exestiert nun ein $r\in\{0,\cdots,n-1\}$, sodass
-\[
-    h=g^r.
-\]
-In Kapitel 2 wurden schon einige klassische Verfahren zum lösen des DL-Problem dargestellt. Man kann nun mit Hilfe eines Quantencomputers das DL-Problem lösen indem man zwei mal Modular exponenziert und zwei mal eine Quanten-Fourier-Transformationen durchführt. Der Algorithmus verwendet dabei drei Quantenregister.
-
-
- Zu Beginn werden die Quantenregister in eine gleichmäßge Superposition gebracht
-\[
-    \lvert \psi_1\rangle = \frac{1}{p-1}\sum_{a=0}^{p-2}\sum_{b=0}^{p-2}\lvert a,b\bmod p\rangle.
-\]
-Es soll nun $g^r\equiv h \mod p$ berechnet werden. Also
-\[
-    r=\log_g h\bmod p-1.
-\]
-
-
-Man kann nun eine Funktion aufstellen
-\[
-    f(a,b)=g^a x^{-b}\equiv 1 \bmod p
-\]
-mit 
-\[
-a-br \equiv k\bmod p-1.
-\]
-Das gilt weil $g^a x^{-b}\equiv g^a (g^r)^{-b}\equiv g^{a-br} \equiv g^k\bmod p$. Es muss also $r$ gelöst werden mit 
-\[
-r\equiv (a-k)b^{-1}\bmod p-1.
-\]
-
-Erstes Register wieder hinzufügen
-
-Im dritten Register wird wird berechnet
-\[
-    \frac{1}{n}\sum_{a=0}^{n-1}\sum_{b=0}^{n-1}\lvert a,b,g^{a-rb}\rangle.
-\]
-Anschließend findet eine Quanten-Fourier-Transfomration statt, die für eine Gruppe $\mathbb{Z}/n\mathbb{Z}$ wie folgt definiert ist
-\[
-    QFTN_N:\lvert x\rangle \mapsto \lvert \psi_x\rangle= \frac{1}{N}\sum_{c=0}^{N-1}\exp(2\pi i\frac{ac}{N}/)\lvert y\rangle.
-\]
-Diese wird nun auf die ersten beiden Register angewendet, während das dritte Register unverändert bleibt.
-
-Nun wird das dritte Register gemesen. Angenommen diese Messung liefert nun das Gruppenelement $g^k$. Da $h=g^r$ gilt, müssen die zugehörigen Exponenten die Kongruenz
-\[
-    a+rb \equiv k\bmod n
-\]
-erüllen. Daraus folgt
-\[
-    a\equiv k-rb \bmod n.
-\]
-
-Die ersten beiden Register befinden sich nach der Messung somit im Zustand
-\[
-    |\psi_k\rangle
-    =\frac{1}{\sqrt n}
-    \sum_{b=0}^{n-1}|k-rb,b\rangle,
-\]
-wobei die Exponenten modulo $n$ zu verstehen sind.
-
-
-(\cite{mosca03}, S. 1--3)
-
-
-
-
-
-Zum Start wird eine Zahl $q$ genommen, für diese wird ein Exponent von 2 gesucht, sodass $q$ nahe bei $p$ liegt, also $p<q<2p$. Nun werden die ersten zwei Register in den Quantencomputer eingeführt in der uniformen Superposition von allen $\lvert a \rangle$ und $\lvert b \rangle$ $\bmod p-1$ und berechnen \(g^{a}x^{-b}\bmod p\) im dritten Register. Dadurch ist der Computer in dem Zustand
-\[
-    \frac{1}{p-1}\sum_{a=0}^{p-2}\sum_{b=0}^{p-2}\lvert a,b,g^{a}x^{x-b} \bmod p\rangle.
-\]
-Nun wird die Fouriertransformationen verwendet $A_q$ um $\lvert a \rangle \rightarrow \lvert c \rangle$ und $\lvert b \rangle \rightarrow \lvert d \rangle$ zu senden mit der Wahrscheinlichkeitamplitude \(\frac{1}{q}\exp(2\pi i(ac+bd)/q)\). Dadurch wird der Zustand $\lvert a,b \rangle$ in den Zustand
-\[
-    \frac{1}{q}\sum_{a=0}^{q-1}\sum_{b=0}^{q-1}\exp(\frac{2\pi i}{q}/(ac+bd)) c,d\rangle
-\]
-umgewandelt. Dadurch bleibt der Quantencomputer in folgendem Zustand
-\[
-    \frac{1}{(p-1)q}\sum_{a=0}^{p-2}\sum_{b=0}^{p-2}\exp(\frac{2\pi i}{q}/(ac+bd))\lvert c,d,g^{a}x^{-b} \bmod p\rangle.
-\]
-Die Wahrscheinlichkeit um einen Zustand $\lvert c,d,y\rangle$ mit \( y\equiv g^k \bmod p\) zu beobachten ist
-\[
-    \left|\frac{1}{(p-1)q}\sum_{\substack{a,b \\ a-rb\equiv k}}\exp \left(\frac{2\pi i}{q}(ac+bd)\right)\right|^2
-\]
-wo die Summe über ganz $(a,b)$ verteilt ist, sodass $a-rb\equiv k \bmod p-1$. Man hat nun zwei Moduli $p-1$ und $q$, die man beide verfolgen muss.
-Nun wird die Relation
-\[
-    a=br+k-(p-1)\lfloor \frac{br+k}{p-1}\rfloor
-\]
-in den vorherigen Ausdruck eingesetzt um die Amplitude auf \(\lvert c,d,g^k\bmod p\rangle\) zu erhalten
-\begin{equation}
-    \frac{1}{(p-1)q}\sum_{b=0}{p-2}\exp \left(\frac{2\pi i}{q}(brc+kc+bd-c(p-1)\lfloor \frac{br+k}{p-1}\rfloor)\right).\label{eq-quant-two-exp}
-\end{equation}
-Der absolute Wert der Quadrate dieser Amplitude ist die Wahrschienlichkeit den Zustand zu erhalten.
-\(\exp(2\pi i k c/q)\) kann ignoriert werden, da es die Wahrscheinlichkeit nicht ändern.
-
-Nun werden die Exponent in zwei Teile Geteilt und $b$ ausmultipliziert um
-\[
-    \frac{1}{(p-1)q}\sum_{b=0}^{p-2}\exp\left(\frac{2\pi i}{q}bT\right)\exp\left(\frac{2\pi i}{q}V\right)
-\]
-mit \(T= rc+d-\frac{r}{p-1}\{c(p-1)\}_q\) und \(V=\left(\frac{br}{p-1}-\lfloor\frac{br+l}{p-1}\rfloor\right)\{c(p-1)\}_q\).
-Hier ist mit \(\{z\}_q\) das Residuum von $z\bmod q$ gemeint mit $-q/2<\{z\}q\leq q/2$.
-
-Nun werden potenzielle Ergebnisse in gut und schlecht klassifiziert. Bei gut genügenden Ergebnisse, ist es sehr wahrscheinlich ein $r$ abzzleiten und die Chance für ein gutes Ergebniss ist konstant. Hierbei ist
-\begin{equation}
-    |\{T\}_q|=|rc+d-\frac{r}{p-1}{c(p-1)}_q-jq|\leq \frac{1}{2}\label{eq-quant-good-1}
-\end{equation}
-
-wobei $j$ die nächste Ganzzahl zu $T/q$ ist und b zwischen 0 und $p-2$ liegt.
-
-Wenn nun gilt
-\begin{equation}
-    |\{c(p-1)\}_q|\leq q/12, \label{eq-quant-good-2}
-\end{equation}
-
-dann ist $|V|$ maximal $q/12$, also ist die Phase vom zweiten Exponentialterm nie weiter weg als \(\exp(\pi i/6)\) von 1, also es gilt  \(\exp(\frac{2\pi i}{q}V)\leq \exp(\frac{\pi i}{6})\). Wenn Bedingung \ref{eq-quant-good-1} und \ref{eq-quant-good-2} beide gelten, dann spricht man von einem guten Ergebnis.
-Es gilt $0\leq b\leq p-2$ und daher $0\leq \exp(2\pi ibT/q)\leq 2\pi i W$ mit
-\[
-    W=\frac{p-2}{q}\left(rc+d-\frac{r}{p-1}\{c(p-1)\}_q-jq\right)
-\]
-und $j$ wie in \ref{equ-quant-good-1}. Daher ist der Komponent der ersten Amplitude des ersten Exponenten in Gleichung \ref{eq-quant-two-exp} $\cos(2\pi \left|\frac{W}{2}-\frac{Wb}{p-2}\right|)\leq\exp(\pi i W)$ und kann dabei um mindesten $\pi i/6$ varieren, weben dem zweiten Exponentialterm.
-\cite{shor97}, S.19-- 21
-
-\begin{enumerate}
-    \item Rate eine Zahl $g$
-    \item Aus $g$ mit Quantenberechnung ein $p$ berechnen
-    \item $g^{p/2}+1$ ist näher an der Wahrheit als $g$
-\end{enumerate}
-
-
-Shors algorithmus hat 4 Schritte
-\begin{enumerate}
-    \item Quantum Fourier Transformation, Qubits sind in einer Superposition von Zustände initalisiert, übersetzt Quanteninfomrationen in ein Frequenzspektrum
-    \item Modulare Exponentation
-    \item Nochmal Quantum Fourier Transformation, Transformiert den Zustand und wandelt die periodischen Information in Quanten Zustände, was wichtig ist um die Ordnung der Untergruppe zu finden
-    \item Die Ergebnisse der QFT werden gemessen und mit Hilfe von Wahrscheinlichkeit bewertet. Dann wird Eucklid verwendet um den grlßten gemeinsamen Teiler zu finden.
-\end{enumerate}
-
-(Applied Quantum Computing S.100-102)
-
-Generell
-Paper beschäftigt sich nur mit Kurven über GF(p). Alles was klassisch berechnet werden kann, soll klassisch berechnet werden, um Qubits und Gatter zu sparen.
-Sei $G$ eine endlcihe zyklische Gruppe und $a$ der Generator von $G$. Dann gibt es ein Element $b\in G$ mit \(a^d=b\)
-
-
-\textbf{Für elliptische Kurven}
-
-Elliptische Kurven über $GF(p^n)$ sind endliche abelsche Gruppen wie bereits gezeigt. Sei $P$ ein Punkt auf der Kurve $E$, diese Kurve soll alle Sicherheitsbetrachtungen aus Kapitel 5 einhalten und daher dass DL-Problem schwer zu lösen sein.
-
-Also Körper ist $\mathbb{F}_p$ mit $p>3$ und eine ellitpische Kurve $E:y^2=x^3+ax+b$ über diesem Körper. Sei $P=(x,y)$ ein Punkt auf $E$ mit einer großen Ordnung $n$, sodasss $nP=\mathcal{O}$ gilt. Es gibt nun einen zweiten Punkt $Q\in E$ mit $kP=Q$ was wie bereits eingeführt das diskrete Logarithmus Problem ist für ein $k\in\mathbb{Z}$.
-
-Es muss nun die folgende Transfomartion durchgeführt werden
-\[
-    \frac{1}{2^n}\sum_{x=0}^{2^n-1}\sum_{y=0}^{2^n-1}\lvert x,y \rangle \rightarrow \frac{1}{2^n}\sum_{x=0}^{2^n-1}\sum_{y=0}^{2^n-1}\lvert x,y,xP+yQ \rangle
-\]
-Um nun große Skalarmultiplikationen durchzuführen kann wieder die Double-And-Add Methode verwendet werden\ref{sec:double-and-add}. Um $xP+yQ$ zu berechnen wird durchgehend das Gruppenelement $P$ und $Q$ verdoppelt mit $P_i=2^iP$ und $Q_i=2^iQ$. Dann werden $P_i$ und $Q_i$ immer zusammen addiert, wenn die dazugehörigen Bits $x$ und $y$ zusammengerechnet 1 ergeben, also
-\[
-    xP+yQ=\sum_i x_i P_i+\sum_i y_i Q_i
-\]
-mit $x=\sum_i x_i 2^i, y = \sum_i y_i 2^i, P_i = 2^i P$ und $ Q_i=2^i Q$. $P_i$ und $Q_i$ können vorher schon klassisch berechnet werden. Um die eben beschriebene Transformation zu starten, beginnt man mit dem Zustand \(\sum_{x,y}\lvert x,y,\mathcal{O}\rangle\). Das dritte Register wird mit dem neutralen Element $\mathcal{O}$ initalisiert und nennt sich Akkumulator. Danach wird $P_i$ und $Q_i$ zu dem Register hinzugefügt und auf die entsprechenden Bits von $x$ und $y$ konditioniert.
-(Shors discrete log for ECC S.3--10)
-
-\textbf{Input Register eliminieren}
-
-Dekomposition des diskreten logarithmus quantum Algorithmus in eine Sequence von Gruppenshifts
-\[
-    U_A:\lvert S\rangle \rightarrow \lvert S+A\rangle,\qquad S,A \in E.
-\]
-\textbf{Decomposition im Group Shift}
-
-Nach einer gedachten Messung des dirtten Registers erhält man
-\[
-    |\psi\rangle=
-    \frac1{\sqrt q}
-    \sum_{y=0}^{q-1}|x_0-dy,y\rangle.
-\]
-(Shors discrete log for ECC S.10--)
-
-
-
-
-
-
-
-
-\textbf{Probleme von Quantencomputern}
-\begin{itemize}
-    \item Nur bestimmte Transformationen können mit einem Quantencomputer berechnet werden.
-    \item Da ergebnis auch quantenmechanischer Zustand, zeigt die Messung in der Regel ein zufälliges Verhalten, also muss Berechnung mehrfach durchgeführt und statistisch ausgewertet werden.
-    \item Technologische Herausforderungen, quantenmechanische Transformation mit niedriger Fehleranfälligkeit und sicherer Quantenfehlerkorrektur realisieren.
-\end{itemize}
-\cite{bewer26}, S.114
-Why aren’t quantum computers more widely used if they’re so much faster than con
-ventional machines? Even while engineering has evolved substantially, developing
-a quantum computer remains a daunting undertaking. The circuit was hardwired to
-only factor the number 15, not any other input, as the approach is intended to do.
-For example, the maximum number factored by a quantum computer using Shor’s
-technique is 15. To put this in context, Shor’s approach would need to be applied
-to a 1024-bit integer in order to crack 1024-bit RSA keys, which are currently rec
-ommended for corporate use. This would necessitate a quantum computer orders of
-magnitude more powerful than that needed to divide 15 by 5 and 3.
-(\cite{mihal25}, S. 75f.)
-
-
-
-Quantencomputer versucht Periode der Funktion zu finden, also das gilt $f(x+r)=f(x)$. Er berechnet nicht die ganzen Potenzen durch, sondern
-\begin{enumerate}
-    \item Quantencomputer erzeugt Überlagerung vieler Eingabewerte: \(\frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}\lvert x \rangle\)
-    \item Die Funktion wird kohärent ausgewertet: \(\frac{1}{\sqrt{N}}\sum_{x=0}^{N-1}\lvert x,f(x) \rangle\)
-    \item Quanten-Fourier-Transformation: Durch Interferenz werden bestimmte Messergebnise wahrscheinlicher, die Informationen über die Peridoe enthalten
-    \item Messung und Nachbverarbeitung: Aus den Messergebnissen wird die Periode \(r\) mittels klassischer Berechnungen rekonstruiert.
-\end{enumerate}
+Doch wie sieht der aktuelle Forschungsstand aus? Laut der IBM Quantum Roadmap von 2026 oll der Nighthawk-Prozessor die Ausführung von bis zu 7.500 Quantengattern auf bis zu drei Modulen mit jeweils 120 physischen Qubits ermöglichen. Für die Zeit ab 2033 plant IBM mit Blue Jay einen fehlertoleranten Quantencomputer mit bis zu 2.000 logischen Qubits und einer Kapazität von einer Milliarde Gattern (vgl. IBM 2026 \cite{ibmQuantumRoadmap}). Hierbei handelt es sich jedoch um Entwicklungsziele. Ein konkreter Zeitpunkt, ab dem kryptografische Verfahren auf elliptischen Kurven gebrochen werden können, lässt sich daraus nicht ableiten. Die Entwicklung verdeutlicht dennoch die zunehmende Bedeutung des Übergangs zu Post-Quanten-Verfahren. Denn neben aktuellen Angriffen stellt auch das sogenannte Harvest-now-decrypt-later Verfahren eine Gefahr dar,bei dem verschlüsselte Daten bereits heute abgefangen und gespeichert werden, um sie mithilfe zukünftiger Quantencomputer zu entschlüsseln.

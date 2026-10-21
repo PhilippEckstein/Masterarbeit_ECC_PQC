@@ -1,21 +1,18 @@
 \chapter{Vorwort}
 
-\section*{Eidesstattliche Erklärung}
-Hier sollte eine kluge eidesstattliche Erkl"arung stehen, dass du alles allein gemacht hast et cetera et cetera.
-\bigskip\underline{\hspace{0.2\textwidth}}\hspace{0.1\textwidth}\underline{\hspace{0.4\textwidth}}
 \section*{Danksagung}
 An erster Stelle dankt man meistens dem Betreuer. Je nach Sentimentalit"at kann dann auch weiteren Personen aus dem akademischen oder dem privaten Umfeld gedankt werden.
-\section{Einführung}
-Der Wunsch, Informationen vor dem Zugriff unbefugter Personen zu schützen, reicht weit in die Geschichte zurück. Bereits Julius Caesar soll ein Verschlüsselungsverfahren verwendet haben, um militärische Nachrichten vertraulich zu übermitteln. Bei der heute als Caesar-Chiffre bezeichneten Methode werden die Buchstaben des Alphabets um eine festgelegte Anzahl von Stellen verschoben. Nur wer die verwendete Verschiebung kennt, kann die
-Nachricht unmittelbar entschlüsseln \cite[S.~14--15]{buell24}. Aus heutiger Sicht bietet dieses Verfahren keine ausreichende Sicherheit, veranschaulicht jedoch bereits ein grundlegendes Prinzip der Kryptographie. Eine Nachricht  wird mithilfe eines Schlüssels so verändert, dass ihr ursprünglicher Inhalt für Unbefugte nicht mehr erkennbar ist.
+\bigskip\underline{\hspace{0.2\textwidth}}\hspace{0.1\textwidth}\underline{\hspace{0.4\textwidth}}
+\section*{Eidesstattliche Erklärung}
+Hiermit erkläre ich, dass ich die vorliegende Arbeit selbststä andig, ohne fremde Hilfe und ohne Verwendung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quel
+len (einschließlich elektronischer Quellen) direkt oder indirekt übernommenen Gedanken sind ausnahmslos als solche kenntlich gemacht. Die Arbeit ist in gleicher oder ähnlicher Form oder auszugsweise im Rahmen einer anderen Prüfung noch nicht vorgelegt worden. Die elektronische Version stimmt mit der gedruckten Version überein.
+\section{Eine thematische Einführung in die Arbeit}
+Der Wunsch, Informationen vor dem Zugriff unbefugter Personen zu schützen, reicht weit in die Geschichte zurück. Bereits Julius Caesar soll ein Verschlüsselungsverfahren verwendet haben, um militärische Nachrichten vertraulich zu übermitteln. Bei der heute als Caesar-Chiffre bezeichneten Methode werden die Buchstaben des Alphabets um eine festgelegte Anzahl von Stellen verschoben. Nur wer die verwendete Verschiebung kennt, kann die Nachricht unmittelbar entschlüsseln~\cite[S.~14--15]{buell24}. Aus heutiger Sicht bietet dieses Verfahren keine ausreichende Sicherheit, veranschaulicht jedoch bereits ein grundlegendes Prinzip der Kryptographie. Eine Nachricht  wird mithilfe eines Schlüssels so verändert, dass ihr ursprünglicher Inhalt für Unbefugte nicht mehr erkennbar ist.
 
 Mit der zunehmenden Digitalisierung hat die sichere Übertragung von Informationen erheblich an Bedeutung gewonnen. Beim Onlinebanking, bei der E-Mail-Kommunikation oder bei der Nutzung von Nachrichtendiensten werden regelmäßig sensible Daten über öffentliche Netzwerke übertragen. Kryptographische Verfahren sollen unter anderem gewährleisten, dass diese Informationen nicht von unbefugten Dritten gelesen oder unbemerkt verändert werden können.
 
-Eine wichtige Rolle spielt dabei die asymmetrische Kryptographie, bei der
-öffentliche und private Schlüssel verwendet werden. Die Sicherheit
-entsprechender Verfahren beruht häufig auf mathematischen Problemen, für die
-auf klassischen Computern keine effizienten Lösungsverfahren bekannt sind.
-Zu diesen Problemen gehört insbesondere das diskrete Logarithmusproblem.
+Eine wichtige Rolle spielt dabei die asymmetrische Kryptographie, bei der öffentliche und private Schlüssel verwendet werden. Die Sicherheit entsprechender Verfahren beruht häufig auf mathematischen Problemen, für die
+auf klassischen Computern keine effizienten Lösungsverfahren bekannt sind. Zu diesen Problemen gehört insbesondere das diskrete Logarithmusproblem.
 
 Elliptische Kurven haben sich in der modernen Public-Key-Kryptographie
 etabliert, da sie bei vergleichbarem Sicherheitsniveau deutlich kleinere
@@ -43,10 +40,9 @@ kryptographischer Verfahren auf elliptischen Kurven ergeben.
 
 Ziel dieser Arbeit ist es, elliptische Kurven mathematisch einzuführen und
 ihre Verwendung in der Public-Key-Kryptographie darzustellen. Im Mittelpunkt stehen dabei das diskrete Logarithmusproblem auf elliptischen Kurven, ausgewählte kryptographische Verfahren sowie die Analyse klassischer Angriffe und der daraus resultierenden
-Sicherheitsanforderungen an geeignete Kurvenparameter. Abschließend wird in einem Ausblick betrachtet, welche zusätzlichen Auswirkungen Quantencomputer und insbesondere der Shor-Algorithmus auf die langfristige Sicherheit elliptischer Kurven haben.
+Sicherheitsanforderungen an geeignete Kurvenparameter. Abschließend werden die Auswirkungen von Quantencomputer und insbesondere der Shor-Algorithmus auf die langfristige Sicherheit elliptischer Kurven untersucht.
 
 Daraus ergibt sich die folgende Forschungsfrage.
-
 \begin{quote}
     \emph{Welche mathematischen Eigenschaften elliptischer Kurven
         ermöglichen ihren Einsatz in der Public-Key-Kryptographie und

@@ -2,7 +2,7 @@ import math
 import matplotlib.pyplot as plt
 
 "Elliptische Kurve: y^2 = x^3 + ax + b (mod p)"
-"Punkte sind in der Formq=(x_1,y_1)"
+"Punkte sind in der Form: P=(x_1,y_1)"
 
 def is_on_curve(P,a,b,p):
     if P is None:
@@ -21,7 +21,7 @@ def double_point(P,a,p):
     return x3,y3
 
 def add_points(P,Q,a,p):
-    # Points at infinity
+    # Punkt im Unendlichen
     if P is None:
         return Q
     if Q is None:
@@ -30,7 +30,7 @@ def add_points(P,Q,a,p):
     x1, y1 = P
     x2, y2 = Q
 
-    # P + (-P) = infinity
+    # P + (-P) = Unendlich
     if x1 == x2 and (y1 + y2) % p == 0:
         return None
 
@@ -92,7 +92,7 @@ def plot_curve_points(P , a, b, p):
     plt.scatter(xs, ys, s=80, color="green")
     plt.scatter(P[0], P[1], color="red", s=120, edgecolors="black",
         zorder=3,
-        label=f"P = {P}") #Generator hervorheben
+        label=f"P = {P}")
     for n,point in enumerate(multiples, start=1):
         if point is not None:
             plt.annotate(
