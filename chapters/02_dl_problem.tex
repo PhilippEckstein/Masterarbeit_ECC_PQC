@@ -1,22 +1,20 @@
-\chapter{Das Diskrete Logarithmusproblem}
-Ziel dieses Kapitel ist es, die grundlegende Idee der Public-Key-Kryptographie einzuführen und anschließend das diskrete Logarithmusproblem als mathematische Grundlage kryptographischer Verfahren auf elliptischen Kurven zu betrachten. Als einführendes Beispiel für ein Public-Key-Verfahren wird zunächst das sehr bekannte RSA-Verfahren vorgestellt. 
+\chapter{Das diskrete Logarithmusproblem}~\label{public-key}
+Ziel dieses Kapiteles ist es, die grundlegende Idee der Public-Key-Kryptographie einzuführen und anschließend das diskrete Logarithmusproblem als mathematische Grundlage kryptographischer Verfahren auf elliptischen Kurven zu betrachten. Als einführendes Beispiel für ein Public-Key-Verfahren wird zunächst das sehr bekannte RSA-Verfahren vorgestellt. 
 
-Bei symmetrischen Verschlüsselungsverfahren verwenden Sender und Empfänger denselben geheimen Schlüssel zur Ver- und Entschlüsselung einer Nachricht. Damit eine sichere Kommunikation möglich ist, muss dieser Schlüssel zuvor auf einem sicheren Weg zwischen beiden Parteien ausgetauscht werden. Insbesondere bei einer Kommunikation über über offene Netzwerke stellt dieser Schlüsselaustausch ein praktisches Problem dar. Die Public-Key-Kryptographie begegnet diesem Problem durch die Verwendung eines Schlüsselpaares aus einem öffentlichen und einem privaten Schlüssel.
+Bei symmetrischen Verschlüsselungsverfahren verwenden Sender und Empfänger denselben geheimen Schlüssel zur Ver- und Entschlüsselung einer Nachricht. Damit eine sichere Kommunikation möglich ist, müssen beide Parteien einen gemeinsamen geheimen Schlüssel etablieren. Insbesondere bei einer Kommunikation über offene Netzwerke stellt dieser Schlüsselaustausch ein praktisches Problem dar. Die Public-Key-Kryptographie begegnet diesem Problem durch die Verwendung eines Schlüsselpaares aus einem öffentlichen und einem privaten Schlüssel.
 \section{Public-Key-Kryptographie}
-~\label{public-key}
 Die Darstellung in diesem Abschnitt orientiert sich an~\cite[S.~4, 109, 140]{fuß25},~\cite[S.~10]{buell24} und~\cite[S.~170]{washington08}.
 
-Die grundlegende Idee vieler Public-Key-Verfahren lässt sich durch eine effizient berechnbare Abbildung
+Die grundlegende Idee vieler Public-Key-Verfahren lässt sich durch eine effizient berechenbare Abbildung
 \[
     f:\mathcal{M}\longrightarrow\mathcal{C}
 \]
-veranschaulichen, deren Umkehrung ohne zusätzliche geheime Information praktisch nicht effizient berechnet werden kann. Dabei bezeichnet $\mathcal{M}$ die Menge der möglichen Klartexte und $\mathcal{C}$ die Menge der möglichen Chiffretexte. Die Abbildung $f$ soll effizient berechenbar sein, während die Umkehrung $f^{-1}$ ohne
-zusätzliche geheime Information praktisch nicht effizient durchgeführt werden kann. In einem konkreten Public-Key-Verfahren hängt diese Abbildung vom öffentlichen Schlüssel ab. Die Verschlüsselungsfunktion wird daher mit \(E_{k_{\mathrm{pub}}}:\mathcal{M}\longrightarrow\mathcal{C}\) bezeichnet. Die zugehörige Entschlüsselungsfunktion \( D_{k_{\mathrm{priv}}}:\mathcal{C}\longrightarrow\mathcal{M}\) hängt vom privaten Schlüssel ab und erfüllt \( D_{k_{\mathrm{priv}}} \bigl(E_{k_{\mathrm{pub}}}(m)\bigr) = m \) für alle $m\in\mathcal{M}$.
+veranschaulichen, deren Umkehrung ohne zusätzliche geheime Information praktisch nicht effizient berechnet werden kann. Dabei bezeichnet $\mathcal{M}$ die Menge der möglichen Klartexte und $\mathcal{C}$ die Menge der möglichen Chiffretexte. In einem konkreten Public-Key-Verfahren hängt diese Abbildung vom öffentlichen Schlüssel ab. Die Verschlüsselungsfunktion wird daher mit \(E_{k_{\mathrm{pub}}}:\mathcal{M}\longrightarrow\mathcal{C}\) bezeichnet. Die zugehörige Entschlüsselungsfunktion \( D_{k_{\mathrm{priv}}}:\mathcal{C}\longrightarrow\mathcal{M}\) hängt vom privaten Schlüssel ab und erfüllt \( D_{k_{\mathrm{priv}}} \bigl(E_{k_{\mathrm{pub}}}(m)\bigr) = m \) für alle $m\in\mathcal{M}$.
 
-Ein grundlegendes Prinzip der Kryptographie ist das \textbf{Kerckhoff's Prinzip}. Danach soll die Sicherheit eines Kryptosystems nicht von der Geheimhaltung des verwendeten Verfahrens abhängen, sondern ausschließlich von der Geheimhaltung des
+Ein grundlegendes Prinzip der Kryptographie ist das \textbf{Kerckhoffs-Prinzip}. Danach soll die Sicherheit eines Kryptosystems nicht von der Geheimhaltung des verwendeten Verfahrens abhängen, sondern ausschließlich von der Geheimhaltung des
 entsprechenden geheimen Schlüssels.
 
-Als einfaches Einführungsbeispiel wird das RSA-Verfahren betrachtet. Die Sicherheit von RSA beruht auf der Schwierigkeit, eine große zusammengesetzte Zahl $N=pq$ in ihre Primfaktoren $p$ und $q$ zu zerlegen. Für zwei Primzahlen $p$ und $q$ hat die eulerische $\varphi$-Funktion folgende nützliche Eigenschaft
+Als einfaches Einführungsbeispiel wird das RSA-Verfahren betrachtet. Die Sicherheit von RSA beruht auf der Schwierigkeit, eine große zusammengesetzte Zahl $N=pq$ in ihre Primfaktoren $p$ und $q$ zu zerlegen. Für zwei Primzahlen $p$ und $q$ hat die eulerische $\varphi$-Funktion folgende nützliche Eigenschaft für $p\neq q$
 \[
     \varphi(N)
     =
@@ -45,7 +43,7 @@ Als einfaches Einführungsbeispiel wird das RSA-Verfahren betrachtet. Die Sicher
     \]
     den privaten Schlüssel bildet.
 
-    Eine Nachricht $m$ wird durch
+    Eine Nachricht $m\in\mathbb{Z}/N\mathbb{Z}$ wird durch
     \[
         c\equiv m^e\bmod N
     \]
@@ -57,7 +55,7 @@ Als einfaches Einführungsbeispiel wird das RSA-Verfahren betrachtet. Die Sicher
 \end{definition}
 
 \begin{beispiel}
-    Bob wählt die Primzahlen $p=5$ und $q=11$ und bildet daraus das Produkt $N=pq=55$,  sowie \( \varphi(N)=(p-1)(q-1)=4\cdot10=40\). Anschließend wählt er ein $e=7$, wobei $\operatorname{ggT}(7,40)=1$ gilt. Nun berechnet Bob $d=7^{-1}\mod \phi(55)\equiv23$. Der öffentliche Schlüssel lautet somit
+    Bob wählt die Primzahlen $p=5$ und $q=11$ und bildet daraus das Produkt $N=pq=55$, sowie \(\varphi(N)=(p-1)(q-1)=4\cdot10=40\). Anschließend wählt er ein $e=7$, wobei $\operatorname{ggT}(7,40)=1$ gilt. Nun berechnet Bob $d=7^{-1}\equiv23 \bmod 40$. Der öffentliche Schlüssel lautet somit
     \[
         k_{\mathrm{pub}}=(7,55),
     \]
@@ -65,13 +63,13 @@ Als einfaches Einführungsbeispiel wird das RSA-Verfahren betrachtet. Die Sicher
     \[
         k_{\mathrm{priv}}=(23,55)
     \]
-    geheim gehalten wird. Alice möchte die beispielhafte Nachricht $m=8$ verschlüsseln. Sie berechnet $c=8^{7}\mod 55\equiv 2 \bmod{55}$ und sendet den Chiffretext $c=2$ an Bob. Bob entschlüsselt die Nachricht mit seinem privaten Schlüssel
+    geheim gehalten wird. Alice möchte die beispielhafte Nachricht $m=8$ verschlüsseln. Sie berechnet $c=8^{7}\equiv 2 \bmod{55}$ und sendet den Chiffretext $c=2$ an Bob. Bob entschlüsselt die Nachricht mit seinem privaten Schlüssel
     \[
-        m\equiv2^{23}\equiv8\pmod{55}.
+        m\equiv2^{23}\equiv8\bmod{55}.
     \]
     Damit erhält er die ursprüngliche Nachricht $m=8$.
 \end{beispiel}
-Die Nachricht $m=8$ macht semantisch natürlich keinen Sinn, daher wird in realen Anwendungen wird der Klartext vor der Verschlüsselung durch ein geeignetes Kodierungs- und Paddingverfahren verarbeitet. 
+Die Nachricht $m=8$ macht semantisch natürlich keinen Sinn, daher werden in praktischen Anwendungen werden Nachrichten zunächst geeignet kodiert.
 
 Die Sicherheit von RSA steht in engem Zusammenhang mit der Schwierigkeit der Faktorisierung großer zusammengesetzter Zahlen. Sind die Primfaktoren $p$ und $q$ von $N=pq$ bekannt, kann
 \[
@@ -86,7 +84,7 @@ unmittelbar bestimmt und daraus der private Exponent berechnet werden. Für hinr
 Neben dem Faktorisierungsproblem bilden auch diskrete Logarithmusprobleme eine wichtige Grundlage von Public-Key-Verfahren. Für kryptographische Verfahren auf elliptischen Kurven ist insbesondere das diskrete Logarithmusproblem in geeigneten zyklischen Gruppen von Bedeutung. Im folgenden Abschnitt wird dieses zunächst allgemein eingeführt,
 bevor später der Spezialfall elliptischer Kurven betrachtet wird.
 
-\section{Das Diskrete Logarithmus Problem}
+\section{Das diskrete Logarithmus Problem}
 Für die Definition des diskreten Logarithmusproblems werden zunächst einige grundlegende Begriffe aus der Gruppentheorie zusammengefasst. Im Hinblick auf die spätere Betrachtung elliptischer Kurven wird für Gruppenelemente bereits die additive Schreibweise verwendet.
 Die Darstellung in diesem Abschnitt orientiert sich an~\cite[S.~200]{buell24} und~\cite[S.~34--36]{karpf24}.
 \begin{definition}[Gruppenordnung]
@@ -127,21 +125,21 @@ Sei $G=\langle P\rangle$ eine endliche zyklische Gruppe der Ordnung $n$ in addit
     f:\mathbb{Z}/n\mathbb{Z}\longrightarrow G,
     \qquad k\longmapsto kP,
 \]
-bijektiv. Insbesondere existiert zu jedem $Q\in G$ ein eindeutig bestimmtes $k\in\mathbb{Z}/n\mathbb{Z}$ mit $Q=kP$. Die Berechnung von $kP$ kann beispielsweise mit dem Double-and-Add-Verfahren~\ref{sec:double-and-add} mit $\mathrm O(\log k)$ Gruppenoperationen durchgeführt werden und benötigt somit höchstens $\mathrm O(\log n)$ Gruppenoperationen für $0\leq k<n$.
+bijektiv. Insbesondere existiert zu jedem $Q\in G$ ein eindeutig bestimmtes $k\in\mathbb{Z}/n\mathbb{Z}$ mit $Q=kP$. Die Berechnung von $kP$ kann effizient mit dem Double-and-Add-Verfahren aus Abschnitt~\ref{sec:double-and-add} mit $\mathrm O(\log k)$ Gruppenoperationen durchgeführt werden und benötigt somit höchstens $\mathrm O(\log n)$ Gruppenoperationen für $0\leq k<n$.
 
 \begin{definition}[Diskretes Logarithmusproblem]
     Sei $G=\langle P\rangle$ eine endliche zyklische Gruppe der Ordnung $n$. Das diskrete
-    Logarithmusproblem besteht darin, zu gegebenem Punkten $P,Q\in G$ das eindeutig bestimmte $k\in\mathbb{Z}/n\mathbb{Z}$ mit
+    Logarithmusproblem besteht darin, zu gegebenem Elementen $P,Q\in G$ das eindeutig bestimmte $k\in\mathbb{Z}/n\mathbb{Z}$ mit
     \[
         Q=kP
     \]
     zu finden.
 \end{definition}
 
-In multiplikativer Schreibweise lautet die entsprechende Gleichung $h=g^k$. Der gesuchte Exponent $k$ wird als diskreter Logarithmus von $h$ zur Basis $g$ bezeichnet.
+Die additive Schreibweise mit den Bezeichnungen $P$ und $Q$ wird im Hinblick auf die spätere Betrachtung elliptischer Kurven verwendet. In multiplikativer Schreibweise lautet die entsprechende Gleichung $h=g^k$. Der gesuchte Exponent $k$ wird als diskreter Logarithmus von $h$ zur Basis $g$ bezeichnet.
 
 \begin{beispiel}
-    Das disrkete Logarithmus Problem ist jedoch nicht in jeder zyklischen Gruppe schwierig zu lösen. Sei beispielsweise $G=\mathbb{Z}/n\mathbb{Z}$ die additive Gruppe mit Generator $P=1$. Für jedes $Q\in G$ gilt
+    Das disrkete Logarithmus Problem ist jedoch nicht in jeder zyklischen Gruppe schwierig zu lösen. Sei $G=\mathbb{Z}/n\mathbb{Z}$ die additive Gruppe mit Generator $P=1$. Für jedes $k\in G$ gilt
     \[
         Q=kP=k\cdot1=k\bmod n.
     \]
@@ -149,11 +147,11 @@ In multiplikativer Schreibweise lautet die entsprechende Gleichung $h=g^k$. Der 
 \end{beispiel}
 
 \begin{beispiel}
-    Sei nun $n=11$, dann ist \(G={(\mathbb{Z}/11\mathbb{Z})}^{\times}\) und der Generator $P=2$. Gesucht ist nun ein $k$ mit
+    Betrachte die multiplikative Gruppe \(G={(\mathbb{Z}/11\mathbb{Z})}^{\times}\) der Ordnung $10$ mit dem Generator $g=2$. Gesucht ist nun ein $k$ mit
     \[
         2^k\equiv 7\bmod 11
     \]
-    Durch ausprobieren kann heraus gefunden werden, dass \(2^7=128\equiv 7\bmod 11\) ist.
+    Durch Ausprobieren erhält man \(2^7=128\equiv 7\bmod 11\).
 \end{beispiel}
 \begin{bemerkung}
     Die Bezeichnung diskreter Logarithmus wird besonders in multiplikativer Schreibweise deutlich. Dabei wird die Abbildung
@@ -170,8 +168,7 @@ beschränkt und können daher später auf das ECDLP übertragen werden.
 Die Darstellung in diesem Abschnitt orientiert sich an~\cite[S.~146--153]{washington08},~\cite[S.~256]{guneysu24},~\cite[S.~76--78, 114--116]{werner02}.
 Für den chinesischen Restsatz wird außerdem~\cite[S.~90, Satz~6.8]{karpf24} herangezogen.
 
-Die einfachste Methode zur Lösung des diskreten Logarithmusproblems ist eine vollständige Suche, auch Brute-Force Suche genannt. Sei $P$ ein Element der Ordnung $n$ und $G$ und
-$Q=kP\in\langle P\rangle$. Dann können nacheinander die Werte
+Die einfachste Methode zur Lösung des diskreten Logarithmusproblems ist eine vollständige Suche, auch Brute-Force-Suche genannt. Sei $P$ ein Element der Ordnung $n$ in $G$ und $Q=kP\in\langle P\rangle$. Dann können nacheinander die Werte
 \[
     0P,P,2P,\dots,(n-1)P
 \]
@@ -204,9 +201,9 @@ Der Algorithmus speichert zunächst die Werte $iP$ (Baby-Steps) zusammen mit den
           Element $iP$ übereinstimmt.
     \item Gib $k=(i+jm)\bmod n$ zurück.
 \end{enumerate}
-Da sich jeder mögliche Exponent $k\in\{0,\dots,n-1\}$ in der Form $k=jm+i$ mit $0\leq i,j<m$ darstellen lässt, findet der Algorithmus eine Übereinstimmung. Aus $iP=Q-jmP$ folgt unmittelbar $Q=(i+jm)P$. Für die Durchführung genügt auch eine bekannte obere Schranke $B\geq n$. In diesem Fall setzt man $m=\lceil\sqrt{B}\rceil$. Ist die genaue Ordnung $n$ unbekannt, wird der gefundene Exponent $i+jm$ ohne Reduktion modulo $n$ zurückgegeben, daherer erfüllt er ebenfalls $Q=(i+jm)P$. Die später eingeführte Hasse-Schranke (vgl.~\ref{def:hasse-schranke}) liefert eine solche obere Schranke für die Anzahl der rationalen Punkte einer elliptischen Kurve über einem endlichen Körper und damit auch für die Ordnung der verwendeten Untergruppe. Die Baby-Steps werden durch wiederholte Addition von $P$ berechnet. Die Giant-Steps entstehen ausgehend von $Q$ durch wiederholte Subtraktion von $mP$. Damit benötigt der Algorithmus $\mathrm{O}(\sqrt{n})$ Gruppenoperationen und Speicher für $\mathrm{O}(\sqrt{n})$ Gruppenelemente samt Indizes. Bei Verwendung einer Hashtabelle mit erwartet konstanter Zugriffszeit fallen zusätzlich erwartet $\mathrm{O}(\sqrt{n})$ Tabellenoperationen an. Wird stattdessen eine obere Schranke $B$ verwendet, gelten die entsprechenden Abschätzungen mit $B$ anstelle von $n$.
+Da sich jeder mögliche Exponent $k\in\{0,\dots,n-1\}$ in der Form $k=jm+i$ mit $0\leq i,j<m$ darstellen lässt, findet der Algorithmus eine Übereinstimmung. Aus $iP=Q-jmP$ folgt unmittelbar $Q=(i+jm)P$. Für die Durchführung genügt auch eine bekannte obere Schranke $B\geq n$. In diesem Fall setzt man $m=\lceil\sqrt{B}\rceil$. Ist die genaue Ordnung $n$ unbekannt, wird der gefundene Exponent $i+jm$ ohne Reduktion modulo $n$ zurückgegeben, denn erfüllt er ebenfalls $Q=(i+jm)P$. Die später eingeführte Hasse-Schranke (vgl.~\ref{def:hasse-schranke}) liefert eine solche obere Schranke für die Anzahl der rationalen Punkte einer elliptischen Kurve über einem endlichen Körper und damit auch für die Ordnung der verwendeten Untergruppe. Die Baby-Steps werden durch wiederholte Addition von $P$ berechnet. Die Giant-Steps entstehen ausgehend von $Q$ durch wiederholte Subtraktion von $mP$. Damit benötigt der Algorithmus $\mathrm{O}(\sqrt{n})$ Gruppenoperationen und Speicher für $\mathrm{O}(\sqrt{n})$ Gruppenelemente samt Indizes. Bei Verwendung einer Hashtabelle mit erwartet konstanter Zugriffszeit fallen zusätzlich erwartet $\mathrm{O}(\sqrt{n})$ Tabellenoperationen an. Wird stattdessen eine obere Schranke $B$ verwendet, gelten die entsprechenden Abschätzungen mit $B$ anstelle von $n$.
 
-\subsection{Das Pohlig Hellman-Verfahren}~\label{pohlig-hellman}
+\subsection{Das Pohlig-Hellman-Verfahren}~\label{pohlig-hellman}
 Sei $G$ wieder eine abelsche Gruppe und $P\in G$ ein Element der Ordnung $n$ und $Q = kP\in \langle P \rangle$. Das Verfahren führt das diskrete Logarithmusproblem in \(\langle P\rangle\) auf mehrere diskrete Logarithmusprobleme in Untergruppen zurück, deren Ordnungen Primteiler von \(n\) sind. Sei dafür
 \[
     n = \prod_{i=1}^t p_i^{\lambda_i}
@@ -215,7 +212,7 @@ eine Primfaktorzerlegung von $n$ in die Primzahlen $p_i$ und natürlichen Expone
 \[
     k\bmod p_1^{\lambda_1},k\bmod p_2^{\lambda_2},\dots,k\bmod p_t^{\lambda_t}
 \]
-berechnet werden müssen. Denn nach dem Chinesischem Restsatz~\cite[~S.90, Satz 6.8]{karpf24}, gilt
+berechnet werden müssen. Denn nach dem chinesischem Restsatz~\cite[~S.90, Satz 6.8]{karpf24} gilt
 \[
     \mathbb{Z}/n\mathbb{Z}
     \simeq
@@ -231,7 +228,7 @@ erfüllt ist. Hierfür wird $z$ in seiner Darstellung zur Basis $p$ geschrieben
 \[
     z = z_0+z_1p+z_2p^2+\cdots+z_{\lambda-1}p^{\lambda-1}, \qquad z_i\in\{0,\dots,p-1\}.
 \]
-Jedes $z_i$ löst geneu ein DL-Problem in einer Untergruppe von $\langle P\rangle$ der Ordnung $p$. Sei dafür $R=\frac{n}{p}P$. Da $\operatorname{ord}(P)=n$ gilt, besitzt $R$ die Ordnung $p$. Aus $Q=kP$ folgt
+Jeder Koeffizient $z_i$ wird durch das Lösen eins DL-Problem in einer Untergruppe der Ordnung $p$ bestimmt. Sei dafür $R=\frac{n}{p}P$. Da $\operatorname{ord}(P)=n$ gilt, besitzt $R$ die Ordnung $p$. Aus $Q=kP$ folgt
 \[
     \frac{n}{p}Q=\frac{n}{p}kP=kR.
 \]
@@ -239,7 +236,7 @@ Da $R$ Ordnung $p$ besitzt, hängt $kR$ nur von der Restklasse von $k$ modulo $p
 \[
     \frac{n}{p}Q=z_0R.
 \]
-Es kann also $z_0$ bestimmen werden, wenn man das DL-Problem in der Untergruppe \(\langle R\rangle\) mit Ordnung $p$ lösen kann. Es lassen sich dann daraus rekursiv alle anderen Koeffizienten $z_i$ bestimmen. Angenommen es wurde bereits für ein $1\leq j\leq \lambda-1$ die Koeffizienten $z_0,z_1,\dots,z_{j-1}$ bestimmt. Dann kann man das Element
+Es kann also $z_0$ bestimmt werden, wenn man das DL-Problem in der Untergruppe \(\langle R\rangle\) mit Ordnung $p$ lösen kann. Es lassen sich dann daraus rekursiv alle anderen Koeffizienten $z_i$ bestimmen. Angenommen es wurden bereits für ein $1\leq j\leq \lambda-1$ die Koeffizienten $z_0,z_1,\dots,z_{j-1}$ bestimmt. Dann kann man das Element
 \[
     Q_j=\frac{n}{p^{j+1}}(Q-(z_0+z_1p+\cdots+z_{j-1}p^{j-1})P)
 \]
@@ -251,6 +248,5 @@ folgt. Daher ist
 \[
     Q_j=\frac{n}{p^{j+1}}(z_j p^j+ \cdots +z_{\lambda-1}p^{\lambda-1})P=\frac{n}{p}z_j P=z_j R.
 \]
-Es reicht also eine Lösung für das DL-Problem in der von $R=\frac{n}{p}P$ erzeugten zyklischen Untergruppe \(\langle R\rangle\) von \(\langle P \rangle\) zu finden, um $z_j$ zu berechnen. Die einzelnen DL-Probleme können durch eine Brute-Force Suche gelöst werden. Dazu wird für $a=0,\dots,p-1$ geprüft, ob $aR=Q_j$ gilt. Dies benötigt im schlechtesten Fall
-$\mathrm{O}(p)$ Gruppenoperationen und Vergleiche pro Ziffer. Alternativ kann das Baby-Step-Giant-Step-Verfahren verwendet werden. Hierfür hat der Pohlig-Hellman Algorithmus \(\mathrm{O}\left(\sum_{i=1}^{t}\lambda_i \left(\log n+\sqrt{p_i}\right)\right)\) Gruppenoperationen. Für jeden Primfaktor $p_i$ werden $\lambda_i$ diskrete Logarithmusprobleme in einer Untergruppe der Ordnung $p_i$ gelöst. Die Laufzeit des Pohlig-Hellman-Verfahrens wird somit wesentlich durch den größten Primfaktor der Gruppenordnung bestimmt. Besitzt $n$ ausschließlich kleine Primfaktoren, kann das DLP entsprechend effizient gelöst werden. Für kryptographische Anwendungen wird daher eine
-Untergruppe gewählt, deren Ordnung selbst eine große Primzahl ist oder zumindest einen hinreichend großen Primfaktor besitzt.
+Um $z_j$ zu berechnen, ist es also ausreichend eine Lösung für das DL-Problem in der von $R=\frac{n}{p}P$ erzeugten zyklischen Untergruppe \(\langle R\rangle\) von \(\langle P \rangle\) zu finden. Die einzelnen DL-Probleme können durch eine Brute-Force-Suche gelöst werden. Dazu wird für $a=0,\dots,p-1$ geprüft, ob $aR=Q_j$ gilt. Dies benötigt im schlechtesten Fall
+$\mathrm{O}(p)$ Gruppenoperationen und Vergleiche pro Ziffer. Alternativ kann das Baby-Step-Giant-Step-Verfahren verwendet werden. Hierfür hat der Pohlig-Hellman Algorithmus \(\mathrm{O}\left(\sum_{i=1}^{t}\lambda_i \left(\log n+\sqrt{p_i}\right)\right)\) Gruppenoperationen. Für jeden Primfaktor $p_i$ werden $\lambda_i$ diskrete Logarithmusprobleme in einer Untergruppe der Ordnung $p_i$ gelöst. Die Laufzeit des Pohlig-Hellman-Verfahrens wird somit wesentlich durch den größten Primfaktor der Gruppenordnung bestimmt. Besitzt $n$ ausschließlich kleine Primfaktoren, kann das DLP entsprechend effizient gelöst werden. Als Schutz gegen Pohlig-Hellman wird daher eine Untergruppe gewählt, deren Ordnung selbst eine große Primzahl ist oder zumindest einen hinreichend großen Primfaktor besitzt.

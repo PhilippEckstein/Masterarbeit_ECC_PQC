@@ -1,13 +1,13 @@
 \chapter{Elliptische Kurven über endlichen Körpern}
-Für kryptographische Verfahren betrachtet man elliptische Kurven über endlichen Körpern. Dort lassen sich die Körperoperationen exakt ausführen, und die Kurvenpunkte bilden eine endliche Gruppe. In diesem Kapitel werden zunächst endliche Körper und die Punktgruppe elliptischer Kurven untersucht. Anschließend werden Eigenschaften und Verfahren behandelt, die für die Auswahl geeigneter Kurven wichtig sind. Wo die Charakteristik des Körpers weder $2$ noch $3$ ist, wird die bereits eingeführte kurze Weierstraß-Gleichung verwendet.
+Für kryptographische Verfahren betrachtet man elliptische Kurven über endlichen Körpern. Dort lassen sich die Körperoperationen exakt ausführen, und die Kurvenpunkte bilden eine endliche Gruppe. In diesem Kapitel werden zunächst endliche Körper und die Punktgruppe elliptischer Kurven untersucht. Anschließend werden Eigenschaften und Verfahren behandelt, die für die Auswahl geeigneter Kurven wichtig sind. Wenn die Charakteristik des Körpers weder $2$ noch $3$ ist, kann die bereits eingeführte kurze Weierstraß-Gleichung verwendet werden.
 \section{Endliche Körper}
-In diesem Abschnitt werden die Grundlagen zu endlichen Körpern gelegt. Die Darstellung orientiert sich an Stroth und Waldecker~\cite[S.~66--67, 163--164]{stroth24}, Karpfinger~\cite[S.~46, 317--318, 391--392]{karpf24},~\cite[S.~230]{omondi20},sowie Güneysu, Paar und Pelzl~\cite[S.~279~f.]{guneysu24}.
+In diesem Abschnitt werden die Grundlagen zu endlichen Körpern gelegt. Die Darstellung orientiert sich an Stroth und Waldecker~\cite[S.~66--67, 163--164]{stroth24}, Karpfinger~\cite[S.~46, 317--318, 391--392]{karpf24},~\cite[S.~230]{omondi20}, sowie Güneysu, Paar und Pelzl~\cite[S.~279~f.]{guneysu24}.
 \begin{definition}
     Ein endlicher Körper ist ein Körper mit endlich vielen Elementen. Für jede Primzahlpotenz \(q=p^n\) existiert bis auf Isomorphie genau ein endlicher Körper mit \(q\) Elementen. Dieser wird dann mit \(\mathbb F_q\) oder \(GF(q)\)(Galois Field) bezeichnet.
 \end{definition}
-In kryptographischen Anwendungen treten insbesondere die Körper \(\mathbb F_p\) und \(\mathbb F_{2^m}\) auf. Der kleinste Durchschnitt $P$ aller Teilkörper von $K$ wird der \textbf{Primkörper} genannt
+In kryptographischen Anwendungen treten insbesondere die Körper \(\mathbb F_p\) und \(\mathbb F_{2^m}\) auf. Der bezüglich der Inklusion kleinste Teilkörper  $P$ von $K$ wird der Primkörper genannt
 \[
-    P=\cap \{U|U \text{ist ein Teilkörper von }K\}.
+    P=\bigcap \{U|U \text{ist ein Teilkörper von }K\}.
 \]
 \begin{satz}~\label{hilfs:primkörper}
     Seien $K$ ein Körper und $K_0$ der Primkörper von $K$.
@@ -16,24 +16,23 @@ In kryptographischen Anwendungen treten insbesondere die Körper \(\mathbb F_p\)
         \item Ist \(\operatorname{char}(K)=p\neq 0\), so ist $K_0$ zu $\mathbb{Z}/p\cdot \mathbb{Z}$ isomorph.
     \end{enumerate}
 \end{satz}
-Hat $K$ die Charakteristik 0, so ist der Primkörper von $K$ zu $\mathbb{Q}$ isomorph. Ist die Charakteristik $p \neq 0$, so ist er zu $\mathbb{Z}/p$ isomorph.
+Hat $K$ die Charakteristik $0$, so ist der Primkörper von $K$ zu $\mathbb{Q}$ isomorph. Ist die Charakteristik $p \neq 0$, so ist er zu $\mathbb{Z}/p\mathbb{Z}$ isomorph.
 \begin{proof}
     \begin{enumerate}
-        \item Sei \(\Phi:\mathbb{N}\leftarrow K_0\) eine Abbildung für alle $n\in\mathbb{N}$. Sei
+        \item Sei \(\Phi:\mathbb{N}\rightarrow K_0\) eine Abbildung für alle $n\in\mathbb{N}$. Sei
               \[
-                  n^\Phi = (1_k+\cdots+1_k). \quad \text{n-mal}.
+                  n^\Phi =\underbrace{(1_K+\cdots+1_K)}_{\text{n-mal}}
               \]
-              Sind $n,m\in\mathbb{N}$ und $n\leq m$ mit der Eigenschaft $n^\psi=m^\psi$, so folgt
+              Sind $n,m\in\mathbb{N}$ und $n\leq m$ mit der Eigenschaft $n^\Phi=m^\Phi$, so folgt
               \[
-                  0_K=n^\psi-m^\psi=(1_K+\cdots+1_K). \quad \text{(n-m)-mal}.
+                  0_K=m^\Phi-n^\Phi=\underbrace{(1_K+\cdots+1_K)}_{\text{(m-n)-mal}}.
               \]
-              Da \(\operatorname{char}(K)=0\) ist, dann $n=m$. Also ist $\psi$ eine injektive Abbildung. Somit besitzt jede $K_0$ eine Teilmenge, die sich bezüglich der Addition wie $\mathbb{N}$ verhält. Da $K_0$ ein Körper ist, gibt es also in $K_0$ einen zu $\mathbb{Z}$ isomorphen Teilring und dann auch einen zu $\mathbb{Q}$ isomorphen Teilkörper. Da $\mathbb{Q}$ keine echten Teilkörper hat, ist $K_0$ selbst isomorph zu $\mathbb{Q}$.
+              Da \(\operatorname{char}(K)=0\) gilt, folgt $n=m$. Also ist $\psi$ eine injektive Abbildung. Somit besitzt $K_0$ eine Teilmenge, die sich bezüglich der Addition wie $\mathbb{N}$ verhält. Da $K_0$ ein Körper ist, gibt es also in $K_0$ einen zu $\mathbb{Z}$ isomorphen Teilring und dann auch einen zu $\mathbb{Q}$ isomorphen Teilkörper. Da $\mathbb{Q}$ keine echten Teilkörper hat, ist $K_0$ selbst isomorph zu $\mathbb{Q}$.
         \item Seien nun $p$ eine Primzahl und \(\operatorname{char}(K) = p\). Sei weiter
               \[
-                  L = {0_K,1_K,\dots,1_k+\cdots+1_K}\quad \text{(p-1)-mal}
+                  L = \{0_K,1_K,\dots,1_k+\cdots+1_K\}\quad \text{(p-1)-mal}
               \]
               Da \(\operatorname{char}(K)=p\) ist, sind die Elemente in $L$ paarweise verschieden und daher ist $|L|=p$, außerdem ist $L$ unter Addition abgeschlossen.
-
     \end{enumerate}
 \end{proof}
 
@@ -82,7 +81,7 @@ Hat $K$ die Charakteristik 0, so ist der Primkörper von $K$ zu $\mathbb{Q}$ iso
 
 
 \begin{lemma}~\label{lem:a^q=a}
-    Für einen endlichen Körper K der Charakteristik p mit $q=p^n$ gilt
+    Sei $K$ ein endlicher Körper mit $q=p^n$ Elementen der Charakteristik $p$. Dann gilt
     \[
         a^q=a
     \] für jedes $a\in K$.
@@ -90,18 +89,16 @@ Hat $K$ die Charakteristik 0, so ist der Primkörper von $K$ zu $\mathbb{Q}$ iso
 
 \begin{proof}
     Für \(a=0\) ist die Aussage unmittelbar erfüllt, da $0^{p^n}=0$. Sei daher \(a\in K^\times =K\setminus\{0\}\).
-    Wegen $|K^\times|=p^n-1$ gilt nach dem Satz von Lagrange~\ref{satz:lagrange} \(\operatorname{ord}(a)\mid |K^\times|=p^n-1\). Also exestiert ein $r\in\mathbb{N}$ mit 
-    \(p^n-1=r \operatorname{ord}(a)\). Da \(a^{\operatorname{ord}(a)} = 1\) gilt, folgt 
+    Die multiplikative Gruppe $K^\times$
+    hat die Ordnung $p^n-1$. Nach dem Satz von
+    Lagrange~\ref{satz:lagrange} gilt \(\operatorname{ord}(a)\mid p^n-1\). Also existiert ein $r\in\mathbb{N}$ mit
+    \(p^n-1=r \operatorname{ord}(a)\). Da \(a^{\operatorname{ord}(a)} = 1\) gilt, folgt
     \[
-    a^{p^n-1}=a^{r\operatorname{ord}(a)}={\left(a^{\operatorname{ord}(a)}\right)}^r=1.
+        a^{p^n-1}=a^{r\operatorname{ord}(a)}={\left(a^{\operatorname{ord}(a)}\right)}^r=1.
     \]
-    Damit folgt dann \(a^{p^n}=a\).
-    \textbf{Todo}
-
-    
-    nach dem kleinen Satz von Fermat~\cite[S~.46]{karpf24} gilt in einer endlichen Gruppe $G$, \(a^{|G|} = e\) für alle \(a\in G\). Dann \(a^{p^n-1}=1\) für jedes $a\in K^\times$. Daraus folgt dann $a^{p^n}=a$ für alle $a\in K $.
+    Multiplikation mit $a$ liefert direkt \(a^{p^n}=a\).
 \end{proof}
-Diese Aussage kann nun auch noch in beide Richtungen formuliert werden, da wir sie später bei einem Beweis benötigen.
+Diese Aussage soll nun auch noch in beide Richtungen formuliert werden, da sie später bei einem Beweis benötigt wird.
 \begin{lemma}
     Für \(a\in \overline{\mathbb{F}}_q\) gilt
     \[
@@ -125,17 +122,16 @@ Diese Aussage kann nun auch noch in beide Richtungen formuliert werden, da wir s
         a^q=a \quad\Longleftrightarrow\quad a\in\mathbb F_q.
     \]
 \end{proof}
-\begin{lemma}
-    \label{lem:freshmans-dream}
-    Seien $p$ eine Primzahl, $n\in\mathbb{N}$ und $q=p^n$. Sei Körper $K$ der Charakteristik $p>0$. Sind $a,b\in K$, so  ist
+\begin{lemma}\label{lem:freshmans-dream}
+    Seien $p$ eine Primzahl, $n\in\mathbb{N}$ und $q=p^n$. Sei $K$ ein Körper der Charakteristik $p>0$. Sind $a,b\in K$, so  ist
     \[
-        (a+b)^q=a^q+b^q.
+        {(a+b)}^q=a^q+b^q.
     \]
 \end{lemma}
 \begin{proof}
-    Seien $p$ eine Primzahl, $n\geq 1$ und $q=p^n$. Für alle $a,b\in K$ gilt nach dem binomischen Lehrsatz gilt
+    Seien $p$ eine Primzahl, $n\geq 1$ und $q=p^n$. Für alle $a,b\in K$ gilt nach dem binomischen Lehrsatz
     \[
-        (a+b)^p=\sum_{i=0}^p\binom{p}{i}a^{p-i}b^i= a^p+\binom{p}{1}a^{p-1}b+\cdots+\binom{p}{p-1}ab^{p-1}+b^p
+        {(a+b)}^p=\sum_{i=0}^p\binom{p}{i}a^{p-i}b^i= a^p+\binom{p}{1}a^{p-1}b+\cdots+\binom{p}{p-1}ab^{p-1}+b^p
     \]
     Für $1\leq i\leq p-1$ ist
     \[
@@ -144,66 +140,64 @@ Diese Aussage kann nun auch noch in beide Richtungen formuliert werden, da wir s
     durch $p$ teilbar. Denn der Zähler enthält den Faktor $p$, wobei der Nenner diesen nicht enthält. Da $K$ Charakteristik $p$ hat,
     verschwinden somit alle mittleren Summanden. Es folgt
     \[
-        (a+b)^p=a^p+b^p.
+        {(a+b)}^p=a^p+b^p.
     \]
     Wendet man diese Gleichung $n$-mal an, erhält man
-    $(a+b)^{p^n}=a^{p^n}+b^{p^n}$
+    ${(a+b)}^{p^n}=a^{p^n}+b^{p^n}$
 \end{proof}
 
 \begin{definition}[Elliptische Kurve über \(\mathbb F_q\)]
-    Sei \(p>3\) eine Primzahl mit $q=p^r$. Eine elliptische Kurve über \(\mathbb F_q\) ist die Menge von allen Punkten $(x,y)\in \mathbb{F}_q$ mit
+    Sei $q=p^r$ eine Primzahl mit \(p>3\) und $r\geq1$. Eine elliptische Kurve über \(\mathbb F_q\) ist die Menge von allen Punkten $(x,y)\in E(\mathbb{F}_q)$ mit
     \[
-        y^2 \equiv x^3+Ax+B \pmod p
+        y^2 \equiv x^3+Ax+B
     \]
-    und einem Punkt im Unendlichen.
+    und einem Punkt im Unendlichen. Außerdem muss für $A,B\in\mathbb{F}_q$
     \[
-        4a^3+27b^2 \not\equiv 0 \pmod p
-    \] gilt. Die Bedingung stellt wie im allgemeinen Fall sicher, dass die Kurve nichtsingulär ist. Die Einschränkung $p>3$ erlaubt die Verwendung der kurzen Weierstraß-Gleichung. Für Körper der Charakteristik \(2\) und \(3\) haben wir bereits in Kapitel 3 gesehen, dass die allgemeine Weierstraß-Gleichung verwendet werrden muss.
+        4A^3+27B^2 \neq 0
+    \]
+    gelten. Die Bedingung stellt wie im allgemeinen Fall sicher, dass die Kurve nichtsingulär ist. Die Einschränkung $p>3$ erlaubt die Verwendung der kurzen Weierstraß-Gleichung. Für Körper der Charakteristik \(2\) und \(3\) wurde bereits in Kapitel 3 gezeigt, dass die allgemeine Weierstraß-Gleichung verwendet werden muss.
 \end{definition}
 
-\section{Die Punktmenge $E(\mathbb{F}_q)$}
-In diesem Kapitel wird der Frage nachgeganngen wie die Gruppe $E(\mathbb{F}_q)$ entsteht und wie man ihre Größe bestimmen kann. Die Darstellung dieses Abschnitts orientiert sich an Washington \cite[S.~77--79, 95 und 104--105]{washington08}, Silverman
-\cite[S.~29]{silverman06}, Müller-Stach und Piontkowski
-\cite[S.~51~ff.]{muller} sowie Güneysu, Paar und Pelzl
-\cite[S.~285~f.]{guneysu24}.
+\section{Die Punktmenge \texorpdfstring{$E(\mathbb F_q)$}{E (Fq)}}
+In diesem Kapitel wird der Frage nachgegangen, wie die Gruppe $E(\mathbb{F}_q)$ entsteht und wie man ihre Größe bestimmen kann. Die Darstellung dieses Abschnitts orientiert sich an Washington~\cite[S.~77--79, 95 und 104--105]{washington08}, Silverman~\cite[S.~29]{silverman06}, Müller-Stach und Piontkowski~\cite[S.~51~ff.]{muller} sowie Güneysu, Paar und Pelzl~\cite[S.~285~f.]{guneysu24}.
 \subsection{Explizite Punktbestimmung}
-Sei E die Kurve $y^2=x^3+x+1$ über $\mathbb{F}_5$. Um nun die Punkte von E zu erhalten, berchnen wir zuerst $x^3+x+1\mod 5$ und anschließend die Quadratwurzel von diesem Polynom über $F_5$.
+Sei $E$ die Kurve $y^2=x^3+x+1$ über $\mathbb{F}_5$. Für jedes $x\in\mathbb F_5$ wird zunächst $a=x^3+x+1$ berechnet. Anschließend werden alle $y\in\mathbb F_5$ mit $y^2=a$ bestimmt.
 \begin{center}
     \begin{tabular}{c|c|c|c}
-        x & $x^3+x+1$ & y       & Points       \\
+        $x$ & $x^3+x+1\pmod 5$ & $y$    & Punkte         \\
         \hline
-        0 & 1         & $\pm$ 1 & (0,1), (0,4) \\
-        1 & 3         & -       & -            \\
-        2 & 1         & $\pm$ 1 & (2,1),(2,4)  \\
-        3 & 1         & $\pm 1$ & (3,1), (3,4) \\
-        4 & 4         & $\pm 2$ & (4,2),(4,3)
+        0   & 1                & $\pm1$ & $(0,1), (0,4)$ \\
+        1   & 3                & -      & -              \\
+        2   & 1                & $\pm1$ & $(2,1), (2,4)$ \\
+        3   & 1                & $\pm1$ & $(3,1), (3,4)$ \\
+        4   & 4                & $\pm2$ & $(4,2), (4,3)$ \\
     \end{tabular}
 \end{center}
-Es gilt $-1\equiv 4 \mod 5$ und $ -2\equiv 3 \mod 5$ und für $y^2=3$ gibt es keine Wurzel in $F_5$. Also lässt sich die Ordnung der Gruppe durch Punktzählung bestimmen,
+Es gilt $-1\equiv 4 \mod 5$ und $ -2\equiv 3 \mod 5$ und für $y^2=3$ gibt es keine Wurzel in $\mathbb{F}_5$. Also lässt sich die Ordnung der Gruppe durch Punktzählung bestimmen,
 \[
-    \mid E(\mathbb{F}_5)\mid = \# \{(x,y)\in \mathbb{F}_5 \mid y^2=x^3+x+1\}+1 = 9
+    \mid E(\mathbb{F}_5)\mid = \# \{(x,y)\in \mathbb{F}_5^2\mid y^2=x^3+x+1\}+1 = 9
 \]
-Nun soll die Addition von zwei Punkte $P_1=(3,1)$ und $P_2=(2,4)$ mit Hilfe der Gruppengesetze aus Kapitel 3 auf $E(\mathbb{F}_q)$ durchgeführt werden
+Nun soll die Addition von zwei Punkten $P_1=(3,1)$ und $P_2=(2,4)$ mit Hilfe der Gruppengesetze aus Kapitel 3 in $E(\mathbb{F}_5)$ durchgeführt werden
 \[
     \frac{4-1}{2-3}=\frac{3}{-1}=\frac{3}{4}=3\cdot4^{-1} =3\cdot 4=12  \equiv 2 \mod 5.
 \]
-Es ist also $y=2(x-3)+1\equiv 2x$. Wenn wir dass nun in die Gleichung für die Kurve einsetzen erhalten wir
+Es ist also $y=2(x-3)+1\equiv 2x$. Das wird in die Gleichung der Kurve eingesetzt und dadurch erhält man
 \[
-    (2x)^2=x^3+x+1\Leftrightarrow 0 = x^3-4x^2+x+1.
+    {(2x)}^2=x^3+x+1\Leftrightarrow 0 = x^3-4x^2+x+1.
 \]
-Wir kennen schon zwei Schnittpunkte der Kurve $x=3$ und $x=2$, da $(3,1)$ und $(2,4)$ auf der Gerade und Kurve liegen. Da das Polynom kubisch ist, muss die Summe der drei Nullstellen 4 sein. Damit gilt,
+Da $(3,1)$ und $(2,4)$ auf der Geraden und Kurve liegen, sind schon zwei Schnittpunkte der Kurve $x=3$ und $x=2$ bekannt. Aufgrund der Tatsache, dass das Polynom kubisch ist, muss die Summe der drei Nullstellen 4 sein. Damit gilt
 \[
-    3+2+r \equiv 4 \mod 5 \Leftrightarrow r\equiv 4 \mod 5
+    3+2+r \equiv 4 \mod 5 \Leftrightarrow r\equiv 4 \mod 5,
 \]
-Also ist die dritte Koordinate $x=4$, nun erhalten wir $y=2x\equiv 3$, gespiegelt über die x-Achse erhält man die Summe
-\[(3,1)+(2,4)=(4,2)\]
-
+also ist die $x$-Koordinate des dritten Schnittpunkts $x=4$, dadurch erhält man $y=2x\equiv 3$, gespiegelt über die x-Achse ergibt das den Punkt
+\[
+    (3,1)+(2,4)=(4,2).
+\]
 
 \subsection{Quadratische Reste und Legendre-Symbol}
-Für die Punktbestimmung muss die Gleichung $y^2\equiv a\mod p$ oft gelöst werden und somit ein quadratischer Rest Modulo bestimmt werden. Bei kleinen Primzahlen ist das noch durch überlegen und ausprobieren recht einfach möglich, doch bei größeren Resten wird das deutlich problematischer. Es gibt aber ein praktisches Werkzeug um zu bestimmen ob eine Zahl ein quadratischer Rest ist oder nicht, das Legendre-Symbol.
+Für die Punktbestimmung muss die Gleichung $y^2\equiv a\mod p$ oft gelöst werden und somit ein quadratischer Rest Modulo bestimmt werden. Bei kleinen Primzahlen ist das noch durch Überlegen und Ausprobieren recht einfach möglich, doch bei größeren Resten wird das deutlich problematischer. Es gibt aber ein praktisches Werkzeug um zu bestimmen, ob eine Zahl ein quadratischer Rest ist oder nicht, das Legendre-Symbol.
 \begin{definition}[Legendre-Symbol]
     Sei \(p\) eine ungerade Primzahl und \(a\in\mathbb Z\). Das Legendre-Symbol ist definiert durch
-
     \[
         \left(\frac{a}{p}\right)
         =
@@ -214,15 +208,12 @@ Für die Punktbestimmung muss die Gleichung $y^2\equiv a\mod p$ oft gelöst werd
         \end{cases}
     \]
 \end{definition}
-Es gibt zwei Methoden um das Legendre-Symbol effizient zu berechnen:
+Es gibt zwei Methoden, um das Legendre-Symbol effizient zu berechnen:
 \begin{itemize}
     \item Das Eulersche Kriterium
     \item Das Quadratische Reziprozitätsgesetz
 \end{itemize}
-Auf beide wird nicht genauer eingeganngen, aber sie sind wichtig um Punkte für jede beliebige elliptische Kurve zu bestimmmen, da dadurch überprüft werden kann, ob es sich um einen quadratischen Rest oder nicht handelt.
-Denn \(y^2=x^3+Ax+B\)
-In \cite{muller} S.51ff. Kapitel 8 kann mehr zu dem Thema quadratische Reste nachgelesen werden und effiziente Methoden sowie die Beweise dazu gefunden werden.
-Das Legendre-Symbol kann verallgemeinert werden über alle endlichen Köprer $\mathbb{F}_q$.
+Auf beide wird nicht genauer eingegangen, aber sie sind wichtig um Punkte für jede beliebige elliptische Kurve zu bestimmen, da dadurch überprüft werden kann, ob es sich um einen quadratischen Rest oder nicht handelt. In~\cite{muller} S.51ff. Kapitel 8 kann mehr zu dem Thema quadratische Reste und die effiziente Bestimmung des Legendre-Symbols nachgelesen werden. Das Legendre-Symbol kann verallgemeinert werden über endliche Körper $\mathbb{F}_q$ ungerader Charakterisitik.
 \begin{definition}
     Sei \(\mathbb F_q\) ein endlicher Körper mit \(q\) ungerade. Für \(x\in\mathbb F_q\) definieren wir
     \[
@@ -236,15 +227,15 @@ Das Legendre-Symbol kann verallgemeinert werden über alle endlichen Köprer $\m
     \]
 
 \end{definition}
-Diese Definition kann dann genutzt werden um eine erste Berechnung der Punktmenge zu ermöglichen.
+Diese Definition kann dann genutzt werden, um eine erste Berechnung der Punktmenge zu ermöglichen.
 \begin{theorem}
-    Sei $E$ eine elliptische Kurve definiert mit \(y^2=x^3+Ax+B\) über $\mathbb{F}_q$. Dann gilt
+    Sei $E$ eine elliptische Kurve definiert mit \(y^2=x^3+Ax+B\) über $\mathbb{F}_q$. Dann gilt für $q$ ungerade
     \[
-        \#E(\mathbb{F}_q)=q+1+\sum_{x\in\mathbb{F}_q}\left(\frac{x^3+Ax+B}{\mathbb{F}_q}\right)
+        \#E(\mathbb{F}_q)=q+1+\sum_{x\in\mathbb{F}_q}\left(\frac{x^3+Ax+B}{\mathbb{F}_q}\right).
     \]
 \end{theorem}
 \begin{proof}
-    Sei $x\in\mathbb F_q$ fest und sei $a\in\mathbb{F}_q$ eine Lösung der Weierstraßgleichung $a=x^3+Ax+B$. Da $q$ ungerade ist, besitzt $y^2=a$ genau zwei Lösungen in $\mathbb F_q$, wenn $a$ ein von null verschiedenes
+    Sei $x\in\mathbb F_q$ fest und sei $a=x^3+Ax+B$. Da $q$ ungerade ist, besitzt $y^2=a$ genau zwei Lösungen in $\mathbb F_q$, wenn $a$ ein von null verschiedenes
     Quadrat ist, genau eine Lösung, wenn $a=0$ ist, und keine Lösung, wenn $a$ kein Quadrat ist. Die Anzahl der Punkte mit erster Koordinate $x$ beträgt daher
     \[
         1+\left(\frac{x^3+Ax+B}{\mathbb F_q}\right).
@@ -259,7 +250,7 @@ Diese Definition kann dann genutzt werden um eine erste Berechnung der Punktmeng
     \]
 \end{proof}
 \begin{beispiel}
-    Es sei $E$ eine elliptische Kurve über dem Köprer $\mathbb{F}_{11}$ mit  $y^2\equiv x^3 +x+5 \pmod {11}$. Es sollen alle Punkte auf der Kurve berechnet werden. Es wird zuerst Gruppenordnung berechnet.
+    Es sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_{11}$ mit  $y^2\equiv x^3 +x+5 \pmod {11}$. Es sollen alle Punkte auf der Kurve berechnet werden. Es wird zuerst die Gruppenordnung berechnet.
     \[
         \#E(\mathbb{F}_{11})=11+1+\sum_{x\in\mathbb{F}_{11}}\left(\frac{x^3+x+5}{\mathbb{F}_{11}}\right).
     \]
@@ -270,7 +261,7 @@ Diese Definition kann dann genutzt werden um eine erste Berechnung der Punktmeng
     \]
     und daher $\#E(\mathbb F_{11})=12-1=11$.
     Da $11$ prim ist, erzeugt jeder Punkt außer $\mathcal O$
-    die Gruppe. Wir wählen $P=(0,4)$ und berechnen seine Vielfachen.
+    die Gruppe. Es wird $P=(0,4)$ gewählt und seine Vielfachen berechnet.
     \[
         \begin{aligned}
             2P & = (0,4)+(0,4) = (5,5) \qquad  & 6P & = (7, 5)  \qquad   & 10P & = (0, 7) \\
@@ -279,29 +270,27 @@ Diese Definition kann dann genutzt werden um eine erste Berechnung der Punktmeng
             5P & = (7, 6)  \qquad              & 9P & = (5, 6) \qquad    & 13P & = (5,5)  \\
         \end{aligned}
     \]
-
-    Wie man sieht beginnt nun die Aufzählung von neuem und es handelt sich daher um eine zyklische Gruppe.
+    Es gilt also $\operatorname{ord}(P)=11=\#E(\mathbb{F}_{11})$.
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.5\linewidth]{ell_curve_finite_field.png}
-        \caption{Elliptische Kurve über $\mathbb{F}_5$, eigene Darstellung}
-        \label{fig:placeholder}
+        \captionsetup{justification=centering}
+        \caption{Elliptische Kurve über $\mathbb{F}_{11}$, eigene Darstellung\\[0.3em]
+            {\footnotesize Quelle: Eigene Darstellung mit~\ref{app:pythonprogramm}}}\label{fig:placeholder}
     \end{figure}
-
     Die Punkte und das Bild wurden mit einem eigenen Python Skript generiert, siehe Anhang.
 \end{beispiel}
 \subsection{Struktur der Punktgruppe und Torsionspunkte}
-Im vorigen Beispiel hat $E(\mathbb F_{11})$ Primzahlordnung und
-ist deshalb zyklisch. Für eine allgemeine elliptische Kurve über
-$\mathbb F_q$ muss die Punktgruppe jedoch nicht zyklisch sein.
-Um ihre mögliche Struktur zu beschreiben, betrachten wir zunächst
-Punkte, deren Vielfaches der neutrale Punkt $\mathcal O$ ist.
-Um das diskrete Logarithmus für ein Kryptosystem aufzubauen, müssen wir die Ordnung von einer Gruppe kennen. Dies ist deutlich herausfordernder als das Berechnen des eben gezeigten Beispiels, bei dem extra eine passende Kurve gewählt wurde. Da zuerst überprüft werden muss ob zu einem x Wert der berechnete Wert auch einen quadratischen Rest hat und damit der Punkt exestiert. Hierfür wird der Begriff der Torsionspunkte eingeführt.
-\begin{definition}[$n$-Torsionspunkte]
-    \label{def:n-torsionspunkte}
+Im vorigen Beispiel hat $E(\mathbb F_{11})$ Primzahlordnung und ist deshalb zyklisch. Für eine allgemeine elliptische Kurve über $\mathbb F_q$ muss die Punktgruppe jedoch nicht zyklisch sein. Um ihre mögliche Struktur zu beschreiben, werden zunächst jene Punkte betrachtet, deren Vielfaches der neutrale Punkt $\mathcal O$ ist. Um das diskrete Logarithmusproblem für ein Kryptosystem aufzubauen, muss die Ordnung der Gruppe bekannt sein. Im vorigen Beispiel ist die Punktgruppe wegen ihrer Primzahlordnung zyklisch. Im Allgemeinen muss die Punktgruppe einer elliptischen Kurve über einem
+endlichen Körper jedoch nicht zyklisch sein. Zur Untersuchung ihrer möglichen Struktur werden
+im Folgenden die $n$-Torsionspunkte eingeführt.
+Dies sind die Punkte, die durch Multiplikation
+mit $n$ auf das neutrale Element $\mathcal O$
+abgebildet werden.
+\begin{definition}[$n$-Torsionspunkte]\label{def:n-torsionspunkte}
     Sei $E$ eine elliptische Kurve über einem Körper $K$ und
-    $n\in\mathbb N$. Die Menge
+    $n\in\mathbb N_{\geq 1}$. Die Menge
     \[
         E[n]
         =
@@ -316,7 +305,7 @@ Um das diskrete Logarithmus für ein Kryptosystem aufzubauen, müssen wir die Or
     \]
     Dann ist
     \[
-        E[2]=\{p\in\overline{K}\mid2\cdot P=\mathcal{O}\}
+        E[2]=\{P\in E(\overline{K})\mid2P=\mathcal{O}\}
     \]
     genau die Punkte, deren y-Werte verschwinden. Daher gilt dann
     \[
@@ -324,45 +313,41 @@ Um das diskrete Logarithmus für ein Kryptosystem aufzubauen, müssen wir die Or
     \]
 \end{beispiel}
 
-\begin{theorem}
-    \label{theo:torsionsstruktur}
-    Sei $E$ eine elliptische Kurve über einem Körper $K$ und sei $n\in\mathbb N$. Es ist  $\operatorname{char}(K)=p$, falls nun $p\nmid n$ oder $\operatorname{char}(K)=0$, dann gilt
+\begin{theorem}\label{theo:torsionsstruktur}
+    Sei $E$ eine elliptische Kurve über einem Körper $K$ und sei $n\in\mathbb N_{n\geq1}$. Es ist  $\operatorname{char}(K)=p$, falls nun $p\nmid n$ oder $\operatorname{char}(K)=0$, dann gilt
     \[
         E[n]\cong \mathbb{Z}_n \oplus \mathbb{Z}_n.
     \]
-    Wenn $\operatorname{char}(K)=p>0$ ist und $p\mid n$, dann schreibt man $n=p^rn'$ mit $p\nmid n'$. Dann ist
+    Wenn $\operatorname{char}(K)=p>0$ ist und $p\mid n$, dann schreibt man $n=p^r n'$ mit $p\nmid n'$. Dann ist
     \[
-        E[n]\cong \mathbb Z_{n'} \oplus \mathbb Z_{n'} \quad\text{oder}\quad E[n]= Z_n \oplus \mathbb Z_{n'}
+        E[n] \cong \mathbb Z_{n'} \oplus \mathbb Z_{n'} \quad\text{oder}\quad E[n] \cong \mathbb{Z}_n \oplus \mathbb Z_{n'}
     \]
 \end{theorem}
 
 \begin{proof}
-    Der Beweis hierzu ist sehr langwierig und findet sich daher in \cite{washington08} III Abschnitt 3.2.
+    Der Beweis hierzu ist sehr langwierig und findet sich daher in~\cite{washington08} III Abschnitt 3.2.
 \end{proof}
-\begin{satz}[Hauptsatz über endliche abelsche Gruppen]
-    \label{satz:hauptsatz-end-abel-gruppen}
-    Sei $G$ eine endlich erzeugte abelsche Gruppe dann gilt,
+\begin{satz}[Hauptsatz über endliche abelsche Gruppen]\label{satz:hauptsatz-end-abel-gruppen}
+    Sei $G$ eine endliche abelsche Gruppe dann gilt,
     \[
         G\simeq \mathbb{Z}_{n_1}\oplus \mathbb{Z}_{n_2}\oplus\cdots\oplus\mathbb{Z}_{n_k},\quad n_1,\dots n_k\in\mathbb{Z}
     \]
-    und es gilt $n_i\mid n_{i+1}$ für alle $1\geq i\geq k-1$.
+    und es gilt $n_i\mid n_{i+1}$ für alle $1\leq i\leq k-1$.
 \end{satz}
 \begin{proof}
-    Ein Beweis kann in \cite{karpf24} Satz 10.4, S.147 gefunden werden.
+    Ein Beweis kann in~\cite{karpf24} Satz 10.4, S.147 gefunden werden.
 \end{proof}
 
-\begin{theorem}
-    \label{theo:prod-zyklischer-gruppen}
+\begin{theorem}\label{theo:prod-zyklischer-gruppen}
     Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Dann gilt,
     \[
         E(\mathbb{F}_q) \simeq \mathbb{Z}_n \text {  oder  }  E(\mathbb{F}_q) \simeq\mathbb{Z}_{n_1} \oplus \mathbb{Z}_{n_2}
     \]
-    für ein $n \geq 1$ und für beliebige $n_1,n_2\geq1$ mit $n_1\mid n_2$.
-    Also dann ist die Gruppe der Punkte $E(\mathbb{F}_q)$ immer eine zyklische Gruppe oder das Produkt von zwei zyklischen Gruppen.
+    für ein $n \geq 1$ und für geeignete $n_1,n_2\geq1$ mit $n_1\mid n_2$. Somit ist die Gruppe der Punkte $E(\mathbb{F}_q)$ immer eine zyklische Gruppe oder das Produkt von zwei zyklischen Gruppen.
 \end{theorem}
 
 \begin{proof}
-    Nach dem Hauptsatz über endliche abelsche Gruppen \ref{satz:hauptsatz-end-abel-gruppen} ist die endliche abelsche Gruppe $E(\mathbb{F}_q)$ isomorph zu einem direkten Summe von zyklischen Gruppen
+    Nach dem Hauptsatz über endliche abelsche Gruppen~\ref{satz:hauptsatz-end-abel-gruppen} ist die endliche abelsche Gruppe $E(\mathbb{F}_q)$ isomorph zu einer direkten Summe von zyklischen Gruppen
     \(E(\mathbb{F}_q)\simeq\mathbb{Z}_{n_1}\oplus \mathbb{Z}_{n_2}\oplus \dots\oplus\mathbb{Z}_{n_r}\), wobei $n_i\mid n_{i+1}$ für $i\geq 1$. Es werden nun die $n_1$-Torsionspunkte betrachtet, also alle Punkte $P$ für die gilt \(n_1P=\mathcal{O}\). Diese bilden die Gruppe
     \[
         E(\mathbb{F}_q)[n_1]
@@ -372,7 +357,7 @@ Um das diskrete Logarithmus für ein Kryptosystem aufzubauen, müssen wir die Or
     Da $n_1\mid n_i$ für jedes $i$ gilt, besitzt jeder Faktor
     $\mathbb{Z}_{n_i}$ genau $n_1$ Elemente, die durch Multiplikation
     mit $n_1$ auf das neutrale Element abgebildet werden.  Da insgesamt $r$ Faktoren vorhanden sind, folgt \(\#E(\mathbb{F}_q)[n_1]=n_1^r \).
-    Es ist aber \(E(\mathbb{F}_q)\subset E[n_1]\). Nach Theorem \ref{theo:torsionsstruktur} besitzt $E[n_1]$ höchstens $n_1^2$ Elemente. Somit gilt
+    Es ist aber \(E(\mathbb{F}_q)[n_1]\subseteq E[n_1]\). Nach Theorem~\ref{theo:torsionsstruktur} besitzt $E[n_1]$ höchstens $n_1^2$ Elemente. Somit gilt
     \[
         n_1^r
         =
@@ -392,8 +377,7 @@ Um das diskrete Logarithmus für ein Kryptosystem aufzubauen, müssen wir die Or
 \end{proof}
 
 \section{Frobenius-Endomorphismen und die Hasse-Schranke}
-In diesem Abschnitt werden zunächst Isogenien und Endomorphismen eingeführt.Über ihre Kerne und Grade lässt sich die Anzahl der Punkte von $E(\mathbb F_q)$ mit dem Frobenius-Endomorphismus in Verbindung bringen. Dies führt zum Satz von Hasse, der die Punktzahl durch $q+1\pm2\sqrt q$ eingrenzt. Anschließend werden die Frobenius-Spur und Supersingularität betrachtet. Die Darstellung orientiert sich an Silverman \cite[S.~67, 72~f., 79, 85 und 138]{silverman09}
-\cite[S.~100]{silverman06}, Washington \cite[S.~52, 98--102, 126--127 und 130--139]{washington08},Werner \cite[S.~60--73]{werner02}, sowie . Für die kryptographische Einordnung wird Güneysu, Paar und Pelzl \cite[S.~287]{guneysu24} herangezogen- Für den Beweis der Hasse Schranke wird etwas Analysis benötigt aus Pöschel\cite[S.~115]{poeschel14}.
+In diesem Abschnitt werden zunächst Isogenien und Endomorphismen eingeführt. Über ihre Kerne und Grade lässt sich die Anzahl der Punkte von $E(\mathbb F_q)$ mit dem Frobenius-Endomorphismus in Verbindung bringen. Dies führt zum Satz von Hasse, der die Punktzahl durch $q+1\pm2\sqrt q$ eingrenzt. Anschließend werden die Frobenius-Spur und Supersingularität betrachtet. Die Darstellung orientiert sich an Silverman~\cite[S.~67, 72~f., 79, 85 und 138]{silverman09},~\cite[S.~100]{silverman06}, Washington~\cite[S.~52, 98--102, 126--127 und 130--139]{washington08},Werner~\cite[S.~60--73]{werner02}, sowie für die kryptographische Einordnung wird Güneysu, Paar und Pelzl~\cite[S.~287]{guneysu24} herangezogen. Für den Beweis der Hasse Schranke wird etwas Analysis benötigt aus Pöschel~\cite[S.~115]{poeschel14}.
 \subsection{Isogenien}
 \begin{definition}[Isogenien]
     Seien $E_1$ und $E_2$ elliptische Kurven über
@@ -406,7 +390,7 @@ In diesem Abschnitt werden zunächst Isogenien und Endomorphismen eingeführt.Ü
     \]
     Die Kurven $E_1$ und $E_2$ heißen isogen, wenn
     eine von null verschiedene Isogenie zwischen
-    ihnen existiert, d.h. \(\phi(E_1)\neq\{\mathcal{O}\}\)
+    ihnen existiert, dass heißt \(\phi(E_1)\neq\{\mathcal{O}\}\)
 \end{definition}
 \begin{beispiel}
     Für jedes $m\in\mathbb{Z}$ definiert man die Multiplikationsabbildung
@@ -415,36 +399,34 @@ In diesem Abschnitt werden zunächst Isogenien und Endomorphismen eingeführt.Ü
     \]
     Für $m>0$ gilt
     \[
-        [m](P)=\underbrace{P+\dots+P}_{m\text{-mal}}.
+        [m](P)=\underbrace{P+\cdots+P}_{m\text{-mal}}.
     \]
-    $[m]$ ein Morphismus ist. Für $m=1$ gilt
+    Es wird gezeigt, dass $[m]$ ein Morphismus ist. Für $m=1$ gilt
     $[1]=\operatorname{id}_E$, also ist $[1]$ ein Morphismus. Sei nun
     $[m]$ ein Morphismus. Dann gilt
     \[
         [m+1]=\mu\circ([m],\operatorname{id}_E),
     \]
-    wobei $\mu:E\times E\to E$, $(P,Q)\mapsto P+Q$, nach
-    \cite[III, Theorem 3.6, S.~64]{silverman09} ein Morphismus ist. Für $m<0$ gilt \[[m](P)=[-m](-P).\] Da die Negationsabbildung ebenfalls ein Morphismus ist, ist $[m]$ auch für negative $m$ ein Morphismus.
+    wobei $\mu:E\times E\to E$, $(P,Q)\mapsto P+Q$, nach~\cite[III, Theorem 3.6, S.~64]{silverman09} ein Morphismus ist. Für $m<0$ gilt \[[m](P)=[-m](-P).\] Da die Negationsabbildung ebenfalls ein Morphismus ist, ist $[m]$ auch für negative $m$ ein Morphismus.
     Schließlich gilt für jedes $m\in\mathbb Z$ die Gleichung
     $[m](\mathcal O)=\mathcal O$. Daher ist $[m]:E\to E$ eine Isogenie.
 \end{beispiel}
-Für eine Isogenie \(\phi:E\to E\) und eine rationale Funktion $f:E_2\to K$ in $K(E_2)$ ist die Verknüpfung
+Für eine Isogenie \(\phi:E_1\to E_2\) und eine rationale Funktion $f:E_2\to K$ in $K(E_2)$ ist die Verknüpfung
 \[
-    \phi^*:E_1\longrightarrow K,
+    \phi^*:K(E_2)\longrightarrow K(E_1),
     \qquad f\longmapsto f\circ\phi.
 \]
 eine rationale Funktion in $K(E_1)$.
 
 \begin{definition}[Grad einer Isogenie]
-    Sei $\phi:E_1\to E_2$ eine Isogenie. Der Grad von $\phi$ ist der Grad der Körpererweiterung \(K(E_1)/\phi^*(K(E_2))\),
+    Sei $\phi:E_1\to E_2$ eine Isogenie. Der Grad der Isogenie $\phi$ ist der Grad der Körpererweiterung \(K(E_1)/\phi^*(K(E_2))\),
     \[
-        \deg\phi=[K(E_1):\phi*(K(E_2))]
+        \deg\phi=[K(E_1):\phi^*(K(E_2))]
     \]
     Für die Isogenie \([0]:E_1\to E_2,P\mapsto\mathcal{O}\) setzt man $\deg[0]=0$. Eine Isogenie heißt separabel oder inseparabel, wenn ihre Körpererweiterung separabel oder inseparabel ist.
 \end{definition}
 
-\begin{lemma}
-    \label{lem:deg-isogenien}
+\begin{lemma}\label{lem:deg-isogenien}
     Sei $\phi:E_1\to E_2$ eine von null verschiedene seperable Isogenie zwischen zwei elliptischen Kurven über $K$. Dann gilt
     \[
         \#\ker \phi = \deg \phi,
@@ -453,28 +435,22 @@ eine rationale Funktion in $K(E_1)$.
 \end{lemma}
 
 \begin{proof}
-    Der Beweis hierfür lässt sich in \cite{silverman09}, S.72f.  Theorem III.4.10. (c) finden.
+    Der Beweis hierfür lässt sich in~\cite{silverman09}, S.72f.  Theorem III.4.10.~(c) finden.
 \end{proof}
 
 \subsection{Frobenius-Endomorphismus}
-\begin{definition}[Frobenius Abbildung]
-    \label{def:frobenius}
+\begin{definition}[Frobenius-Abbildung]\label{def:frobenius}
     Sei $E$ eine elliptische Kurve, gegeben durch eine
     Weierstraßgleichung über $\mathbb F_q$, wobei
     $q=p^r$ eine Primzahlpotenz ist. Die Abbildung
     \[
-        \phi_q:E(\overline{\mathbb F}_q)\to E(\overline{\mathbb F}_q),\qquad
-        (x,y)\mapsto(x^q,y^q),\qquad,
-    \]
-    mit
-    \[
-        \phi_q(\mathcal O)=\mathcal O,
+        \phi_q:E(\overline{\mathbb F}_q)\to E(\overline{\mathbb F}_q)\qquad
+        (x,y)\mapsto(x^q,y^q)\qquad\text{mit}\qquad\phi_q(\mathcal O)=\mathcal O
     \]
     heißt Frobenius-Abbildung.
 \end{definition}
 
-\begin{lemma}
-    \label{lem:frobenius-fixpunkte}
+\begin{lemma}\label{lem:frobenius-fixpunkte}
     Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$. Dann gilt
     \begin{enumerate}
         \item \(\phi_q(x,y)\in E(\overline{\mathbb{F}}_q)\).
@@ -482,21 +458,21 @@ eine rationale Funktion in $K(E_1)$.
     \end{enumerate}
 \end{lemma}
 \begin{proof}
-    Sei $P=(x,y)\in E(\overline{\mathbb{F}}_q)$. Damit liegt er auf der Kurve, es wird hier die allgemine Weierstraßgleichung verwendet, da der Beweis genau gleich ist.
+    Sei $P=(x,y)\in E(\overline{\mathbb{F}}_q)$. Damit liegt er auf der Kurve, es wird hier die allgemeine Weierstraßgleichung verwendet, da der Beweis genau gleich ist.
     \[y^2+a_1xy+a_3y=x^3+a_2x^2+a_4x+a_6\] mit $a_i\in \mathbb{F}_q$.
     Nun wird die gesamte Gleichung zur $q$-ten Potenz erhoben
     \[
-        (y^2+a_1xy+a_3y)^q=(x^3+a_2x^2+a_4x+a_6)^q
+        {(y^2+a_1xy+a_3y)}^q={(x^3+a_2x^2+a_4x+a_6)}^q
     \]
-    Da $\operatorname{char}(\mathbb F_q)=p$ und $q=p^r$ gilt, folgt aus dem binomischen Lehrsatz $(a+b)^p=a^p+b^p$. Durch $r$-malige Anwendung erhält man $(a+b)^q=a^q+b^q$.
+    Da $\operatorname{char}(\mathbb F_q)=p$ und $q=p^r$ gilt, folgt aus dem binomischen Lehrsatz ${(a+b)}^p=a^p+b^p$. Durch $r$-malige Anwendung erhält man ${(a+b)}^q=a^q+b^q$.
     \[
-        (y^q)^2+a_1^q(x^qy^q)+a_3^qy^q=(x^q)^3+a_2^q(x^q)^2+a_4^qx^q+a_6^q
+        {(y^q)}^2+a_1^q(x^q y^q)+a_3^q y^q={(x^q)}^3+a_2^q{(x^q)}^2+{a_4}^q x^q+a_6^q
     \]
-    Wegen Lemma \ref{lem:a^q=a} gilt $a^q=a$ für alle $a\in\mathbb{F}_q$ und daraus folgt
+    Wegen Lemma~\ref{lem:a^q=a} gilt $a^q=a$ für alle $a\in\mathbb{F}_q$ und daraus folgt
     \[
-        (y^q)^2+a_1(x^qy^q)+a_3^qy^q=(x^q)^3+a_2^q(x^q)^2+a_4^qx^q+a_6^q
+        {(y^q)}^2+a_1(x^q y^q)+a_3 y^q={(x^q)}^3+a_2{(x^q)}^2+a_4 x^q+a_6
     \]
-    Also enthält die Kurvengleichung auch $x^q,y^q$ und damit gilt $\phi(P)=(x^q,y^q)\in E$. Für $\mathcal{O}$ gilt nach Definition $\phi(\mathcal{O})=\mathcal{O}$ und damit gilt die Aussage direkt, somit ist die erste Aussage bewiesen.
+    Also enthält die Kurvengleichung $x^q,y^q$ und damit gilt $\phi(P)=(x^q,y^q)\in E$. Für $\mathcal{O}$ gilt nach Definition $\phi(\mathcal{O})=\mathcal{O}$ und damit ist die erste Aussage erfüllt.
 
     Sei erneut $P=(x,y)\in E(\overline{\mathbb F}_q)$, dann gilt mit Lemma~\ref{lem:a^q=a}
     \[
@@ -512,12 +488,11 @@ eine rationale Funktion in $K(E_1)$.
     \end{align*}
     Für $\mathcal O$ gilt dies ebenfalls.
 \end{proof}
-\begin{lemma}
-    \label{lem:frobenius-grad}
-    Sei $E$ eine elliptische Kurve über \(\mathbb{F}_q\). Dann ist $\phi_q$ ein Endomorphismus von $E$ mit dem Grad $q$ und $\phi_q$ ist nicht seperabel.
+\begin{lemma}\label{lem:frobenius-grad}
+    Sei $E$ eine elliptische Kurve über \(\mathbb{F}_q\). Dann ist $\phi_q$ ein Endomorphismus von $E$ mit dem Grad $q$ und $\phi_q$ ist nicht separabel.
 \end{lemma}
 \begin{proof}
-    Die Frobenius-Abbildung $\phi_q(x,y) = (x^q, y^q)$ ist ist durch Polynome und damit insbesondere durch rationale Funktionen gegeben. Es bleibt zu zeigen, dass sie ein Gruppenhomomorphismus ist. Seien $P_1=(x_1,y_1),P_2=(x_2,y_2)\in E(\overline{\mathbb{F}}_q)$ mit $x_1\neq x_2$ und $P_1+P_2=(x_3,y_3)$. Nach den den Additionsformeln \ref{def:punktaddition} gilt
+    Die Frobenius-Abbildung $\phi_q(x,y) = (x^q, y^q)$ ist durch Polynome und damit insbesondere durch rationale Funktionen gegeben. Es bleibt zu zeigen, dass sie ein Gruppenhomomorphismus ist. Seien $P_1=(x_1,y_1),P_2=(x_2,y_2)\in E(\overline{\mathbb{F}}_q)$ mit $x_1\neq x_2$ und $P_1+P_2=(x_3,y_3)$. Nach der Additionsformel~\ref{def:punktaddition} gilt
     \[
         x_3=m^2-x_1-x_2,\quad y_3=m(x_1-x_3)-y_1, \quad \text{mit } m=\frac{y_2-y_1}{x_2-x_1}.
     \]
@@ -541,9 +516,9 @@ eine rationale Funktion in $K(E_1)$.
     \[
         x_3=m^2-2x_1,\quad y_3=m(x_1-x_3)-y_1\quad \text{mit } m=\frac{3x_1^2+A}{2y_1}.
     \]
-    Nach erheben zur $q$-ten Potenz folgt erneut mit Lemma~\ref{lem:freshmans-dream}
+    Nach Erheben zur $q$-ten Potenz folgt erneut mit Lemma~\ref{lem:freshmans-dream}
     \[
-        x_3^q={m'}^2-2x_1^q,\quad y_3^q=m'(x_1^q-x_3^q)-y_1^q\quad \text{mit } m'=\frac{3^q(x_1^q)^2+A^q}{2^q y_1^q}.
+        x_3^q={m'}^2-2x_1^q,\quad y_3^q=m'(x_1^q-x_3^q)-y_1^q\quad \text{mit } m'=\frac{3^q{(x_1^q)}^2+A^q}{2^q y_1^q}.
     \]
     Da $2,3,A\in\mathbb{F}_q$ sind, gilt mit Lemma~\ref{lem:a^q=a} $2^q=2$,$3^q=3, A^q=A$. Somit sind dies wiederum genau die Verdopplungsformeln für
     $\phi_q(P_1)$ und daher \(\phi_q(2P_1)=2\phi_q(P_1)\).  Für $y_1=0$ gilt $2P_1=\mathcal O$, sodass die Aussage ebenfalls erfüllt ist.  Damit ist $\phi_q$ ein Gruppenhomomorphismus und somit ein Endomorphismus von $E$.
@@ -559,21 +534,20 @@ eine rationale Funktion in $K(E_1)$.
     Somit ist $\phi_q$ nicht separabel.
 \end{proof}
 \begin{bemerkung}
-    Als Konsequenz aus dem Lemma wird die Abbildung nun immer als Frobenius-Endomorphismus bezeichnet.
+    Als Konsequenz aus dem Lemma wird die Abbildung nun immer als Frobenius Endomorphismus bezeichnet.
 \end{bemerkung}
-\begin{corollary}
-    \label{korr:abbildung-seperabel}
-    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$ mit Charakterstik $p>0$.  Für $m,bn\in\mathbb Z$ ist der Endomorphismus
+\begin{corollary}\label{korr:abbildung-separabel}
+    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$ mit Charakteristik $p>0$.  Für $m,n\in\mathbb Z$ ist der Endomorphismus
     \[
         [m]+[n]\phi_q:E\to E
     \]
-    genau dann seperabel, wenn $p \nmid a$. Insbesondere ist $\operatorname{id}-\phi_q$ seperabel.
+    genau dann separabel, wenn $p \nmid m$. Insbesondere ist $\operatorname{id}-\phi_q$ separabel.
 \end{corollary}
 
 \begin{proof}
-    Den Beweis findet man in \cite{silverman09}, S.79.
+    Den Beweis findet man in~\cite{silverman09}, S.79.
 \end{proof}
-Für $m\geq 1$ bezeichnet.
+Für $m\geq 1$ bezeichnet
 \[
     \phi_q^m
     =
@@ -586,13 +560,12 @@ die $m$-fache Iteration des Frobenius-Endomorphismus. Dabei gilt
     (x^{q^m},y^{q^m}).
 \]
 
-\begin{proposition}
-    \label{prop:frobenius-erweiterungskoerper}
+\begin{proposition}\label{prop:frobenius-erweiterungskoerper}
     Sei $E$ eine elliptische Kurve über $\mathbb{F}_q$ und sei
     $m\geq 1$. Dann gelten
     \begin{enumerate}
         \item \(\ker(\phi_q^m-\operatorname{id})=E(\mathbb{F}_{q^m})\).
-        \item Der Endomorphismus \(\phi^m_q-\operatorname{id}\) ist seperabel und es gilt $\#E(\mathbb{F}_{q^m})=\deg(\phi_q^m-\operatorname{id})$.
+        \item Der Endomorphismus \(\phi^m_q-\operatorname{id}\) ist separabel und es gilt $\#E(\mathbb{F}_{q^m})=\deg(\phi_q^m-\operatorname{id})$.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -601,13 +574,12 @@ die $m$-fache Iteration des Frobenius-Endomorphismus. Dabei gilt
               $\mathbb{F}_{q^m}$ ist, gilt mit Lemma~\ref{lem:frobenius-fixpunkte}
               \begin{align*}
                   P\in E(\mathbb{F}_{q^m}) & \iff \phi^m_q(P)=P                        \\
-                                           & \iff \phi^m_q(P)=P                        \\
                                            & \iff \phi^m_q(P)-P=\mathcal{O}            \\
                                            & \iff P\in\ker(\phi^m_q-\operatorname{id})
               \end{align*}
               Daraus folgt dann \(\ker(\phi_q^m-\operatorname{id})=E(\mathbb{F}_{q^m})\).
 
-        \item Da $\phi_q^m$ und $\operatorname{id}$ Endomorphismen von $E$ sind, ist auch \(\phi_q^m-\operatorname{id}\) ein Endomorphismus. Nach Korollar~\ref{korr:abbildung-seperabel} ist dieser separabel. Insbesondere ist er von Null verschieden und somit eine Isogenie. Für eine separable Isogenie gilt mit Lemma~\ref{lem:deg-isogenien}
+        \item Da $\phi_q^m$ und $\operatorname{id}$ Endomorphismen von $E$ sind, ist auch \(\phi_q^m-\operatorname{id}\) ein Endomorphismus. Nach Korollar~\ref{korr:abbildung-separabel} ist dieser separabel. Insbesondere ist er von Null verschieden und somit eine Isogenie. Für eine separable Isogenie gilt mit Lemma~\ref{lem:deg-isogenien}
               \[
                   \#\ker(\phi^m_q-\operatorname{id}) = \deg(\phi^m_q-\operatorname{id})
               \]
@@ -619,73 +591,65 @@ die $m$-fache Iteration des Frobenius-Endomorphismus. Dabei gilt
 \end{proof}
 
 \subsection{Hasse-Schranke}
-Die bisher betrachtete explizite Punktzählung ist für kleine
-endliche Körper gut durchführbar, bei großen Körpern jedoch
-aufwendig. Die Hasse-Schranke gibt ein Intervall für die Anzahl
-der Punkte von $E(\mathbb F_q)$ an, ohne alle Punkte einzeln
-bestimmen zu müssen. Das ist sowohl für die Wahl kryptographischer Kurvenparameter als auch für Schoofs Algorithmus wichtig, der die Gruppenordnung später exakt bestimmt.
+Die bisher betrachtete explizite Punktzählung ist für kleine endliche Körper gut durchführbar, bei großen Körpern jedoch aufwendig. Die Hasse-Schranke gibt ein Intervall für die Anzahl der Punkte von $E(\mathbb F_q)$ an, ohne alle Punkte einzeln bestimmen zu müssen. Das ist sowohl für die Wahl kryptographischer Kurvenparameter als auch für Schoofs Algorithmus wichtig, der die Gruppenordnung später exakt bestimmt.
 
-Die Darstellung orientiert sich an Werner \cite[S.~60--63]{werner02}
-sowie Silverman \cite[S.~138]{silverman09}
-\cite[S.85,100]{silverman06}. Die kryptographische Einordnung
-folgt Güneysu, Paar und Pelzl \cite[S.~287]{guneysu24}.
-\begin{satz}[Satz von Hasse]
-    \label{def:hasse-schranke}
-    Sei $E$ eine elliptische Kurve über einem endlichen Kröper $\mathbb{F}_q$. Dann erfüllt die Ordnung von $E(\mathbb{F}_q)$,
-    \[|\#E(\mathbb{F}_q)-q-1 |\leq 2\sqrt q\]
+Die Darstellung orientiert sich an Werner~\cite[S.~60--63]{werner02}, sowie Silverman~\cite[S.~138]{silverman09}~\cite[S.85,100]{silverman06}. Die kryptographische Einordnung folgt Güneysu, Paar und Pelzl~\cite[S.~287]{guneysu24}.
+\begin{satz}[Satz von Hasse]\label{def:hasse-schranke}
+    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Dann erfüllt die Ordnung von $E(\mathbb{F}_q)$ folgende Ungleichung
+    \[|\#E(\mathbb{F}_q)-q-1 |\leq 2\sqrt q.\]
 \end{satz}
-Es ist nun möglich die Gruppenordnung von $E(\mathbb{F})$ rechteinfach abzuschätzen durch
+Es ist nun möglich die Gruppenordnung von $E(\mathbb{F}_q)$ abzuschätzen durch
 \[
     -2\sqrt{q}+q+1\leq \#E(\mathbb{F}_q)\leq 2\sqrt{q}+q+1.
 \]
-Dieses Theorem hat nun eine weitrechende Auswirkung auf die Implementierung von elliptischen Kurven. Die Hasse-Schranke liefert damit ein Intervall für die Gruppenordnung, ohne diese exakt zu bestimmen. Insbesondere liegt \(\#E(\mathbb F_q)\) bei großen \(q\) nahe bei \(q+1\). Soll die Punktgruppe einer Kurve über einem Primkörper eine Größenordnung von \(2^{256}\) haben, muss daher auch die Primzahl \(p\) ungefähr 256 Bit groß sein (vgl. \cite[S.~287]{guneysu24}).
+Dieses Theorem hat nun eine weitreichende Auswirkung auf die Implementierung von elliptischen Kurven. Die Hasse-Schranke liefert damit ein Intervall für die Gruppenordnung, ohne diese exakt zu bestimmen. Insbesondere liegt \(\#E(\mathbb F_q)\) bei großen \(q\) nahe bei \(q+1\). Soll die Punktgruppe einer Kurve über einem Primkörper eine Größenordnung von \(2^{256}\) haben, muss daher auch die Primzahl \(p\) ungefähr 256 Bit groß sein (vgl.~\cite[S.~287]{guneysu24}).
 
-Die Größe $q+1-\#E(\mathbb{F}_q)$ wird auch Spur des Frobenius \ref{def:frobenius-spur} genannt.
-\begin{definition}[Quadratische Form]
-    \label{def:quadratische-form}
-    Sei $A$ eine abelsche Gruppe. Eine Funktion
+Die Größe $q+1-\#E(\mathbb{F}_q)$ wird auch Spur des Frobenius~\ref{def:frobenius-spur} genannt.
+\begin{definition}[Quadratische Form]\label{def:quadratische-form}
+    Sei $A$ eine abelsche Gruppe. Eine Abbildung
     \[
         d: A\to \mathbb{R}
     \]
+    heißt quadratische Form, wenn folgende Bedingungen erfüllt sind
     \begin{enumerate}
         \item \(d(\alpha)=d(-\alpha)\)
         \item Die Abbildung
               \[
                   A\times A \to \mathbb{R}, \quad (\alpha,\beta)\mapsto d(\alpha+\beta)-d(\alpha)-d(\beta)
               \]
-              Die quadratische Form $d$ heißt positiv definit, wenn zusätzlich
+    \end{enumerate}
+    Die quadratische Form $d$ heißt positiv definit, wenn zusätzlich gilt
+    \begin{enumerate}
         \item $d(\alpha)\geq 0 $ für alle $\alpha\in A$
-        \item $d(\alpha)=0$, wenn $\alpha=0$
+        \item $d(\alpha)=0$ genau dann, wenn $\alpha=0$
     \end{enumerate}
 \end{definition}
-\begin{corollary}
-    \label{kor:gradabbildung}
-    Für die elliptische Kurven $E_1$ und $E_2$ ist die Abbildung
+\begin{corollary}\label{kor:gradabbildung}
+    Für die elliptischen Kurven $E_1$ und $E_2$ ist die Abbildung
     \[
         \deg:\operatorname{Hom}(E_1,E_2)\to\mathbb{Z}, \qquad \phi\mapsto\deg(\phi),
     \]
-    eine positivie definite quadratische Form.
+    eine positiv definite quadratische Form.
 \end{corollary}
 \begin{proof}
-    Ein Beweis findet sich in \cite[Corollary III.6.3, S.~85]{silverman09}.
+    Ein Beweis findet sich in~\cite[Corollary III.6.3, S.~85]{silverman09}.
 \end{proof}
-\begin{lemma}
-    \label{lem:cauchy-schwarz}
+\begin{lemma}\label{lem:cauchy-schwarz}
     Sei $A$ eine abelsche Gruppe und
     \[
         d:A\to \mathbb{Z}
     \]
-    eine positive definite quadratische Form. Dann ist
+    eine positiv definite quadratische Form. Dann ist
     \[
         \mid d(\psi-\phi)-d(\phi)-d(\psi)\mid\leq 2\sqrt{d(\phi)d(\psi)}, \quad \psi,\phi\in A.
     \]
 \end{lemma}
 \begin{proof}
-    Ein Beweis findet sich in \cite[Lemma V.1.2, S.~138]{silverman09}.
+    Ein Beweis findet sich in~\cite[Lemma V.1.2, S.~138]{silverman09}.
 \end{proof}
-Nun sind alle Vorraussetzungen gegeben, um den Beweis des Satz von Hasse durchzuführen.
+Nun sind alle Voraussetzungen gegeben, um den Beweis des Satzes von Hasse durchzuführen.
 \begin{proof}
-    Sei $E$ eine elliptische Kurve über \(\mathbb{F}_q\). Außerdem sei \(\phi: E\to E, (x,y)\mapsto (x^q,y^q)\) der Frobenius Endomorphismus. Für ein $P=(x,y)\in E(\overline{\mathbb{F}}_q)$ gilt
+    Sei $E$ eine elliptische Kurve über \(\mathbb{F}_q\). Außerdem sei \(\phi: E\to E, (x,y)\mapsto (x^q,y^q)\) der Frobenius-Endomorphismus. Für ein $P=(x,y)\in E(\overline{\mathbb{F}}_q)$ gilt
     \[
         P\in E(\mathbb{F}_q) \Longleftrightarrow x,y\in \mathbb{F}_q.
     \]
@@ -701,8 +665,8 @@ Nun sind alle Vorraussetzungen gegeben, um den Beweis des Satz von Hasse durchzu
     \[
         P\in E(\mathbb{F}_q) \Longleftrightarrow \phi(P)=P.
     \]
-    Betrachtet man nun den Endomorphismus
-    \(\operatorname{id}-\phi:E\to E.\) Für einen Punkt $P\in E(\overline{\mathbb{F}}_q)$ gilt
+    Betrachtet wird nun der Endomorphismus
+    \(\operatorname{id}-\phi:E\to E\). Für einen Punkt $P\in E(\overline{\mathbb{F}}_q)$ gilt
     \[
         (\operatorname{id}-\phi)(P)=\mathcal O
         \Leftrightarrow
@@ -714,7 +678,7 @@ Nun sind alle Vorraussetzungen gegeben, um den Beweis des Satz von Hasse durchzu
     \[
         E(\mathbb{F}_q)=\ker(\operatorname{id}-\phi).
     \]
-    Nach Korrolar~\ref{korr:abbildung-seperabel} ist $\operatorname{id}-\phi=[1]+[-1]\phi$ separabel, da  $p \nmid 1$ gilt. Die Abilldung ist außerdem von Null verschieden und somit eine Isogenie. Für eine separable Isogenie gilt mit Lemma~\ref{lem:deg-isogenien},
+    Nach Korollar~\ref{korr:abbildung-separabel} ist $\operatorname{id}-\phi=[1]+[-1]\phi$ separabel, da  $p \nmid 1$ gilt. Die Abbildung ist außerdem von Null verschieden und somit eine Isogenie. Für eine separable Isogenie gilt mit Lemma~\ref{lem:deg-isogenien},
     \[
         \#E(\mathbb{F}_q)
         =\#\ker(\operatorname{id}-\phi)
@@ -758,20 +722,18 @@ einer elliptischen Kurve charakterisieren. Diese Eigenschaft
 ist für die Wahl kryptographischer Kurven relevant, da der
 MOV-Angriff bei supersingulären Kurven eine Reduktion des
 diskreten Logarithmusproblems auf einen endlichen Körper
-kleinen Erweiterungsgrades ermöglichen kann. Die Darstellung der Frobenius-Spur und der Supersingularität orientiert sich an Werner \cite[S.~66--73]{werner02} und Washington \cite[S.~126--127, 130--139]{washington08}. Für die Einordnung des MOV-Angriffs wird Washington
-\cite[S.~156--157]{washington08} herangezogen.
+kleinen Erweiterungsgrades ermöglichen kann. Die Darstellung der Frobenius-Spur und der Supersingularität orientiert sich an Werner~\cite[S.~66--73]{werner02} und Washington~\cite[S.~126--127, 130--139]{washington08}. Für die Einordnung des MOV-Angriffs wird Washington~\cite[S.~156--157]{washington08} herangezogen.
 
 \begin{definition}[Supersingularität]
     Eine elliptische Kurve $E$ über $\mathbb F_q$ der
     Charakteristik $p>0$ heißt supersingulär, wenn
     \[
-        E[p](\overline{\mathbb{F}}_q)=\{\mathcal{O}\}.
+        E[p]=\{\mathcal{O}\}.
     \]
-    Dass ist äquivlant zu der Aussage, dass eine elliptische Kurve $E$ supersingulär ist, wenn sie über dem algebraischen Abschluss keine nichttrivialen $p$ Torsionspunkte hat.
+    Das ist äquivalent zu der Aussage, dass eine elliptische Kurve $E$ supersingulär ist, wenn sie über dem algebraischen Abschluss keine nichttrivialen $p$-Torsionspunkte hat.
 \end{definition}
 Die Bezeichnung supersingulär ist von der Singularität einer algebraischen Kurve zu unterscheiden. Eine elliptische Kurve ist per Definition nichtsingulär. Supersingularität bezeichnet dagegen eine zusätzliche Eigenschaft elliptischer Kurven über Körpern positiver Charakteristik.
-\begin{definition}
-    \label{def:frobenius-spur}
+\begin{definition}\label{def:frobenius-spur}
     Sei $E$ eine elliptische Kurve über dem endlichen Körper $\mathbb{F}_q$ mit Charakteristik $p$ mit $q=p^r$. Der Wert
     \[
         t=q+1-\#E(\mathbb F_q)
@@ -782,13 +744,12 @@ Die Bezeichnung supersingulär ist von der Singularität einer algebraischen Kur
     \]
     bezeichnet.
 \end{definition}
-\begin{proposition}[Spurkriterium]
-    \label{prop:spurkriterium}
-    Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ mit $q=p^r$. Und sei $t=q+1-\#E(\mathbb{F}_q)$ erneut die Frobenius Spur. Dann ist $E$ genau dann supersingular, wenn \(t\equiv 0\mod p\). Daraus folgt \(\#E(\mathbb{F}_q)\equiv 1\mod p\).
+\begin{proposition}[Spurkriterium]\label{prop:spurkriterium}
+    Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ mit $q=p^r$. Und sei $t=q+1-\#E(\mathbb{F}_q)$ erneut die Frobenius-Spur. Dann ist $E$ genau dann supersingulär, wenn \(t\equiv 0\mod p\). Daraus folgt \(\#E(\mathbb{F}_q)\equiv 1\mod p\).
 \end{proposition}
-Dies ist äquivalent zu der Aussage eine Kurve heißt supersingulär falls ihre Charakteristik $p=\operatorname{char}(\mathbb{F}_q)$ die Spur des Frobenius teilt.
+Dies ist äquivalent zu der Aussage, dass eine Kurve supersingulär ist, falls ihre Charakteristik $p=\operatorname{char}(\mathbb{F}_q)$ die Spur des Frobenius teilt.
 \begin{proof}
-    Ein Beweis findet sich in \cite[Proposition~4.31, S.~130--131]{washington08}.
+    Ein Beweis findet sich in~\cite[Proposition~4.31, S.~130--131]{washington08}.
 \end{proof}
 \begin{beispiel}
     Sei $E$ die elliptische Kurve über $\mathbb{F}_7$ mit der
@@ -814,44 +775,42 @@ Dies ist äquivalent zu der Aussage eine Kurve heißt supersingulär falls ihre 
             $5$ & $4$            & $\pm 2$      \\
             $6$ & $5$            & \text{keine}
         \end{tabular}
-        \caption{Punkte der Kurve $E:y^2=x^3+x$ über $\mathbb{F}_7$}
-        \label{tab:punkte-supersingular}
+        \caption{Punkte der Kurve $E:y^2=x^3+x$ über $\mathbb{F}_7$}\label{tab:punkte-supersingular}
     \end{table}
-    Damit gibt es sieben affine Punkte und zusätzlich den Punkt im Unendlichen. Folglich gilt \(\#E(\mathbb{F}_7)=8\) und für die Spur des Frobenius ist
+    Damit gibt es sieben affine Punkte und zusätzlich den Punkt im Unendlichen. Folglich besitzt die Menge \(\#E(\mathbb{F}_7)\) $8$ Elemente. Die Spur des Frobenius ist
     \[
         \operatorname{Spur}(\phi_q)=q+1-\#E(\mathbb{F}_q)=7+1-8=0.
     \]
     Da $7\mid 0$ gilt, ist $E$ nach dem Spurkriterium supersingulär.
 \end{beispiel}
-Nun wird noch ein Beispiel für den Fall Charakteristik ist 2 des Körpers angeschaut.
+Nun wird noch ein Beispiel über einem Körper der Charakteristik $2$ betrachtet.
 \begin{beispiel}
-    Ein weiteres Beispiel betrifft eine elliptische Kurve der Charakterstik 2. Es ist eine Kurve \(E(\mathbb{F}_2)\) gegeben durch die Weierstraßgleichung
+    Ein weiteres Beispiel betrifft eine elliptische Kurve der Charakteristik 2. Es ist eine Kurve \(E(\mathbb{F}_2)\) gegeben durch die Weierstraßgleichung
     \[
         y^2+y=x^3+x+1.
     \]
-    Es ist für $x=0$ $y^2+y=1$ und es gibt somit keine Lösung und für $x=1$ $y^2+y=1$ und somit gibt es keine Lösung über dem Körper, also \(E(\mathbb{F}_2)=\{\mathbb{O}\}\). Es gilt für die Spur   \(\operatorname{Spur}(\phi_q)=2+1-1=2\) und ist damit durch die $\operatorname{char}(\mathbb{F}_2)=2$ teilbar.
+    Es ist für $x=0$ $y^2+y=1$ und es gibt somit keine Lösung und für $x=1$ $y^2+y=1$ und somit gibt es keine Lösung über dem Körper, also \(E(\mathbb{F}_2)=\{\mathcal{O}\}\). Für die Spur gilt \(\operatorname{Spur}(\phi_q)=2+1-1=2\) und damit ist sie durch $\operatorname{char}(\mathbb{F}_2)=2$ teilbar.
 \end{beispiel}
 \begin{lemma}\label{lem:supersingulär-erweiterungskörper}
-    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Falls $E(\mathbb{F}_q)$ supersingulär ist, so ist auch $E(\mathbb{F}_{q^m})$ supersingulär für alle $m\geq 1$.
+    Sei $E$ eine elliptische Kurve über einem endlichen Körper $\mathbb{F}_q$. Falls $E$ supersingulär ist, so bleibt $E$ auch auf der Erweiterung des Grundkörpers auf $\mathbb{F}_{q^m}$ für alle $m\geq 1$ supersingulär.
 \end{lemma}
 Also die Supersingularität bleibt beim Übergang zu einem Erweiterungskörper erhalten.
 \begin{proof}
     Ein Beweis findet sich bei Werner~\cite[Lemma~3.4.2, S.~66--68]{werner02}.
 \end{proof}
 \begin{lemma}
-    Sei $p\geq 5$ eine Primzahl. Dann ist die Elliptische Kurve $y^2=x^3+1$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 2 \mod 3$ und die elliptische Kurve $y^2=x^3+x$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 3 \mod 4$.
+    Sei $p\geq 5$ eine Primzahl. Dann ist die elliptische Kurve $y^2=x^3+1$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 2 \mod 3$ und die elliptische Kurve $y^2=x^3+x$ über $\mathbb{F}_p$ supersingulär, genau dann wenn $p\equiv 3 \mod 4$.
 \end{lemma}
 Das entspricht auch den Bedingungen von dem oben gewählten Beispiel.
 \begin{proof}
-    Ein Beweis findet sich bei Washington
-    \cite[Proposition~4.37, S.~135]{washington08}.
+    Ein Beweis findet sich bei Washington~\cite[Proposition~4.37, S.~135]{washington08}.
 \end{proof}
 
 \section{Punktzählung}
 Bei kleinen endlichen Körpern kann die Anzahl der Punkte einer elliptischen Kurve durch Auswertung aller möglichen $x$-Koordinaten bestimmt werden. Für große Körper ist dieses Vorgehen zu aufwendig. Um eine Kurve für kryptographische Anwendungen auszuwählen, muss ihre Gruppenordnung jedoch bekannt sein: Erst dann lässt sich prüfen, ob sie eine Untergruppe geeigneter Ordnung enthält. Dieser Abschnitt stellt zunächst Baby-Step-Giant-Step und Mestres Verfahren vor. Der Schwerpunkt liegt anschließend auf Schoofs Algorithmus. Er bestimmt die Frobenius-Spur schrittweise modulo kleiner Primzahlen und nutzt die
 Hasse-Schranke, um daraus die Gruppenordnung eindeutig zu ermitteln. Die Verfahren werden hier in ihren Grundzügen dargestellt. Die Darstellung orientiert sich an Schoof~\cite[S.~219--228, 233--235]{schoof95} und seiner ursprünglichen Arbeit~\cite{schoof85}. Für die Erläuterung von Schoofs Verfahren wird außerdem Werner~\cite[S.~63--65]{werner02} und~\cite[S.~101, 123--127]{washington08} herangezogen. Der verwendete chinesische Restsatz folgt Werner~\cite[S.~115--116]{werner02}. Die Einordnung der Laufzeit folgt Silverman~\cite[S.~46]{silverman06}.
 
-\subsection{Baby-Step-Giant-Step Verfahren}
+\subsection{Baby-Step-Giant-Step-Verfahren}
 Für größere Primzahlen ist die direkte Bestimmung der Gruppenordnung
 $\#E(\mathbb F_p)$ durch vollständiges Durchlaufen aller $x$-Werte
 ineffizient. Eine effizientere Möglichkeit basiert auf der
@@ -860,42 +819,29 @@ Baby-Step-Giant-Step-Strategie von Shanks. Sei $E$ eine elliptische Kurve über 
     m\in
     [p+1-2\sqrt p,\;p+1+2\sqrt p]
 \]
-bestimmt, für die $mP=\mathbb{O}$ gilt. Ist $m$ die einzige Zahl innerhalb des Hasse-Intervalls mit dieser Eigenschaft, so muss $m=\#E(\mathbb{F}_p)$ gelten. Exestieren dagegen zwei verschiedene Zahlen $m$ und $m'$ im Hasse-Intervall mit $mP=m'P=\mathbb{O}$, so kann die Gruppenordnung aus diesem Punkt allein nicht eindeutig bestimmt werden. In diesem Fall kann jedoch  aus $(m-m')P=\mathbb{O}$ die Ordnung von \(P\) ermittelt und das Verfahren mit einem weiteren zufälligen Punkt fortgesetzt werden. Die Ordnung von $P$ ist ein Teiler von $\#E(\mathbb{F}_p)$. Das Verfahren kann anschließend mit einem weiteren zufälligen Punkt wiederholt werden, wobei die bereits gewonnene Information über einen Teiler der Gruppenordnung die weitere Berechnung in der Regel beschleunigt.
+bestimmt, für die $mP=\mathcal{O}$ gilt. Ist $m$ die einzige Zahl innerhalb des Hasse-Intervalls mit dieser Eigenschaft, so muss $m=\#E(\mathbb{F}_p)$ gelten. Existieren dagegen zwei verschiedene Zahlen $m$ und $m'$ im Hasse-Intervall mit $mP=m'P=\mathcal{O}$, so kann die Gruppenordnung aus diesem Punkt allein nicht eindeutig bestimmt werden. In diesem Fall kann jedoch aus $(m-m')P=\mathcal{O}$ der Teiler der Ordnung von \(P\) ermittelt werden und das Verfahren mit einem weiteren zufälligen Punkt fortgesetzt werden. Es ist die Ordnung von $P$ ist ein Teiler von $\#E(\mathbb{F}_p)$. Das Verfahren kann anschließend mit einem weiteren zufälligen Punkt wiederholt werden, wobei die bereits gewonnene Information über einen Teiler der Gruppenordnung die weitere Berechnung in der Regel beschleunigt.
 
 Die Laufzeit dieses Ansatzes beträgt
 \[
     O\left(p^{1/4+\varepsilon}\right)
 \]
-für jedes $\varepsilon>0$. Nach Schoof ist das Verfahren für
-vergleichsweise größere Primzahlen praktikabel, wird jedoch bei
-Primzahlen mit mehr als ungefähr 20 Dezimalstellen unpraktisch.
-\subsection{Mestre's Algorithm}
-Mestres Algorithmus dient dazu, die gruppentheoretischen Probleme zu
-umgehen, die beim zuvor beschriebenen Baby-Step-Giant-Step-Verfahren
-auftreten können. Sei dazu eine elliptische Kurve
-\[
-    E:y^2=x^3+Ax+B
-\]
-über $\mathbb F_p$ gegeben. Zusätzlich wird die quadratische Twistkurve
-$E'$ von $E$ betrachtet. Für einen quadratischen Nichtrest
-$g\in\mathbb F_p^\ast$ ist diese gegeben durch
-\[
-    E':gy^2=x^3+Ax+B.
-\]
-Zwischen den Gruppenordnungen der beiden Kurven besteht der Zusammenhang
-\[
-    \#E(\mathbb F_p)+\#E'(\mathbb F_p)=2(p+1).
-\]
-Kann die Gruppenordnung von $E(\mathbb F_p)$ mit dem
-Baby-Step-Giant-Step-Verfahren aufgrund einer ungünstigen Gruppenstruktur
-nicht eindeutig bestimmt werden, wird das Verfahren stattdessen auf die
-Twistkurve $E'$ angewendet. Besitzt $E(\mathbb F_p)$ einen sehr kleinen
-Gruppenexponenten, so ist dies für die Gruppe $E'(\mathbb F_p)$ im
-Allgemeinen nicht gleichzeitig der Fall. Dadurch können die zuvor
-beschriebenen Mehrdeutigkeiten vermieden werden.
+für jedes $\varepsilon>0$. Schoof stufte das Verfahren für vergleichsweise größere Primzahlen bis ungefähr $20$ Dezimalstellen als praktikabel ein.
+\begin{bemerkung}
+    Um die Schwierigkeiten bei der Bestimmung der Gruppenordnung zu umgehen, kann die sogenannte quadratische Twistkurve
+    \[
+        E':gy^2=x^3+Ax+B
+    \]
+    betrachtet werden. Dabei ist $g\in\mathbb F_p^\times$ ein quadratischer Nichtrest.
+    Zwischen den Gruppenordnungen der beiden Kurven besteht der Zusammenhang
+    \[
+        \#E(\mathbb F_p)+\#E'(\mathbb F_p)=2(p+1).
+    \]
 
-\subsection{Schoofs Algorithm}
-Für Schoofs Algorithmus werden die sogennanten Divisionspolynome benötigt, die wichtig sind für die Torsionsstruktur.
+    Kann die Gruppenordnung von $E(\mathbb F_p)$ mit dem Baby-Step-Giant-Step-Verfahren aufgrund einer ungünstigen Gruppenstruktur nicht eindeutig bestimmt werden, wird das Verfahren stattdessen auf die Twistkurve $E'$ angewendet. Besitzt $E(\mathbb F_p)$ einen sehr kleinen Gruppenexponenten, so ist dies für die Gruppe $E'(\mathbb F_p)$ im Allgemeinen nicht gleichzeitig der Fall. Dadurch können die zuvor beschriebenen Mehrdeutigkeiten vermieden werden. Auf dieser Idee beruht Mestres Verfahren~\cite[S.~224--228]{schoof95}.
+\end{bemerkung}
+
+\subsection{Schoofs Algorithmus}
+Für Schoofs Algorithmus werden die sogenannten Divisionspolynome benötigt, die wichtig sind für die Torsionsstruktur.
 \begin{definition}[Divisionspolynome]
     Für eine elliptische Kurve
     \[
@@ -920,11 +866,10 @@ Außerdem wird noch ein Theorem über den Frobenius benötigt.
 \end{theorem}
 
 \begin{proof}
-    Ein Beweis findet sich in
-    \cite[Theorem~4.10, S.~101]{washington08}.
+    Ein Beweis findet sich in~\cite[Theorem~4.10, S.~101]{washington08}.
 \end{proof}
 Sei $E$ eine elliptische Kurve über dem Körper $\mathbb{F}_q$ mit $q=p^n$ und $p$ prim und $\operatorname{char}(\mathbb{F}_q)\neq 2,3$.
-Schoofs Algorithmus bestimmt die Frobenius-Spur $t=q+1-\#E(\mathbb{F}_q)$ modulo mehreren kleinen Primzahlen $l\neq p$. Seien hierzu \(l_1=2,\; l_2=3,\; l_3=5,\dots,l_r\) verschiedene kleine Primzahlen. Es seien nun $l_1=2,l_2=3,l_3=5,\dots,l_r$ die ersten $r$ Primzahlen. Nach dem Chinesischen Restsatz ~\cite[S.~115--116, Satz~6.2.1]{werner02} gilt für \(L=l_1\cdots l_r\) der Isomorphismus
+Schoofs Algorithmus bestimmt die Frobenius-Spur $t=q+1-\#E(\mathbb{F}_q)$ modulo mehreren kleinen Primzahlen $l\neq p$. Seien hierzu \(l_1=2,\; l_2=3,\; l_3=5,\dots,l_r\) verschiedene kleine Primzahlen. Nach dem Chinesischen Restsatz~\cite[S.~115--116, Satz~6.2.1]{werner02} gilt für \(L=l_1\dots l_r\) der Isomorphismus
 \[
     \mathbb Z/L\mathbb Z
     \cong
@@ -960,11 +905,11 @@ wenn das Polynom \(X^3+AX+B\) eine Nullstelle in $\mathbb F_q$ besitzt. Da die N
     (X^3+AX+B,\;X^q-X)\neq 1
 \]
 gilt. Damit lässt sich $t\mod 2$ effizient bestimmen.
-Für $l\geq 3$ ist die Bestimmung von $t\mod l$ schwieriger. Daher wird hier nur eine Idee skizziert, genauere Informationen findet man in \cite{schoof95} und \cite{schoof85}.Für ungerades $n$ ist $\psi_n$ ein Polynom in $x$. Für $P=(x,y)\in E(\overline{\mathbb{F}}_q)$ gilt
+Für $l\geq 3$ ist die Bestimmung von $t\mod l$ schwieriger. Daher wird hier nur eine Idee skizziert, genauere Informationen findet man in~\cite{schoof95} und~\cite{schoof85}. Für ungerades $n$ ist $\psi_n$ ein Polynom in $x$. Für $P=(x,y)\in E(\overline{\mathbb{F}}_q)$ gilt
 \[
-    P\in E[n] \Longleftarrow \psi_n(x)=0.
+    P\in E[n] \iff \psi_n(x)=0.
 \]
-Der Frobenius-Endomorphismus erfüllt die Gleichung
+Der Frobenius Endomorphismus erfüllt die Gleichung
 \[
     \phi_q^2-t\phi_q+q=0 \quad P\in E(\overline{\mathbb{F}}_q)
 \]
@@ -973,20 +918,20 @@ $P\in E(\overline{\mathbb F}_q)$
 \[
     \phi_q^2(P)-t\phi_q(P)+qP=\mathcal O.
 \]
-Gesucht ist nun eine Zahl $\tau\in\{0,\dots,l-1\}$ sodass die Gleichung
+Gesucht ist nun eine Zahl $\tau\in\{0,\dots,l-1\}$, sodass die Gleichung
 \[
-    \phi_q^2(P)-\tau\phi_q+qp=\mathcal{O}
+    \phi_q^2(P)-\tau\phi_q(P)+qP=\mathcal{O}
 \]
 für jeden Punkt $P$ aus der endlichen Untergruppe
 \[
-    E[l]=\{P\in E(\overline{\mathbb{F}}_q)\mid lp=\mathcal{O}\}
+    E[l]=\{P\in E(\overline{\mathbb{F}}_q)\mid lP=\mathcal{O}\}
 \]
-gilt. Falls ein solches \(\tau\) gefunden wird, so muss jedes $P\neq\mathcal{O}$ in $E[l]$
+gilt. Falls ein solches \(\tau\) gefunden wird, so muss für jedes $P\neq\mathcal{O}$ in $E[l]$ gelten
 \[
     (t-\tau)\phi_q(P)=\mathcal{O}
 \]
 sein. Für $P\in E[l]\setminus\{\mathcal O\}$ liegt auch
-$\phi_q(P)$ in $E[l]$, dass heißt $\phi_q(P)$ hat die Ordnung $l$ in der Gruppe $E(\overline{\mathbb{F}}_q)$. Daher muss $l\mid(t-\tau)$ gelten und somit
+$\phi_q(P)$ in $E[l]$, das heißt $\phi_q(P)$ hat die Ordnung $l$ in der Gruppe $E(\overline{\mathbb{F}}_q)$. Daher muss $l\mid(t-\tau)$ gelten und somit
 \[
     t\equiv \tau \mod l.
 \]

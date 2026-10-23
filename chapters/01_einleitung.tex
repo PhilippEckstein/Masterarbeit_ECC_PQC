@@ -1,11 +1,4 @@
-\chapter{Vorwort}
-
-\section*{Danksagung}
-An erster Stelle dankt man meistens dem Betreuer. Je nach Sentimentalit"at kann dann auch weiteren Personen aus dem akademischen oder dem privaten Umfeld gedankt werden.
-\bigskip\underline{\hspace{0.2\textwidth}}\hspace{0.1\textwidth}\underline{\hspace{0.4\textwidth}}
-\section*{Eidesstattliche Erklärung}
-Hiermit erkläre ich, dass ich die vorliegende Arbeit selbststä andig, ohne fremde Hilfe und ohne Verwendung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quel
-len (einschließlich elektronischer Quellen) direkt oder indirekt übernommenen Gedanken sind ausnahmslos als solche kenntlich gemacht. Die Arbeit ist in gleicher oder ähnlicher Form oder auszugsweise im Rahmen einer anderen Prüfung noch nicht vorgelegt worden. Die elektronische Version stimmt mit der gedruckten Version überein.
+\chapter{Einleitung}
 \section{Eine thematische Einführung in die Arbeit}
 Der Wunsch, Informationen vor dem Zugriff unbefugter Personen zu schützen, reicht weit in die Geschichte zurück. Bereits Julius Caesar soll ein Verschlüsselungsverfahren verwendet haben, um militärische Nachrichten vertraulich zu übermitteln. Bei der heute als Caesar-Chiffre bezeichneten Methode werden die Buchstaben des Alphabets um eine festgelegte Anzahl von Stellen verschoben. Nur wer die verwendete Verschiebung kennt, kann die Nachricht unmittelbar entschlüsseln~\cite[S.~14--15]{buell24}. Aus heutiger Sicht bietet dieses Verfahren keine ausreichende Sicherheit, veranschaulicht jedoch bereits ein grundlegendes Prinzip der Kryptographie. Eine Nachricht  wird mithilfe eines Schlüssels so verändert, dass ihr ursprünglicher Inhalt für Unbefugte nicht mehr erkennbar ist.
 
@@ -36,11 +29,11 @@ Quantencomputer effizient zu lösen. Daher ist zu untersuchen, welche
 Konsequenzen sich aus der Entwicklung von Quantencomputern für die Sicherheit
 kryptographischer Verfahren auf elliptischen Kurven ergeben.
 
-\section{Zielsetzung und Forschungsfrage}
+\subsection{Zielsetzung und Forschungsfrage}
 
 Ziel dieser Arbeit ist es, elliptische Kurven mathematisch einzuführen und
 ihre Verwendung in der Public-Key-Kryptographie darzustellen. Im Mittelpunkt stehen dabei das diskrete Logarithmusproblem auf elliptischen Kurven, ausgewählte kryptographische Verfahren sowie die Analyse klassischer Angriffe und der daraus resultierenden
-Sicherheitsanforderungen an geeignete Kurvenparameter. Abschließend werden die Auswirkungen von Quantencomputer und insbesondere der Shor-Algorithmus auf die langfristige Sicherheit elliptischer Kurven untersucht.
+Sicherheitsanforderungen an geeignete Kurvenparameter. Abschließend werden die Auswirkungen von Quantencomputern,insbesondere des Shor-Algorithmus, auf die langfristige Sicherheit kryptographischer Verfahren auf elliptischen Kurven untersucht.
 
 Daraus ergibt sich die folgende Forschungsfrage.
 \begin{quote}
@@ -49,8 +42,8 @@ Daraus ergibt sich die folgende Forschungsfrage.
         welche Anforderungen ergeben sich aus bekannten Angriffen an die
         Auswahl sicherer Kurvenparameter?}
 \end{quote}
-
-\section{Aufbau der Arbeit}
+Ergänzend wird untersucht, welche Grenzen sich durch Quantencomputer für die Sicherheit kryptographischer Verfahren auf elliptischen Kurven ergeben.
+\subsection{Aufbau der Arbeit}
 
 Zunächst werden die Grundlagen der Public-Key-Kryptographie eingeführt. Das RSA-Verfahren dient dabei als einführendes Beispiel für das Zusammenspiel öffentlicher und privater Schlüssel. Anschließend wird das diskrete Logarithmusproblem zunächst allgemein in endlichen zyklischen Gruppen betrachtet. Dabei werden auch ausgewählte Verfahren zur Lösung des diskreten Logarithmusproblems vorgestellt.
 
@@ -104,27 +97,27 @@ entsprechenden Stellen erneut eingeführt.
 
     $G$
                   &
-    Eine endliche abelsche Gruppe.
+    Eine endliche abelsche Gruppe
     \\
 
     $0_G$
                   &
-    Das neutrale Element einer additiv geschriebenen Gruppe $G$.
+    Das neutrale Element einer additiv geschriebenen Gruppe $G$
     \\
 
     $|G|$
                   &
-    die Ordnung der endlichen Gruppe $G$.
+    Die Ordnung der endlichen Gruppe $G$
     \\
 
     $\langle P\rangle$
                   &
-    Eine von $P\in G$ erzeugte zyklische Untergruppe.
+    Eine von $P\in G$ erzeugte zyklische Untergruppe
     \\
 
     $\operatorname{ord}(P)$
                   &
-    Die Ordnung des Gruppenelements $P\in G$.
+    Die Ordnung des Gruppenelements $P\in G$
     \\
 
     $\mathbb Z_n^\times$
@@ -140,20 +133,20 @@ entsprechenden Stellen erneut eingeführt.
     $\operatorname{char}(K)$
                   &
     Charakteristik des Körpers $K$                                                                 \\
-    $\mathbb F_p$ & Primkörper zur Primzahl $p$.                                                   \\
-    $\mathbb F_q$ & Körper $\mathbb{Z}/q\mathbb{Z}$ mit Primzahlpotenz $q=p^l$ für ein primes $p$. \\
+    $\mathbb F_p$ & Primkörper zur Primzahl $p$                                                   \\
+    $\mathbb F_q$ & Endlicher Körper mit$q=p^l$ Elementen, wobei $p$ eine Primzahl und $l\geq 1$ ist \\
     $\mathbb F_q^\times$ oder $K^\times$
                   &
     Multiplikative Gruppe zum Körper $\mathbb F_q$ oder $K$
     \\
      $\overline{\mathbb F}_q$ oder $\overline{K}$
                   &
-    Der algebraischer Abschluss von $\mathbb F_q$ oder $K$.
+    Der algebraische Abschluss von $\mathbb F_q$ oder $K$
     \\
 
     $\mathbb F_{q^m}$
                   &
-    Der Erweiterungskörper von $\mathbb F_q$ mit $q^m$ Elementen.
+    Der Erweiterungskörper von $\mathbb F_q$ mit $q^m$ Elementen
 
     \\[0.8em]
 
@@ -161,22 +154,22 @@ entsprechenden Stellen erneut eingeführt.
 
     $E(K)$
                   &
-    Die Gruppe der $K$-rationalen Punkte der elliptischen Kurve $E$ einschließlich des Punktes $\mathcal O$.
+    Die Gruppe der $K$-rationalen Punkte der elliptischen Kurve $E$ einschließlich des Punktes $\mathcal O$
     \\
 
     $E(\mathbb F_q)$
                   &
-    Elliptische Kurve über dem Körper $\mathbb F_q$.
+    Gruppe der rationalen Punkte der Elliptische Kurve $E$ über dem Körper $\mathbb F_q$
     \\
 
     $\#E(\mathbb F_q)$
                   &
-    Die Anzahl der Punkte von $E(\mathbb F_q)$.
+    Die Anzahl der Punkte von $E(\mathbb F_q)$
     \\
 
     $\mathcal O$
                   &
-    Der Punkt im Unendlichen und neutrales Element der Punktgruppe.
+    Der Punkt im Unendlichen und neutrales Element der Punktgruppe
     \\
 
     $\Delta$
@@ -196,10 +189,10 @@ entsprechenden Stellen erneut eingeführt.
 
     \multicolumn{2}{l}{\textbf{Frobenius-Endomorphismus und Punktzählung}}                         \\[0.3em]
 
-    $\varphi_q$
+    $\phi_q$
                   &
     Frobenius-Endomorphismus,
-    $\varphi_q(x,y)=(x^q,y^q)$
+    $\phi_q(x,y)=(x^q,y^q)$
     \\
 
     $t$
@@ -217,12 +210,12 @@ entsprechenden Stellen erneut eingeführt.
 
     $\mathbb A_K^2$
                   &
-    Die affine Ebene über dem Körper $K$.
+    Die affine Ebene über dem Körper $K$
     \\
 
     $\mathbb P_K^2$
                   &
-    Die projektive Ebene über dem Körper $K$.
+    Die projektive Ebene über dem Körper $K$
     \\[0.8em]
 
 \end{longtable}

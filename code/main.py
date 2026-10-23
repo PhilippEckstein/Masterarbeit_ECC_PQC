@@ -1,5 +1,6 @@
 import math
 import matplotlib.pyplot as plt
+from pathlib import Path
 
 "Elliptische Kurve: y^2 = x^3 + ax + b (mod p)"
 "Punkte sind in der Form: P=(x_1,y_1)"
@@ -114,8 +115,9 @@ def plot_curve_points(P , a, b, p):
     plt.legend()
     plt.tight_layout()
     plt.savefig(
-        "ell_curve_finite_field.png",
-        dpi=300,
-        bbox_inches="tight"
+    Path(__file__).resolve().parent.parent
+    / "images" / "ell_curve_finite_field.png",
+    dpi=300,
+    bbox_inches="tight"
     )
     plt.show()

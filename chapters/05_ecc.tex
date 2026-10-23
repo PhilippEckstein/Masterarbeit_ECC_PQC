@@ -16,12 +16,12 @@ Der Diffie-Hellman-Schlüsselaustausch ermöglicht es zwei Parteien,
 zu vereinbaren. In dem nun folgenden Fall wird hierzu die additive Gruppe der Punkte einer elliptischen Kurve über einem endlichen Körper
 verwendet.
 
-Die Darstellung des Double-and-Add-Algorithmus orientiert sich
-an Silverman~cite[S.~30--31]{silverman06}, Buell~\cite[S.~217--218]{buell24} sowie Güneysu, Paar und Pelzl~\cite[S.~288]{guneysu24}. Der elliptische Diffie-Hellman-Schlüsselaustausch folgt Washington~\cite[S.~170--172]{washington08} und Fuß und Vymazal~\cite[S.~195]{fuß25}. Für die anschließende ElGamal-Verschlüsselung und ECDSA wird Washington~\cite[S.~174--176, 179--180]{washington08} und~\cite[104--109]{werner02} herangezogen. Die kryptographischen Einordnungen basieren auf Güneysu, Paar und Pelzl~\cite[S.~291]{guneysu24}.
+Die Darstellung des Double-and-Add Algorithmus orientiert sich
+an Silverman~\cite[S.~30--31]{silverman06}, Buell~\cite[S.~217--218]{buell24} sowie Güneysu, Paar und Pelzl~\cite[S.~288]{guneysu24}. Der elliptische Diffie-Hellman-Schlüsselaustausch folgt Washington~\cite[S.~170--172]{washington08} und Fuß und Vymazal~\cite[S.~195]{fuß25}. Für die anschließende ElGamal-Verschlüsselung und ECDSA wird Washington~\cite[S.~174--176, 179--180]{washington08} und~\cite[104--109]{werner02} herangezogen. Die kryptographischen Einordnungen basieren auf Güneysu, Paar und Pelzl~\cite[S.~291]{guneysu24}.
 
 \subsection{Double-and-Add-Algorithmus}~\label{sec:double-and-add}
 Sei $P$ ein Punkt einer additiv geschriebenen Gruppe und
-$n \in \mathbb{N}$. Ziel ist es, das skalare Vielfache
+$n \in \mathbb{N}_{\geq 1}$. Ziel ist es, das skalare Vielfache
 \[
     nP = \underbrace{P + P + \cdots + P}_{n\text{-mal}}
 \]
@@ -36,10 +36,10 @@ Eine naive Berechnung erfolgt durch sukzessive Addition:
 
 Hierfür werden insgesamt $n-1$ Gruppenadditionen benötigt. In Abhängigkeit vom Zahlenwert $n$ liegt die Laufzeit dieser Methode daher in $\mathrm{O}(n)$. Für die Betrachtung der tatsächlichen Eingabegröße ist jedoch die Anzahl der Bits entscheidend, die zur Darstellung von $n$ benötigt wird. Bezeichnet \(b = \lfloor \log_2(n) \rfloor + 1\) die Bitlänge von $n$, so gilt \( 2^{b-1} \leq n < 2^b \). Der Zahlenwert $n$ wächst somit exponentiell mit seiner Bitlänge $b$. Daher kann die Laufzeit der naiven Methode äquivalent als \(\mathrm{O}(2^b)\) angegeben werden. Insbesondere bei kryptographischen Verfahren wie dem Diffie-Hellman-Schlüsselaustausch müssen skalare Vielfache für sehr große Skalare berechnet werden. Die naive Methode ist dafür nicht praktikabel. Eine wesentlich effizientere Berechnung ermöglicht der Double-and-Add-Algorithmus.
 \begin{definition}[Double-and-Add-Algorithmus]
-    Sei $P$ ein Punkt auf einer elliptischen Kurve $E$ und $n\in \mathbb{N}$. Es soll nun das Vielfache $Q=np$ berechnet werden. Sei \( n = {(b_{m-1}b_{m-2}\dots b_0)}_2\) mit \(b_{m-1}=1\) die Binärdarstellung von $n$. Der Double-and-Add-Algorithmus verarbeitet die Bits von links nach rechts, beginnend mit dem höchstwertigen Bit $b_{m-1}$.
+    Sei $P$ ein Punkt auf einer elliptischen Kurve $E$ und $n\in \mathbb{N}_{\geq 1}$. Es soll nun das Vielfache $Q=nP$ berechnet werden. Sei \( n = {(b_{m-1}b_{m-2}\dots b_0)}_2\) mit \(b_{m-1}=1\) die Binärdarstellung von $n$. Der Double-and-Add-Algorithmus verarbeitet die Bits von links nach rechts, beginnend mit dem höchstwertigen Bit $b_{m-1}$.
     \begin{enumerate}
         \item Initialisiere $Q\gets P$
-        \item Führe für $i=m-1,m-2,\dots,0$ die folgenden Schritte aus:
+        \item Führe für $i=m-2,m-3,\dots,0$ die folgenden Schritte aus:
               \begin{enumerate}
                   \item Verdopple den aktuellen Punkt: $Q\gets 2Q$
                   \item Falls $b_i=1$, setze $Q\gets Q+P$
@@ -53,7 +53,7 @@ Sei \(n={(b_{m-1}\dots b_1b_0)}_2\) die Binärdarstellung von $n$ mit \(m=\lfloo
 \]
 \begin{beispiel}
     Es soll das skalare Vielfache $46P$ berechnet werden. Zunächst
-    wird der Skalar in Binärdarstellung überführt \( 46=(101110)_2\).
+    wird der Skalar in Binärdarstellung überführt \( 46={(101110)}_2\).
     Die Verarbeitung beginnt beim höchstwertigen Bit (\emph{most significant bit}, MSB). Da dieses stets gleich $1$ ist, wird der Startwert $Q=P$ gesetzt. Anschließend werden die
     verbleibenden Bits von links nach rechts verarbeitet.
     \begin{table}[htbp]
@@ -70,44 +70,35 @@ Sei \(n={(b_{m-1}\dots b_1b_0)}_2\) die Binärdarstellung von $n$ mit \(m=\lfloo
             $0$          & Verdopplung              & $Q=46P$                   \\
             \hline
         \end{tabular}
-        \caption{Berechnung von $46P$ mit dem Double-and-Add-Algorithmus}
-        \label{tab:double-and-add-26}
+        \caption{Berechnung von $46P$ mit dem Double-and-Add-Algorithmus}\label{tab:double-and-add-26}
     \end{table}
     Für die Berechnung von $46P$ werden somit fünf Verdopplungen und drei zusätzliche Additionen benötigt. Insgesamt sind dies acht Gruppenoperationen. Die naive Methode würde dagegen $46-1=45$ Additionen erfordern.
 \end{beispiel}
 \subsection{Diffie-Hellman-Schlüsselaustausch}
-Wir betrachten eine möglichkeit einen geheimen Schlüssel zu etablieren nach Diffie und Hellman.
+Es wird eine Möglichkeit von Diffie und Hellman betrachtet, um einen geheimen Schlüssel zu etablieren.
 \begin{enumerate}
-    \item Alice und Bob einigen sich auf eine elliptische Kurve $E:y^2=x^3+Ax+B\mod p$ über einem endlichen Körper $\mathbb{F}_p$, sodass das diskrete Logarithmusproblem in $E(\mathbb{F}_p)$ schwer zu lösen ist.
-    \item Alice wählt ein geheimes $a$, das ein Integer sein soll, berechne $P_a=aP$ und schickt $P_a$ zu Bob.
-    \item BoB wählt einen geheimen Integer b, er berechnet $P_b=bP$ und schickt Alice $P_b$.
+    \item Alice und Bob einigen sich auf eine elliptische Kurve $E:y^2=x^3+Ax+B\mod p$ über einem endlichen Körper $\mathbb{F}_p$ einen Basispunkt $P$ großer Primzahlordnung $n$, sodass das diskrete Logarithmusproblem in $E(\mathbb{F}_p)$ schwer zu lösen ist.
+    \item Alice wählt ein geheimes $a\in \{1,\dots,n-1\}$ und berechnet $P_a=aP$. Anschließend schickt sie $P_a$ zu Bob.
+    \item Bob wählt ein geheimes $b\in\mathbb{N}_{\geq1}$, er berechnet $P_b=bP$ und schickt Alice $P_b$.
     \item Alice berechnet $aP_b=abP$
     \item Bob berechnet $bP_a=baP$
-    \item Alice und Bob benutzen eine öffentliche Methode um einen Schlüssel von $abP$ zu extrahieren. Zum Beispiel könnten sie die letzten 256 bits der x-Koordinate von $abP$ als Schlüssel verwenden oder sie könnten eine Hash-Funktion auf der x-Koordinate definieren.
+    \item Alice und Bob benutzen eine öffentliche Methode um einen Schlüssel von $abP$ zu extrahieren. Zum Beispiel könnten sie die letzten $256$ Bits der $x$-Koordinate von $abP$ als Schlüssel verwenden oder sie könnten eine Hash-Funktion auf der $x$-Koordinate definieren.
 \end{enumerate}
+\begin{bemerkung}
+    Der Diffie-Hellman-Schlüsselaustausch ermöglicht die Vereinbarung eines gemeinsamen Geheimnisses. Daraus kann anschließend ein Schlüssel für die symmetrische Verschlüsslung abgeleitet werden.  Das Verfahren allein authentifiziert die Kommunikationspartner jedoch nicht. Zum Schutz vor Man-in-the-Middle-Angriffen ist daher eine zusätzliche Authentifizierung erforderlich.
+\end{bemerkung}
 Ein Angreifer kennt die öffentlichen Größen
 \[
-    E,\quad \mathbb F_q,\quad P,\quad A=aP,\quad B=bP,
+    E,\quad \mathbb F_q,\quad P,\quad P_a=aP,\quad P_b=bP,
 \]
 nicht jedoch die geheimen Skalare $a$ und $b$.
-Das zugehörige Computational-Diffie-Hellman-Problem besteht darin,
-aus diesen öffentlichen Informationen den Punkt
-\[
-    abP
-\]
-zu bestimmen.
+Das zugehörige Diffie-Hellman-Problem besteht darin, aus diesen öffentlichen Informationen den Punkt \(abP\) zu bestimmen.
 \begin{definition}[Diffie-Hellman Problem]
-    Sei $P,aP,bP\in E(\mathbb{F}_q)$ gegeben berechne
-    \[
-        abP.
-    \]
+    Sei $G=\langle P\rangle$ eine zyklische Untergruppe von $E(\mathbb F_q)$ der Ordnung $n$. Gegeben seien die Punkte $P$, $aP$ und $bP$,
+    wobei die Skalare $a$ und $b$ unbekannt sind. Das Diffie-Hellman-Problem besteht darin, den Punkt $abP$ zu bestimmen.
 \end{definition}
 \begin{beispiel}
-    Wir betrachten die elliptische Kurve
-    \[
-        E\colon y^2 \equiv x^3+2x+2 \pmod{17}
-    \]
-    über dem Primkörper \(\mathbb F_{17}\). Durch explizite Bestimmung der Punkte erhält man
+    Es ist die elliptische Kurve \(E\colon y^2 \equiv x^3+2x+2 \pmod{17}\) über dem Körper \(\mathbb F_{17}\) gegeben. Durch explizite Bestimmung der Punkte erhält man
     \[
         \#E(\mathbb F_{17})=19.
     \]
@@ -117,22 +108,21 @@ zu bestimmen.
     \[
         P=(0,6)
     \]
-    gewählt. Die Berechnung der Ordnung, des Generators und alle weiteren Punktberechnungen wurde mit Hilfe des im Anhang~\ref{app:pythonprogramm} angegebene und selbstentickwelten Python-Programm durchgeführt.
-    Alice wählt die geheime Zahl $a=2$ und berechnet den öffentlichen Schlüssel $A=aP=2P=(9,1)$, anschließend schickt Alice Bob $P_a$. Bob wählt $b=5$ und berechnet $B=bP=5P=(10,11)$, anschließend schickt Bob Alice $P_b$. Alice berechnet nun ihren gemeinsamen Schlüssel $S_A=aP_b=2\cdot(10,11)=(16,4)$, genauso wie Bob $S_B=bP_a=5\cdot(9,1)=(16,4)$.  Im Beispiel gilt konkret
+    gewählt. Die Berechnung der Ordnung, des Generators und alle weiteren Punktberechnungen wurden mit Hilfe des im Anhang~\ref{app:pythonprogramm} angegebenen Python-Programms durchgeführt. Alice wählt die geheime Zahl $a=2$ und berechnet den öffentlichen Schlüssel $P_a=aP=2P=(9,1)$, anschließend schickt Alice Bob $P_a$. Bob wählt $b=5$ und berechnet $P_b=bP=5P=(10,11)$, anschließend schickt Bob Alice $P_b$. Alice berechnet nun ihren gemeinsamen Schlüssel $S_A=aP_b=2\cdot(10,11)=(16,4)$, genauso wie Bob $S_B=bP_a=5\cdot(9,1)=(16,4)$.  Im Beispiel gilt konkret
     \[
-        2B=2\cdot5P=10P=5\cdot2P=5A=(16,4).
+        2P_b=2\cdot5P=10P=5\cdot2P=P_a=(16,4).
     \]
     Öffentlich bekannt sind die Kurve \(E\), der Körper
     \(\mathbb F_{17}\), der Basispunkt \(P\) sowie die Punkte
-    \(A=aP\) und \(B=bP\). Die Zahlen \(a\) und \(b\) sowie der
+    \(P_a=aP\) und \(P_b=bP\). Die Zahlen \(a\) und \(b\) sowie der
     gemeinsame Punkt \(S=abP\) werden dagegen nicht übertragen.
 
-    Ein Angreifer müsste dann wie beschrieben, dass Diffie-Hellman-Problem lösen und \(abP\) finden. Eine Möglichkeit wäre \(a\) aus \(aP\) oder \(b\) aus \(bP\) mit dem diskreten Logarithmus Problem zu lösen. Anschließend könnte der Angreifer den gemeinsamen Punkt
+    Ein Angreifer müsste dann wie beschrieben das Diffie-Hellman Problem lösen und \(abP\) finden. Eine Möglichkeit wäre \(a\) aus \(aP\) oder \(b\) aus \(bP\) mit dem diskreten Logarithmus Problem zu lösen. Anschließend könnte der Angreifer den gemeinsamen Punkt
     durch
     \[
-        aB=a(bP)=abP
-    \].Bei der hier betrachteten Gruppe mit nur \(19\) Elementen kann der
-    diskrete Logarithmus durch einfaches Berechnen der Vielfachen
+        aP_b=a(bP)=abP
+    \]
+    berechnen. Bei der hier betrachteten Gruppe mit nur \(19\) Elementen kann der diskrete Logarithmus durch einfaches Berechnen der Vielfachen
     \[
         P,2P,3P,\ldots
     \]
@@ -148,37 +138,28 @@ Eine Möglichkeit, die Gruppenstruktur elliptischer Kurven direkt für
 ein Verschlüsselungsverfahren zu verwenden, ist die elliptische Variante
 von ElGamal.
 
-\subsection{ElGamal-Verschlüsslung}
+\subsection{ElGamal-Verschlüsselung}
 Alice möchte Bob eine Nachricht senden. Hierzu benötigt sie zunächst
-Bobs öffentlichen Schlüssel. Bob wählt dazueine elliptische Kurve $E$ über einem endlichen Körper $\mathbb{F}_q$ sowie einen Punkt
-$P\in E(\mathbb F_q)$. Die Parameter werden so gewählt, dass das
-diskrete Logarithmusproblem in der betrachteten Gruppe als schwer lösbar
-gilt. Die hierfür erforderlichen Sicherheitsbedingungen werden in
-Abschnitt~\ref{sicherheitsbetrachtung} näher betrachtet. Bob wählt ein geheimes $b\in\mathbb{Z}$ und berechnet den Punkt $B=bP$. Der Wert $b$ bildet Bobs privaten Schlüssel, während die öffentlichen
-Parameter $E$, $\mathbb F_q$, $P$ und der Punkt $B$ öffentlich bekannt
-gegeben werden. Wenn Alice Bob eine Nachricht schicken möchte geht sie wie folgt vor
+Bobs öffentlichen Schlüssel. Bob wählt dazu eine elliptische Kurve $E$ über einem endlichen Körper $\mathbb{F}_q$ sowie einen Punkt $P\in E(\mathbb F_q)$ mit großer Primzahlordnung $n$. Die Parameter werden so gewählt, dass das diskrete Logarithmusproblem in der betrachteten Gruppe als schwer lösbar gilt. Die hierfür erforderlichen Sicherheitsbedingungen werden in Abschnitt~\ref{sicherheitsbetrachtung} näher betrachtet. Bob wählt ein geheimes $b\in\{1,\dots,n-1\}$ und berechnet den Punkt $P_b=bP$. Der Wert $b$ bildet Bobs privaten Schlüssel, während die öffentlichen Parameter $E$, $\mathbb F_q$, $P$ und der Punkt $P_b$ öffentlich bekannt gegeben werden. Wenn Alice Bob eine Nachricht schicken möchte, geht sie wie folgt vor
 \begin{enumerate}
-    \item Alice lädt Bobs öffentlichen Schlüssel runter
-    \item Sie schreibt ihre Nachricht als ein Punkt $M\in E(\mathbb{F}_q)$
-    \item Nun wählt Alice einen geheimen Schlüssel $k$ und berechnet $M_1=kP$
-    \item Anschließend berechnet Alice $M_2=M+kB$
+    \item Alice lädt Bobs öffentlichen Schlüssel herunter
+    \item Sie schreibt ihre Nachricht als einen Punkt $M\in \langle P\rangle$
+    \item Für jede Verschlüsselung wählt Alice unabhängig einen neuen zufälligen Skalar $k$ und berechnet $M_1=kP$
+    \item Anschließend berechnet Alice $M_2=M+kP_b$
     \item Nun sendet Alice $M_1,M_2$ an Bob
 \end{enumerate}
-Bob entschlüsselt die Nachricht indem er \(M=M_2-bM_1\) berechnet. Das funktioniert da Bob $b$ kennt und daher
+Bob entschlüsselt die Nachricht, indem er \(M=M_2-bM_1\) berechnet. Da Bob seinen geheimen Schlüssel $b$ kennt, kann er die Rechnung
 \[
-    M_2-bM_1=(M+kB)-b(kP)= M+k(bP)-bkP=M
+    M_2-bM_1=(M+kP_b)-b(kP)= M+k(bP)-bkP=M
 \]
-berechnen kann. Eine dritte Person Eve, die die Nachrichten $M_1$ und $M_2$ abfängt, kann nur durch Lösen des DL-Problems $b$ aus den öffentlichen Informationen $P$ und $B$ berechnen. Wenn sie $b$ nicht errechnen kann, ist das zugrunde liegende DL Problem praktisch nicht effizient lösbar.
+einfach durchführen. Eine dritte Person Eve, die die Nachrichten $M_1$ und $M_2$ abfängt, kann nur durch Lösen des DL-Problems $b$ aus den öffentlichen Informationen $P$ und $P_b$ berechnen. Wenn sie $b$ nicht errechnen kann, ist das zugrunde liegende DL Problem praktisch nicht effizient lösbar.
 
-Wenn Alice das selbe $k$ zweimal verwendet, ist $M_1'=kP=M_1$. Eve kann das Wissen nutzen, um $M$ zu berechnen indem sie $M_2'-M_2= M'-bM_1'-(M-bM_1)=M'-M$ berechnet. Wenn Eve nun Wissen über $M$ erhält, kann sie dadurch auch automatisch $M'$ berechnen und alle weiteren Nachrichten die anschließend mit $k$ verschlüsselt werden.
+Wenn Alice dasselbe $k$ zweimal verwendet, ist $M_1'=kP=M_1$. Eve kann das Wissen nutzen, um $M$ zu berechnen, indem sie $M_2'-M_2= (M'+kP_b)-(M+kP_b)=M'-M$ rechnet. Wenn Eve nun eine der beiden Nachrichten entschlüsselt, kann daraus die andere Nachricht und alle weiteren Nachrichten die mit $k$ verschlüsselt werden, bestimmt werden.
 \begin{bemerkung}
-    In praktischen Anwendungen werden asymmetrische Verfahren in der
-    Regel nicht zur direkten Verschlüsselung längerer Nachrichten
-    verwendet. Stattdessen wird ein gemeinsames Geheimnis erzeugt,
-    aus dem mit einer Hashfunktion ein symmetrischer Schlüssel abgeleitet wird (vgl. \cite[S.~291]{guneysu24}). Soll aber direkt eine Nachricht gesendet werden, so muss diese erst kodiert und dann auf einen Kurvenpunkt abgebildet werden.
+    In praktischen Anwendungen werden asymmetrische Verfahren in der Regel nicht zur direkten Verschlüsselung längerer Nachrichten verwendet. Stattdessen wird ein gemeinsames Geheimnis erzeugt, aus dem mit einer Hashfunktion ein symmetrischer Schlüssel abgeleitet wird (vgl.~\cite[S.~291]{guneysu24}). Soll aber direkt eine Nachricht gesendet werden, so muss diese erst kodiert und dann auf einen Kurvenpunkt abgebildet werden.
 \end{bemerkung}
 
-\subsection{Digitaler Signatur Algorithmus}
+\subsection{Elliptischer Kurven Signaturalgorithmus}
 Neben der Verschlüsselung von Nachrichten sind digitale Signaturen
 ein wichtiger Bestandteil der Kryptographie. Der Elliptic Curve Digital
 Signature Algorithm, kurz ECDSA, ermöglicht es, die Authentizität und
@@ -190,7 +171,7 @@ nach der Signierung nicht verändert wurde.
 Sei $E$ eine elliptische Kurve über dem endlichen Körper $\mathbb F_q$ und sei $P\in E(\mathbb F_q)$ ein Punkt großer Primzahlordnung $n$.
 Alice wählt einen privaten Schlüssel $a\in\{1,\dots,n-1\}$ und berechnet den öffentlichen Schlüssel $Q=aP$. Es werden folgende Informationen veröffentlicht
 \[
-    \mathbb{F}_q,\quad E,\quad r,\quad G, \quad P.
+    \mathbb{F}_q,\quad E,\quad P,\quad n, \quad Q.
 \]
 Möchte Alice eine Nachricht $m$ signieren, geht sie wie folgt vor:
 \begin{enumerate}
@@ -204,17 +185,17 @@ Die digitale Signatur besteht aus dem Paar
 \[
     (r,s).
 \]
-Um die Signatur zu verifizieren geht Bob wie folgt vor:
+Um die Signatur zu verifizieren, geht Bob wie folgt vor:
 \begin{enumerate}
-    \item Er berechnet ebenfalls den Hashwert $z=h(m)$ sowie $w=s^{-1}\bmod n$.
-    \item Dannach bestimmt er $u_1=s^zw\bmod r$ und $u_2=s^rw\bmod n$.
-    \item Er berechnet den Punkt $V=u_1P+u_2Q=(x_V,y_V)$.
-    \item Wenn $R=\mathcal{O}$ so ist die Unterschrift ungültig.
-    \item Die Singatur ist gültig, wenn $x_V\bmod n=r$ gilt.
+    \item Bob prüft ob \(1\leq r,s\leq n-1\) gilt.
+    \item Er berechnet ebenfalls wie beim Signieren den Hashwert $z=h(m)$ sowie $w=s^{-1}\bmod n$.
+    \item Danach bestimmt er $u_1=z w\bmod n$ und $u_2=r w\bmod n$.
+    \item Er berechnet den Punkt $V=u_1P+u_2Q=(x_V,y_V)$. Falls $V=\mathcal O$, ist die Signatur ungültig.
+    \item Die Signatur ist gültig, wenn $x_V\bmod n=r$ gilt.
 \end{enumerate}
 Die Korrektheit folgt aus
 \[
-    V=u_1P+u_2Q=s^{-1}zP+s^{-1}rQ=s^{-1}(zP+arG)=s^{-1}(z+ar)P=kP=R
+    V=u_1P+u_2Q=zwP+rwQ=zs^{-1}P+rs^{-1}Q =s^{-1}(zP+arP)=s^{-1}(z+ar)P=kP=R.
 \]
 Damit besitzt $V$ dieselbe $x$-Koordinate wie $R$, sodass
 $x_V\bmod n=r$ gilt.
@@ -226,23 +207,21 @@ $P$ erzeugte Untergruppe einer elliptischen Kurve anwenden.
 Dies wird zunächst an zwei Beispielen veranschaulicht. Anschließend
 wird mit dem MOV-Algorithmus ein Angriff betrachtet, der das
 diskrete Logarithmusproblem für geeignete Kurven auf ein
-Problem in der multiplikativen Gruppe eines endlichen Erweiterungskörper zurückführt.
+Problem in der multiplikativen Gruppe eines endlichen Erweiterungskörpers zurückführt.
 
 Die Darstellung der allgemeinen Verfahren orientiert sich an
-Washington \cite[S.~146--153]{washington08} sowie Güneysu,
-Paar und Pelzl \cite[S.~256]{guneysu24}. Für den beim
+Washington~\cite[S.~146--153]{washington08} sowie Güneysu,
+Paar und Pelzl~\cite[S.~256]{guneysu24}. Für den beim
 Pohlig-Hellman-Verfahren verwendeten chinesischen Restsatz
-werden Karpfinger \cite[S.~90]{karpf24} und Werner
-\cite[S.~114--116]{werner02} herangezogen. Die Darstellung
-des MOV-Algorithmus folgt Washington
-\cite[S.~156--157]{washington08} und \cite[S.~83--89]{werner02}.
+werden Karpfinger~\cite[S.~90]{karpf24} und Werner~\cite[S.~114--116]{werner02} herangezogen. Die Darstellung
+des MOV-Algorithmus folgt Washington~\cite[S.~156--157]{washington08} und~\cite[S.~83--89]{werner02}.
 
 \subsection{Allgemeine Methoden}
-In Abschnitt~\ref{baby-step-giant-step} wurde der Baby Step Giant Step Algorithmus verwendet nun soll dieser nochmal an einem Beispiel für elliptische Kurven aufgegriffen werden.
+In Abschnitt~\ref{baby-step-giant-step} wurde der Baby-Step-Giant-Step Algorithmus verwendet. Nun soll dieser erneut an einem Beispiel für elliptische Kurven aufgegriffen werden.
 \begin{beispiel}
-    Es wird erneut das Beispiel aus Kapitel 4 aufgegriffen, aber es wird angenommen, dass die Gruppenordnung unbekannt sei. Sei $G=E(\mathbb{F}_{17})$, wobei $E$ gegeben ist durch $y^2=x^3+2x+2$. Sei $P=(0,6)$ und $Q=(3, 16)=kP$ nach dem Satz von Hasse \ref{def:hasse-schranke} kann eine obere Schranke ausgerechnet werden
+    Es wird erneut das Beispiel aus Kapitel 4 aufgegriffen, aber es wird angenommen, dass die Gruppenordnung unbekannt sei. Sei $G=E(\mathbb{F}_{17})$, wobei $E$ gegeben ist durch $y^2=x^3+2x+2$. Sei $P=(0,6)$ und $Q=(3, 16)=kP$ nach dem Satz von Hasse~\ref{def:hasse-schranke} kann eine obere Schranke ausgerechnet werden
     \[
-        \#E(\mathbb{F}_q)\leq 17+1+ 2\sqrt 17< \sqrt{27}
+        \#E(\mathbb{F}_{17})\leq 17+1+ 2\sqrt 17< 27
     \]
     also \(\#E(\mathbb{F}_q)\leq 26\). Daher sei $m=\lceil \sqrt{26}\rceil=6$. Die Punkte $iP$ für $1\leq i< 6$ sind
     \[
@@ -250,26 +229,21 @@ In Abschnitt~\ref{baby-step-giant-step} wurde der Baby Step Giant Step Algorithm
     \]
     Anschließend werden die Giant Steps $Q-jmP$ berechnet für $j=0,1,2,3,4,5$
     \[
-        (3,16),(13, 10),(0, 6),(10, 6),(5,16),(9,1).
+        (3,16),(13,10),(0, 6),(10,6),(5,16),(9,1).
     \]
-    Es wird bei $j=2$ beendet, da der Punkt mit $1P$ übereinstimmt. Nun kann k einfach nachgerechnet werden,
+    Es wird bei $j=2$ beendet, da der Punkt mit $1P$ übereinstimmt. Nun kann $k$ einfach nachgerechnet werden
     \[
-        Q=(30,40)\equiv (13,6)=kP=(1+2\cdot6)P= 13P
+        Q=(3,16)=(1+2\cdot6)P= 13P
     \]
-    und damit ist $k=13$ der gesuchte diskrete Logarithmus.
-    Alles wurde mit Hilfe von \ref{app:pythonprogramm}, die Konsolenausgabe ist in \ref{fig:python-2}.
+    und damit ist $k=13$ der gesuchte diskrete Logarithmus. Alles wurde mit Hilfe von~\ref{app:pythonprogramm} berechnet.
 \end{beispiel}
-Nun wird das Pohlig Hellmann Verfahren aus Kapitel 2 \ref{pohlig-hellman} ebenfalls für elliptische Kurven ausgeführt.
+Nun wird das Pohlig-Hellman Verfahren aus Kapitel 2~\ref{pohlig-hellman} ebenfalls für elliptische Kurven ausgeführt.
 \begin{beispiel}
-    Sei $G=E(\mathbb{F}_{599})$ für die elliptische Kurve $E\colon y^2=x^3+1$. Gegeben seien die Punkte $P=(60,19)$ und $Q=(277,239)$. Das Python-Programm liefert $\operatorname{ord}(P)=600$. Gesucht ist
-    ein $k\in\{0,\dots,599\}$ mit $Q=kP$. Wegen $600=2^3\cdot3\cdot5^2$ bestimmen wir wie in Kapitel~2 zunächst $k$ modulo $8$, $3$ und $25$. Alle Koordinatenrechnungen erfolgen modulo $599$.
-
+    Sei $G=E(\mathbb{F}_{599})$ für die elliptische Kurve $E\colon y^2=x^3+1$. Gegeben seien die Punkte $P=(60,19)$ und $Q=(277,239)$. Das Python-Programm liefert $\operatorname{ord}(P)=600$. Gesucht ist ein $k\in\{0,\dots,599\}$ mit $Q=kP$. Es kann die Ordnung wie in Kapitel~2 in ihre Primfaktoren $600=2^3\cdot3\cdot5^2$ zerlegt werden. Anschließend wird separat $k$ modulo $8$, $3$ und $25$ bestimmt. Alle Koordinatenrechnungen erfolgen modulo $599$.
     \smallskip
     \noindent\textbf{Bestimmung von $k\bmod 8$.}
-    Wir schreiben $k\equiv z_0+2z_1+4z_2\pmod 8$
-    mit $z_i\in\{0,1\}$. Der Punkt
-    $R=\frac{600}{2}P=300P=(598,0)$ hat die Ordnung $2$.
-    Die Berechnung ergibt $300Q=\mathcal{O}=0R$, also $z_0=0$.
+    Es kann $k\equiv z_0+2z_1+4z_2\pmod 8$ geschrieben werden
+    mit $z_i\in\{0,1\}$. Der Punkt $R=\frac{600}{2}P=300P=(598,0)$ hat die Ordnung $2$. Die Berechnung ergibt $300Q=\mathcal{O}=0R$, also $z_0=0$.
     Die weiteren Ziffern ergeben sich aus
     \[
         \begin{aligned}
@@ -290,17 +264,16 @@ Nun wird das Pohlig Hellmann Verfahren aus Kapitel 2 \ref{pohlig-hellman} ebenfa
 
     \smallskip
     \noindent\textbf{Bestimmung von $k\bmod 25$.}
-    Wir schreiben $k\equiv z_0+5z_1\pmod{25}$
-    mit $z_0,z_1\in\{0,\dots,4\}$ und setzen
+    Es ist $k\equiv z_0+5z_1\pmod{25}$
+    mit $z_0,z_1\in\{0,\dots,4\}$. Nun setzt man
     $R=\frac{600}{5}P=120P=(84,179)$.
     Aus $120Q=(84,179)=R$ folgt $z_0=1$.
-    Anschließend berechnen wir
+    Anschließend wird
     \[
         Q_1=\frac{600}{5^2}(Q-P)
-        =24(130,129)=(491,465)=3R.
+        =24(130,129)=(491,465)=3R
     \]
-    Daher ist $z_1=3$ und damit
-    $k\equiv1+5\cdot3=16\pmod{25}$.
+    berechnet. Daher ist $z_1=3$ und damit $k\equiv1+5\cdot3=16\pmod{25}$.
 
     \smallskip
     \noindent\textbf{Zusammensetzen der Ergebnisse.}
@@ -317,31 +290,31 @@ Nun wird das Pohlig Hellmann Verfahren aus Kapitel 2 \ref{pohlig-hellman} ebenfa
 \end{beispiel}
 
 \subsection{MOV-Algorithmus}
-Beim MOV-Algorithmus handelt es sich um eine spezielle Methode, die das diskrete Logarithmusproblem auf elliptischen Kurven in  $E(\mathbb{F}_q)$  mithilfe der Weil-Paarung auf das DL-Problem in der Gruppe $\mathbb{F}_{q^m}^\times$ für ein gewisses $m\in\mathbb{N}$ reduziert. Ist der Erweiterungsgrad $m$ hinreichend klein, kann diese Reduktion effizienteren Angriff auf das ursprüngliche DL-Problem ermöglichen. Insbesondere supersinguläre elliptische Kurven sind aufgrund ihrer kleinen Einbettungsgrade für diesen Angriff anfällig.
+Beim MOV-Algorithmus handelt es sich um eine spezielle Methode, die das diskrete Logarithmusproblem auf elliptischen Kurven in  $E(\mathbb{F}_q)$  mithilfe der Weil-Paarung auf das DL-Problem in der Gruppe $\mathbb{F}_{q^m}^\times$ für ein gewisses $m\in\mathbb{N}$ reduziert. Ist der Erweiterungsgrad $m$ hinreichend klein, kann diese Reduktion einen effizienteren Angriff auf das ursprüngliche DL-Problem ermöglichen. Insbesondere supersinguläre elliptische Kurven sind aufgrund ihrer kleinen Einbettungsgrade für diesen Angriff anfällig.
 
-Es wird für doe Reduktion die sogennante Weil-Paarung verwendet. Sei hierzu $p=\operatorname{char}(\mathbb{F}_q)$ und $n\in\mathbb{N}$ mit $\gcd(n,p)=1$. Die Weil-Paarung ist eine bilineare, nicht ausgeartete Abbildung
+Es wird für die Reduktion die sogenannte Weil-Paarung verwendet. Sei hierzu $p=\operatorname{char}(\mathbb{F}_q)$ und $n\in\mathbb{N}$ mit $\gcd(n,p)=1$. Die Weil-Paarung ist eine bilineare, nicht ausgeartete Abbildung
 \[
 e_n:E[n]\times E[n]\rightarrow \mu_n(\overline{\mathbb{F}}_q),
 \]
 wobei $\mu_n(\overline{\mathbb{F}}_q)$ die Gruppe der $n$-ten Einheitswurzeln bezeichnet. Für ausführlichere Informationen über die Eigenschaften siehe~\cite[S.~83]{werner02}. 
 
-Nach Theorem~\ref{theo:torsionsstruktur} gilt $E[n]\cong\mathbb{Z}_n \oplus \mathbb{Z}_n$. Somit exestiert es einen Punkt $P\in E[n]$ der Ordnung $n$. Aufgrund von der Bilinearität von $e_n$ ist Menge
+Nach Theorem~\ref{theo:torsionsstruktur} gilt $E[n]\cong\mathbb{Z}_n \oplus \mathbb{Z}_n$. Somit existiert ein Punkt $P\in E[n]$ der Ordnung $n$. Aufgrund der Bilinearität von $e_n$ ist die Menge
 \[
 \{e_n(P,Q)| Q\in E[n]\}
 \]
 eine Untergruppe von $\mu_n(\overline{\mathbb{F}}_q)$. Sei nun $d=\#\{e_n(P,Q)| Q\in E[n]\}$, dann gilt nach dem Satz von Lagrange~\ref{satz:lagrange} $d\mid n$. Somit folgt für jedes $Q\in E[n]$ 
 \[
-    1=e_n(P,Q)^d=e_n(dP,Q).
+    1=e_n{(P,Q)}^d=e_n(dP,Q).
 \]
 Aufgrund der Nichtausgeartetheit der Weil-Paarung folgt $dP=\mathcal{O}$. Da $P$ die Ordnung $n$ besitzt, folgt daraus $n\mid d$. Zusammen mit $d\mid n$ ergibt sich $d=n$.
 Damit ist die Abbildung $e_n(P,-)$ surjektiv.
 
-Sei nun $P\in E(\mathcal{F}_q)$ ein Punkt der Ordnung $n$ mit $\gcd(n,p)=1$ und $Q=kP\in\langle P \rangle$ gegeben, wobei $p=\operatorname{char}(\mathbb{F}_q)$ ist. Gesucht ist der diskrete Logarithmus $k$ von $Q$ zur Basis $P$.
+Sei nun $P\in E(\mathbb{F}_q)$ ein Punkt der Ordnung $n$ mit $\gcd(n,p)=1$ und $Q=kP\in\langle P \rangle$ gegeben, wobei $p=\operatorname{char}(\mathbb{F}_q)$ ist. Gesucht ist der diskrete Logarithmus $k$ von $Q$ zur Basis $P$.
 
 Der Algorithmus läuft nun wie folgt ab
 \begin{enumerate}
     \item Wähle ein $m$, sodass \(E[n]\subseteq E(\mathbb{F}_{q^m})\).
-    \item Berechne einen Punkt $R\in E{n}$, sodass $a=e_n(P,R)$ eine primitive $n$-te Einheitswurzel ist. Insbesondere hat $a$ die Ordnung $n$ in $\mu_n(\overline{\mathbb{F}}_q)$.
+    \item Berechne einen Punkt $R\in E[n]$, sodass $a=e_n(P,R)$ eine primitive $n$-te Einheitswurzel ist. Insbesondere hat $a$ die Ordnung $n$ in $\mu_n(\overline{\mathbb{F}}_q)$.
     \item Berechne $b=e_n(Q,R)$.
     \item Löse das DL-Problem $b=a^k $ in $\mathbb{F}_{q^m}^\times$.
 \end{enumerate}
@@ -353,7 +326,7 @@ Der Algorithmus läuft nun wie folgt ab
     \[
     e_n(P,-): E[n]\rightarrow \mu_n(\overline{\mathbb{F}}_q)
     \]
-    surjektiv. Daraus folgt, dass ein Punkt $R\in E[n]$ exestiert, dessen Bild unter $e_n(P,-)$ eine primitive $n$-te Einheitswurzel ist. Wegen der Galois-Äquivarenz und da $E[n]\subseteq E(\mathbb{F}_{q^m})$, gilt 
+    surjektiv. Daraus folgt, dass ein Punkt $R\in E[n]$ existiert, dessen Bild für $a=e_n(P,R)$ eine primitive $n$-te Einheitswurzel ist. Wegen der Galois-Äquivarianz und da $E[n]\subseteq E(\mathbb{F}_{q^m})$, gilt 
     \[
         a=e_n(P,R)\in\mathbb{F}_{q^m}^{\times}
         \quad\text{und}\quad
@@ -361,7 +334,7 @@ Der Algorithmus läuft nun wie folgt ab
     \]
     Wegen der Bilinearität der Weil-Paarung und $Q=kP$ folgt
     \[
-    b=e_n(Q,R)=e_n(kP,R)=e_n(P,R)^k=a^k
+    b=e_n(Q,R)=e_n(kP,R)=e_n{(P,R)}^k=a^k
     \]
     Da $a$ eine primitive $n$-te Einheitswurzel ist, besitzt die Untergruppe
     $\langle a\rangle\subseteq\mathbb{F}_{q^m}^{\times}$
@@ -376,7 +349,7 @@ mit $a\geq 1$ und $\gcd(n',p)=1$ darstellen. Setzt man nun $P_1=n'P$ und $P_2=p^
 \[
 n'Q=kn'P=kP_1 \quad\text{und}\quad p^a Q=kp^a P=kP_2 
 \]
-zu lösen. Dadurch erhält man die Restklassen von $k$ modulo $p^a$ und modulo $n'$. Da $\gcd(p^a,n')=1$ gilt, folgt mit dem Chinesischen Restsatz, dass auch die Restklasse von $k$ modulo $n$ bekannt ist. Falls $p$ klein genug ist, könnte das erste DL-Problem mit dem Verfahren von Pohlig-Hellman gelöst werden. Auf das zweite könnte dann wieder der MOV-Algorithmus anwendet werden, da die Ordnung $n'$ teilerfremd zur Charakteristik $p$ ist.
+zu lösen. Dadurch erhält man die Restklassen von $k$ modulo $p^a$ und modulo $n'$. Da $\gcd(p^a,n')=1$ gilt, folgt mit dem Chinesischen Restsatz, dass auch die Restklasse von $k$ modulo $n$ bekannt ist. Falls $p$ klein genug ist, könnte das erste DL-Problem mit dem Verfahren von Pohlig-Hellman gelöst werden. Auf das zweite könnte dann wieder der MOV-Algorithmus angewendet werden, da die Ordnung $n'$ teilerfremd zur Charakteristik $p$ ist.
 
 Es soll nun untersucht werden, warum supersinguläre Kurven anfällig für den MOV-Algorithmus sind. Nach dem Satz von Hasse gilt für die Frobenius-Spur
 \[
@@ -386,7 +359,7 @@ Nach Proposition~\ref{prop:spurkriterium} ist eine elliptische Kurve $E$ über $
 \begin{satz}
     Sei $q=p^r$ mit $p$ prim. Dann gelten die folgenden Aussagen
 \begin{enumerate}
-    \item Für jedes $t\in [-2\sqrt{q},2\sqrt{q}]$, das nicht durch $p$ teilbar ist, exestiert eine elliptische Kurve $E$ über $\mathbb{F}_q$ mit $t=q+1-\#E(\mathbb{F}_q)$
+    \item Für jede ganze Zahl $t\in [-2\sqrt{q},2\sqrt{q}]$, das nicht durch $p$ teilbar ist, existiert eine elliptische Kurve $E$ über $\mathbb{F}_q$ mit $t=q+1-\#E(\mathbb{F}_q)$
     \item Ist umgekehrt $E(\mathbb{F}_q)$ supersinguläre, so nimmt $t=q+1-\#E(\mathbb{F}_q)$ einen der Werte 
     \[
     0,\pm\sqrt{q},\pm\sqrt{2q},\pm\sqrt{3q},\pm2\sqrt{q}
@@ -416,37 +389,36 @@ Die folgende Proposition gibt für $m\in\{1,\dots,6\}$ Erweiterungsgrade und ihr
         $d$ & $q+1$ & $\sqrt{q^3}\pm1$ & $q^2+1$ 
             & $q^3+1$ & $\sqrt{q}\mp 1$ \\
         \hline
-    \end{tabular}\label{tab:t-l-d}
+    \end{tabular}
 \end{table}
 \end{proposition}
 \begin{proof}
     Ein Beweis findet sich in~\cite[Table I, S.~85]{mov91}.
 \end{proof}
 
-Mithilfe der Proposition lässt sich der MOV-Algorithmus für supersinguläre elliptische Kurven erneut formulieren.
-Seien $P\in E(\mathbb{F}_q)$ ein Punkt der Ordnung $n$ mit $\gcd(n,p)=1$ und $Q=kP\in\langle P\rangle$ gegeben. Gesucht ist der diskrete Logarithmus $k$ von $Q$ zur Basis $P$.
+Mithilfe der Proposition lässt sich der MOV-Algorithmus für supersinguläre elliptische Kurven erneut formulieren. Seien $P\in E(\mathbb{F}_q)$ ein Punkt der Ordnung $n$ mit $\gcd(n,p)=1$ und $Q=kP\in\langle P\rangle$ gegeben. Gesucht ist der diskrete Logarithmus $k$ von $Q$ zur Basis $P$.
 \begin{enumerate}
-    \item Berechne $t=q+1-\#E(\mathbb{F}_q)$ und bestimme mit der obigen Tabelle ein $m$ mit $E[n]\Subset E(\mathbb{F}_{q^m})$ und den Exponenten $d$ der Gruppe $E(\mathbb{F}_{q^m})$.
+    \item Berechne $t=q+1-\#E(\mathbb{F}_q)$ und bestimme mit der obigen Tabelle ein $m$ mit $E[n]\subseteq E(\mathbb{F}_{q^m})$ und den Exponenten $d$ der Gruppe $E(\mathbb{F}_{q^m})$.
     \item Wähle einen beliebigen Punkt $R'\in E(\mathbb{F}_{q^m})$ und setze $R=\frac{d}{n}R'$.
     \item Berechne $a=e_n(P,R)$ und $b=e_n(Q,R)$.
     \item Löse das DL-Problem $b=a^{k'}$ in $\mathbb{F}_{q^m}^\times$.
-    \item Falls $k'P=Q$, so ist $k'=k$ der gesuchte diskrete Logarithmus. Andernfalls wiederhole den Algorithmus
+    \item Falls $k'P=Q$, so ist $k'\equiv k\bmod n$ der gesuchte diskrete Logarithmus. Andernfalls wiederhole den Algorithmus
     ab Schritt 2.
 \end{enumerate}
 \begin{proposition}
     Unter den genannten Voraussetzungen liefert der Algorithmus bei erfolgreichem Ablauf den diskreten Logarithmus von $Q$ zur Basis $P$ modulo $n$.
 \end{proposition}
 \begin{proof}
-     Da $P\in E(\mathbb{F}_{q^m})$ die Ordnung $n$ besitzt und $d$ der Exponent der Gruppe $E(\mathbb{F}_{q^m})$ ist, gilt $n\mid d$. Somit ist der Punkt $R=\frac{d}{n}R'$ in Schritt zwei wohldefiniert ist. Wegen
+     Da $P\in E(\mathbb{F}_{q^m})$ die Ordnung $n$ besitzt und $d$ der Exponent der Gruppe $E(\mathbb{F}_{q^m})$ ist, gilt $n\mid d$. Somit ist der Punkt $R=\frac{d}{n}R'$ in Schritt zwei wohldefiniert. Wegen
     \[
     nR=dR'=\mathcal{O}
     \]
-    folgt $R\in E[n]$. Daher lässt sich die Weil-Paarung berechnen. Wenn $a=e_n(P,R)$ eine primitive Einheitswurzel ist, so ist die Relation $k'\equiv k\bmod n$ erfüllt, womit das DL-Problem gelöst ist. Anderfalls gilt $b=a^k$ in $\mathbb{F}_{q^m}^\times$ für den diskreten Logarithmus $k$. Sei nun $\alpha$ die Ordnung von $a$. Durch das Lösen des DL-Problems $b=a^{k'}$ erhält man \(k'\equiv k\pmod{\alpha}\). Ist $a$ eine primitive $n$-te Einheitswurzel, so gilt $\alpha=n$ und somit
+    folgt $R\in E[n]$. Daher lässt sich die Weil-Paarung berechnen. Wenn $a=e_n(P,R)$ eine primitive Einheitswurzel ist, so ist die Relation $k'\equiv k\bmod n$ erfüllt, womit das DL-Problem gelöst ist. Andernfalls gilt $b=a^k$ in $\mathbb{F}_{q^m}^\times$ für den diskreten Logarithmus $k$. Sei nun $\alpha$ die Ordnung von $a$. Durch das Lösen des DL-Problems $b=a^{k'}$ erhält man \(k'\equiv k\pmod{\alpha}\). Ist $a$ eine primitive $n$-te Einheitswurzel, so gilt $\alpha=n$ und somit
     \[
         k'\equiv k\pmod n.
     \]
     Da $P$ ebenfalls die Ordnung $n$ besitzt, folgt daraus $k'P=Q$. Besitzt $a$ dagegen eine kleinere Ordnung,
-    so wird lediglich die Restklasse von $k$modulo $\alpha$ bestimmt. Wenn nun ein Vertrer $k'$ diser Restklasse gewhält wird, kann der Fall $k'P\neq Q$ auftreten. In diesem Fall muss der Algorithmus mit einem neuen $R'$ wiederholt werden.
+    so wird lediglich die Restklasse von $k$ modulo $\alpha$ bestimmt. Wenn nun ein Vertreter $k'$ dieser Restklasse gewählt wird, kann der Fall $k'P\neq Q$ auftreten. In diesem Fall muss der Algorithmus mit einem neuen $R'$ wiederholt werden.
 \end{proof}
 
 Es bleibt zu untersuchen, mit welcher Wahrscheinlichkeit der Algorithmus terminiert. Nach der vorherigen Proposition gilt
@@ -458,44 +430,42 @@ Da $n\mid d$ ist, bildet die Abbildung
 \[
     R'\longmapsto \frac{d}{n}R'
 \]
-
-Die Wahrscheinlichkeit, dass $a$ eine primitivte $n$-te Einheitswurzel ist und damit der Algorithmus teminiert, beträgt $\frac{\varphi(n)}{n}$, für die Eulersche $\varphi$-Funktion. Im Durschnitt werden $\frac{n}{\varphi(n)}$ Durchläufe benötigt. Für große $n$ gilt daher die Abschätzung
+die Gruppe $E(\mathbb F_{q^m})$ surjektiv auf $E[n]$ ab.
+Die Wahrscheinlichkeit, dass $a$ eine primitive $n$-te Einheitswurzel ist und damit der Algorithmus terminiert, beträgt $\frac{\varphi(n)}{n}$, für die Eulersche $\varphi$-Funktion. Im Durchschnitt werden $\frac{n}{\varphi(n)}$ Durchläufe benötigt. Für große $n$ gilt daher
 \[
-\frac{n}{\varphi(n)}\leq \log \log n, \quad n\geq 5
+\frac{n}{\varphi(n)}=\mathcal{O}(\log\log n),
 \]
-was für sehr große $n$ schnell klein wird. Zusammenfassend lässt sich sagen, dass in der multiplikativen Gruppe $\mathbb{F}_q^\times$ Algorithmen exestieren, die das DL-Problem schneller lösen als allgemeine Verfahren wie zum Beispiel das Pohlig-Hellman-Verfahren. Der MOV-Algorithmus löst also das DL-Problem in subexponentieller Zeit, weswegen diese Kurven für kryptographische Zwecke ungeeignet sind.
+was für sehr große $n$ nur langsam wächst. Zusammenfassend lässt sich sagen, dass in der multiplikativen Gruppe $\mathbb{F}_{q^m}^\times$ Algorithmen existieren, die das DL-Problem schneller lösen als allgemeine Verfahren wie zum Beispiel das Pohlig-Hellman-Verfahren. Der MOV-Algorithmus löst also das DL-Problem in subexponentieller Zeit, weswegen diese Kurven für kryptographische Zwecke ungeeignet sind.
 
 \section{Sicherheitsbetrachtung und praktische Konsequenzen}\label{sicherheitsbetrachtung}
 Die folgende Sicherheitsbetrachtung und die daraus abgeleiteten
-praktischen Konsequenzen stützen sich auf \cite[S.~32--34, 57, 78, 82--83]{bundesamt26}, \cite[S.~225]{buell24}, \cite[S.~199--202]{fuß25}, \cite[S.~89--95, 97--98, 104--109]{werner02}, \cite[S.~169]{washington08}, \cite[S.~6]{silverman06}, \cite{smart99} sowie \cite[S.~35--36]{nist23}.
+praktischen Konsequenzen stützen sich auf~\cite[S.~32--34, 57, 78, 82--83]{bundesamt26},~\cite[S.~225]{buell24},~\cite[S.~199--202]{fuß25},~\cite[S.~89--95, 97--98, 104--109]{werner02},~\cite[S.~169]{washington08},~\cite[S.~6]{silverman06},~\cite{smart99} sowie~\cite[S.~35--36]{nist23}.
 \subsection{Warum elliptische Kurven verwenden?}
 Die Sicherheit der betrachteten Verfahren beruht auf der
 Annahme, dass die zugrunde liegenden mathematischen Probleme
 bei geeigneter Parameterwahl praktisch nicht effizient
 gelöst werden können. Für die Wahl eines Verfahrens sind
-neben dem angestrebten Sicherheitsniveau auch die Parametergrößen und der Implementierungsaufwand relevant. Es gibt daher aus einer allgemeinen Sicherheitsbetrachtung keinen Grund ein Verfahren dem Anderen vorzuziehen. Für geeignete elliptische Kurven sind keine wesentlich schnelleren klassischen Verfahren als generische Algorithmen mit einem Aufwand von ungefähr \(\sqrt{|G|}\) Gruppenoperationen bekannt. Ein wesentlicher Vorteil elliptischer Kurven besteht darin, dass für ein vergleichbares Sicherheitsniveau wesentlich kleinere Parameter benötigt werden. Tabelle~\ref{fig:rechenaufwand-dl-problem} zeigt beispielsweise, dass für einen Rechenaufwand von ungefähr $2^{128}$ für das ECDLP eine Bitlänge von etwa $256$ Bit angesetzt wird, während für Faktorisierungsprobleme beziehungsweise diskrete Logarithmen in $\mathbb F_p^\ast$ Größenordnungen von etwa $3200$ Bit erforderlich sind. Für noch größere Schlüssellängen verschiebt sich das Verhältnis weiter zugunsten elliptischer Kurven.
+neben dem angestrebten Sicherheitsniveau auch die Parametergrößen und der Implementierungsaufwand relevant. Für geeignete elliptische Kurven sind keine wesentlich schnelleren klassischen Verfahren als generische Algorithmen mit einem Aufwand von ungefähr \(\sqrt{|G|}\) Gruppenoperationen bekannt. Ein wesentlicher Vorteil elliptischer Kurven besteht darin, dass für ein vergleichbares Sicherheitsniveau wesentlich kleinere Parameter benötigt werden. Abbildung~\ref{fig:rechenaufwand-dl-problem} zeigt beispielsweise, dass für einen Rechenaufwand von ungefähr $2^{128}$ für das ECDLP eine Bitlänge von etwa $256$ Bit angesetzt wird, während für Faktorisierungsprobleme beziehungsweise diskrete Logarithmen in $\mathbb F_p^\ast$ Größenordnungen von etwa $3200$ Bit erforderlich sind. Für noch größere Schlüssellängen verschiebt sich das Verhältnis weiter zugunsten elliptischer Kurven.
 Eine praktische Folge der kleineren Parameter ist ein geringerer Speicher- und Rechenbedarf. Wird eine elliptische Kurve über einem Primkörper $\mathbb F_p$ mit einer etwa $256$ Bit langen Primzahl $p$ verwendet, so besitzen auch die Koordinaten der Kurvenpunkte höchstens etwa $256$ Bit. Nach der Hasse-Schranke liegt zudem die Gruppenordnung $\#E(\mathbb F_p)$ in derselben Größenordnung wie $p$. Auch die benötigten Skalarmultiplikationen können effizient durchgeführt werden. Für einen $256$ Bit langen Skalar benötigt das Double-and-Add-Verfahren ungefähr $256$ Punktverdopplungen und bei annähernd gleichverteilten Bits im Mittel etwa $128$ zusätzliche Punktadditionen. Die Kombination aus vergleichsweise kleinen Operanden und effizienter Skalarmultiplikation ist ein wesentlicher praktischer Vorteil elliptischer Kurven.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\linewidth]{rechenaufwand_dl_problem.png}
-    \caption{Vergleich des Rechenaufwands für das ECDLP und für
-        Faktorisierungsprobleme beziehungsweise diskrete Logarithmen in
-        $\mathbb F_p^\ast$, nach \cite[S.~34, Tabelle~2.3]{bundesamt26}.}
-    \label{fig:rechenaufwand-dl-problem}
+    \includegraphics[width=0.4\linewidth]{rechenaufwand_dl_problem.png}
+    \captionsetup{justification=centering}
+    \caption{Vergleich des Rechenaufwands für das ECDLP und Faktorisierungsproblem/DLP in $\mathbb F_p^\ast$\\[0.3em]
+        {\footnotesize Quelle: Nach BSI~\cite[S.~34, Tabelle~2.3]{bundesamt26}}}\label{fig:rechenaufwand-dl-problem}
 \end{figure}
 
-
 \subsection{Geeignete elliptische Kurven}
-Nicht jede elliptische Kurve ist für kryptographische Anwendungen geeignet. Es sollen eine elliptische Kurve $E(\mathbb{F}_q)$ und ein Punkt $P\in E(\mathbb{F}_q)$ so gewählt werden, dass das zugehörige diskrete Logarithmusproblem praktisch nicht lösbar ist. Sei $P\in E(\mathbb{F}_q)$ ein Punkt der Ordnung $n= \operatorname{ord}(P)$. Generische Angriffe auf das ECDLP besitzen einen Aufwand von ungefähr $\mathrm{O}(\sqrt{n})$. Da $n\leq \#E(\mathbb{F}_q)$ gilt, folgt aus dem Satz von Hasse
+Nicht jede elliptische Kurve ist für kryptographische Anwendungen geeignet. Es sollen eine elliptische Kurve $E$ über $\mathbb{F}_q$ und ein Punkt $P\in E(\mathbb{F}_q)$ so gewählt werden, dass das zugehörige diskrete Logarithmusproblem praktisch nicht lösbar ist. Sei $P\in E(\mathbb{F}_q)$ ein Punkt der Ordnung $n= \operatorname{ord}(P)$. Generische Angriffe auf das ECDLP besitzen einen Aufwand von ungefähr $\mathrm{O}(\sqrt{n})$. Da $n\leq \#E(\mathbb{F}_q)$ gilt, folgt aus dem Satz von Hasse
 \[
-    n\leq q+1+2\sqrt{q}=(\sqrt{q}+1)^2.
+    n\leq q+1+2\sqrt{q}={(\sqrt{q}+1)}^2.
 \]
 Für kryptographische Anwendungen wird die Ordnung $n$ so gewählt, dass sie von derselben Größenordnung wie $q$ ist. Setzt man $b=\log_2 q$, so gilt $q=2^b$ und damit
 \[
     \sqrt{q}=2^{b/2}.
 \]
-Der Aufwand wächst somit exponentiell mit der Bitlänge von $q$.
+Der Aufwand generischer klassischer Angriffe wächst somit exponentiell mit der Bitlänge von $q$.
 
 Daraus folgt zunächst, dass die verwendete Untergruppe eine ausreichend große Ordnung besitzen muss. Das zuvor betrachtete Baby-Step-Giant-Step-Verfahren zeigt dies unmittelbar, da es das ECDLP mit einem Aufwand von ungefähr $\mathrm{O}(\sqrt{n})$ Gruppenoperationen lösen kann.
 
@@ -521,15 +491,13 @@ In diesem Fall gilt für die Frobenius-Spur
 \[
     t=p+1-\#E(\mathbb F_p)=1.
 \]
-Für solche Kurven existieren spezielle Angriffe von Satoh, Araki, Smart und Semaev die das ECDLP in $\mathrm{O}(\log p)$ lösen. Aus Platzgründen wird der zugrundeliegende Angriff in dieser Arbeit nicht behandelt, eine Darstellung findet sich in \cite[S.~89--95]{werner02} und \cite{smart99}.Für die betrachteten kryptographischen Anwendungen werden solche Kurven ausgeschlossen. Über einem Primkörper wird daher gefordert, dass
+Für solche Kurven existieren spezielle Angriffe von Satoh, Araki, Smart und Semaev, die das ECDLP in $\mathrm{O}(\log p)$ lösen. Aus Platzgründen wird der zugrundeliegende Angriff in dieser Arbeit nicht behandelt, eine Darstellung findet sich in~\cite[S.~89--95]{werner02} und~\cite{smart99}. Für die betrachteten kryptographischen Anwendungen werden solche Kurven ausgeschlossen. Über einem Primkörper wird daher gefordert, dass
 \[
-    \#E(\mathbb{F}_p)\neq p.
+    \#E(\mathbb{F}_p)\neq p
 \]
-Um die Anforderungen überprüfen zu können, muss die Gruppenordnung $\#E(\mathbb{F}_q)$ bekannt sein. Sie lässt
-sich wie das vorherige Kapitel gezeigt hat mit einem Punktzählverfahren wie dem Schoof-Algorithmus effizient bestimmen. Anschließend wird untersucht, ob sie einen ausreichend großen Primfaktor $n$ besitzt, der als Ordnung der verwendeten Untergruppe geeignet ist.
+gilt. Um die Anforderungen überprüfen zu können, muss die Gruppenordnung $\#E(\mathbb{F}_q)$ bekannt sein. Sie lässt sich, wie das vorherige Kapitel gezeigt hat, mit einem Punktzählverfahren wie dem Schoof-Algorithmus effizient bestimmen. Anschließend wird untersucht, ob sie einen ausreichend großen Primfaktor $n$ besitzt, der als Ordnung der verwendeten Untergruppe geeignet ist.
 
-Nach dem Satz von Lagrange~\ref{satz:lagrange} teilt
-$n=\operatorname{ord}(P)$ die Gruppenordnung $\#E(\mathbb{F}_q)$. Daher ist
+Nach dem Satz von Lagrange~\ref{satz:lagrange} teilt $n=\operatorname{ord}(P)$ die Gruppenordnung $\#E(\mathbb{F}_q)$. Daher ist
 \[
     h=\frac{\#E(\mathbb{F}_q)}{n}
 \]
@@ -552,7 +520,7 @@ Zusammen mit den Empfehlungen von NIST und BSI ergeben sich folgende Anforderung
           \]
           besitzen, wobei $n$ eine große Primzahl und $h$ ein kleiner,
           zu $n$ teilerfremder Kofaktor ist. NIST fordert für die dort
-          empfohlenen Kurven insbesondere $h\leq 2^{10}$ (vgl. \cite[~S.35]{nist23}).
+          empfohlenen Kurven insbesondere $h\leq 2^{10}$ (vgl.~\cite[~S.35]{nist23}).
 
     \item \textbf{Ausschluss anomaler Kurven:}
           Es soll
@@ -569,8 +537,7 @@ Zusammen mit den Empfehlungen von NIST und BSI ergeben sich folgende Anforderung
           \]
           Der Einbettungsgrad $m$ muss ausreichend groß sein, damit der
           MOV-Angriff das ECDLP nicht auf ein leichteres diskretes
-          Logarithmusproblem in einem kleinen Erweiterungskörper übertragen
-          kann. NIST fordert für die empfohlenen Kurven $m\geq 2^{10}$ (vgl. \cite[~S.35]{nist23}).
+          Logarithmusproblem in einem kleineren Erweiterungskörper übertragen kann. NIST fordert für die empfohlenen Kurven $m\geq 2^{10}$ (vgl.~\cite[~S.35]{nist23}).
 
     \item \textbf{Bekannte und geprüfte Gruppenordnung:}
           Die Gruppenordnung $\#E(\mathbb F_q)$ muss bekannt sein, damit die
@@ -600,11 +567,7 @@ Zusammen mit den Empfehlungen von NIST und BSI ergeben sich folgende Anforderung
                  & \quad 14441015993725554835256314039467401291.
         \end{split}
     \]
-    Die beiden Ziffernfolgen sind hierbei als eine
-    zusammenhängende Dezimalzahl zu lesen.
-    Die Parameter und ihre Erzeugung sind in
-    \cite[Abschnitt~3.2.1.3 und Anhang~C.2.1.1]{nist23}
-    beschrieben.
+    Die beiden Ziffernfolgen sind hierbei als eine zusammenhängende Dezimalzahl zu lesen. Die Parameter und ihre Erzeugung sind in~\cite[Abschnitt~3.2.1.3. und Anhang~C.2.1.1.]{nist23} beschrieben.
 
     Die Gruppenordnung ist die Primzahl
     \[
@@ -619,10 +582,5 @@ Zusammen mit den Empfehlungen von NIST und BSI ergeben sich folgende Anforderung
         h=\frac{\#E(\mathbb{F}_p)}{\operatorname{ord}(G)}
         =\frac{n}{n}=1.
     \]
-    Da $n$ eine Primzahl ist, bietet die Zerlegung der  Untergruppenordnung durch das Pohlig-Hellman-Verfahren
-    keinen Vorteil. Außerdem gilt $n\neq p$, sodass die Kurve nicht anomal ist. P-256 erfüllt auch die Anforderung an den Einbettungsgrad gemäß der NIST.
-
-0     Die Ordnung $n$ besitzt eine Bitlänge von $256$ Bit.
-    Generische Angriffe auf das ECDLP erfordern daher ungefähr $\sqrt{n}\approx 2^{128}$ Gruppenoperationen.
-    Dies entspricht einem klassischen Sicherheitsniveau von ungefähr $128$ Bit.
+    Da $n$ eine Primzahl ist, bietet die Zerlegung der  Untergruppenordnung durch das Pohlig-Hellman-Verfahren keinen Vorteil. Außerdem gilt $n\neq p$, sodass die Kurve nicht anomal ist. P-256 erfüllt gemäß der NIST auch die Anforderung an den Einbettungsgrad. Die Ordnung $n$ besitzt eine Bitlänge von $256$ Bit. Generische Angriffe auf das ECDLP erfordern daher ungefähr $\sqrt{n}\approx 2^{128}$ Gruppenoperationen. Dies entspricht einem klassischen Sicherheitsniveau von ungefähr $128$ Bit.
 \end{beispiel}

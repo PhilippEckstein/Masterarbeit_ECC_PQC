@@ -5,6 +5,7 @@
 \let\cleardoublepage\clearpage
 
 \begin{document}
+\raggedbottom
 \begin{titlepage}
     \begin{figure}[ht]
             \includegraphics[width=0.5\textwidth]{unistuttgart_logo_deutsch.jpg}
@@ -33,19 +34,22 @@
         \vfill
         \begin{figure}[ht]
             \includegraphics[width=0.7\textwidth]{ElliptischeKurven.png}
-            \captionsetup{labelformat=empty} %surpresses enumeration
-            \caption{Elliptische Kurve $\displaystyle y^{2}=x^{3}-2x+3$ über dem Körper der reellen Zahlen Quelle: Eigene Darstellung mit GeoGebra}
+           \captionsetup{justification=centering}
+            \caption[Elliptische Kurve über den reellen Zahlen]{%
+                Elliptische Kurve \(y^{2}=x^{3}-2x+3\)
+                über \(\mathbb{R}\)\\[0.3em]
+                {\footnotesize Quelle: Eigene Darstellung mit GeoGebra}
+            }
         \end{figure}
     \end{center}
     \vfill
 \end{titlepage}
 
-\input{chapters/01_einleitung.tex}
 
+
+\input{chapters/00_vorwort.tex}
 \tableofcontents
-
-
-
+\input{chapters/01_einleitung.tex}
 \input{chapters/02_dl_problem.tex}
 \input{chapters/03_elliptische_kurven.tex}
 \input{chapters/04_ec_endliche_körper.tex}

@@ -190,6 +190,44 @@
       \field{title}{Beginning in Algebraic Geometry}
       \field{year}{2025}
     \endentry
+    \entry{eicher97}{report}{}{}
+      \name{author}{2}{}{%
+        {{hash=996f5fa9e27e7f4848a77edc1f321f4a}{%
+           family={Eicher},
+           familyi={E\bibinitperiod},
+           given={Jodie},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5ea768c50f51768c7365a38444377f0d}{%
+           family={Opoku},
+           familyi={O\bibinitperiod},
+           given={Yaw},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {Department of Mathematics}%
+        {Computer Science, University of Richmond}%
+      }
+      \list{location}{1}{%
+        {Richmond, Virginia}%
+      }
+      \strng{namehash}{f45b73a26b3cb9db2f5542e395d3f15e}
+      \strng{fullhash}{f45b73a26b3cb9db2f5542e395d3f15e}
+      \strng{fullhashraw}{f45b73a26b3cb9db2f5542e395d3f15e}
+      \strng{bibnamehash}{f45b73a26b3cb9db2f5542e395d3f15e}
+      \strng{authorbibnamehash}{f45b73a26b3cb9db2f5542e395d3f15e}
+      \strng{authornamehash}{f45b73a26b3cb9db2f5542e395d3f15e}
+      \strng{authorfullhash}{f45b73a26b3cb9db2f5542e395d3f15e}
+      \strng{authorfullhashraw}{f45b73a26b3cb9db2f5542e395d3f15e}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{7}
+      \field{number}{TR-97-02}
+      \field{title}{Using the Quantum Computer to Break Elliptic Curve Cryptosystems}
+      \field{type}{Math and Computer Science Technical Report Series}
+      \field{year}{1997}
+    \endentry
     \entry{forster15}{book}{}{}
       \name{author}{1}{}{%
         {{hash=f8e53a8257ed07acdf13331b689a4e08}{%
@@ -314,6 +352,39 @@
       \field{title}{Understanding Cryptography: From Established Symmetric and Asymmetric Ciphers to Post-Quantum Algorithms}
       \field{year}{2024}
     \endentry
+    \entry{ibmQuantumRoadmap}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=cbf44511d041dc6d1dd73cc0c033122c}{%
+           family={{IBM}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IBM Technology Atlas}%
+      }
+      \strng{namehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{fullhash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{fullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{bibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorbibnamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authornamehash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorfullhash}{cbf44511d041dc6d1dd73cc0c033122c}
+      \strng{authorfullhashraw}{cbf44511d041dc6d1dd73cc0c033122c}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{IBM Quantum Roadmap}}
+      \field{urlday}{19}
+      \field{urlmonth}{10}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ibm.com/roadmaps/quantum/
+      \endverb
+      \verb{url}
+      \verb https://www.ibm.com/roadmaps/quantum/
+      \endverb
+    \endentry
     \entry{kapl05}{book}{}{}
       \name{author}{1}{}{%
         {{hash=d156bfaf0f494560bf831b835e2039ed}{%
@@ -421,6 +492,133 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1007/978-3-662-54080-0
+      \endverb
+    \endentry
+    \entry{mov91}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=cb55c3f91b161f769bbc07a763c8edaf}{%
+           family={Menezes},
+           familyi={M\bibinitperiod},
+           given={Alfred},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b924a603fe5cd7ffbb8ed954de351a77}{%
+           family={Vanstone},
+           familyi={V\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b76adaf370f4255b09cd89400ccf3d15}{%
+           family={Okamoto},
+           familyi={O\bibinitperiod},
+           given={Tatsuaki},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New Orleans, Louisiana, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{80863e395ba782368b96f322a2b8b8b8}
+      \strng{fullhash}{80863e395ba782368b96f322a2b8b8b8}
+      \strng{fullhashraw}{80863e395ba782368b96f322a2b8b8b8}
+      \strng{bibnamehash}{80863e395ba782368b96f322a2b8b8b8}
+      \strng{authorbibnamehash}{80863e395ba782368b96f322a2b8b8b8}
+      \strng{authornamehash}{80863e395ba782368b96f322a2b8b8b8}
+      \strng{authorfullhash}{80863e395ba782368b96f322a2b8b8b8}
+      \strng{authorfullhashraw}{80863e395ba782368b96f322a2b8b8b8}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the Twenty-Third Annual ACM Symposium on Theory of Computing}
+      \field{isbn}{0897913973}
+      \field{series}{STOC '91}
+      \field{title}{Reducing elliptic curve logarithms to logarithms in a finite field}
+      \field{year}{1991}
+      \field{pages}{80\bibrangedash 89}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1145/103418.103434
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/103418.103434
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/103418.103434
+      \endverb
+    \endentry
+    \entry{mishra26}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=64fc7adc7f34ed323f671f73f29a63db}{%
+           family={Mishra},
+           familyi={M\bibinitperiod},
+           given={Dheerendra},
+           giveni={D\bibinitperiod}}}%
+        {{hash=df7d3cd626f21fc6b615bf062f2c6e24}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Rohit\bibnamedelima Raj},
+           giveni={R\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{38730fcb8cd1e4c4aa9dfbede9d1c6b3}
+      \strng{fullhash}{38730fcb8cd1e4c4aa9dfbede9d1c6b3}
+      \strng{fullhashraw}{38730fcb8cd1e4c4aa9dfbede9d1c6b3}
+      \strng{bibnamehash}{38730fcb8cd1e4c4aa9dfbede9d1c6b3}
+      \strng{authorbibnamehash}{38730fcb8cd1e4c4aa9dfbede9d1c6b3}
+      \strng{authornamehash}{38730fcb8cd1e4c4aa9dfbede9d1c6b3}
+      \strng{authorfullhash}{38730fcb8cd1e4c4aa9dfbede9d1c6b3}
+      \strng{authorfullhashraw}{38730fcb8cd1e4c4aa9dfbede9d1c6b3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Science Review}
+      \field{title}{Isogeny-based cryptography: A comprehensive review on advancements, analysis of attacks, and future directions}
+      \field{volume}{60}
+      \field{year}{2026}
+      \field{pages}{100865}
+      \range{pages}{1}
+    \endentry
+    \entry{mosca03}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=cac498e264a2fdb0a8c4dd3e95c92055}{%
+           family={Mosca},
+           familyi={M\bibinitperiod},
+           given={Michele},
+           giveni={M\bibinitperiod}}}%
+        {{hash=1a6e003ed74f06415ad65e08912ebb7f}{%
+           family={Zalka},
+           familyi={Z\bibinitperiod},
+           given={Christof},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{952a17509ccc6d125beb860373aa3d2a}
+      \strng{fullhash}{952a17509ccc6d125beb860373aa3d2a}
+      \strng{fullhashraw}{952a17509ccc6d125beb860373aa3d2a}
+      \strng{bibnamehash}{952a17509ccc6d125beb860373aa3d2a}
+      \strng{authorbibnamehash}{952a17509ccc6d125beb860373aa3d2a}
+      \strng{authornamehash}{952a17509ccc6d125beb860373aa3d2a}
+      \strng{authorfullhash}{952a17509ccc6d125beb860373aa3d2a}
+      \strng{authorfullhashraw}{952a17509ccc6d125beb860373aa3d2a}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{title}{Exact quantum Fourier transforms and discrete logarithm algorithms}
+      \field{year}{2003}
+      \verb{eprint}
+      \verb quant-ph/0301093
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/quant-ph/0301093
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/quant-ph/0301093
       \endverb
     \endentry
     \entry{muller}{book}{}{}
@@ -577,6 +775,45 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1007/978-3-658-05799-2
+      \endverb
+    \endentry
+    \entry{proos2004}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=296e5c0b1581577952fa762df7cf5e9c}{%
+           family={Proos},
+           familyi={P\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1a6e003ed74f06415ad65e08912ebb7f}{%
+           family={Zalka},
+           familyi={Z\bibinitperiod},
+           given={Christof},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{a1fa2ef4199c59535b2eac493176a4ab}
+      \strng{fullhash}{a1fa2ef4199c59535b2eac493176a4ab}
+      \strng{fullhashraw}{a1fa2ef4199c59535b2eac493176a4ab}
+      \strng{bibnamehash}{a1fa2ef4199c59535b2eac493176a4ab}
+      \strng{authorbibnamehash}{a1fa2ef4199c59535b2eac493176a4ab}
+      \strng{authornamehash}{a1fa2ef4199c59535b2eac493176a4ab}
+      \strng{authorfullhash}{a1fa2ef4199c59535b2eac493176a4ab}
+      \strng{authorfullhashraw}{a1fa2ef4199c59535b2eac493176a4ab}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{title}{Shor's discrete logarithm quantum algorithm for elliptic curves}
+      \field{year}{2004}
+      \verb{eprint}
+      \verb quant-ph/0301141
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/quant-ph/0301141
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/quant-ph/0301141
       \endverb
     \endentry
     \entry{schoof85}{article}{}{}
@@ -886,6 +1123,37 @@
       \field{title}{Elliptic Curves: Number Theory and Cryptography}
       \field{year}{2008}
     \endentry
+    \entry{waterhouse69}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=1a8d30e7d7a09a386258ab4da2847543}{%
+           family={Waterhouse},
+           familyi={W\bibinitperiod},
+           given={William\bibnamedelima C.},
+           giveni={W\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{1a8d30e7d7a09a386258ab4da2847543}
+      \strng{fullhash}{1a8d30e7d7a09a386258ab4da2847543}
+      \strng{fullhashraw}{1a8d30e7d7a09a386258ab4da2847543}
+      \strng{bibnamehash}{1a8d30e7d7a09a386258ab4da2847543}
+      \strng{authorbibnamehash}{1a8d30e7d7a09a386258ab4da2847543}
+      \strng{authornamehash}{1a8d30e7d7a09a386258ab4da2847543}
+      \strng{authorfullhash}{1a8d30e7d7a09a386258ab4da2847543}
+      \strng{authorfullhashraw}{1a8d30e7d7a09a386258ab4da2847543}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annales scientifiques de l'École Normale Supérieure}
+      \field{number}{4}
+      \field{title}{Abelian varieties over finite fields.}
+      \field{volume}{2}
+      \field{year}{1969}
+      \field{pages}{521\bibrangedash 560}
+      \range{pages}{40}
+      \verb{doi}
+      \verb 10.24033/asens.1183
+      \endverb
+    \endentry
     \entry{werner02}{book}{}{}
       \name{author}{1}{}{%
         {{hash=d09b4459afa187a20a13919237d8bd25}{%
@@ -932,6 +1200,108 @@
       \endverb
       \verb{url}
       \verb https://doi.org/10.1007/978-3-642-56351-5
+      \endverb
+    \endentry
+    \entry{wilhelm24}{report}{}{}
+      \name{author}{5}{}{%
+        {{hash=4f51c221389811693643c5037bbea6fd}{%
+           family={Wilhelm},
+           familyi={W\bibinitperiod},
+           given={Frank\bibnamedelima K.},
+           giveni={F\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=1cdfdcef4a7f08339f619678ab8b88f1}{%
+           family={Steinwandt},
+           familyi={S\bibinitperiod},
+           given={Rainer},
+           giveni={R\bibinitperiod}}}%
+        {{hash=2024e97285ce27dbc1b56f33f1cfd421}{%
+           family={Zeuch},
+           familyi={Z\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=fb573336c14585f73e8fbf5d17d82262}{%
+           family={Lageyre},
+           familyi={L\bibinitperiod},
+           given={Paul},
+           giveni={P\bibinitperiod}}}%
+        {{hash=a427344e7dd6cc93e7ec74513f676756}{%
+           family={Kirchhoff},
+           familyi={K\bibinitperiod},
+           given={Susanna},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {Bundesamt für Sicherheit in der Informationstechnik}%
+      }
+      \list{location}{1}{%
+        {Bonn}%
+      }
+      \strng{namehash}{6dcba0e5b45062083dbecf0c16fb062f}
+      \strng{fullhash}{69d39de3af1e309c9c28de4ce1ed694a}
+      \strng{fullhashraw}{69d39de3af1e309c9c28de4ce1ed694a}
+      \strng{bibnamehash}{6dcba0e5b45062083dbecf0c16fb062f}
+      \strng{authorbibnamehash}{6dcba0e5b45062083dbecf0c16fb062f}
+      \strng{authornamehash}{6dcba0e5b45062083dbecf0c16fb062f}
+      \strng{authorfullhash}{69d39de3af1e309c9c28de4ce1ed694a}
+      \strng{authorfullhashraw}{69d39de3af1e309c9c28de4ce1ed694a}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{8}
+      \field{note}{Version 2.1}
+      \field{title}{Status of quantum computer development}
+      \field{type}{Studie}
+      \field{year}{2024}
+    \endentry
+    \entry{yan15}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=602e3df068510ff42441af15f99d76f3}{%
+           family={Yan},
+           familyi={Y\bibinitperiod},
+           given={Song\bibnamedelima Y.},
+           giveni={S\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=37a8a0ad9234705162d97a2cb7a2600a}{%
+           family={Cham},
+           familyi={C\bibinitperiod},
+           given={Springer},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer International Publishing Switzerland}%
+      }
+      \strng{namehash}{602e3df068510ff42441af15f99d76f3}
+      \strng{fullhash}{602e3df068510ff42441af15f99d76f3}
+      \strng{fullhashraw}{602e3df068510ff42441af15f99d76f3}
+      \strng{bibnamehash}{602e3df068510ff42441af15f99d76f3}
+      \strng{authorbibnamehash}{602e3df068510ff42441af15f99d76f3}
+      \strng{authornamehash}{602e3df068510ff42441af15f99d76f3}
+      \strng{authorfullhash}{602e3df068510ff42441af15f99d76f3}
+      \strng{authorfullhashraw}{602e3df068510ff42441af15f99d76f3}
+      \strng{editorbibnamehash}{37a8a0ad9234705162d97a2cb7a2600a}
+      \strng{editornamehash}{37a8a0ad9234705162d97a2cb7a2600a}
+      \strng{editorfullhash}{37a8a0ad9234705162d97a2cb7a2600a}
+      \strng{editorfullhashraw}{37a8a0ad9234705162d97a2cb7a2600a}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-319-25823-2}
+      \field{title}{Quantum Computational Number Theory}
+      \field{year}{2015}
+      \verb{doi}
+      \verb 10.1007/978-3-319-25823-2
+      \endverb
+      \verb{urlraw}
+      \verb https://10.1007/978-3-319-25823-2
+      \endverb
+      \verb{url}
+      \verb https://10.1007/978-3-319-25823-2
       \endverb
     \endentry
     \entry{zwegers24}{article}{}{}
